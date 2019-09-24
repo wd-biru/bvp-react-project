@@ -1,32 +1,36 @@
-import React from "react";
+import React from 'react';
+import HeaderRight from './HeaderRight';
 
+  function Header(){
+    return(
+       <header className="header">
+        <nav className="navbar">
+          <div className="container-fluid">
+            <div className="navbar-holder d-flex align-items-center justify-content-between">
+              {/* Navbar Header*/}
+              <div className="navbar-header left">
+                {/* Navbar brand */} 
+                  <div className="brand-text d-none d-lg-inline-block">
+                    <a href="dashboard.html">
+                      <img src="" alt="BVP" className="logo-menu logo2"  />
+                    </a>
+                    <form className="navbar-form navbar-left" action="">
+                      <i className="fa fa-search"></i>
+                    <input type="text" className="form-control navseacrh myBtnb" placeholder="Search For anything" name="search" />
+                  </form>
+                  </div>
+               {/*  Toggle Button */}
+                <a id="toggle-btn" href="#" className="menu-btn active">
+                <span></span><span></span><span></span></a> 
+              </div>
+              {/*   Navbar Menu Components */}
 
-const PageHeader = () => {
-  return (
-    <div>
-    
-    <header className="page-header">
-      <div className="container-fluid">
-        <h2 className="no-margin-bottom">Home</h2>
-        <div className="secund-menu-button">
-          <input
-            type="button"
-            name=""
-            value="CREATE PROJECT"
-            className="SYNC"
-            data-toggle="modal"
-            data-target="#myModal"
-          />
-          <a href="upload.html">
-            <input type="button" name="" value="UPLOAD" className="UPLOAD" />
-          </a>
-        </div>
-      </div>
-    </header>
+              <HeaderRight />
 
-    </div>
-  );
-}
-
-
-export default PageHeader;
+            </div>
+          </div>
+        </nav>
+      </header>
+      )
+  }
+  export default Header;
