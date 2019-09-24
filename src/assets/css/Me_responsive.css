@@ -1,0 +1,98 @@
+@media screen and (max-width: 767px) and (min-width: 200px) {
+	#login .container #login-row #login-column #login-box #login-form #register-link {margin-top: auto;}
+	#login .container #login-row #login-column #login-box {height: auto;}
+	.nav-pills-fx {width: 100%; position: initial; margin-top: 70px;}
+	.tab-content {margin: auto; margin-top: 10px;}
+	.secund-menu {margin: auto;}
+	.secund-menu-bot {margin: auto;}
+	.ever-video {margin: auto;    margin-top: 15px;}
+	.ever-video ul{padding: 0;}
+	.card {max-width: 100%;display: block;margin-bottom: 20px;}
+	.Studioed-section2-1 ul {padding-top: 0px;}
+	input.SYNC {margin-bottom: 10px; margin-right: 0;}
+	.secund-menu-listview {text-align: left;float: initial;margin-top: -41px;}
+	.page-header .container-fluid {padding-left: 30px;}
+	.breadcrumb-holder.container-fluid {padding-left: 30px;}
+	.col-lg-3 {width: 50%;}
+	.breadcrumb li a {display: none;}
+	.breadcrumb-item+.breadcrumb-item::before {display: none;}
+	.Studioed-first ul li:nth-child(2) {margin-bottom: 0px;}
+	.Studioed-first {max-width: 100%; border-right: none;}
+	.Studioed-seund {max-width: 100%; flex: 100%;}
+	.Studioed-first ul li {display: inline-block;}
+	.studio.logo-menu {width: 45px;margin-top: -35px;}
+	.Studioed-first ul li a {font-size: 10px;}
+	.Studioed-first ul li a i {font-size: 20px;}
+	.Studioed-first ul li:nth-child(1) {margin-bottom: 0;}
+	.Studioed-first ul li a i.fa-toggle-off {font-size: 20px;}
+	.Studioed-first ul li {margin-top: 10px;    margin-bottom: 0;}
+	.time-line-vert .progress-bar{height: 57px;}
+	.Studioed-seund {padding-top: 15px; padding-bottom: 15px;}
+	.Time-Triggers {margin-top: 30px;}
+	.Time-Triggers img {margin-bottom: 20px;}
+	nav.side-navbar ul li a span {width: 100%; text-align: center;}
+	h2.no-margin-bottom {display: block; width: 100%; margin-bottom: 10px !important;}
+	.uploadpage section.tables {padding-bottom: 90px;}
+	.Subtitle-sec .b span:nth-child(1) a {width: auto;}
+	.Subtitle-sec .b span:nth-child(2) a {width: auto;}
+	.Subtitle-sec .b span:nth-child(3) a {width: auto;}
+	.Subtitle-sec .b span:nth-child(4) a {width: auto;}
+	.Subtitle-sec .b span:nth-child(5) a {width: auto;}
+	.Subtitle-sec .c .card-header a p span:nth-child(1) {width: 57px;}
+	.Subtitle-sec .c .card-header a p span:nth-child(2) {width: auto; padding-right: .6rem;}
+	.Subtitle-sec .c .card-header a p span:nth-child(3) {width: auto; padding-right: .6rem;}
+	.Subtitle-sec .c .card-header a p span:nth-child(4) {width: 50px; padding-right: .6rem;}
+	.puntosoc {margin-bottom: 15px;}
+}
+@media screen and (max-width: 991px) and (min-width: 768px) {
+	.col-lg-3 {width: 33%;}
+	.secund-menu-listview {text-align: left;float: initial;margin-top: -41px;}
+}
+@media screen and (max-width: 360px) and (min-width: 200px) {
+	.nav-menu a.nav-link {padding: .5rem 8px;}
+	.dashboardsty form.navbar-form.navbar-left i {left: 53px;}
+	input.form-control.navseacrh {width: 144px;padding-left: 73px;}
+}
+@media screen and (max-width: 411px) and (min-width: 360px) {
+	.nav-menu a.nav-link {padding: .5rem 8px;}
+	.dashboardst form.navbar-form.navbar-left i {left: 53px;}
+	input.form-control.navseacrh {width: 200px;padding-left: 73px;}
+	.dashboardsty form.navbar-form.navbar-left i {left: 53px;}
+}
+@media screen and (max-width: 440px) and (min-width: 361px) {
+	.nav-menu a.nav-link {padding: .5rem 8px;}
+	.dashboardst form.navbar-form.navbar-left i {left: 53px;}
+	input.form-control.navseacrh {width: 235px;padding-left: 73px;}
+}
+@media screen and (max-width: 500px) and (min-width: 441px) {
+	.nav-menu a.nav-link {padding: .5rem 8px;}
+	.dashboardst form.navbar-form.navbar-left i {left: 53px;}
+	input.form-control.navseacrh {width: 255px;padding-left: 73px;}
+}
+@media screen and (max-width: 767px) and (min-width: 501px) {
+	.nav-menu a.nav-link {padding: .5rem 1rem;}
+	.dashboardst form.navbar-form.navbar-left i {left: 65px;}
+	input.form-control.navseacrh {width: 255px;padding-left: 95px;}
+}
+
+@media screen and (max-width: 1199px) and (min-width: 200px) {
+	a#toggle-btn {
+    display: block;
+	}
+	nav.side-navbar.shrinked .sidebar-header .title {
+     display: block; 
+	}
+	nav.side-navbar .title h1 {
+    width: auto;
+	}
+	nav.side-navbar .title h1 img {
+    width: 30px;
+    float: initial;
+    margin-top: 0;
+	}
+}
+@media screen and (max-width: 2880px) and (min-width: 1200px) {
+	a#toggle-btn {
+    display: none;
+	}
+}

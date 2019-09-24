@@ -1,0 +1,36 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\sanjay.singh3\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'start' ]
+2 info using npm@3.10.10
+3 info using node@v8.11.2
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle gamestop@0.1.0~prestart: gamestop@0.1.0
+6 silly lifecycle gamestop@0.1.0~prestart: no script for prestart, continuing
+7 info lifecycle gamestop@0.1.0~start: gamestop@0.1.0
+8 verbose lifecycle gamestop@0.1.0~start: unsafe-perm in lifecycle true
+9 verbose lifecycle gamestop@0.1.0~start: PATH: C:\Users\sanjay.singh3\AppData\Roaming\npm\node_modules\npm\bin\node-gyp-bin;D:\gameStop\gamestop-poc\node_modules\.bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Users\sanjay.singh3\AppData\Roaming\npm;C:\Users\sanjay.singh3\AppData\Local\Programs\Fiddler;C:\Users\sanjay.singh3\AppData\Local\Yarn\bin;C:\Users\sanjay.singh3\AppData\Local\Programs\Microsoft VS Code\bin
+10 verbose lifecycle gamestop@0.1.0~start: CWD: D:\gameStop\gamestop-poc
+11 silly lifecycle gamestop@0.1.0~start: Args: [ '/d /s /c',
+11 silly lifecycle   'webpack-dev-server --hot --history-api-fallback --color' ]
+12 verbose stack Error: kill ENOSYS
+12 verbose stack     at Object._errnoException (util.js:992:11)
+12 verbose stack     at process.kill (internal/process.js:183:18)
+12 verbose stack     at process.listener (C:\Users\sanjay.singh3\AppData\Roaming\npm\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:86:15)
+12 verbose stack     at emitNone (events.js:111:20)
+12 verbose stack     at process.emit (events.js:208:7)
+12 verbose stack     at processEmit (C:\Users\sanjay.singh3\AppData\Roaming\npm\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:146:32)
+12 verbose stack     at processEmit (C:\Users\sanjay.singh3\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:146:32)
+12 verbose stack     at Signal.wrap.onsignal (internal/process.js:208:44)
+13 verbose cwd D:\gameStop\gamestop-poc
+14 error Windows_NT 6.1.7601
+15 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\sanjay.singh3\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "start"
+16 error node v8.11.2
+17 error npm  v3.10.10
+18 error code ENOSYS
+19 error errno ENOSYS
+20 error syscall kill
+21 error kill ENOSYS
+22 error If you need help, you may report this error at:
+22 error     <https://github.com/npm/npm/issues>
+23 verbose exit [ 1, true ]
