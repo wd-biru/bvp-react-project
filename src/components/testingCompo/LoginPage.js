@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import logo from './bvp-logo.png';
 
 class LoginPage extends Component {
     render() {
@@ -11,7 +12,7 @@ class LoginPage extends Component {
                     <div id="login-box" class="col-md-12">
 
                         <form id="login-form" className="form" action="" method="post">
-                            <img src="" class="login-logo" alt="BVP" />
+                            <img src={logo} class="login-logo" alt="BVP" />
                             <div class="form-group">
                                 <input type="text" name="username" id="username" 
                                 class="form-control" placeholder="Email" />
