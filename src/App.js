@@ -15,7 +15,7 @@ import "./assets/css/Me_custom.css";
 //import Breadcromb from './components/testingCompo/Breadcromb';
 
 //********** Login Import File  *************/
-//import LoginPage from './components/testingCompo/LoginPage';
+//import LoginPage from './components/login/LoginPage';
 
 //********** Update Page Import File  *************/
 // import Uploadheader from './components/shared/UploadComman/Header';
@@ -24,12 +24,19 @@ import "./assets/css/Me_custom.css";
 // import UploadSection from './components/shared/UploadComman/UploadSection';
 // import UploadFooter from './components/shared/UploadComman/Footer'
 
+//import Studio from './components/studio/Studio';
+import StudioHeader from './components/studio/StudioHeader';
+import StudioLeftSide from './components/studio/StudioLeftSide';
+
+
 class App extends Component {
   render() {
     return (
         <div className="App">
+         
           <h2>THis is app dots js</h2>
-           
+          <StudioHeader />
+           <StudioLeftSide />
            
            
            
