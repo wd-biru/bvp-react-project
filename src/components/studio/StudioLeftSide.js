@@ -1,5 +1,6 @@
 import React from 'react'
 import StudioRightSideUl from './StudioRightSideUl';
+import StudioFooterPart1 from './StudioFooterPart1';
 import backward from './me/fa-backward.png';
 import stepbackward from './me/fa-step-backward.png';
 import faplay from './me/fa-play.png';
@@ -32,6 +33,7 @@ function StudioLeftSide() {
 			
             <StudioRightSideUl />
             </div>
+            <StudioFooterPart1 />
            </div>
     )
 }

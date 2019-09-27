@@ -1,19 +1,12 @@
 import React from 'react';
-import SectionImg from './images.jpg';
-import PageSection2 from './PageSection2';
+import SectionImg2 from './images.jpg';
 
-const PageSection = () =>{
-  return(
-    <div>        
-        <section className="tables">   
-             <div className="container-fluid">
-              <div className="tab-content">
-                  <div className="tab-pane container active col-lg-12" id="home">
-                    <div className="row">
+const PageSection2 = () =>{
+  return(      
                       <div className="col-lg-3">
                         <div className="card">
                           <div className="card-body">
-                          <img src={SectionImg} alt="John" />
+                          <img src={SectionImg2} alt="John" />
                             <div className="cappadd">
                               <h5>John Doe</h5>
                               <p className="title">CEO &amp; Founder, Example</p>
@@ -38,18 +31,8 @@ const PageSection = () =>{
                           </div>
                         </div>
                       </div>
-                      <PageSection2 />
-                      <PageSection2 />
-                      <PageSection2 />
-                      <PageSection2 />
-                      <PageSection2 />
-                      {/* hi */}
-                      </div>
-                      </div>
-                      </div>
-                      </div>
-    </section>
-  </div>
+                    
+                     
   );
 }
-export default PageSection;
+export default PageSection2;

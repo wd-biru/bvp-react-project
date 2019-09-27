@@ -7,14 +7,15 @@ import User from './me/user.png';
 
 const StudioHeader = () => {
     return (
-        <div>
+        
             
                 <header>
-                    <nav className="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+                    
+                    <nav className="navbar navbar-expand-md bg-dark navbar-dark">
                       <a className="navbar-brand" href="">
                           <img src={logo} alt="BVP" className="mystudio" />
                       </a>
-                    <div className="Icon_Header">
+                    <div className="Icon_Header ">
                         <ul className="navbar-nav my-2 my-lg-0">
                             <li className="nav-item d-flex align-items-center"><a href="#" className="nav-link">
                                 <img src={Ques} /></a></li>
@@ -28,15 +29,13 @@ const StudioHeader = () => {
                                      </a>
                             </li>
                             {/* Logout    */}
-                            <li className="nav-item"><a href="" className="nav-link logout"> <img src={User} /></a></li>   
+                            <li className="nav-item myuser"><a href="" className="nav-link logout"> <img src={User} /></a></li>   
                         </ul>
                     </div>  
                     </nav>
+                    
                 </header>
-
-
-        </div>
     )
 }
 
-export default StudioHeader
+export default StudioHeader;
