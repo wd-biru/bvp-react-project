@@ -1,7 +1,7 @@
 // const environment = (process.env.NODE_ENV) ? process.env.NODE_ENV : 'DEV';
 
 const configuration = {
-  baseURL: "",
+  baseURL: "http://suntekitsolutions.com/bvpstudio/api",
   getURL: "/get",
   postURL: "/post",
   token: "",
