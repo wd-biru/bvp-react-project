@@ -1,12 +1,15 @@
 import React from 'react';
+import { BrowserRouter as Router ,Link } from 'react-router-dom';
 
   function Breadcromb(){
       return(       
            <div>
             <ul className="nav nav-pills">
+              <Router>
               <li className="nav-item">
-                <a className="nav-link active" data-toggle="pill" href="#home">Projects</a>
+                <Link className="nav-link active" data-toggle="pill" to="/home">Projects </Link>
               </li>
+              </Router>
               <li className="nav-item">
                 <a className="nav-link" data-toggle="pill" href="#menu1">Everything</a>
               </li>
@@ -19,6 +22,7 @@ import React from 'react';
               <li className="nav-item">
                 <a className="nav-link" data-toggle="pill" href="#menu4">Documents</a>
               </li>
+              
             </ul>
             <div className="secund-menu-listview">
               <a href=""><i className="fa fa-sort"></i> Date Added</a>

@@ -1,6 +1,6 @@
 import React from "react";
 import HeaderRight from "./HeaderRight";
-import LogoImg from "../../../assets/img/me/iconfav.png";
+import logo from "./studio-bvp-logo.png";
 
 function Header() {
   return (
@@ -8,11 +8,11 @@ function Header() {
       <nav className="navbar">
         <div className="container-fluid">
           <div className="navbar-holder d-flex align-items-center justify-content-between">
-            {/* Navbar Header*/}
             <div className="navbar-header left">
-              {/* Navbar brand */}
               <div className="brand-text d-none d-lg-inline-block">
-                <img src={LogoImg} alt="BVP" className="logo-menu logo2" />
+                <a href="dashboard.html">
+                  <img src={logo} alt="BVP" className="logo-menu logo2" />
+                </a>
                 <form className="navbar-form navbar-left" action="">
                   <i className="fa fa-search"></i>
                   <input
@@ -23,17 +23,17 @@ function Header() {
                   />
                 </form>
               </div>
-              {/*  Toggle Button */}
               <a id="toggle-btn" href="#" className="menu-btn active">
                 <span></span>
                 <span></span>
                 <span></span>
               </a>
             </div>
-            {/*   Navbar Menu Components */}
-
             <HeaderRight />
           </div>
+          {/*   Navbar Menu Components */}
+
+          <HeaderRight />
         </div>
       </nav>
     </header>

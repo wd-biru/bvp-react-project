@@ -6,9 +6,8 @@ import "./assets/css/Me_custom.css";
 import Login from "./components/login/Login";
 //import "./assets/css/MystyleDefault.css";
 
-import Header from "./components/shared/header/Header";
-import Footer from "./components/shared/footer/Footer";
-import LeftNav from "./components/shared/nav/LeftNav";
+import { BroserRouter as Router } from "react-router-dom";
+import Route from "react-router-dom/Route";
 
 import TopHeader from "./components/shared/header/Header";
 import TopPageHeader from "./components/testingCompo/PageTopHeader";
