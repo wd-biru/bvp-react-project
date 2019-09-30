@@ -11,6 +11,7 @@
     "is-promise": "^2.1.0",
     "react-dates": "^19.0.2",
     "react-document-title": "^2.0.3",
+    "react-particles-js": "^2.7.0",
     "react-redux": "^6.0.0",
     "react-responsive-modal": "^4.0.1",
     "react-router-dom": "^4.3.1",

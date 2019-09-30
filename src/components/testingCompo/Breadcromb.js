@@ -1,26 +1,28 @@
 import React from 'react';
-import { BrowserRouter as Router ,Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Home from './Home';
 
   function Breadcromb(){
       return(       
+        <Router>
            <div>
             <ul className="nav nav-pills">
-              <Router>
+              
               <li className="nav-item">
-                <Link className="nav-link active" data-toggle="pill" to="/home">Projects </Link>
+                <Link to="/" className="nav-link active" data-toggle="pill">Projects </Link>
               </li>
-              </Router>
+              
               <li className="nav-item">
-                <a className="nav-link" data-toggle="pill" href="#menu1">Everything</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" data-toggle="pill" href="#menu2">Videos</a>
+              <Link to="/all" className="nav-link" data-toggle="pill">Everything </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" data-toggle="pill" href="#menu3">Images</a>
+              <Link to="/video" className="nav-link" data-toggle="pill" >Videos</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" data-toggle="pill" href="#menu4">Documents</a>
+              <Link to="/images" className="nav-link" data-toggle="pill" > Images </Link>
+              </li>
+              <li className="nav-item">
+              <Link to="/documents" className="nav-link" data-toggle="pill" > Documents </Link>
               </li>
               
             </ul>
@@ -29,7 +31,13 @@ import { BrowserRouter as Router ,Link } from 'react-router-dom';
               <a href=""><i className="fa fa-clock-o" aria-hidden="true"></i> All Time</a>
               <a href=""><i className="fa fa-bars"></i> List View</a>
             </div>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/all" component={Home2} />
+            
+            
           </div>
+          
+          </Router>
           );
         }
   export default Breadcromb;
