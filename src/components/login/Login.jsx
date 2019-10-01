@@ -12,6 +12,12 @@ class Login extends React.Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.userData !== this.props.userData && this.props.userData) {
+      this.props.history.push("/");
+    }
+  }
+
   handleInputChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -24,9 +30,6 @@ class Login extends React.Component {
       password: this.state.userPwd
     };
     this.props.fetchUserData(payLoad);
-    if (this.props.userData && this.props.userData.success) {
-      this.props.history.push("/");
-    }
   };
 
   render() {
@@ -77,7 +80,7 @@ class Login extends React.Component {
                       name="submit"
                       className="btn btn-info btn-md"
                       value="LOG IN"
-                      onClick={this.handleClick}
+                      onClick={() => this.handleClick()}
                     />{" "}
                     <i className="fa fa-long-arrow-right"></i>
                   </div>

@@ -1,26 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 // import { createStore, applyMiddleware } from 'redux';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
-import { renderRoutes } from './routing/index';
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { renderRoutes } from "./routing/index";
 // import { asyncActions } from './redux-middlewares/async-actions';
-import store from './store/store';
-
-
-
+import store from "./store/store";
 
 function RenderApp(RootComponent, documentObject, appConfig) {
   if (!documentObject) {
-    throw new Error('Document Object not found !!!');
+    throw new Error("Document Object not found !!!");
   }
 
   // const baseMiddlewares = [asyncActions];
   const { redux, routes } = appConfig;
   const { rootReducer, middlewares, rootSaga } = redux || {};
 
-  if (typeof rootReducer !== 'function') {
-    throw new Error('Root reducer is expected to be a function !!!');
+  if (typeof rootReducer !== "function") {
+    throw new Error("Root reducer is expected to be a function !!!");
   }
 
   /**
@@ -43,11 +40,7 @@ function RenderApp(RootComponent, documentObject, appConfig) {
     <Provider store={storeMain}>
       <Router>
         <RootComponent>
-          <Switch>
-          {
-            renderRoutes(routes, { getState: store.getState })
-          }
-          </Switch>
+          <Switch>{renderRoutes(routes, { getState: store.getState })}</Switch>
         </RootComponent>
       </Router>
     </Provider>,

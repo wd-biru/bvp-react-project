@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+
+import coreUtil from "./core/coreUtility";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/Custom.css";
 import "./assets/css/Me_custom.css";
 import Login from "./components/login/Login";
 //import "./assets/css/MystyleDefault.css";
-
-import { BroserRouter as Router } from "react-router-dom";
-import Route from "react-router-dom/Route";
 
 import TopHeader from "./components/shared/header/Header";
 import TopPageHeader from "./components/testingCompo/PageTopHeader";
@@ -26,14 +24,14 @@ class App extends Component {
               <div className="page">
                 <TopHeader />
                 <div className="page-content d-flex align-items-stretch">
-                  <LeftNav />
+                  {/* <LeftNav /> */}
                   <div className="content-inner">
                     <TopPageHeader />
                     <div className="breadcrumb-holder container-fluid">
                       <Breadcromb />
                       <TopPage />
 
-                      <Footer />
+                      {/* <Footer /> */}
                     </div>
                   </div>
                 </div>
@@ -47,4 +45,4 @@ class App extends Component {
     );
   }
 }
-export default App;
+export default coreUtil.connectToStore(App);
