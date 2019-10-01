@@ -1,7 +1,7 @@
 import React from "react";
 import coreUtil from "../../core/coreUtility";
 import { createFolderData } from "../../services/createFolder/createFolderActions";
-import LogoImg from "../../assets/img/me/bvp-logo.png";
+//import LogoImg from "../../assets/img/me/bvp-logo.png";
 import Modal from "../shared/modal/Modal";
 
 const customStyles = {

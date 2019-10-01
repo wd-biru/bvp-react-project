@@ -1,7 +1,10 @@
 import React from "react";
 import coreUtil from "../../core/coreUtility";
 import { fetchUserData } from "../../services/login/loginActions";
-import LogoImg from "../../assets/img/me/bvp-logo.png";
+//import LogoImg from "../../assets/img/me/bvp-logo.png";
+import LogoImg from "./bvp-logo.png";
+
+import './Me_custom.css';
 
 class Login extends React.Component {
   constructor(props) {
@@ -34,14 +37,17 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="login">
-        <div className="container">
-          <div
-            id="login-row"
-            className="row justify-content-center align-items-center"
-          >
-            <div id="login-column" className="col-md-6">
-              <div id="login-box" className="col-md-12">
+      <div id="login" className="text-center">
+        <div id="login">
+          <div class="container">
+            <div
+              id="login-row"
+              class="row justify-content-center align-items-center"
+            >
+              <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+
+            
                 <form id="login-form" className="form" action="" method="post">
                   <img src={LogoImg} className="login-logo" alt="BVP" />
                   <div className="form-group">
@@ -49,18 +55,19 @@ class Login extends React.Component {
                       type="text"
                       name="userEmail"
                       id="username"
-                      className="form-control"
+                      className="form-control logininp"
                       placeholder="Email"
                       value={this.state.userEmail}
                       onChange={this.handleInputChange}
                     />
+                    
                   </div>
                   <div className="form-group">
                     <input
                       type="text"
                       name="userPwd"
                       id="password"
-                      className="form-control"
+                      className="form-control logininp"
                       placeholder="password"
                       value={this.state.userPwd}
                       onChange={this.handleInputChange}
@@ -89,6 +96,8 @@ class Login extends React.Component {
             </div>
           </div>
         </div>
+        <h1>Login page</h1>
+      </div>
       </div>
     );
   }

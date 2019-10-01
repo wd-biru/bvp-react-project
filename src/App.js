@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import coreUtil from "./core/coreUtility";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import "./assets/css/vender/bootstrap/css/bootstrap.min.css";
 import "./assets/css/Custom.css";
 import "./assets/css/Me_custom.css";
 import Login from "./components/login/Login";
