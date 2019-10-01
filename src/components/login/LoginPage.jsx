@@ -100,9 +100,16 @@ class LoginPage extends Component {
             </div>
           </div>
         </div>
+<<<<<<< HEAD
+    </div>
+</div>
+        );
+    }
+=======
       </div>
     );
   }
+>>>>>>> 99cc524bb21b3f21c242033378fe7a6161e4802b
 }
 
 export default LoginPage;
