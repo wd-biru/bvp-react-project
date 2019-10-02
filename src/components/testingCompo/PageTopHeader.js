@@ -1,6 +1,6 @@
 import React from "react";
-import coreUtil from "../../core/coreUtility";
-import { createFolderData } from "../../services/createFolder/createFolderActions";
+import coreUtil from "../../apiAction/axios/utility";
+import { createFolderData } from "../../apiAction/apiType/createFolder/createFolderActions";
 import LogoImg from "../../assets/img/me/bvp-logo.png";
 import Modal from "../shared/modal/Modal";
 
@@ -102,6 +102,6 @@ const mapStateToProps = state => ({
   folderDetails: state.folderDetails.folderData
 });
 
-export default coreUtil.connectToStore(PageTopHeader, mapStateToProps, {
+export default coreUtil.storeConnect(PageTopHeader, mapStateToProps, {
   createFolderData
 });
