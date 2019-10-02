@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import coreUtil from "./core/coreUtility";
+import util from "./apiAction/axios/utility";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/Custom.css";
 import "./assets/css/Me_custom.css";
@@ -45,4 +45,4 @@ class App extends Component {
     );
   }
 }
-export default coreUtil.connectToStore(App);
+export default util.storeConnect(App);

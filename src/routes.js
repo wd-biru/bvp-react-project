@@ -1,10 +1,4 @@
-import PageBodyContainer from "./components/PageBodyContainer";
-
-function accessIf({ getState }) {
-  const state = getState();
-
-  return state.auth.username ? true : false;
-}
+import PageBodyContainer from "./components/Container";
 
 export const routes = [
   {

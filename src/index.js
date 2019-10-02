@@ -1,26 +1,20 @@
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
 
-import coreUtil from './core/coreUtility';
-import { routes } from './routes';
+import util from "./apiAction/axios/utility";
+import { routes } from "./routes";
 
-import rootReducer from './services/rootReducer/rootReducer';
-import rootSaga from './services/sagas';
+import mainReducer from "./apiAction/apiType/mainReducer/mainReducer";
+import rootSaga from "./apiAction/apiType/sagas";
 
-
-coreUtil.RenderApp(App, document.getElementById('root'), {
-	redux: {
-		rootReducer,
-		rootSaga,
-		middlewares: [],
-	},
-	routes,
-	http: {
-		baseURL: ''
-	}
+util.RenderApp(App, document.getElementById("root"), {
+  redux: {
+    middlewares: [],
+    mainReducer,
+    rootSaga
+  },
+  routes
 });
-
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 

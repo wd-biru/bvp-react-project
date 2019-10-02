@@ -1,6 +1,6 @@
 import React from "react";
-import coreUtil from "../../core/coreUtility";
-import { fetchUserData } from "../../services/login/loginActions";
+import utility from "../../apiAction/axios/utility";
+import { fetchUserData } from "../../apiAction/apiType/login/loginActions";
 import LogoImg from "../../assets/img/me/bvp-logo.png";
 
 class Login extends React.Component {
@@ -98,6 +98,6 @@ const mapStateToProps = state => ({
   userData: state.userDataResponse.userData
 });
 
-export default coreUtil.connectToStore(Login, mapStateToProps, {
+export default utility.storeConnect(Login, mapStateToProps, {
   fetchUserData
 });
