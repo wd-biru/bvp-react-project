@@ -94,3 +94,10 @@ body {
       font-size: 80px;
     }
 }
+div#notfound {
+  background-color: lightsteelblue;
+}
+.container-fluid.errorpage {
+  padding-left: 0px;
+  padding-right: 0px;
+}

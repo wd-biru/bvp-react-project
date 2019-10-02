@@ -8,7 +8,7 @@ import './css/me_studio.css';
 const ErrorPage = () => {
     return (
         <body>
-                <div className="container-fluid">
+                <div className="container-fluid errorpage">
                     <div className="row">
                         <div className="col-lg-12">
                             <div id="notfound">

@@ -492,3 +492,16 @@ label.file-upload.btn.btn-primary.btn-block.rounded-pill.shadow {
 .breadcrumb li.breadcrumb-item {
     color: #000;}
 /* Upload page css end */
+div#login-row {
+    margin-bottom: 100px;
+    text-align: left;
+}
+.form-control {
+    color: #495057;
+    background-color: #fff0;
+    background-clip: padding-box;
+    border: 2px solid #7c6cff;
+    border-radius: 0;
+    padding: .375rem 1rem;
+    height: 41px;
+}
