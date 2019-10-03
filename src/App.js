@@ -3,15 +3,17 @@ import React, { Component } from "react";
 import util from "./apiAction/axios/utility";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/Custom.css";
-import "./assets/css/Me_custom.css";
+import "./assets/css/Me_responsive.css";
+
 import Login from "./components/login/Login";
-//import "./assets/css/MystyleDefault.css";
+
 
 import TopHeader from "./components/shared/header/Header";
 import TopPageHeader from "./components/testingCompo/PageTopHeader";
 import TopPage from "./components/testingCompo/PageSection";
 import Breadcromb from "./components/testingCompo/Breadcromb";
-//import LoginPage from './components/testingCompo/LoginPage';
+import LeftNav from './components/shared/nav/LeftNav';
+import Footer from './components/shared/footer/Footer';
 
 class App extends Component {
   render() {
@@ -20,28 +22,28 @@ class App extends Component {
       <>
         {userToken ? (
           <div className="App">
-            <div class="dashboardsty">
+            <body class="dashboardsty">
               <div className="page">
                 <TopHeader />
-                <div className="page-content d-flex align-items-stretch">
-                  {/* <LeftNav /> */}
-                  <div className="content-inner">
+                <div className="page-content d-flex align-items-stretch"> 
+                    <LeftNav />
+                    <div className="content-inner">
                     <TopPageHeader />
-                    <div className="breadcrumb-holder container-fluid">
                       <Breadcromb />
                       <TopPage />
 
-                      {/* <Footer /> */}
+                       <Footer />
                     </div>
                   </div>
                 </div>
-              </div>
+              </body>
             </div>
-          </div>
+        
         ) : (
           <Login />
         )}
       </>
+     
     );
   }
 }

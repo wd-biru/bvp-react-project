@@ -1,7 +1,10 @@
 import React from "react";
 import utility from "../../apiAction/axios/utility";
 import { fetchUserData } from "../../apiAction/apiType/login/loginActions";
-import LogoImg from "../../assets/img/me/bvp-logo.png";
+//import LogoImg from "../../assets/img/me/bvp-logo.png";
+import LogoImg from "./bvp-logo.png";
+
+import './Me_custom.css';
 
 class Login extends React.Component {
   constructor(props) {
@@ -34,11 +37,13 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="login">
-        <div className="container">
+    <body class="loginpage">
+      <div id="login" className="text-center">
+      <div id="login">
+        <div class="container">
           <div
             id="login-row"
-            className="row justify-content-center align-items-center"
+            class="row justify-content-center align-items-center"
           >
             <div id="login-column" className="col-md-6">
               <div id="login-box" className="col-md-12">
@@ -90,6 +95,8 @@ class Login extends React.Component {
           </div>
         </div>
       </div>
+    </div>
+  </body>
     );
   }
 }
