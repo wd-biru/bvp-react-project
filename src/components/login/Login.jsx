@@ -37,7 +37,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <body class="loginpage">
+    <body class="loginpage">
       <div id="login" className="text-center">
       <div id="login">
         <div class="container">
@@ -95,8 +95,8 @@ class Login extends React.Component {
           </div>
         </div>
       </div>
-      </div>
-      </body>
+    </div>
+  </body>
     );
   }
 }
