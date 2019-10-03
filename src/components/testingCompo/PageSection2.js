@@ -1,5 +1,9 @@
 import React from 'react';
 import SectionImg2 from './images.jpg';
+import './css/MystyleDefault.css';
+import './css/me_custom.css';
+import './css/me_responsive.css';
+
 
 const PageSection2 = () =>{
   return(      
