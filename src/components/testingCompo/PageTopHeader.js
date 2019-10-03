@@ -1,8 +1,10 @@
 import React from "react";
 import coreUtil from "../../apiAction/axios/utility";
 import { createFolderData } from "../../apiAction/apiType/createFolder/createFolderActions";
-import LogoImg from "../../assets/img/me/bvp-logo.png";
+//import LogoImg from "../../assets/img/me/bvp-logo.png";
 import Modal from "../shared/modal/Modal";
+
+
 
 const customStyles = {
   content: {
@@ -12,8 +14,10 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    width: "350px",
-    height: "350px"
+    width: "500px",
+    paddingtop: "0px",
+    padding: "0px"
+    
   }
 };
 
@@ -70,6 +74,7 @@ class PageTopHeader extends React.Component {
             <input type="button" name="" value="UPLOAD" className="UPLOAD" />
           </div>
         </div>
+        <div className="modeldemo">
         {this.state.showModal && (
           <Modal
             modalIsOpen={this.state.showModal}
@@ -77,22 +82,34 @@ class PageTopHeader extends React.Component {
             customStyles={customStyles}
             contentLabel={"Create Folder"}
           >
-            Enter Folder Name:{" "}
+            <div className="modal-header text-center">
+               <h4 className="modal-title"> Enter Folder Name{" "}</h4>
+               <button type="button" className="close" data-dismiss="modal">&times;</button> 
+            </div>
+            <div className="modal-body text-center">
             <input
               type="text"
               name="folderName"
+              className="form-control"
+              placeholder="Project Name"
               value={this.state.folderName}
               onChange={this.handleInputChange}
             />
+            <br />
+          
             <button
               id="createFolder"
               name="createName"
+              className="btn btn-info btn-md modal-btn text-center form-group"
               onClick={this.createFolder}
             >
+              
               Create
             </button>
+            </div>
           </Modal>
         )}
+         </div>
       </header>
     );
   }
