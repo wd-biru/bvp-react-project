@@ -492,4 +492,8 @@ label.file-upload.btn.btn-primary.btn-block.rounded-pill.shadow {
 .breadcrumb li.breadcrumb-item {
     color: #000;}
 /* Upload page css end */
-
+.modal-header .close {
+    padding: 1rem 1rem;
+    margin: -1rem -1rem -1rem auto;
+    margin-right: 0;
+}

@@ -93,7 +93,7 @@ class PageTopHeader extends React.Component {
             <input type="button" name="" value="UPLOAD" className="UPLOAD" />
           </div>
         </div>
-        <div className="modeldemo">
+        
           {this.state.showModal && (
             <Modal
               modalIsOpen={this.state.showModal}
@@ -135,7 +135,7 @@ class PageTopHeader extends React.Component {
               </div>
             </Modal>
           )}
-        </div>
+       
         {this.state.showToastMsg && <ToastContainer />}
       </header>
     );
