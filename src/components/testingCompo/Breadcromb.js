@@ -1,21 +1,24 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Home from "./Home";
+
+//import ImgCompo from './linkComponents/PageSection2';
+
+import DashDocu from './linkComponents/DashboardSectionDocu';
+import DashImages from './linkComponents/DashboardSectionImages';
+import DashVideo from './linkComponents/DashboardSectionVideos';
+import DashAllDocu from './linkComponents/DashboardSectionAllDoc';
+import DashboardProject from './linkComponents/DashboardSectionProject';
+
 
 function Breadcromb() {
   return (
     <Router>
       <div>
+      <div className="breadcrumb-holder container-fluid">
         <ul className="nav nav-pills">
           <li className="nav-item">
             <Link to="/" className="nav-link active" data-toggle="pill">
               Projects{" "}
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link to="/all" className="nav-link" data-toggle="pill">
-              Everything{" "}
             </Link>
           </li>
           <li className="nav-item">
@@ -35,6 +38,11 @@ function Breadcromb() {
               Documents{" "}
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to="/all" className="nav-link" data-toggle="pill">
+              All{" "}
+            </Link>
+          </li>
         </ul>
         <div className="secund-menu-listview">
           <a href="">
@@ -47,8 +55,16 @@ function Breadcromb() {
             <i className="fa fa-bars"></i> List View
           </a>
         </div>
-        {/* <Route exact path="/" component={Home} />
-            <Route exact path="/all" component={Home2} /> */}
+       
+          {/*  <Route exact path="/all" component={DashProject} /> */}
+      </div>
+      <Route exact path="/Documents" component={DashDocu} />
+       <Route exact path="/" component={DashboardProject} />
+       <Route exact path="/video" component={DashVideo} />
+       <Route exact path="/images" component={DashImages} />
+       <Route exact path="/all" component={DashAllDocu} />
+
+       
       </div>
     </Router>
   );

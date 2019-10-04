@@ -1,4 +1,8 @@
 import React from 'react';
+import './css/MystyleDefault.css';
+import './css/me_custom.css';
+import './css/me_responsive.css';
+
 
 const Footer = () => {
     return (
