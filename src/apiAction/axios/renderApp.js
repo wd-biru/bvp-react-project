@@ -10,9 +10,7 @@ function RenderApp(RootComponent, documentObject, appConfig) {
   const { mainReducer, rootSaga } = redux || {};
 
   const storeMain = store.createStore(mainReducer, rootSaga);
-  /**
-   * Render application with root component
-   */
+
   ReactDOM.render(
     <Provider store={storeMain}>
       <Router>

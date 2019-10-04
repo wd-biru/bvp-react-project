@@ -1,4 +1,4 @@
-import userDataConsts from "../login/loginActionConstants";
+import { userDataConsts } from "../login/loginActions";
 import { call, put, takeLatest } from "redux-saga/effects";
 import { getUserData } from "../login/loginApi";
 

@@ -5,7 +5,7 @@ import util from "./apiAction/axios/utility";
 import { routes } from "./routes";
 
 import mainReducer from "./apiAction/apiType/mainReducer/mainReducer";
-import rootSaga from "./apiAction/apiType/sagas";
+import rootSaga from "./apiAction/apiType";
 
 util.RenderApp(App, document.getElementById("root"), {
   redux: {
@@ -15,10 +15,4 @@ util.RenderApp(App, document.getElementById("root"), {
   },
   routes
 });
-
-// ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();

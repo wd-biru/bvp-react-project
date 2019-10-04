@@ -1,4 +1,8 @@
-import createFolderDataConsts from "./createFolderActionConstants";
+export const createFolderDataConsts = {
+  CREATE_FOLDER_DATA_REQUEST: "CREATE_FOLDER_DATA_REQUEST",
+  CREATE_FOLDER_DATA_SUCCESS: "CREATE_FOLDER_DATA_SUCCESS",
+  CREATE_FOLDER_DATA_FAIL: "CREATE_FOLDER_DATA_FAIL"
+};
 
 export function createFolderData(data) {
   return {
@@ -6,3 +10,7 @@ export function createFolderData(data) {
     data
   };
 }
+
+export default {
+  createFolderDataConsts
+};

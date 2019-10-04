@@ -1,4 +1,4 @@
-import userDataConsts from "./loginActionConstants";
+import { userDataConsts } from "./loginActions";
 
 const initialState = {
   userData: null

@@ -1,4 +1,4 @@
-import createFolderDataConsts from "./createFolderActionConstants";
+import { createFolderDataConsts } from "./createFolderActions";
 
 const initialState = {
   folderData: null

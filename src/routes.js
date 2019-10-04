@@ -1,9 +1,9 @@
-import PageBodyContainer from "./components/Container";
+import Container from "./components/Container";
 
 export const routes = [
   {
     path: "/",
     exact: true,
-    component: PageBodyContainer
+    component: Container
   }
 ];

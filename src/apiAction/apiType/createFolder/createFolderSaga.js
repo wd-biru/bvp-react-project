@@ -1,4 +1,4 @@
-import createFolderDataConsts from "../createFolder/createFolderActionConstants";
+import { createFolderDataConsts } from "../createFolder/createFolderActions";
 import { call, put, takeLatest } from "redux-saga/effects";
 import { getFolderData } from "../createFolder/createFolderApi";
 

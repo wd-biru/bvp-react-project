@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiURL = "http://54.234.72.4/api";
+const apiURL = "https://apiv2.bossvideoplayer.com/api";
 
 const exportNewtowrk = axios.create({
   baseURL: apiURL

@@ -7,13 +7,12 @@ import "./assets/css/Me_responsive.css";
 
 import Login from "./components/login/Login";
 
-
 import TopHeader from "./components/shared/header/Header";
 import TopPageHeader from "./components/testingCompo/PageTopHeader";
 //import TopPage from "./components/testingCompo/PageSection";
 import Breadcromb from "./components/testingCompo/Breadcromb";
-import LeftNav from './components/shared/nav/LeftNav';
-import Footer from './components/shared/footer/Footer';
+import LeftNav from "./components/shared/nav/LeftNav";
+import Footer from "./components/shared/footer/Footer";
 
 class App extends Component {
   render() {
@@ -25,25 +24,23 @@ class App extends Component {
             <body class="dashboardsty">
               <div className="page">
                 <TopHeader />
-                <div className="page-content d-flex align-items-stretch"> 
-                    <LeftNav />
-                    <div className="content-inner">
+                <div className="page-content d-flex align-items-stretch">
+                  <LeftNav />
+                  <div className="content-inner">
                     <TopPageHeader />
-                      <Breadcromb />
-                      {/* <TopPage /> */}
+                    <Breadcromb />
+                    {/* <TopPage /> */}
 
-                       <Footer />
-                    </div>
+                    <Footer />
                   </div>
                 </div>
-              </body>
-            </div>
-        
+              </div>
+            </body>
+          </div>
         ) : (
           <Login />
         )}
       </>
-     
     );
   }
 }
