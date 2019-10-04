@@ -9,7 +9,6 @@ import Login from "./components/login/Login";
 
 import TopHeader from "./components/shared/header/Header";
 import TopPageHeader from "./components/testingCompo/PageTopHeader";
-//import TopPage from "./components/testingCompo/PageSection";
 import Breadcromb from "./components/testingCompo/Breadcromb";
 import LeftNav from "./components/shared/nav/LeftNav";
 import Footer from "./components/shared/footer/Footer";
@@ -29,8 +28,6 @@ class App extends Component {
                   <div className="content-inner">
                     <TopPageHeader />
                     <Breadcromb />
-                    {/* <TopPage /> */}
-
                     <Footer />
                   </div>
                 </div>

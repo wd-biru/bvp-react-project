@@ -18,12 +18,12 @@ const UploadPage = () => {
         <body className="uploadpage">
 	       <MainNavbarHeader />
           <div className="page-content d-flex align-items-stretch"> 
-          <LeftNavbar />
-          <div className="content-inner upload">
-          <UploadBreadcrumb />
-          <UploadPageSection />
-          <Footer />
-          </div>
+            <LeftNavbar />
+                <div className="content-inner upload">
+                    <UploadBreadcrumb />
+                    <UploadPageSection />
+                    <Footer />
+                </div>
           </div>
        </body>
     )
