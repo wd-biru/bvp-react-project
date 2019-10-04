@@ -15,12 +15,12 @@ function* createFolderData(action) {
   });
   if (!folderData.error) {
     yield put({
-      payload: folderData.data,
+      payload: folderData,
       type: createFolderDataConsts.CREATE_FOLDER_DATA_SUCCESS
     });
   } else {
     yield put({
-      payload: folderData.error,
+      payload: folderData,
       type: createFolderDataConsts.CREATE_FOLDER_DATA_FAIL
     });
   }

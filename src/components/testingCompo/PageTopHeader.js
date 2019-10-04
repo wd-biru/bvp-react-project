@@ -1,10 +1,9 @@
 import React from "react";
 import coreUtil from "../../apiAction/axios/utility";
 import { createFolderData } from "../../apiAction/apiType/createFolder/createFolderActions";
-//import LogoImg from "../../assets/img/me/bvp-logo.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Modal from "../shared/modal/Modal";
-
-
 
 const customStyles = {
   content: {
@@ -17,7 +16,6 @@ const customStyles = {
     width: "500px",
     paddingtop: "0px",
     padding: "0px"
-    
   }
 };
 
@@ -26,7 +24,8 @@ class PageTopHeader extends React.Component {
     super(props);
     this.state = {
       showModal: false,
-      folderName: ""
+      folderName: "",
+      showToastMsg: false
     };
   }
 
@@ -35,6 +34,26 @@ class PageTopHeader extends React.Component {
       [e.target.name]: e.target.value
     });
   };
+
+  handleResetFields = () => {
+    this.setState({
+      folderName: ""
+    });
+  };
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.folderDetails !== this.props.folderDetails &&
+      this.props.folderDetails.status === 200
+    ) {
+      toast.success("Folder created successfully");
+      this.setState({
+        showToastMsg: true
+      });
+      this.closeModal();
+      this.handleResetFields();
+    }
+  }
 
   closeModal = () => {
     this.setState({
@@ -75,41 +94,49 @@ class PageTopHeader extends React.Component {
           </div>
         </div>
         <div className="modeldemo">
-        {this.state.showModal && (
-          <Modal
-            modalIsOpen={this.state.showModal}
-            closeModal={this.closeModal}
-            customStyles={customStyles}
-            contentLabel={"Create Folder"}
-          >
-            <div className="modal-header text-center">
-               <h4 className="modal-title"> Enter Folder Name{" "}</h4>
-               <button type="button" className="close" data-dismiss="modal">&times;</button> 
-            </div>
-            <div className="modal-body text-center">
-            <input
-              type="text"
-              name="folderName"
-              className="form-control"
-              placeholder="Project Name"
-              value={this.state.folderName}
-              onChange={this.handleInputChange}
-            />
-            <br />
-          
-            <button
-              id="createFolder"
-              name="createName"
-              className="btn btn-info btn-md modal-btn text-center form-group"
-              onClick={this.createFolder}
+          {this.state.showModal && (
+            <Modal
+              modalIsOpen={this.state.showModal}
+              closeModal={this.closeModal}
+              customStyles={customStyles}
+              contentLabel={"Create Folder"}
             >
-              
-              Create
-            </button>
-            </div>
-          </Modal>
-        )}
-         </div>
+              <div className="modal-header text-center">
+                <h4 className="modal-title"> Enter Folder Name</h4>
+                <button
+                  type="button"
+                  className="close"
+                  onClick={this.closeModal}
+                  data-dismiss="modal"
+                >
+                  &times;
+                </button>
+              </div>
+              <div className="modal-body text-center">
+                <input
+                  type="text"
+                  name="folderName"
+                  className="form-control"
+                  placeholder="Project Name"
+                  value={this.state.folderName}
+                  onChange={this.handleInputChange}
+                />
+                <br />
+
+                <button
+                  id="createFolder"
+                  name="createName"
+                  className="btn btn-info btn-md modal-btn text-center form-group"
+                  onClick={this.createFolder}
+                  disabled={!this.state.folderName && true}
+                >
+                  Create
+                </button>
+              </div>
+            </Modal>
+          )}
+        </div>
+        {this.state.showToastMsg && <ToastContainer />}
       </header>
     );
   }
