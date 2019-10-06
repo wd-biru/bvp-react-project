@@ -8,6 +8,7 @@ export function getUserData(data) {
         data: res.data
       };
       localStorage.setItem("userToken", response.data.success.token);
+      localStorage.setItem("userId", response.data.success.id);
       return response;
     })
     .catch(err => err);

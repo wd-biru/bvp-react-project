@@ -10,14 +10,14 @@ function* fetchUserData(action) {
   const userData = yield call(() => {
     return getUserData(action.data);
   });
-  if (!userData.error) {
+  if (userData.data && userData.data.success) {
     yield put({
       payload: userData.data,
       type: userDataConsts.USER_DATA_SUCCESS
     });
   } else {
     yield put({
-      payload: userData.error,
+      payload: userData.response,
       type: userDataConsts.USER_DATA_FAIL
     });
   }

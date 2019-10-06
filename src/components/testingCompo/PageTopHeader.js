@@ -1,6 +1,6 @@
 import React from "react";
-import coreUtil from "../../apiAction/axios/utility";
-import { createFolderData } from "../../apiAction/apiType/createFolder/createFolderActions";
+import util from "../../apiAction/axios/utility";
+// import { createFolderData } from "../../apiAction/apiType/userFolder/folderActions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "../shared/modal/Modal";
@@ -24,7 +24,7 @@ class PageTopHeader extends React.Component {
     super(props);
     this.state = {
       showModal: false,
-      folderName: "",
+      projectrName: "",
       showToastMsg: false
     };
   }
@@ -37,23 +37,23 @@ class PageTopHeader extends React.Component {
 
   handleResetFields = () => {
     this.setState({
-      folderName: ""
+      projectrName: ""
     });
   };
 
-  componentDidUpdate(prevProps) {
-    if (
-      prevProps.folderDetails !== this.props.folderDetails &&
-      this.props.folderDetails.status === 200
-    ) {
-      toast.success("Folder created successfully");
-      this.setState({
-        showToastMsg: true
-      });
-      this.closeModal();
-      this.handleResetFields();
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (
+  //     prevProps.folderDetails !== this.props.folderDetails &&
+  //     this.props.folderDetails.status === 200
+  //   ) {
+  //     toast.success("Folder created successfully");
+  //     this.setState({
+  //       showToastMsg: true
+  //     });
+  //     this.closeModal();
+  //     this.handleResetFields();
+  //   }
+  // }
 
   closeModal = () => {
     this.setState({
@@ -61,18 +61,19 @@ class PageTopHeader extends React.Component {
     });
   };
 
-  handleCreateFolder = () => {
+  handleProjectFolder = () => {
     this.setState({
       showModal: !this.state.showModal
     });
   };
 
-  createFolder = () => {
+  projectFolder = () => {
     const payLoad = {
-      folder_name: this.state.folderName,
-      user_id: 1
+      project_name: this.state.projectName,
+      user_id: 1,
+      parent_id: 0
     };
-    this.props.createFolderData(payLoad);
+    // this.props.createFolderData(payLoad);
   };
 
   render() {
@@ -88,64 +89,62 @@ class PageTopHeader extends React.Component {
               className="SYNC"
               data-toggle="modal"
               data-target="#myModal"
-              onClick={this.handleCreateFolder}
+              onClick={this.handleProjectFolder}
             />
             <input type="button" name="" value="UPLOAD" className="UPLOAD" />
           </div>
         </div>
-        
-          {this.state.showModal && (
-            <Modal
-              modalIsOpen={this.state.showModal}
-              closeModal={this.closeModal}
-              customStyles={customStyles}
-              contentLabel={"Create Folder"}
-            >
-              <div className="modal-header text-center">
-                <h4 className="modal-title"> Enter Folder Name</h4>
-                <button
-                  type="button"
-                  className="close"
-                  onClick={this.closeModal}
-                  data-dismiss="modal"
-                >
-                  &times;
-                </button>
-              </div>
-              <div className="modal-body text-center">
-                <input
-                  type="text"
-                  name="folderName"
-                  className="form-control"
-                  placeholder="Project Name"
-                  value={this.state.folderName}
-                  onChange={this.handleInputChange}
-                />
-                <br />
 
-                <button
-                  id="createFolder"
-                  name="createName"
-                  className="btn btn-info btn-md modal-btn text-center form-group"
-                  onClick={this.createFolder}
-                  disabled={!this.state.folderName && true}
-                >
-                  Create
-                </button>
-              </div>
-            </Modal>
-          )}
-       
+        {this.state.showModal && (
+          <Modal
+            modalIsOpen={this.state.showModal}
+            closeModal={this.closeModal}
+            customStyles={customStyles}
+            contentLabel={"Create Folder"}
+          >
+            <div className="modal-header text-center">
+              <h4 className="modal-title"> Enter Project Name</h4>
+              <button
+                type="button"
+                className="close"
+                onClick={this.closeModal}
+                data-dismiss="modal"
+              >
+                &times;
+              </button>
+            </div>
+            <div className="modal-body text-center">
+              <input
+                type="text"
+                name="folderName"
+                className="form-control"
+                placeholder="Project Name"
+                value={this.state.folderName}
+                onChange={this.handleInputChange}
+              />
+              <br />
+
+              <button
+                id="createFolder"
+                name="createName"
+                className="btn btn-info btn-md modal-btn text-center form-group"
+                onClick={this.projectFolder}
+                disabled={!this.state.folderName && true}
+              >
+                Create
+              </button>
+            </div>
+          </Modal>
+        )}
+
         {this.state.showToastMsg && <ToastContainer />}
       </header>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  folderDetails: state.folderDetails.folderData
-});
+// const mapStateToProps = state => ({
+//   projectDetails: state.projectDetails.projectData
+// });
 
-export default coreUtil.storeConnect(PageTopHeader, mapStateToProps, {
-  createFolderData
-});
+export default util.storeConnect(PageTopHeader);

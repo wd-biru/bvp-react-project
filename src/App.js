@@ -15,19 +15,19 @@ import Footer from "./components/shared/footer/Footer";
 //import Studio from './components/studio-me/Studio';
 
 class App extends Component {
-   render() {
+  render() {
     const userToken = localStorage.getItem("userToken");
     return (
       <>
         {userToken ? (
           <div className="App">
-            <body class="dashboardsty">
+            <body className="dashboardsty">
               <div className="page">
                 <TopHeader />
                 <div className="page-content d-flex align-items-stretch">
-                  <LeftNav />
+                  <LeftNav userData={this.props.userData} />
                   <div className="content-inner">
-                    <TopPageHeader />
+                    <TopPageHeader userData={this.props.userData} />
                     <Breadcromb />
                     <Footer />
                   </div>
@@ -39,8 +39,12 @@ class App extends Component {
           <Login />
         )}
       </>
-  
     );
   }
 }
-export default util.storeConnect(App);
+
+const mapStateToProps = state => ({
+  userData: state.userDataResponse.userData
+});
+
+export default util.storeConnect(App, mapStateToProps);

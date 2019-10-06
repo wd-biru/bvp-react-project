@@ -1,64 +1,191 @@
-/*
- * BVP PROPRIETARY AND CONFIDENTIAL INFORMATION SUBJECT TO NDA
- * Copyright (c) 2019 BVP.
- * All Rights Reserved.
- *
- * NOTICE: All information contained herein is, and remains the property of
- * BVP. The intellectual and technical concepts contained
- * herein are proprietary to BVP, Inc. and may be covered by U.S.
- * and Foreign Patents, patent applications, and are protected by trade secret
- * or copyright law. Dissemination of this information, reproduction of this
- * material, and copying or distribution of this software is strictly forbidden
- * unless prior written permission is obtained from BVP.
- */
+import React from "react";
+import "./css/MystyleDefault.css";
+import "./css/me_custom.css";
+import "./css/me_responsive.css";
+import util from "../../../apiAction/axios/utility";
+import {
+  getUserFolderData,
+  createFolderData
+} from "../../../apiAction/apiType/userFolder/folderActions";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Modal from "../../shared/modal/Modal";
+import Myfolder from "./img/myfolder.png";
 
-import React from 'react';
-import './css/MystyleDefault.css';
-import './css/me_custom.css';
-import './css/me_responsive.css';
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "500px",
+    paddingtop: "0px",
+    padding: "0px"
+  }
+};
 
-import Myfolder from './img/myfolder.png';
+const userId = localStorage.getItem("userId");
 
-const LeftNavbar = () => {
+class LeftNavbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showModal: false,
+      folderName: "",
+      showToastMsg: false
+    };
+  }
+
+  componentDidMount() {
+    const payload = {
+      user_id: Number(userId)
+    };
+    this.props.getUserFolderData(payload);
+  }
+
+  handleInputChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleResetFields = () => {
+    this.setState({
+      folderName: ""
+    });
+  };
+
+  componentDidUpdate(prevProps) {
+    const payload = {
+      user_id: Number(userId)
+    };
+    if (
+      prevProps.folderDetails !== this.props.folderDetails &&
+      this.props.folderDetails.status === 200
+    ) {
+      toast.success("Folder created successfully");
+      this.setState({
+        showToastMsg: true
+      });
+      this.closeModal();
+      this.handleResetFields();
+      this.props.getUserFolderData(payload);
+    }
+  }
+
+  closeModal = () => {
+    this.setState({
+      showModal: false
+    });
+  };
+
+  handleCreateFolder = () => {
+    this.setState({
+      showModal: !this.state.showModal
+    });
+  };
+
+  createFolder = () => {
+    const payLoad = {
+      folder_name: this.state.folderName,
+      user_id: 1,
+      parent_id: 0
+    };
+    this.props.createFolderData(payLoad);
+  };
+
+  render() {
     return (
-    <nav className="side-navbar">
+      <>
+        <nav className="side-navbar">
           {/* Sidebar Header*/}
           <div className="sidebar-header d-flex align-items-center">
             <div className="title">
-              <a href="" data-toggle="modal" data-target="#myModalfolder"><h1 className="h4">My Folder <img src={Myfolder} /></h1></a>
+              <h1 className="h4">
+                My Folder{" "}
+                <img src={Myfolder} onClick={this.handleCreateFolder} />
+              </h1>
             </div>
           </div>
-          {/* Sidebar Navidation Menus*/}{/* <span className="heading">Main</span> */}
+          {/* Sidebar Navidation Menus*/}
+          {/* <span className="heading">Main</span> */}
           <ul className="list-unstyled">
-            <li className="active"><a href="dashboard.html"><span>162</span> <i className="far fa-folder"></i>Home </a></li>
-            <li><a href="#"><span>1</span> <i className="far fa-folder"></i>360 Nat Geo </a></li>
-            <li><a href="#"><span>2</span> <i className="far fa-folder"></i>AMC </a></li>
-            <li><a href="#"><span>12</span> <i className="far fa-folder"></i>AMC </a></li>
-            <li><a href="#"><span>62</span> <i className="far fa-folder"></i>AON </a></li>
-            <li><a href="#"><span>1</span> <i className="far fa-folder"></i>Away </a></li>
-            <li><a href="#"><span>10</span> <i className="far fa-folder"></i>BMW </a></li>
-            <li><a href="#"><span>12</span> <i className="far fa-folder"></i>Bolthouse </a></li>
-            <li><a href="#"><span>2</span> <i className="far fa-folder"></i>Brand Assets </a></li>
-            <li><a href="#"><span>1</span> <i className="far fa-folder"></i>British Ainways </a></li>
-            <li><a href="#"><span>0</span> <i className="far fa-folder"></i>BMS </a></li>
-            <li><a href="#"><span>8</span> <i className="far fa-folder"></i>Canada Gooso </a></li>
-            <li><a href="#"><span>50</span> <i className="far fa-folder"></i>CBS </a></li>
-            <li><a href="#"><span>34</span> <i className="far fa-folder"></i>CloudMoves.TV </a></li>
-            <li><a href="#"><span>22</span> <i className="far fa-folder"></i>AMC </a></li>
-            <li><a href="#"><span>36</span> <i className="far fa-folder"></i>AMC </a></li>
-            <li><a href="#"><span>47</span> <i className="far fa-folder"></i>AON </a></li>
-            <li><a href="#"><span>67</span> <i className="far fa-folder"></i>Away </a></li>
-            <li><a href="#"><span>87</span> <i className="far fa-folder"></i>BMW </a></li>
-            <li><a href="#"><span>46</span> <i className="far fa-folder"></i>BMS </a></li>
-            <li><a href="#"><span>25</span> <i className="far fa-folder"></i>Canada Gooso </a></li>
-            <li><a href="#"><span>34</span> <i className="far fa-folder"></i>CBS </a></li>
-            <li><a href="#"><span>1</span> <i className="far fa-folder"></i>CloudMoves.TV </a></li>
-            
+            <li className="active">
+              <span>
+                {this.props.userFolderDetails &&
+                  this.props.userFolderDetails.folders.length}
+              </span>{" "}
+              <i className="far fa-folder"></i>
+              {"Home"}
+            </li>
+            {this.props.userFolderDetails
+              ? this.props.userFolderDetails.folders.map(folderData => {
+                  return (
+                    <li className="active" key={folderData.id}>
+                      <span></span> <i className="far fa-folder"></i>
+                      {folderData.folder_name}
+                    </li>
+                  );
+                })
+              : "Loading..."}
           </ul>
-   </nav>
+        </nav>
+        {this.state.showModal && (
+          <Modal
+            modalIsOpen={this.state.showModal}
+            closeModal={this.closeModal}
+            customStyles={customStyles}
+            contentLabel={"Create Folder"}
+          >
+            <div className="modal-header text-center">
+              <h4 className="modal-title"> Enter Folder Name</h4>
+              <button
+                type="button"
+                className="close"
+                onClick={this.closeModal}
+                data-dismiss="modal"
+              >
+                &times;
+              </button>
+            </div>
+            <div className="modal-body text-center">
+              <input
+                type="text"
+                name="folderName"
+                className="form-control"
+                placeholder="Project Name"
+                value={this.state.folderName}
+                onChange={this.handleInputChange}
+              />
+              <br />
 
-    )
+              <button
+                id="createFolder"
+                name="createName"
+                className="btn btn-info btn-md modal-btn text-center form-group"
+                onClick={this.createFolder}
+                disabled={!this.state.folderName && true}
+              >
+                Create
+              </button>
+            </div>
+          </Modal>
+        )}
+
+        {this.state.showToastMsg && <ToastContainer />}
+      </>
+    );
+  }
 }
 
-export default LeftNavbar ;
+const mapStateToProps = state => ({
+  userFolderDetails: state.folderData.userFolderData,
+  folderDetails: state.folderData.folderData
+});
 
+export default util.storeConnect(LeftNavbar, mapStateToProps, {
+  getUserFolderData,
+  createFolderData
+});
