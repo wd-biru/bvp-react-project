@@ -11,7 +11,7 @@ export function getFolderData(data) {
 
 export function getUserFolderData(data) {
   return util.networkMain
-    .get("/getfolder", { data })
+    .get("/getfolder", data)
     .then(res => {
       return res;
     })

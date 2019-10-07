@@ -40,7 +40,8 @@ class LeftNavbar extends React.Component {
 
   componentDidMount() {
     const payload = {
-      user_id: Number(userId)
+      user_id: Number(userId),
+      parent_id: 0
     };
     this.props.getUserFolderData(payload);
   }
@@ -90,7 +91,7 @@ class LeftNavbar extends React.Component {
   createFolder = () => {
     const payLoad = {
       folder_name: this.state.folderName,
-      user_id: 1,
+      user_id: Number(userId),
       parent_id: 0
     };
     this.props.createFolderData(payLoad);

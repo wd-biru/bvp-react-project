@@ -3,6 +3,10 @@ import utility from "../../apiAction/axios/utility";
 import { fetchUserData } from "../../apiAction/apiType/login/loginActions";
 //import LogoImg from "../../assets/img/me/bvp-logo.png";
 import LogoImg from "./bvp-logo.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Modal from "../shared/modal/Modal";
+import ModelLoginPage from './ModelLoginPage';
 
 import "./Me_custom.css";
 
@@ -12,12 +16,13 @@ class Login extends React.Component {
     this.state = {
       userEmail: "",
       userPwd: "",
-      loginBtnDisable: false
+      loginBtnDisable: false,
+      showErrorMsg: false
     };
   }
 
   componentDidUpdate(prevProps) {
-    const msg =
+    const errMsg =
       this.props.loginError &&
       `${this.props.loginError.status} ${this.props.loginError.statusText}`;
     if (prevProps.userData !== this.props.userData && this.props.userData) {
@@ -27,9 +32,10 @@ class Login extends React.Component {
       this.props.loginError
     ) {
       this.setState({
-        loginBtnDisable: false
+        loginBtnDisable: false,
+        showErrorMsg: true
       });
-      alert(msg);
+      toast.error(errMsg); 
     }
   }
 
@@ -133,6 +139,7 @@ class Login extends React.Component {
             </div>
           </div>
         </div>
+        {this.state.showErrorMsg &&  <ToastContainer />}
       </div>
     );
   }
