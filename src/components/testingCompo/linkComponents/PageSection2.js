@@ -1,7 +1,9 @@
 import React from 'react';
 import SectionImg2 from './images.jpg';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 
+//import DashboardSectionDocuDots from './DashboardSectionDocuDots'; 
 const PageSection2 = () =>{
   return(      
                       <div className="col-lg-3 dashboard">
@@ -17,18 +19,19 @@ const PageSection2 = () =>{
                             </div>
                           </div>
                           <div className="card-close">
-                            <div className="dropdown">
-                              <button type="button" id="closeCard2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="dropdown-toggle"><i className="fa fa-ellipsis-v">+++</i></button>
-                              <div aria-labelledby="closeCard2" className="dropdown-menu dropdown-menu-right has-shadow">
-                                <a href="#" className="dropdown-item edit"> <i className="fa fa-plus-circle"></i>Open Editor</a>
-                                <a href="#" className="dropdown-item edit"> <i className="fa fa-eye"></i>Preview</a>
-                                <a href="#" className="dropdown-item edit"> <i className="fa fa-files-o"></i>Duplicate File</a>
-                                <a href="#" className="dropdown-item edit"> <i className="fa fa-refresh"></i>Sync To</a>
-                                <hr />
-                                <a href="#" className="dropdown-item edit"> <i className="fa fa-eye"></i>Copy Video ID</a>
-                                <a href="#" className="dropdown-item remove"> <i className="fa fa-times"></i>Close</a>
-                              </div>
-                            </div>
+                          <Dropdown>
+                            <Dropdown.Toggle variant="success2" id="dropdown-basic">
+                              ++
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>                     
+                              <Dropdown.Item href="#/action-1"><a href="#" class="dropdown-item edit"> <i class="fa fa-plus-circle"></i>Open Editor</a></Dropdown.Item>
+                              <Dropdown.Item href="#/action-2"><a href="#" class="dropdown-item edit"> <i class="fa fa-eye"></i>Preview</a></Dropdown.Item>
+                              <Dropdown.Item href="#/action-3"><a href="#" class="dropdown-item edit"> <i class="fa fa-files-o"></i>Duplicate</a></Dropdown.Item>
+                              <Dropdown.Item href="#/action-3"><a href="#" class="dropdown-item edit"> <i class="fa fa-arrows"></i>Move Project To</a></Dropdown.Item>
+                              <hr />
+                              <Dropdown.Item href="#/action-3"><a href="#" class="dropdown-item remove"> <i class="fa fa-trash"></i>Delete</a></Dropdown.Item>
+                            </Dropdown.Menu>
+                          </Dropdown>
                           </div>
                         </div>
                       </div>

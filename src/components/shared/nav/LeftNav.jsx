@@ -11,6 +11,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "../../shared/modal/Modal";
 import Myfolder from "./img/myfolder.png";
+import Dropdown from 'react-bootstrap/Dropdown';
+
 
 const customStyles = {
   content: {
@@ -127,6 +129,18 @@ class LeftNavbar extends React.Component {
                     <li className="active" key={folderData.id}>
                       <span></span> <i className="far fa-folder"></i>
                       {folderData.folder_name}
+                      <span>
+                          <Dropdown>
+                            <Dropdown.Toggle variant="success2" id="dropdown-basic">
+                            <i class="fa fa-ellipsis-v"></i>
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>                     
+                              <Dropdown.Item href="#/action-1" class="dropdown-item edit"> <i class="fa fa-plus-circle"></i>Open folder</Dropdown.Item>
+                              <Dropdown.Item href="#/action-3" class="dropdown-item edit"> <i class="fa fa-edit"></i>Edit Folder</Dropdown.Item>
+                              <Dropdown.Item href="#/action-3" class="dropdown-item remove"> <i class="fa fa-trash"></i>Delete Folder</Dropdown.Item>
+                            </Dropdown.Menu>
+                          </Dropdown>
+                          </span>
                     </li>
                   );
                 })

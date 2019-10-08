@@ -1,12 +1,10 @@
 import React from "react";
 import utility from "../../apiAction/axios/utility";
 import { fetchUserData } from "../../apiAction/apiType/login/loginActions";
-//import LogoImg from "../../assets/img/me/bvp-logo.png";
 import LogoImg from "./bvp-logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Modal from "../shared/modal/Modal";
-import ModelLoginPage from './ModelLoginPage';
+
 
 import "./Me_custom.css";
 
