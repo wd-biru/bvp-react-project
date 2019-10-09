@@ -105,7 +105,9 @@ class LeftNavbar extends React.Component {
       user_id: Number(userId),
       parent_id: this.props.isActiveObject
         ? this.props.isActiveObject.parent_id
-        : 0
+        : 0,
+      action: "create",
+      folder_id: this.props.isActiveObject ? this.props.isActiveObject.id : 0
     };
     this.setState({
       submitBtnDisable: true
