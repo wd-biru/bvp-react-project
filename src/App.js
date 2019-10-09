@@ -6,10 +6,7 @@ import "./assets/css/Custom.css";
 import "./assets/css/Me_responsive.css";
 
 import Login from "./components/login/Login";
-
 import TopHeader from "./components/shared/header/Header";
-import TopPageHeader from "./components/testingCompo/PageTopHeader";
-import Breadcromb from "./components/testingCompo/Breadcromb";
 import LeftNav from "./components/shared/nav/LeftNav";
 import Footer from "./components/shared/footer/Footer";
 //import Studio from './components/studio-me/Studio';
@@ -24,14 +21,7 @@ class App extends Component {
             <body className="dashboardsty">
               <div className="page">
                 <TopHeader />
-                <div className="page-content d-flex align-items-stretch">
-                  <LeftNav userData={this.props.userData} />
-                  <div className="content-inner">
-                    <TopPageHeader userData={this.props.userData} />
-                    <Breadcromb />
-                    <Footer />
-                  </div>
-                </div>
+                {this.props.children}
               </div>
             </body>
           </div>

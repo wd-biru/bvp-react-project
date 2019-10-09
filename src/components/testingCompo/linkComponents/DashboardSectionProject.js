@@ -2,8 +2,9 @@ import React from 'react';
 import SectionImg2 from './images.jpg';
 import Dropdown from 'react-bootstrap/Dropdown';
 
-import PageSection2 from './PageSection2';
-const DashboardSectionProject = () =>{
+
+class DashboardSectionProject extends React.Component {
+render() {
   return(
     <section className="tables">   
             <div className="container-fluid">
@@ -39,10 +40,6 @@ const DashboardSectionProject = () =>{
                           </div>
                         </div>
                       </div>
-         <PageSection2 />
-         <PageSection2 />
-         <PageSection2 />
-         <PageSection2 /> 
         
          </div>
        </div>
@@ -50,6 +47,7 @@ const DashboardSectionProject = () =>{
      </div>
     </section>
   );
+}
 }
 
 export default DashboardSectionProject;

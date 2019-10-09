@@ -126,7 +126,7 @@ nav.side-navbar .sidebar-header {
     padding-right: 5px;
     background: white;
 }
-nav.side-navbar ul li.active > a {
+nav.side-navbar ul li.active {
     background: #eeeeee;
     color: #000000;
     border-left: 4px solid #d8d9da;

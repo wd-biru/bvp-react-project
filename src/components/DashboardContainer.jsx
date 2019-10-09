@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Dashboard from "./dashboard/Dashboard";
+import Dashboard from "../components/Dashboard";
 
-class Container extends Component {
+class DashboardContainer extends Component {
   renderPage() {
     return <Dashboard />;
   }
@@ -11,4 +11,4 @@ class Container extends Component {
   }
 }
 
-export default Container;
+export default DashboardContainer;

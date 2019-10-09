@@ -5,7 +5,6 @@ import LogoImg from "./bvp-logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 import "./Me_custom.css";
 
 class Login extends React.Component {
@@ -33,7 +32,7 @@ class Login extends React.Component {
         loginBtnDisable: false,
         showErrorMsg: true
       });
-      toast.error(errMsg); 
+      toast.error(errMsg);
     }
   }
 
@@ -137,7 +136,7 @@ class Login extends React.Component {
             </div>
           </div>
         </div>
-        {this.state.showErrorMsg &&  <ToastContainer />}
+        {this.state.showErrorMsg && <ToastContainer />}
       </div>
     );
   }

@@ -2,17 +2,11 @@ import React from "react";
 import "./css/MystyleDefault.css";
 import "./css/me_custom.css";
 import "./css/me_responsive.css";
-import util from "../../../apiAction/axios/utility";
-import {
-  getUserFolderData,
-  createFolderData
-} from "../../../apiAction/apiType/userFolder/folderActions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "../../shared/modal/Modal";
 import Myfolder from "./img/myfolder.png";
-import Dropdown from 'react-bootstrap/Dropdown';
-
+import Dropdown from "react-bootstrap/Dropdown";
 
 const customStyles = {
   content: {
@@ -36,7 +30,8 @@ class LeftNavbar extends React.Component {
     this.state = {
       showModal: false,
       folderName: "",
-      showToastMsg: false
+      showToastMsg: false,
+      submitBtnDisable: false
     };
   }
 
@@ -62,7 +57,10 @@ class LeftNavbar extends React.Component {
 
   componentDidUpdate(prevProps) {
     const payload = {
-      user_id: Number(userId)
+      user_id: Number(userId),
+      parent_id: this.props.isActiveObject
+        ? this.props.isActiveObject.parent_id
+        : 0
     };
     if (
       prevProps.folderDetails !== this.props.folderDetails &&
@@ -70,11 +68,22 @@ class LeftNavbar extends React.Component {
     ) {
       toast.success("Folder created successfully");
       this.setState({
-        showToastMsg: true
+        showToastMsg: true,
+        submitBtnDisable: false
       });
       this.closeModal();
       this.handleResetFields();
       this.props.getUserFolderData(payload);
+    } else if (
+      prevProps.folderDetails !== this.props.folderDetails &&
+      this.props.folderDetails.status !== 200
+    ) {
+      toast.error("Folder name already exists!");
+      this.setState({
+        showToastMsg: true,
+        submitBtnDisable: false
+      });
+      this.handleResetFields();
     }
   }
 
@@ -94,9 +103,22 @@ class LeftNavbar extends React.Component {
     const payLoad = {
       folder_name: this.state.folderName,
       user_id: Number(userId),
-      parent_id: 0
+      parent_id: this.props.isActiveObject
+        ? this.props.isActiveObject.parent_id
+        : 0
     };
+    this.setState({
+      submitBtnDisable: true
+    });
     this.props.createFolderData(payLoad);
+  };
+
+  handleBtnDisable = () => {
+    let btnDisable = false;
+    if (this.state.folderName === "" || this.state.submitBtnDisable) {
+      btnDisable = true;
+    }
+    return btnDisable;
   };
 
   render() {
@@ -115,35 +137,67 @@ class LeftNavbar extends React.Component {
           {/* Sidebar Navidation Menus*/}
           {/* <span className="heading">Main</span> */}
           <ul className="list-unstyled">
-            <li className="active">
+            <li className="">
               <span>
                 {this.props.userFolderDetails &&
                   this.props.userFolderDetails.folders.length}
-              </span>{" "}
+              </span>
               <i className="far fa-folder"></i>
               {"Home"}
             </li>
             {this.props.userFolderDetails
-              ? this.props.userFolderDetails.folders.map(folderData => {
-                  return (
-                    <li className="active" key={folderData.id}>
-                      <span></span> <i className="far fa-folder"></i>
-                      {folderData.folder_name}
-                      <span>
+              ? this.props.userFolderDetails.folders.map(
+                  (folderData, index) => {
+                    return (
+                      <li
+                        className="active"
+                        className={
+                          this.props.activeIndex === index ? "active" : ""
+                        }
+                        key={folderData.id}
+                        onClick={() =>
+                          this.props.handleFolderData(index, folderData)
+                        }
+                      >
+                        <span>0</span> <i className="far fa-folder"></i>
+                        {folderData.folder_name}
+                        <span>
                           <Dropdown>
-                            <Dropdown.Toggle variant="success2" id="dropdown-basic">
-                            <i class="fa fa-ellipsis-v"></i>
+                            <Dropdown.Toggle
+                              variant="success2"
+                              id="dropdown-basic"
+                            >
+                              <i class="fa fa-ellipsis-v"></i>
                             </Dropdown.Toggle>
-                            <Dropdown.Menu>                     
-                              <Dropdown.Item href="#/action-1" class="dropdown-item edit"> <i class="fa fa-plus-circle"></i>Open folder</Dropdown.Item>
-                              <Dropdown.Item href="#/action-3" class="dropdown-item edit"> <i class="fa fa-edit"></i>Edit Folder</Dropdown.Item>
-                              <Dropdown.Item href="#/action-3" class="dropdown-item remove"> <i class="fa fa-trash"></i>Delete Folder</Dropdown.Item>
+                            <Dropdown.Menu>
+                              <Dropdown.Item
+                                href="#/action-1"
+                                class="dropdown-item edit"
+                              >
+                                {" "}
+                                <i class="fa fa-plus-circle"></i>Open folder
+                              </Dropdown.Item>
+                              <Dropdown.Item
+                                href="#/action-3"
+                                class="dropdown-item edit"
+                              >
+                                {" "}
+                                <i class="fa fa-edit"></i>Edit Folder
+                              </Dropdown.Item>
+                              <Dropdown.Item
+                                href="#/action-3"
+                                class="dropdown-item remove"
+                              >
+                                {" "}
+                                <i class="fa fa-trash"></i>Delete Folder
+                              </Dropdown.Item>
                             </Dropdown.Menu>
                           </Dropdown>
-                          </span>
-                    </li>
-                  );
-                })
+                        </span>
+                      </li>
+                    );
+                  }
+                )
               : "Loading..."}
           </ul>
         </nav>
@@ -181,26 +235,19 @@ class LeftNavbar extends React.Component {
                 name="createName"
                 className="btn btn-info btn-md modal-btn text-center form-group"
                 onClick={this.createFolder}
-                disabled={!this.state.folderName && true}
+                disabled={this.handleBtnDisable()}
               >
                 Create
               </button>
+              <br />
+              {this.state.submitBtnDisable && <span>Please Wait...</span>}
             </div>
           </Modal>
         )}
-
         {this.state.showToastMsg && <ToastContainer />}
       </>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  userFolderDetails: state.folderData.userFolderData,
-  folderDetails: state.folderData.folderData
-});
-
-export default util.storeConnect(LeftNavbar, mapStateToProps, {
-  getUserFolderData,
-  createFolderData
-});
+export default LeftNavbar;

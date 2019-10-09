@@ -497,7 +497,7 @@ nav.side-navbar ul li li a {
   background: #EEF5F9;
 }
 
-nav.side-navbar ul li.active > a {
+nav.side-navbar ul li.active  {
   background: #796AEE;
   color: #fff;
   border-left: 4px solid #3b25e6;
@@ -3514,6 +3514,7 @@ nav.side-navbar ul li {
   color: inherit;
   position: relative;
   font-size: 0.9em;
+  cursor: pointer;
 }
 nav.side-navbar ul li span {
   width: 35px;

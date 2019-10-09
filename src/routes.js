@@ -1,9 +1,9 @@
-import Container from "./components/Container";
+import DashboardContainer from "./components/DashboardContainer";
 
 export const routes = [
   {
     path: "/",
     exact: true,
-    component: Container
+    component: DashboardContainer
   }
 ];
