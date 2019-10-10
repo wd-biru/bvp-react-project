@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "../../shared/modal/Modal";
 import ModalDel from "../../shared/modal/ModalDel";
-import ModalEdit from "../../shared/modal/ModalEdit";
+//import ModalEdit from "../../shared/modal/ModalEdit";
 import Myfolder from "./img/myfolder.png";
 import Dropdown from "react-bootstrap/Dropdown";
 import Accodion from '../../accordion/Accordion';
@@ -338,7 +338,7 @@ class LeftNavbar extends React.Component {
          )}
 
          {/* Edit Model PopUp  */}
-         {this.state.showModal2 && (
+         {/* {this.state.showModal2 && (
           <ModalEdit
             modalIsOpen2={this.state.showModal}
             closeModal={this.closeModal}
@@ -350,7 +350,7 @@ class LeftNavbar extends React.Component {
               <button
                 type="button"
                 className="close"
-                onClick={this.closeModal}
+                onClick={this.closeModal2}
                 data-dismiss="modal"
               >
                 &times;
@@ -362,8 +362,7 @@ class LeftNavbar extends React.Component {
                 name="folderName"
                 className="form-control"
                 placeholder="Project Name"
-                value={this.state.folderName}
-                onChange={this.handleInputChange}
+                
               />
               <br />
 
@@ -371,15 +370,14 @@ class LeftNavbar extends React.Component {
                 id="createFolder"
                 name="createName"
                 className="btn btn-info btn-md modal-btn text-center form-group"
-                onClick={this.createFolder}
-                disabled={this.handleBtnDisable()}
+                
               >
-                Create
+                
               </button>
               <br />
               {this.state.submitBtnDisable && <span>Please Wait...</span>}
             </div>
-          </Modal>
+          </Modal> */}
         )}
         {this.state.showToastMsg && <ToastContainer />}
         

@@ -12,7 +12,7 @@ class PopUpModal extends React.Component {
      
         <ModalEdit
           isOpen={this.props.modalIsOpen2}
-          onRequestClose={this.props.closeModal}
+          onRequestClose={this.props.closeModal2}
           style={this.props.customStyles}
           ariaHideApp={false}
         >
