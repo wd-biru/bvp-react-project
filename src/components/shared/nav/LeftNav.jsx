@@ -8,6 +8,8 @@ import Modal from "../../shared/modal/Modal";
 import Myfolder from "./img/myfolder.png";
 import Dropdown from "react-bootstrap/Dropdown";
 
+const userId = localStorage.getItem("userId");
+
 const customStyles = {
   content: {
     top: "50%",
@@ -21,8 +23,6 @@ const customStyles = {
     padding: "0px"
   }
 };
-
-const userId = localStorage.getItem("userId");
 
 class LeftNavbar extends React.Component {
   constructor(props) {
@@ -103,9 +103,7 @@ class LeftNavbar extends React.Component {
     const payLoad = {
       folder_name: this.state.folderName,
       user_id: Number(userId),
-      parent_id: this.props.isActiveObject
-        ? this.props.isActiveObject.parent_id
-        : 0,
+      parent_id: this.props.isActiveObject ? this.props.isActiveObject.id : 0,
       action: "create",
       folder_id: this.props.isActiveObject ? this.props.isActiveObject.id : 0
     };
@@ -123,6 +121,26 @@ class LeftNavbar extends React.Component {
     return btnDisable;
   };
 
+  renderChilData = folderData => {
+    return (
+      folderData.children &&
+      folderData.children.map((data, index) => {
+        return (
+          <li
+            className="active"
+            className={this.props.activeIndex === index ? "active" : ""}
+            key={data.id}
+            onClick={() => this.props.handleFolderData(index, data)}
+          >
+            <span>{data.children ? data.children.length : 0}</span>
+            <i className="far fa-folder"></i>
+            {data.folder_name}
+          </li>
+        );
+      })
+    );
+  };
+
   render() {
     return (
       <>
@@ -138,6 +156,7 @@ class LeftNavbar extends React.Component {
           </div>
           {/* Sidebar Navidation Menus*/}
           {/* <span className="heading">Main</span> */}
+
           <ul className="list-unstyled">
             <li className="">
               <span>
@@ -161,41 +180,12 @@ class LeftNavbar extends React.Component {
                           this.props.handleFolderData(index, folderData)
                         }
                       >
-                        <span>0</span> <i className="far fa-folder"></i>
-                        {folderData.folder_name}
                         <span>
-                          <Dropdown>
-                            <Dropdown.Toggle
-                              variant="success2"
-                              id="dropdown-basic"
-                            >
-                              <i class="fa fa-ellipsis-v"></i>
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                              <Dropdown.Item
-                                href="#/action-1"
-                                class="dropdown-item edit"
-                              >
-                                {" "}
-                                <i class="fa fa-plus-circle"></i>Open folder
-                              </Dropdown.Item>
-                              <Dropdown.Item
-                                href="#/action-3"
-                                class="dropdown-item edit"
-                              >
-                                {" "}
-                                <i class="fa fa-edit"></i>Edit Folder
-                              </Dropdown.Item>
-                              <Dropdown.Item
-                                href="#/action-3"
-                                class="dropdown-item remove"
-                              >
-                                {" "}
-                                <i class="fa fa-trash"></i>Delete Folder
-                              </Dropdown.Item>
-                            </Dropdown.Menu>
-                          </Dropdown>
+                          {folderData.children ? folderData.children.length : 0}
                         </span>
+                        <i className="far fa-folder"></i>
+                        {folderData.folder_name}
+                        {this.renderChilData(folderData)}
                       </li>
                     );
                   }
