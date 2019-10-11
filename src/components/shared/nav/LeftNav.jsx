@@ -125,6 +125,7 @@ class LeftNavbar extends React.Component {
     return (
       <>
         {/* Sidebar Header*/}
+        <div className="nav-sidebar-main">
         <div className="sidebar-header d-flex align-items-center">
           <div className="title">
             <h1 className="h4">
@@ -145,6 +146,9 @@ class LeftNavbar extends React.Component {
             {"Home"}
           </li>
         </ul>
+        </div>
+        <nav className="side-navbar">
+        <ul className="list-unstyled">
         <NavItems
           data={
             this.props.userFolderDetails
@@ -153,6 +157,8 @@ class LeftNavbar extends React.Component {
           }
           handleFolderData={this.props.handleFolderData}
         />
+         </ul>
+         </nav>
         {this.state.showModal && (
           <Modal
             modalIsOpen={this.state.showModal}
