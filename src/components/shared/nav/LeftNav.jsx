@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "../../shared/modal/Modal";
 import Myfolder from "./img/myfolder.png";
-import Dropdown from "react-bootstrap/Dropdown";
+import NavItems from "./navItem";
 
 const userId = localStorage.getItem("userId");
 
@@ -121,78 +121,38 @@ class LeftNavbar extends React.Component {
     return btnDisable;
   };
 
-  renderChilData = folderData => {
-    return (
-      folderData.children &&
-      folderData.children.map((data, index) => {
-        return (
-          <li
-            className="active"
-            className={this.props.activeIndex === index ? "active" : ""}
-            key={data.id}
-            onClick={() => this.props.handleFolderData(index, data)}
-          >
-            <span>{data.children ? data.children.length : 0}</span>
-            <i className="far fa-folder"></i>
-            {data.folder_name}
-          </li>
-        );
-      })
-    );
-  };
-
   render() {
     return (
       <>
-        <nav className="side-navbar">
-          {/* Sidebar Header*/}
-          <div className="sidebar-header d-flex align-items-center">
-            <div className="title">
-              <h1 className="h4">
-                My Folder{" "}
-                <img src={Myfolder} onClick={this.handleCreateFolder} />
-              </h1>
-            </div>
+        {/* Sidebar Header*/}
+        <div className="sidebar-header d-flex align-items-center">
+          <div className="title">
+            <h1 className="h4">
+              My Folder <img src={Myfolder} onClick={this.handleCreateFolder} />
+            </h1>
           </div>
-          {/* Sidebar Navidation Menus*/}
-          {/* <span className="heading">Main</span> */}
+        </div>
+        {/* Sidebar Navidation Menus*/}
+        {/* <span className="heading">Main</span> */}
 
-          <ul className="list-unstyled">
-            <li className="">
-              <span>
-                {this.props.userFolderDetails &&
-                  this.props.userFolderDetails.folders.length}
-              </span>
-              <i className="far fa-folder"></i>
-              {"Home"}
-            </li>
-            {this.props.userFolderDetails
-              ? this.props.userFolderDetails.folders.map(
-                  (folderData, index) => {
-                    return (
-                      <li
-                        className="active"
-                        className={
-                          this.props.activeIndex === index ? "active" : ""
-                        }
-                        key={folderData.id}
-                        onClick={() =>
-                          this.props.handleFolderData(index, folderData)
-                        }
-                      >
-                        <span>
-                          {folderData.children ? folderData.children.length : 0}
-                        </span>
-                        <i className="far fa-folder"></i>
-                        {folderData.folder_name}
-                        {this.renderChilData(folderData)}
-                      </li>
-                    );
-                  }
-                )
-              : "Loading..."}
-          </ul>
-        </nav>
+        <ul className="list-unstyled">
+          <li className="">
+            <span>
+              {this.props.userFolderDetails &&
+                this.props.userFolderDetails.folders.length}
+            </span>
+            <i className="far fa-folder"></i>
+            {"Home"}
+          </li>
+        </ul>
+        <NavItems
+          data={
+            this.props.userFolderDetails
+              ? this.props.userFolderDetails.folders
+              : null
+          }
+          handleFolderData={this.props.handleFolderData}
+        />
         {this.state.showModal && (
           <Modal
             modalIsOpen={this.state.showModal}

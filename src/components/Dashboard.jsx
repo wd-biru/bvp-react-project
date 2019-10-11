@@ -19,9 +19,8 @@ class Dashboard extends Component {
       activeIndex: null
     };
   }
-  handleFolderData = (index, selectedFolder) => {
+  handleFolderData = selectedFolder => {
     this.setState({
-      activeIndex: index,
       isActiveObject: selectedFolder
     });
   };
