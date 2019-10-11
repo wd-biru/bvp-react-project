@@ -1,3 +1,4 @@
+
 import React from "react";
 
 class NavItems extends React.Component {
@@ -22,11 +23,11 @@ class NavItems extends React.Component {
     const { selectedItem } = this.state;
     return (
       <>
-        <nav className="side-navbar">
-          <ul className="list-unstyled">
+      
             {this.props.data
               ? this.props.data.map(folderData => {
                   return (
+                    
                     <li
                       className={
                         selectedItem && selectedItem.id === folderData.id
@@ -39,6 +40,9 @@ class NavItems extends React.Component {
                         e.stopPropagation();
                       }}
                     >
+                      
+                      <ul className="sub_folder">
+                        <li>
                       <span>
                         {folderData.children ? folderData.children.length : 0}
                       </span>
@@ -52,12 +56,15 @@ class NavItems extends React.Component {
                             handleFolderData={this.props.handleFolderData}
                           />
                         )}
-                    </li>
+                        </li>
+                        </ul>
+                        </li>
+                  
                   );
                 })
               : "Loading..."}
-          </ul>
-        </nav>
+          
+       
       </>
     );
   }
