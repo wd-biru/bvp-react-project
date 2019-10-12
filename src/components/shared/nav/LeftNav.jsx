@@ -31,7 +31,10 @@ class LeftNavbar extends React.Component {
       showModal: false,
       folderName: "",
       showToastMsg: false,
-      submitBtnDisable: false
+      submitBtnDisable: false,
+      editMode: false,
+      deleteMode: false,
+      inputDefaultText: "Folder Name"
     };
   }
 
@@ -55,6 +58,17 @@ class LeftNavbar extends React.Component {
     });
   };
 
+  handleToastMessage = () => {
+    let toastMsg = "Folder created successfully";
+    if (this.state.editMode) {
+      toastMsg = "Folder updated successfully";
+    }
+    if (this.state.deleteMode) {
+      toastMsg = "Folder Deleted successfully";
+    }
+    return toastMsg;
+  };
+
   componentDidUpdate(prevProps) {
     const payload = {
       user_id: Number(userId),
@@ -66,7 +80,7 @@ class LeftNavbar extends React.Component {
       prevProps.folderDetails !== this.props.folderDetails &&
       this.props.folderDetails.status === 200
     ) {
-      toast.success("Folder created successfully");
+      toast.success(this.handleToastMessage());
       this.setState({
         showToastMsg: true,
         submitBtnDisable: false
@@ -99,12 +113,16 @@ class LeftNavbar extends React.Component {
     });
   };
 
-  createFolder = () => {
+  createFolder = actionType => {
     const payLoad = {
-      folder_name: this.state.folderName,
+      folder_name: this.state.deleteMode
+        ? this.props.isActiveObject.folder_name
+        : this.state.folderName,
       user_id: Number(userId),
-      parent_id: this.props.isActiveObject ? this.props.isActiveObject.id : 0,
-      action: "create",
+      parent_id: this.props.isActiveObject
+        ? this.props.isActiveObject.parent_id
+        : 0,
+      action: actionType,
       folder_id: this.props.isActiveObject ? this.props.isActiveObject.id : 0
     };
     this.setState({
@@ -121,53 +139,95 @@ class LeftNavbar extends React.Component {
     return btnDisable;
   };
 
+  handleEdit = item => {
+    this.setState({
+      showModal: !this.state.showModal,
+      editMode: true,
+      deleteMode: false,
+      inputDefaultText: item && item.folder_name
+    });
+  };
+
+  handleDelete = item => {
+    this.setState({
+      showModal: !this.state.showModal,
+      deleteMode: true,
+      editMode: false
+    });
+  };
+
+  renderModalHeader = () => {
+    let headerText = "Edit Folder Name";
+    if (this.state.editMode) {
+      headerText = "Edit Folder Name";
+    } else if (this.state.deleteMode) {
+      headerText = "Delete Folder Name";
+    }
+    return headerText;
+  };
+
+  renderModalBtnText = () => {
+    let modalBtnText = "Create";
+    if (this.state.editMode) {
+      modalBtnText = "Update";
+    } else if (this.state.deleteMode) {
+      modalBtnText = "Delete";
+    }
+    return modalBtnText;
+  };
+
   render() {
+    const actionType = this.renderModalBtnText().toLowerCase();
     return (
       <>
         {/* Sidebar Header*/}
         <div className="nav-sidebar-main">
-        <div className="sidebar-header d-flex align-items-center">
-          <div className="title">
-            <h1 className="h4">
-              My Folder <img src={Myfolder} onClick={this.handleCreateFolder} />
-            </h1>
+          <div className="sidebar-header d-flex align-items-center">
+            <div className="title">
+              <h1 className="h4">
+                My Folder{" "}
+                <img src={Myfolder} onClick={this.handleCreateFolder} />
+              </h1>
+            </div>
           </div>
-        </div>
-        {/* Sidebar Navidation Menus*/}
-        {/* <span className="heading">Main</span> */}
+          {/* Sidebar Navidation Menus*/}
+          {/* <span className="heading">Main</span> */}
 
-        <ul className="list-unstyled">
-          <li className="">
-            <span>
-              {this.props.userFolderDetails &&
-                this.props.userFolderDetails.folders.length}
-            </span>
-            <i className="far fa-folder"></i>
-            {"Home"}
-          </li>
-        </ul>
+          <ul className="list-unstyled">
+            <li className="">
+              <span>
+                {this.props.userFolderDetails &&
+                  this.props.userFolderDetails.folders.length}
+              </span>
+              <i className="far fa-folder"></i>
+              {"Home"}
+            </li>
+          </ul>
         </div>
         <nav className="side-navbar">
-        <ul className="list-unstyled">
-        <NavItems
-          data={
-            this.props.userFolderDetails
-              ? this.props.userFolderDetails.folders
-              : null
-          }
-          handleFolderData={this.props.handleFolderData}
-        />
-         </ul>
-         </nav>
+          <ul className="list-unstyled">
+            <NavItems
+              data={
+                this.props.userFolderDetails
+                  ? this.props.userFolderDetails.folders
+                  : null
+              }
+              handleFolderData={this.props.handleFolderData}
+              handleEdit={this.handleEdit}
+              handleDelete={this.handleDelete}
+            />
+          </ul>
+        </nav>
         {this.state.showModal && (
           <Modal
             modalIsOpen={this.state.showModal}
             closeModal={this.closeModal}
             customStyles={customStyles}
             contentLabel={"Create Folder"}
+            pauseOnFocusLoss={false}
           >
             <div className="modal-header text-center">
-              <h4 className="modal-title"> Enter Folder Name</h4>
+              <h4 className="modal-title">{this.renderModalHeader()}</h4>
               <button
                 type="button"
                 className="close"
@@ -177,25 +237,33 @@ class LeftNavbar extends React.Component {
                 &times;
               </button>
             </div>
+
             <div className="modal-body text-center">
-              <input
-                type="text"
-                name="folderName"
-                className="form-control"
-                placeholder="Project Name"
-                value={this.state.folderName}
-                onChange={this.handleInputChange}
-              />
+              {!this.state.deleteMode ? (
+                <input
+                  type="text"
+                  name="folderName"
+                  className="form-control"
+                  placeholder={this.state.inputDefaultText}
+                  value={this.state.folderName}
+                  onChange={this.handleInputChange}
+                />
+              ) : (
+                <span>
+                  Are you sure you want to delete folder{" "}
+                  {this.props.isActiveObject.folder_name}?
+                </span>
+              )}
               <br />
 
               <button
                 id="createFolder"
                 name="createName"
                 className="btn btn-info btn-md modal-btn text-center form-group"
-                onClick={this.createFolder}
-                disabled={this.handleBtnDisable()}
+                onClick={() => this.createFolder(actionType)}
+                disabled={!this.state.deleteMode && this.handleBtnDisable()}
               >
-                Create
+                {this.renderModalBtnText()}
               </button>
               <br />
               {this.state.submitBtnDisable && <span>Please Wait...</span>}

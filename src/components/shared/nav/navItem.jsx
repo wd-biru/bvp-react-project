@@ -1,4 +1,3 @@
-
 import React from "react";
 
 class NavItems extends React.Component {
@@ -23,48 +22,64 @@ class NavItems extends React.Component {
     const { selectedItem } = this.state;
     return (
       <>
-      
-            {this.props.data
-              ? this.props.data.map(folderData => {
-                  return (
-                    
-                    <li
-                      className={
-                        selectedItem && selectedItem.id === folderData.id
-                          ? "active"
-                          : ""
-                      }
-                      key={folderData.id}
-                      onClick={e => {
-                        this.handleToggle(folderData);
-                        e.stopPropagation();
-                      }}
-                    >
-                      
-                      <ul className="sub_folder">
-                        <li>
+        {this.props.data
+          ? this.props.data.map(folderData => {
+              return (
+                <li
+                  className={
+                    selectedItem && selectedItem.id === folderData.id
+                      ? "active"
+                      : ""
+                  }
+                  key={folderData.id}
+                  onClick={e => {
+                    this.handleToggle(folderData);
+                    e.stopPropagation();
+                  }}
+                >
+                  <ul className="sub_folder">
+                    <li>
                       <span>
                         {folderData.children ? folderData.children.length : 0}
                       </span>
                       <i className="far fa-folder"></i>
                       {folderData.folder_name}
+                      {selectedItem && selectedItem.id === folderData.id && (
+                        <>
+                          <button
+                            onClick={e => {
+                              this.props.handleEdit(folderData);
+                            }}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            onClick={e => {
+                              this.props.handleDelete(folderData);
+                            }}
+                          >
+                            Delete
+                          </button>{" "}
+                        </>
+                      )}
                       {selectedItem &&
                         selectedItem.id === folderData.id &&
                         selectedItem.children && (
                           <NavItems
                             data={selectedItem.children}
                             handleFolderData={this.props.handleFolderData}
+                            handleEdit={() => this.props.handleEdit(folderData)}
+                            handleDelete={() =>
+                              this.props.handleDelete(folderData)
+                            }
                           />
                         )}
-                        </li>
-                        </ul>
-                        </li>
-                  
-                  );
-                })
-              : "Loading..."}
-          
-       
+                    </li>
+                  </ul>
+                </li>
+              );
+            })
+          : "Loading..."}
       </>
     );
   }
