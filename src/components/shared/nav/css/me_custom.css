@@ -466,11 +466,30 @@ section {
     padding: 45px 0 !important;
 }
 nav.side-navbar ul li {padding: 5px 6px;}
-nav.side-navbar ul li{font-size: 1em;}
+nav.side-navbar ul li span {
+    font-size: 12px;
+    color: #686a76;
+}
 nav.side-navbar ul li.active {
     background: #796aee00;
     color: #686a76;
     border-left: 4px solid #3b25e6;
+}
+nav.side-navbar ul li span:nth-child(1) {
+    width: 35px;
+}
+
+nav.side-navbar ul li span {
+    width: auto;
+}
+nav.side-navbar ul li:hover {
+    background: #eeeeee;
+}
+.temp-class i:last-child {
+    margin-right: 0px;
+}
+span.temp-class {
+    width: auto !important;
 }
 /* Dashboard page css end */
 
