@@ -58,29 +58,26 @@ class LeftNavbar extends React.Component {
     });
   };
 
-  handleToastMessage = () => {
-    let toastMsg = "Folder created successfully";
-    if (this.state.editMode) {
-      toastMsg = "Folder updated successfully";
-    }
-    if (this.state.deleteMode) {
-      toastMsg = "Folder Deleted successfully";
-    }
-    return toastMsg;
-  };
+  // handleToastMessage = () => {
+  //   let toastMsg = "Created successfully";
+  //   if (this.state.editMode) {
+  //     toastMsg = "Updated successfully";
+  //   }
+  //   if (this.state.deleteMode) {
+  //     toastMsg = "Deleted successfully";
+  //   }
+  //   return toastMsg;
+  // };
 
   componentDidUpdate(prevProps) {
     const payload = {
-      user_id: Number(userId),
-      parent_id: this.props.isActiveObject
-        ? this.props.isActiveObject.parent_id
-        : 0
+      user_id: Number(userId)
     };
     if (
       prevProps.folderDetails !== this.props.folderDetails &&
-      this.props.folderDetails.status === 200
+      this.props.folderDetails.data.code === 200
     ) {
-      toast.success(this.handleToastMessage());
+      toast.success(this.props.folderDetails.data.message);
       this.setState({
         showToastMsg: true,
         submitBtnDisable: false
@@ -90,9 +87,9 @@ class LeftNavbar extends React.Component {
       this.props.getUserFolderData(payload);
     } else if (
       prevProps.folderDetails !== this.props.folderDetails &&
-      this.props.folderDetails.status !== 200
+      this.props.folderDetails.data.code !== 200
     ) {
-      toast.error("Folder name already exists!");
+      toast.error(this.props.folderDetails.data.message);
       this.setState({
         showToastMsg: true,
         submitBtnDisable: false
@@ -103,14 +100,38 @@ class LeftNavbar extends React.Component {
 
   closeModal = () => {
     this.setState({
-      showModal: false
+      showModal: false,
+      inputDefaultText: !this.state.inputDefaultText
     });
   };
 
   handleCreateFolder = () => {
     this.setState({
-      showModal: !this.state.showModal
+      showModal: !this.state.showModal,
+      editMode: false,
+      deleteMode: false
     });
+  };
+
+  handleParentId = () => {
+    let parentId = 0;
+    if (this.props.isActiveObject) {
+      parentId = this.props.isActiveObject.id;
+    }
+
+    return parentId;
+  };
+
+  handleFolderId = () => {
+    let folderId = 0;
+    if (
+      (this.props.isActiveObject && this.state.editMode) ||
+      this.state.deleteMode
+    ) {
+      folderId = this.props.isActiveObject.id;
+    }
+
+    return folderId;
   };
 
   createFolder = actionType => {
@@ -119,11 +140,10 @@ class LeftNavbar extends React.Component {
         ? this.props.isActiveObject.folder_name
         : this.state.folderName,
       user_id: Number(userId),
-      parent_id: this.props.isActiveObject
-        ? this.props.isActiveObject.parent_id
-        : 0,
+      parent_id: this.handleParentId(),
       action: actionType,
-      folder_id: this.props.isActiveObject ? this.props.isActiveObject.id : 0
+      //folder_id: this.props.isActiveObject ? this.props.isActiveObject.id : 0
+      folder_id: this.handleFolderId()
     };
     this.setState({
       submitBtnDisable: true
@@ -157,7 +177,7 @@ class LeftNavbar extends React.Component {
   };
 
   renderModalHeader = () => {
-    let headerText = "Edit Folder Name";
+    let headerText = "Create Folder Name";
     if (this.state.editMode) {
       headerText = "Edit Folder Name";
     } else if (this.state.deleteMode) {
@@ -215,6 +235,7 @@ class LeftNavbar extends React.Component {
               handleFolderData={this.props.handleFolderData}
               handleEdit={this.handleEdit}
               handleDelete={this.handleDelete}
+              isActiveObject={this.props.isActiveObject}
             />
           </ul>
         </nav>

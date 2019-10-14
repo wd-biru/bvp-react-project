@@ -31,14 +31,19 @@ class Dashboard extends Component {
         <LeftNav
           handleFolderData={this.handleFolderData}
           isActiveObject={this.state.isActiveObject}
-          activeIndex={this.state.activeIndex}
           userFolderDetails={this.props.userFolderDetails}
           folderDetails={this.props.folderDetails}
           getUserFolderData={this.props.getUserFolderData}
           createFolderData={this.props.createFolderData}
         />
         <div className="content-inner">
-          <TopPageHeader userData={this.props.userData} />
+          <TopPageHeader
+            userData={this.props.userData}
+            createFolderData={this.props.createFolderData}
+            folderDetails={this.props.folderDetails}
+            getUserFolderData={this.props.getUserFolderData}
+            isActiveObject={this.state.isActiveObject}
+          />
           <Breadcromb />
           <section className="tables">
             <div className="container-fluid">

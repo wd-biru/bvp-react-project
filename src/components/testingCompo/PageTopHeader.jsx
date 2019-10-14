@@ -4,6 +4,9 @@ import util from "../../apiAction/axios/utility";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "../shared/modal/Modal";
+import UploadPage from "../upload/UploadPage";
+
+const userId = localStorage.getItem("userId");
 
 const customStyles = {
   content: {
@@ -25,7 +28,9 @@ class PageTopHeader extends React.Component {
     this.state = {
       showModal: false,
       projectrName: "",
-      showToastMsg: false
+      showToastMsg: false,
+      submitBtnDisable: false,
+      showUploadModal: false
     };
   }
 
@@ -41,19 +46,28 @@ class PageTopHeader extends React.Component {
     });
   };
 
-  // componentDidUpdate(prevProps) {
-  //   if (
-  //     prevProps.folderDetails !== this.props.folderDetails &&
-  //     this.props.folderDetails.status === 200
-  //   ) {
-  //     toast.success("Folder created successfully");
-  //     this.setState({
-  //       showToastMsg: true
-  //     });
-  //     this.closeModal();
-  //     this.handleResetFields();
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.folderDetails !== this.props.folderDetails &&
+      this.props.folderDetails.status === 200
+    ) {
+      this.setState({
+        showToastMsg: true,
+        submitBtnDisable: false
+      });
+      this.closeModal();
+      this.handleResetFields();
+    } else if (
+      prevProps.folderDetails !== this.props.folderDetails &&
+      this.props.folderDetails.status !== 200
+    ) {
+      this.setState({
+        showToastMsg: true,
+        submitBtnDisable: false
+      });
+      this.handleResetFields();
+    }
+  }
 
   closeModal = () => {
     this.setState({
@@ -63,17 +77,29 @@ class PageTopHeader extends React.Component {
 
   handleProjectFolder = () => {
     this.setState({
-      showModal: !this.state.showModal
+      showModal: !this.state.showModal,
+      projectrName: ""
     });
   };
 
-  projectFolder = () => {
+  projectFolder = actionType => {
     const payLoad = {
-      project_name: this.state.projectName,
-      user_id: 1,
-      parent_id: 0
+      folder_name: this.state.folderName,
+      user_id: Number(userId),
+      parent_id: this.props.isActiveObject ? this.props.isActiveObject.id : 0,
+      action: actionType,
+      folder_id: 0
     };
-    // this.props.createFolderData(payLoad);
+    this.setState({
+      submitBtnDisable: true
+    });
+    this.props.createFolderData(payLoad);
+  };
+
+  handleUploadData = () => {
+    this.setState({
+      showUploadModal: true
+    });
   };
 
   render() {
@@ -90,8 +116,15 @@ class PageTopHeader extends React.Component {
               data-toggle="modal"
               data-target="#myModal"
               onClick={this.handleProjectFolder}
+              disabled={this.props.isActiveObject ? false : true}
             />
-            <input type="button" name="" value="UPLOAD" className="UPLOAD" />
+            <input
+              type="button"
+              name=""
+              value="UPLOAD"
+              className="UPLOAD"
+              onClick={this.handleUploadData}
+            />
           </div>
         </div>
 
@@ -128,16 +161,18 @@ class PageTopHeader extends React.Component {
                 id="createFolder"
                 name="createName"
                 className="btn btn-info btn-md modal-btn text-center form-group"
-                onClick={this.projectFolder}
+                onClick={() => this.projectFolder("project")}
                 disabled={!this.state.folderName && true}
               >
                 Create
               </button>
+              <br />
+              {this.state.submitBtnDisable && <span>Please Wait...</span>}
             </div>
           </Modal>
         )}
 
-        {this.state.showToastMsg && <ToastContainer />}
+        {this.state.showUploadModal && <UploadPage />}
       </header>
     );
   }

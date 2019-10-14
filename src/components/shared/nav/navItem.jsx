@@ -32,45 +32,51 @@ class NavItems extends React.Component {
                       : ""
                   }
                   key={folderData.id}
-                  onClick={e => {
-                    this.handleToggle(folderData);
-                    e.stopPropagation();
-                  }}
                 >
                   <ul className="sub_folder">
                     <li>
                       <span>
                         {folderData.children ? folderData.children.length : 0}
                       </span>
-                      <i className="far fa-folder"></i>
-                      {folderData.folder_name}
+                      <span
+                        onClick={e => {
+                          this.handleToggle(folderData);
+                          e.stopPropagation();
+                        }}
+                      >
+                        <i className="far fa-folder"></i>
+                        {folderData.folder_name}
+                      </span>
                       {selectedItem && selectedItem.id === folderData.id && (
-                        <>
-                          <button
+                        <span className="temp-class">
+                          <i
+                            className="fa fa-edit"
                             onClick={e => {
-                              this.props.handleEdit(folderData);
+                              this.props.handleEdit(this.props.isActiveObject);
                             }}
-                          >
-                            Edit
-                          </button>
-                          <button
+                          ></i>
+                          <i
+                            className="fa fa-remove"
                             onClick={e => {
-                              this.props.handleDelete(folderData);
+                              this.props.handleDelete(
+                                this.props.isActiveObject
+                              );
                             }}
-                          >
-                            Delete
-                          </button>{" "}
-                        </>
+                          ></i>
+                        </span>
                       )}
+
                       {selectedItem &&
                         selectedItem.id === folderData.id &&
                         selectedItem.children && (
                           <NavItems
                             data={selectedItem.children}
                             handleFolderData={this.props.handleFolderData}
-                            handleEdit={() => this.props.handleEdit(folderData)}
+                            handleEdit={() =>
+                              this.props.handleEdit(this.props.isActiveObject)
+                            }
                             handleDelete={() =>
-                              this.props.handleDelete(folderData)
+                              this.props.handleDelete(this.props.isActiveObject)
                             }
                           />
                         )}
