@@ -587,3 +587,8 @@ label.file-upload.btn.btn-primary.btn-block.rounded-pill.shadow {
     color: #000;}
 /* Upload page css end */
 
+img.createproject {
+    width: 15px;
+    margin-right: 5px;
+}
+
