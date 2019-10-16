@@ -1,4 +1,6 @@
 import React from "react";
+import createproject from './img/createproject.png';
+
 
 class NavItems extends React.Component {
   constructor(props) {
@@ -44,7 +46,15 @@ class NavItems extends React.Component {
                           e.stopPropagation();
                         }}
                       >
-                        <i className="far fa-folder"></i>
+                        {folderData.folder_status===1 ? 
+                          <img src={createproject}
+                          className="createproject" /> : 
+                          <i className="far fa-folder"></i>
+                         }
+                        
+                        {/* <i className="far fa-folder"></i> */}
+                        {/* <img src={createproject} className="createproject" /> */}
+
                         {folderData.folder_name}
                       </span>
                       {selectedItem && selectedItem.id === folderData.id && (
