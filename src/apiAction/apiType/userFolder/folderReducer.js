@@ -2,7 +2,8 @@ import { folderDataConsts } from "./folderActions";
 
 const initialState = {
   folderData: null,
-  userFolderData: null
+  userFolderData: null,
+  uploadFolderData: null
 };
 
 export default function folderReducer(state = initialState, action) {
@@ -30,6 +31,18 @@ export default function folderReducer(state = initialState, action) {
         ...state,
         error: action.payload,
         userFolderData: null
+      };
+    case folderDataConsts.GET_UPLOAD_FOLDER_DATA_SUCCESS:
+      return {
+        ...state,
+        uploadFolderData: action.payload.data
+      };
+
+    case folderDataConsts.GET_UPLOAD_FOLDER_DATA_FAIL:
+      return {
+        ...state,
+        error: action.payload,
+        uploadFolderData: null
       };
 
     default:

@@ -3,8 +3,35 @@ import Dropzone from "react-dropzone";
 import Img from "./img/uploadicon.png";
 
 class UploadPageSection extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filesName: ""
+    };
+  }
   onDrop = acceptedFiles => {
-    console.log(acceptedFiles);
+    this.setState({
+      filesName: acceptedFiles
+    });
+  };
+
+  handleUpload = e => {
+    const userId = localStorage.getItem("userId");
+    e.preventDefault();
+    let formData = new FormData(this.formRef);
+    this.state.filesName.forEach(file => {
+      formData.append("media[]", file, file.name);
+      formData.append("user_id", Number(userId));
+      formData.append("folder_id", this.props.isActiveObject.id);
+    });
+    // const userId = localStorage.getItem("userId");
+    const paylaod = {
+      user_id: Number(userId),
+      folder_id: this.props.isActiveObject.id,
+      media: formData
+    };
+    console.log(paylaod);
+    this.props.getUploadFolderData(formData);
   };
   render() {
     return (
@@ -13,18 +40,19 @@ class UploadPageSection extends React.Component {
           <div className="row">
             <div className="col-lg-5 mx-auto">
               <div className="p-1 rounded-lg">
-                <img
-                  src={Img}
-                  className="d-block mx-auto mb-4 rounded-pill uploadiconsty"
-                />
                 <h6 className="text-center mb-4 text-muted">Upload a file</h6>
                 <Dropzone onDrop={this.onDrop}>
                   {({ getRootProps, getInputProps, isDragActive }) => (
                     <div {...getRootProps()}>
                       <input {...getInputProps()} />
-                      {isDragActive
-                        ? "Drop it like it's hot!"
-                        : "Click me or drag a file to upload!"}
+                      {isDragActive ? (
+                        "Drop it like it's hot!"
+                      ) : (
+                        <img
+                          src={Img}
+                          className="d-block mx-auto mb-4 rounded-pill uploadiconsty"
+                        />
+                      )}
                     </div>
                   )}
                 </Dropzone>
@@ -35,8 +63,12 @@ class UploadPageSection extends React.Component {
                   for="fileUpload"
                   className="file-upload btn btn-primary btn-block rounded-pill shadow"
                 >
-                  UPLOAD LOCAL FILE
-                  <input id="fileUpload" type="file" />
+                  <input
+                    id="fileUpload"
+                    type="button"
+                    onClick={event => this.handleUpload(event)}
+                    value={"Upload a file"}
+                  />
                 </label>
                 <br />
                 <h6 className="text-center mb-4 text-muted">

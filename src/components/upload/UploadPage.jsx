@@ -17,7 +17,10 @@ class UploadPage extends React.Component {
         <div className="page-content d-flex align-items-stretch">
           <div className="content-inner upload">
             <UploadBreadcrumb />
-            <UploadPageSection />
+            <UploadPageSection
+              getUploadFolderData={this.props.getUploadFolderData}
+              isActiveObject={this.props.isActiveObject}
+            />
             <Footer />
           </div>
         </div>

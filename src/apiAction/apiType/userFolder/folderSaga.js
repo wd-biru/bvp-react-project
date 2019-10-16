@@ -1,6 +1,10 @@
 import { folderDataConsts } from "../userFolder/folderActions";
 import { call, put, takeLatest } from "redux-saga/effects";
-import { getUserFolderData, getFolderData } from "../userFolder/folderApi";
+import {
+  getUserFolderData,
+  getFolderData,
+  uploadUserFolderData
+} from "../userFolder/folderApi";
 
 export function* fetchFolderDataSaga() {
   yield takeLatest(
@@ -43,6 +47,30 @@ function* userFolderData(action) {
     yield put({
       payload: userfolderData,
       type: folderDataConsts.GET_FOLDER_DATA_FAIL
+    });
+  }
+}
+
+export function* fetchUploadFolderDataSaga() {
+  yield takeLatest(
+    folderDataConsts.GET_UPLOAD_FOLDER_DATA_REQUEST,
+    uploadFolderData
+  );
+}
+
+function* uploadFolderData(action) {
+  const uploadfolderData = yield call(() => {
+    return uploadUserFolderData(action.data);
+  });
+  if (!uploadfolderData.error) {
+    yield put({
+      payload: uploadfolderData,
+      type: folderDataConsts.GET_UPLOAD_FOLDER_DATA_SUCCESS
+    });
+  } else {
+    yield put({
+      payload: uploadfolderData,
+      type: folderDataConsts.GET_UPLOAD_FOLDER_DATA_FAIL
     });
   }
 }

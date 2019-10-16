@@ -1,6 +1,6 @@
 import React from "react";
 import util from "../../apiAction/axios/utility";
-// import { createFolderData } from "../../apiAction/apiType/userFolder/folderActions";
+import { getUploadFolderData } from "../../apiAction/apiType/userFolder/folderActions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "../shared/modal/Modal";
@@ -124,6 +124,7 @@ class PageTopHeader extends React.Component {
               value="UPLOAD"
               className="UPLOAD"
               onClick={this.handleUploadData}
+              disabled={this.props.isActiveObject ? false : true}
             />
           </div>
         </div>
@@ -172,14 +173,21 @@ class PageTopHeader extends React.Component {
           </Modal>
         )}
 
-        {this.state.showUploadModal && <UploadPage />}
+        {this.state.showUploadModal && (
+          <UploadPage
+            getUploadFolderData={this.props.getUploadFolderData}
+            isActiveObject={this.props.isActiveObject}
+          />
+        )}
       </header>
     );
   }
 }
 
-// const mapStateToProps = state => ({
-//   projectDetails: state.projectDetails.projectData
-// });
+const mapStateToProps = state => ({
+  uploadFolderDetails: state.folderData.uploadFolderData
+});
 
-export default util.storeConnect(PageTopHeader);
+export default util.storeConnect(PageTopHeader, mapStateToProps, {
+  getUploadFolderData
+});

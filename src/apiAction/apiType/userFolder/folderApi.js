@@ -18,3 +18,14 @@ export function getUserFolderData(data) {
     })
     .catch(err => err);
 }
+
+export function uploadUserFolderData(data) {
+  return util.networkMain
+    .post("/uploadimage", data, {
+      headers: { "Content-Type": "multipart/form-data" }
+    })
+    .then(res => {
+      return res;
+    })
+    .catch(err => err);
+}

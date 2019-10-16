@@ -29,7 +29,9 @@ class LeftNavbar extends React.Component {
     super(props);
     this.state = {
       showModal: false,
-      folderName: "",
+      folderName: this.props.isActiveObject
+        ? this.props.isActiveObject.folder_name
+        : "",
       showToastMsg: false,
       submitBtnDisable: false,
       editMode: false,
@@ -264,9 +266,15 @@ class LeftNavbar extends React.Component {
                 <input
                   type="text"
                   name="folderName"
+                  key={this.state.inputDefaultText}
                   className="form-control"
-                  placeholder={this.state.inputDefaultText}
-                  value={this.state.folderName}
+                  // placeholder={this.state.inputDefaultText}
+                  defaultValue={
+                    this.props.isActiveObject
+                      ? this.props.isActiveObject.folder_name
+                      : this.state.folder_name
+                  }
+                  //value={this.state.folderName}
                   onChange={this.handleInputChange}
                 />
               ) : (

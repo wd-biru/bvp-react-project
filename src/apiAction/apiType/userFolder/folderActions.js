@@ -4,7 +4,10 @@ export const folderDataConsts = {
   CREATE_FOLDER_DATA_FAIL: "CREATE_FOLDER_DATA_FAIL",
   GET_FOLDER_DATA_REQUEST: "GET_FOLDER_DATA_REQUEST",
   GET_FOLDER_DATA_SUCCESS: "GET_FOLDER_DATA_SUCCESS",
-  GET_FOLDER_DATA_FAIL: "GET_FOLDER_DATA_FAIL"
+  GET_FOLDER_DATA_FAIL: "GET_FOLDER_DATA_FAIL",
+  GET_UPLOAD_FOLDER_DATA_REQUEST: "GET_UPLOAD_FOLDER_DATA_REQUEST",
+  GET_UPLOAD_FOLDER_DATA_SUCCESS: "GET_UPLOAD_FOLDER_DATA_SUCCESS",
+  GET_UPLOAD_FOLDER_DATA_FAIL: "GET_UPLOAD_FOLDER_DATA_FAIL"
 };
 
 export function createFolderData(data) {
@@ -17,6 +20,13 @@ export function createFolderData(data) {
 export function getUserFolderData(data) {
   return {
     type: folderDataConsts.GET_FOLDER_DATA_REQUEST,
+    data
+  };
+}
+
+export function getUploadFolderData(data) {
+  return {
+    type: folderDataConsts.GET_UPLOAD_FOLDER_DATA_REQUEST,
     data
   };
 }
