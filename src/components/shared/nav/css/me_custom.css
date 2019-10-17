@@ -119,6 +119,7 @@ footer.main-footer {
 }
 .content-inner {
     padding-bottom: 47px !important;
+    background-color: #eeeeee;
 }
 nav.side-navbar .sidebar-header {
     padding-bottom: 15px;
@@ -491,6 +492,10 @@ nav.side-navbar ul li:hover {
 span.temp-class {
     width: auto !important;
 }
+.temp-class {
+    float: right;
+    width: 90px;
+  }
 /* Dashboard page css end */
 
 /* modal popup css start */
@@ -591,4 +596,9 @@ img.createproject {
     width: 15px;
     margin-right: 5px;
 }
-
+.card-close {
+    position: absolute;
+    bottom: 6px;
+    right: 12px;
+    top: auto;
+}

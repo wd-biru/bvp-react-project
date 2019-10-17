@@ -1,0 +1,8 @@
+img.gridimg{
+    width: 50px;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background: white;
+  }
+  

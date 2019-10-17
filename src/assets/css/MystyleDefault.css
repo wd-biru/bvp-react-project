@@ -3505,3 +3505,6 @@ a > code {
   padding-bottom: 0.375rem;
   font-size: 125%;
 }
+img.gridimg {
+  width: 50px;
+}

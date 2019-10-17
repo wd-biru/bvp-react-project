@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/MystyleDefault.css";
 import "./css/me_custom.css";
-import "./css/me_responsive.css";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "../../shared/modal/Modal";

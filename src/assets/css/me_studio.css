@@ -239,6 +239,10 @@ td span {
     height: 100%;
     overflow-y: inherit;
 }
+.Studioed-three .Library-sec .tab-content>.active {
+    position: inherit;
+    overflow: hidden;
+}
 /*.table-responsive.two {
     display: block;
     width: 100%;
@@ -556,7 +560,7 @@ hr {
     display: block;
     width: 100%;
     height: calc(2.25rem + 2px);
-    padding: .375rem .75rem;
+    /* padding: .375rem .75rem; */
     font-size: 13px;
     font-weight: 400;
     line-height: 1.5;
@@ -1342,6 +1346,7 @@ sup {
     top: 10px;
     color: #a1a1a2;
 }
+.Studioed-section2 .tool .paddin-rigth-0{padding-right: 0px;}
 .Studioed-section2 .tool-time .seaech-upload form input.form-control.navseacrh {
     height: 40px;
     width: 81%;
@@ -1370,7 +1375,7 @@ sup {
 }
 .Studioed-section2 .tool .add-pop-show{float: right; padding: 0;}
 .Studioed-section2 .tool .add-pop-show li {}
-.Studioed-section2 .tool .add-pop-show li:nth-child(3) a{margin-right: 0;}
+.Studioed-section2 .tool .add-pop-show li:nth-child(4) a{margin-right: 0;}
 .Studioed-section2 .tool ul li a{
     padding: 4px 10px;
     margin-right: 5px;
@@ -1387,6 +1392,7 @@ sup {
 .Studioed-section2 ul.my-2.my-lg-0 {
     float: right;
     padding-top: 7px;
+    padding-right: 0;
 }
 .Studioed-section2 ul.my-2.my-lg-0 li:nth-child(2) img {
     width: 60px;
@@ -1501,7 +1507,7 @@ sup {
     margin-left: 6px;
 }
 .panel-title a span {
-    width: 23.7%;
+    width: 18.7%;
     display: inline-block;
     padding: 0 .4rem;
 }
@@ -1790,7 +1796,7 @@ input.UPLOAD {
     height: 400px;
 }
 .modal-body .body-select-temp .tab-content .col-lg-4 {
-    padding: 0 10px;
+    /* padding: 0 10px; */
 }
 .modal-body .body-select-temp .tab-content {padding-right: 10px;}
 .createoverlay_head ul.navbar-nav.ml-auto.mr-auto {margin-left: inherit !important;}
@@ -1895,7 +1901,7 @@ input.UPLOAD {
 }
 .standard-uploadbg input.form-control.navseacrh {
     height: 40px;
-    width: 300px;
+    width: 100%;
     color: #a1a1a2;
     border: none;
     background-color: #fff0;
@@ -1904,7 +1910,7 @@ input.UPLOAD {
     padding: .375rem 2.5rem;
     display: inline-block;
 }
-.standard-uploadbg button.close {
+.side-hotspotsdesignbg button.close {
     position: absolute;
     right: 15px;
     top: 5px;
@@ -1987,3 +1993,30 @@ input.UPLOAD {
 #myDIV .nav-pills .active{border-bottom: 2px solid #796aee;}
 #myDIV .nav-pills li a.active{border-bottom: none;}
 /* Studio the modal popup section styles end*/
+.fade:not(.show) {
+    opacity: 1;
+}
+input.UPNEW {
+    margin-right: 5px;
+}
+.tab-content {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.navseacrh1 {
+    height: 40px;
+    width: 81%;
+    color: #a1a1a2;
+    border: none;
+    background-color: #fff0;
+    background-clip: padding-box;
+    border-radius: 0;
+    padding: .375rem 1.5rem;
+    display: inline-block;
+}
+.search_usersbb{
+    width: 20px;
+}
+.col-sm-10.timeline-img {
+    background: #252425;
+}

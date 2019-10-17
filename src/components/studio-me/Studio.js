@@ -4,9 +4,11 @@ import StudioHeader from './StudioHeader';
 import StudioPreviewModel from './StudioPreviewModel';
 import StudioVideoSection from './StudioVideoSection';
 import StudioPlayButton from './StudioPlayListButton';
+import StudioTimeTools from './StudioTimeTools';
 
-import './css/me_studio.css';
-import './css/me_responsive.css';
+import '../../assets/css/me_studio.css';
+
+
 
 
 const Studio = () => {
@@ -16,7 +18,9 @@ const Studio = () => {
                 <StudioHeader />
                 <StudioPreviewModel />
                 <StudioVideoSection />
-                {/* <StudioPlayButton /> */}
+                <StudioPlayButton />
+                <StudioTimeTools />
+                
             </body>
         </div>
     )

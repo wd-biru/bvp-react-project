@@ -1,1 +1,17 @@
 /* your styles go here */
+button {
+    background: none;
+    border: aliceblue;
+  }
+  .ellipsisnn .dropdown{
+    background: none;
+    border: aliceblue;
+  }
+  .ellipsisnn {
+    color: #796AEE;
+}
+.btn:focus, .btn.focus {
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(121, 106, 238, 0) !important;
+    box-shadow: 0 0 0 0.2rem rgba(121, 106, 238, 0) !important;
+}

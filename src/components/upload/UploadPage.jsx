@@ -5,9 +5,9 @@ import UploadBreadcrumb from "./UploadBreadcrumb";
 import UploadPageSection from "./UploadPageSection";
 import Footer from "./Footer";
 
-import "./css/MystyleDefault.css";
-import "./css/me_custom.css";
-import "./css/me_responsive.css";
+// import "./css/MystyleDefault.css";
+// import "./css/me_custom.css";
+// import "./css/me_responsive.css";
 
 class UploadPage extends React.Component {
   render() {

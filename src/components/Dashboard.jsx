@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+
 import LeftNav from "../components/shared/nav/LeftNav";
 import TopPageHeader from "../components/testingCompo/PageTopHeader";
 import Breadcromb from "../components/testingCompo/Breadcromb";
 import Footer from "../components/shared/footer/Footer";
 import SectionImg2 from "../assets/img/me/images.jpg";
+import Dropdown from 'react-bootstrap/Dropdown'
 import util from "../apiAction/axios/utility";
 import {
   getUserFolderData,
@@ -54,8 +56,33 @@ class Dashboard extends Component {
                       <div className="cardss">
                         <div className="card-body">
                           <img src={SectionImg2} alt="John" />
-                          {this.state.isActiveObject &&
-                            this.state.isActiveObject.folder_name}
+                          {/* {this.state.isActiveObject &&
+                            this.state.isActiveObject.folder_name} */}
+                                {/* My dropdown Code */}
+                                <div class="cappadd">
+                                    <h2>{this.state.isActiveObject &&
+                                        this.state.isActiveObject.folder_name}</h2>
+                                    <div class="cappadd-bot">
+                                      <a href="#"><i class="fa fa-gear"></i></a>
+                                    </div>
+                                  </div>
+                                  <div class="card-close ellipsisdrop">
+                                  <Dropdown className="ellipsisnn" >                                     
+                                    <Dropdown.Toggle variant="success2" id="dropdown-basic">
+                                        <i class="fa fa-ellipsis-v" ></i>
+                                        </Dropdown.Toggle>
+                                        <Dropdown.Menu>
+                                          <Dropdown.Item href="#/action-1" class="dropdown-item edit"> <i class="fa fa-plus-circle"></i>Open Editor</Dropdown.Item>
+                                          <Dropdown.Item href="#/action-2" class="dropdown-item edit"> <i class="fa fa-eye"></i>Preview</Dropdown.Item>
+                                          <Dropdown.Item href="#/action-3" class="dropdown-item edit"> <i class="fa fa-files-o"></i>Duplicate</Dropdown.Item>
+                                          <Dropdown.Item href="#/action-4" class="dropdown-item edit"> <i class="fa fa-arrows"></i>Move Project To</Dropdown.Item>
+                                          <hr />
+                                          <Dropdown.Item href="#/action-5" class="dropdown-item remove"> <i class="fa fa-trash"></i>Delete</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                   </Dropdown>
+                                  </div>
+
+                                  {/* Close Mydropdown Code */}
                         </div>
                       </div>
                     </div>
