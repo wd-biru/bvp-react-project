@@ -20,17 +20,17 @@ class UploadPageSection extends React.Component {
     e.preventDefault();
     let formData = new FormData(this.formRef);
     this.state.filesName.forEach(file => {
-      formData.append("media[]", file, file.name);
+      formData.append("media", file, file.name);
       formData.append("user_id", Number(userId));
-      formData.append("folder_id", this.props.isActiveObject.id);
+      formData.append("folder_id", 109);
     });
-    // const userId = localStorage.getItem("userId");
-    const paylaod = {
-      user_id: Number(userId),
-      folder_id: this.props.isActiveObject.id,
-      media: formData
-    };
-    console.log(paylaod);
+    // // const userId = localStorage.getItem("userId");
+    // const paylaod = {
+    //   user_id: Number(userId),
+    //   folder_id: this.props.isActiveObject.id,
+    //   media: formData
+    // };
+    // console.log(paylaod);
     this.props.getUploadFolderData(formData);
   };
   render() {

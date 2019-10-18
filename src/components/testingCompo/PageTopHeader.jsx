@@ -124,7 +124,7 @@ class PageTopHeader extends React.Component {
               value="UPLOAD"
               className="UPLOAD"
               onClick={this.handleUploadData}
-              disabled={this.props.isActiveObject ? false : true}
+              disabled={false}
             />
           </div>
         </div>

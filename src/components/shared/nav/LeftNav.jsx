@@ -8,8 +8,6 @@ import Modal from "../../shared/modal/Modal";
 import Myfolder from "./img/myfolder.png";
 import NavItems from "./navItem";
 
-const userId = localStorage.getItem("userId");
-
 const customStyles = {
   content: {
     top: "50%",
@@ -41,9 +39,9 @@ class LeftNavbar extends React.Component {
   }
 
   componentDidMount() {
+    const userId = localStorage.getItem("userId");
     const payload = {
-      user_id: Number(userId),
-      parent_id: 0
+      user_id: Number(userId)
     };
     this.props.getUserFolderData(payload);
   }
@@ -60,18 +58,8 @@ class LeftNavbar extends React.Component {
     });
   };
 
-  // handleToastMessage = () => {
-  //   let toastMsg = "Created successfully";
-  //   if (this.state.editMode) {
-  //     toastMsg = "Updated successfully";
-  //   }
-  //   if (this.state.deleteMode) {
-  //     toastMsg = "Deleted successfully";
-  //   }
-  //   return toastMsg;
-  // };
-
   componentDidUpdate(prevProps) {
+    const userId = localStorage.getItem("userId");
     const payload = {
       user_id: Number(userId)
     };

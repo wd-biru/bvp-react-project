@@ -4,24 +4,46 @@ import LeftNav from "../components/shared/nav/LeftNav";
 import TopPageHeader from "../components/testingCompo/PageTopHeader";
 import Breadcromb from "../components/testingCompo/Breadcromb";
 import Footer from "../components/shared/footer/Footer";
-import SectionImg2 from "../assets/img/me/images.jpg";
 import util from "../apiAction/axios/utility";
 import {
   getUserFolderData,
   createFolderData
 } from "../apiAction/apiType/userFolder/folderActions";
+import FileType from "../components/upload/FileType";
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isActiveObject: null,
-      activeIndex: null
+      activeIndex: null,
+      userFileData: this.props.isActiveObject
+        ? this.props.isActiveObject.files
+        : null
     };
   }
   handleFolderData = selectedFolder => {
     this.setState({
-      isActiveObject: selectedFolder
+      isActiveObject: selectedFolder,
+      userFileData: selectedFolder.files
+    });
+  };
+
+  filterUserData = (itemType, activeItem, index) => {
+    let activeObjectFileData = activeItem.files;
+    activeObjectFileData = activeObjectFileData.filter(
+      data => data.type === itemType
+    );
+    this.setState({
+      userFileData: activeObjectFileData
+    });
+    if (itemType === "all") {
+      this.setState({
+        userFileData: activeItem.files
+      });
+    }
+    this.setState({
+      activeIndex: index
     });
   };
 
@@ -44,21 +66,25 @@ class Dashboard extends Component {
             getUserFolderData={this.props.getUserFolderData}
             isActiveObject={this.state.isActiveObject}
           />
-          <Breadcromb />
+          <Breadcromb
+            filterUserData={this.filterUserData}
+            isActiveObject={this.state.isActiveObject}
+            activeIndex={this.state.activeIndex}
+          />
           <section className="tables">
             <div className="container-fluid">
               <div className="tab-content">
                 <div className="tab-pane container active col-lg-12" id="home">
                   <div className="row">
-                    <div className="col-lg-3">
-                      <div className="cardss">
-                        <div className="card-body">
-                          <img src={SectionImg2} alt="John" />
-                          {this.state.isActiveObject &&
-                            this.state.isActiveObject.folder_name}
-                        </div>
-                      </div>
-                    </div>
+                    {this.state.isActiveObject &&
+                      this.state.userFileData.map(data => {
+                        return (
+                          <FileType
+                            data={data}
+                            isActiveObject={this.state.isActiveObject}
+                          />
+                        );
+                      })}
                   </div>
                 </div>
               </div>
