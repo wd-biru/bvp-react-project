@@ -71,17 +71,16 @@ class Dashboard extends Component {
             isActiveObject={this.state.isActiveObject}
             activeIndex={this.state.activeIndex}
           />
-          <section className="tables">
+          <section className="tables list-view">
             <div className="container-fluid">
               <div className="tab-content">
                 <div className="tab-pane container active col-lg-12" id="home2">
                   <div className="row">
-                   
-                    {this.state.isActiveObject &&
+                  
+                  {this.state.isActiveObject &&
                       this.state.userFileData.map(data => {
-                        
                         return (
-                         
+                          
                           <FileType
                             data={data}
                             isActiveObject={this.state.isActiveObject}
@@ -89,7 +88,10 @@ class Dashboard extends Component {
                           
                         );
                         
+                    
+                        
                       })}
+                      
                      
                   </div>
                 </div>

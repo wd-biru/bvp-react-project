@@ -8,7 +8,7 @@ const UploadBreadcrumb = () => {
               <li className="breadcrumb-item active">Upload</li>
             </ul>
             <div className="uload-close">
-            <a href="dashboard.html"><i class="material-icons icon-close">**</i></a>
+            <button type="button" class="close" data-dismiss="modal">×</button>
             </div>
     </div>
     );

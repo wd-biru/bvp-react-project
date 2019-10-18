@@ -40,7 +40,6 @@ class UploadPageSection extends React.Component {
           <div className="row">
             <div className="col-lg-5 mx-auto">
               <div className="p-1 rounded-lg">
-                <h6 className="text-center mb-4 text-muted">Upload a file</h6>
                 <Dropzone onDrop={this.onDrop}>
                   {({ getRootProps, getInputProps, isDragActive }) => (
                     <div {...getRootProps()}>
@@ -56,6 +55,7 @@ class UploadPageSection extends React.Component {
                     </div>
                   )}
                 </Dropzone>
+                <h6 className="text-center mb-4 text-muted">Upload a file</h6>
                 <h6 className="text-center mb-4 text-muted">
                   Drop files here or choose an upload option below
                 </h6>
@@ -67,7 +67,7 @@ class UploadPageSection extends React.Component {
                     id="fileUpload"
                     type="button"
                     onClick={event => this.handleUpload(event)}
-                    value={"Upload a file"}
+                    value={"Upload a Local file"}
                   />
                 </label>
                 <br />
