@@ -525,3 +525,11 @@ label.file-upload.btn.btn-primary.btn-block.rounded-pill.shadow {
   color: #000;
 }
 /* Upload page css end */
+.breadcrumb-holder .nav-pills li {
+  padding-left: 0 !important;
+  padding-right: 2rem !important;
+  padding: 0.5rem 1rem;
+  color: #aaa;
+  font-weight: 300;
+  font-size: .8rem !important;
+}
