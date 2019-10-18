@@ -3527,3 +3527,7 @@ nav.side-navbar ul li i {
   margin-right: 10px;
   vertical-align: middle;
 }
+.modal-header .close {
+  padding: 1rem 1rem;
+  margin: -1rem 0rem -1rem auto;
+}
