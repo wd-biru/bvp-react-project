@@ -22,9 +22,9 @@ class UploadPageSection extends React.Component {
     this.state.filesName.forEach(file => {
       formData.append("media[]", file, file.name);
       formData.append("user_id", Number(userId));
-      formData.append("folder_id", 109);
+      formData.append("folder_id", this.props.isActiveObject.id );
     });
-    // // const userId = localStorage.getItem("userId");
+    // const userId = localStorage.getItem("userId");
     // const paylaod = {
     //   user_id: Number(userId),
     //   folder_id: this.props.isActiveObject.id,

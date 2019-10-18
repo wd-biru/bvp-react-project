@@ -125,6 +125,7 @@ class LeftNavbar extends React.Component {
   };
 
   createFolder = actionType => {
+    const userId=localStorage.getItem('userId');
     const payLoad = {
       folder_name: this.state.deleteMode
         ? this.props.isActiveObject.folder_name

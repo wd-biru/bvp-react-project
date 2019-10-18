@@ -74,17 +74,23 @@ class Dashboard extends Component {
           <section className="tables">
             <div className="container-fluid">
               <div className="tab-content">
-                <div className="tab-pane container active col-lg-12" id="home">
+                <div className="tab-pane container active col-lg-12" id="home2">
                   <div className="row">
+                   
                     {this.state.isActiveObject &&
                       this.state.userFileData.map(data => {
+                        
                         return (
+                         
                           <FileType
                             data={data}
                             isActiveObject={this.state.isActiveObject}
                           />
+                          
                         );
+                        
                       })}
+                     
                   </div>
                 </div>
               </div>
