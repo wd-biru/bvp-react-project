@@ -562,3 +562,16 @@ input#fileUpload {
   padding-bottom: 47px !important;
   background-color: #eeeeee;
 }
+i.fa.fa-gear {
+  color: #796aee;
+}
+.card-close {
+  position: absolute;
+  bottom: 6px;
+  right: 12px;
+  top: auto;
+}
+.card-close .dropdown-menu a {
+  color: #999 !important;
+  height: 27px;
+}
