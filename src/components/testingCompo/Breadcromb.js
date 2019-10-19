@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import '../../assets/css/Me_custom.css';
+
 class Breadcromb extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +20,7 @@ class Breadcromb extends Component {
           <ul className="nav nav-pills">
             {filterType.map((itemType, index) => {
               return (
+                
                 <li
                   className={this.props.activeIndex === index ? "active" : ""}
                   onClick={() =>
@@ -30,6 +33,7 @@ class Breadcromb extends Component {
                 >
                   {itemType.name}
                 </li>
+                
               );
             })}
           </ul>

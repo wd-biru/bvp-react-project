@@ -16,24 +16,29 @@ class FileType extends React.Component {
         <div className="cardss">
           {this.props.data.type === "video" && (
             <div className="card-body">
-              <video width="400" controls>
+              
+              <video controls>
                 <source
                   src={`${filePath}/${this.props.data.file}`}
                   type="video/mp4"
                 />
-                Your browser does not support HTML5 video.
               </video>
-              {this.props.isActiveObject.folder_name} <br />
-              {this.handleFileType(`${filePath}/${this.props.data.file}`)}{" "}
+              <div className="cappadd">
+              <h5>{this.props.isActiveObject.folder_name}</h5>
+              <p className="title">{this.handleFileType(`${filePath}/${this.props.data.file}`)}{" "} </p>
+            </div>
             </div>
           )}
           {this.props.data.type === "image" && (
             <div className="cardss">
               <div className="card-body">
                 <img src={`${filePath}/${this.props.data.file}`} alt="John" />
-                {this.props.isActiveObject.folder_name}
-                <br />
+                <div className="cappadd">
+                <h5>{this.props.isActiveObject.folder_name}</h5>
+                <p className="title">
                 {this.handleFileType(`${filePath}/${this.props.data.file}`)}
+                </p>
+                </div>
               </div>
             </div>
           )}
@@ -43,13 +48,17 @@ class FileType extends React.Component {
                 <a href={`${filePath}/${this.props.data.file}`}>
                   {this.handleFileType(`${filePath}/${this.props.data.file}`)}
                 </a>
+                <div className="cappadd">
                 <br />
-                {this.props.isActiveObject.folder_name}
+                <h5>{this.props.isActiveObject.folder_name}</h5>
+                <p className="title">doc</p>
+                </div>
               </div>
             </div>
           )}
+          </div>
         </div>
-      </div>
+      
     );
   }
 }
