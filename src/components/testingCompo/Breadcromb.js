@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import '../../assets/css/Me_custom.css';
+import "../../assets/css/Me_custom.css";
 
 class Breadcromb extends Component {
   constructor(props) {
@@ -20,8 +20,8 @@ class Breadcromb extends Component {
           <ul className="nav nav-pills">
             {filterType.map((itemType, index) => {
               return (
-                
                 <li
+                  key={itemType}
                   className={this.props.activeIndex === index ? "active" : ""}
                   onClick={() =>
                     this.props.filterUserData(
@@ -33,7 +33,6 @@ class Breadcromb extends Component {
                 >
                   {itemType.name}
                 </li>
-                
               );
             })}
           </ul>

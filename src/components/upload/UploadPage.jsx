@@ -16,7 +16,9 @@ class UploadPage extends React.Component {
         <MainNavbarHeader />
         <div className="page-content d-flex align-items-stretch">
           <div className="content-inner upload">
-            <UploadBreadcrumb />
+            <UploadBreadcrumb
+              handleUploadClose={this.props.handleUploadClose}
+            />
             <UploadPageSection
               getUploadFolderData={this.props.getUploadFolderData}
               isActiveObject={this.props.isActiveObject}

@@ -102,6 +102,12 @@ class PageTopHeader extends React.Component {
     });
   };
 
+  handleUploadClose = () => {
+    this.setState({
+      showUploadModal: false
+    });
+  };
+
   render() {
     return (
       <header className="page-header">
@@ -116,7 +122,7 @@ class PageTopHeader extends React.Component {
               data-toggle="modal"
               data-target="#myModal"
               onClick={this.handleProjectFolder}
-              disabled={this.props.isActiveObject ? false : true}
+              // disabled={this.props.isActiveObject ? false : true}
             />
             <input
               type="button"
@@ -177,6 +183,7 @@ class PageTopHeader extends React.Component {
           <UploadPage
             getUploadFolderData={this.props.getUploadFolderData}
             isActiveObject={this.props.isActiveObject}
+            handleUploadClose={this.handleUploadClose}
           />
         )}
       </header>
