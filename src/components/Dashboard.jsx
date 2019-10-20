@@ -16,18 +16,50 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       isActiveObject: null,
-      activeIndex: null,
+      activeIndex: 0,
+      projectActiveIndex: 0,
       userFileData: this.props.isActiveObject
         ? this.props.isActiveObject.files
-        : null
+        : null,
+      renderHomeChild: true,
+      activeProject: null,
+      handleListView: false
     };
   }
   handleFolderData = selectedFolder => {
     this.setState({
       isActiveObject: selectedFolder,
-      userFileData: selectedFolder.files
+      activeIndex: 0,
+      userFileData:
+        this.state.activeIndex === 0
+          ? selectedFolder.children
+          : selectedFolder.files
     });
   };
+
+  componentDidUpdate(prevProps) {
+    const userId = localStorage.getItem("userId");
+    const payload = {
+      user_id: Number(userId)
+    };
+    const foldChildren =
+      this.props.folderDetails &&
+      this.props.folderDetails.data.data.filter(folderData => {
+        if (folderData.id === this.state.isActiveObject.id) {
+          return folderData.children;
+        }
+      });
+    if (
+      prevProps.folderDetails !== this.props.folderDetails &&
+      this.props.folderDetails.data.code === 200
+    ) {
+      this.props.getUserFolderData(payload);
+      this.setState({
+        activeIndex: 0,
+        userFileData: foldChildren[0].children
+      });
+    }
+  }
 
   filterUserData = (itemType, activeItem, index) => {
     let activeObjectFileData = activeItem.files;
@@ -42,8 +74,35 @@ class Dashboard extends Component {
         userFileData: activeItem.files
       });
     }
+    if (itemType === "project") {
+      this.setState({
+        userFileData: activeItem.children
+      });
+    }
     this.setState({
       activeIndex: index
+    });
+  };
+
+  handleHomeToggle = () => {
+    this.setState({
+      renderHomeChild: !this.state.renderHomeChild
+      // isActiveObject: null,
+      // activeIndex: 0
+    });
+  };
+
+  handleActiveProject = (data, index) => {
+    console.log(data);
+    this.setState({
+      activeProject: data,
+      projectActiveIndex: index
+    });
+  };
+
+  handleListView = () => {
+    this.setState({
+      handleListView: !this.state.handleListView
     });
   };
 
@@ -57,6 +116,8 @@ class Dashboard extends Component {
           folderDetails={this.props.folderDetails}
           getUserFolderData={this.props.getUserFolderData}
           createFolderData={this.props.createFolderData}
+          handleHomeToggle={this.handleHomeToggle}
+          renderHomeChild={this.state.renderHomeChild}
         />
         <div className="content-inner">
           <TopPageHeader
@@ -64,35 +125,49 @@ class Dashboard extends Component {
             createFolderData={this.props.createFolderData}
             folderDetails={this.props.folderDetails}
             getUserFolderData={this.props.getUserFolderData}
-            isActiveObject={this.state.isActiveObject}
+            activeProject={this.state.activeProject}
           />
           <Breadcromb
             filterUserData={this.filterUserData}
             isActiveObject={this.state.isActiveObject}
             activeIndex={this.state.activeIndex}
+            handleListView={this.handleListView}
           />
-          <section className="tables list-view">
-            <div className="container-fluid">
-              <div className="tab-content">
-                <div className="tab-pane container active col-lg-12" id="home2">
-                  <div className="row">
-                  
-                  {this.state.isActiveObject &&
-                      this.state.userFileData.map(data => {
-                        return (
-                          
-                          <FileType
-                            data={data}
-                            isActiveObject={this.state.isActiveObject}
-                          />
-                          
-                        );
-                      })}
+          {!this.state.handleListView ? (
+            <section className="tables list-view">
+              <div className="container-fluid">
+                <div className="tab-content">
+                  <div
+                    className="tab-pane container active col-lg-12"
+                    id="home2"
+                  >
+                    <div className="row">
+                      {this.state.isActiveObject && this.state.userFileData
+                        ? this.state.userFileData.map((data, index) => {
+                            return (
+                              <FileType
+                                data={data}
+                                index={index}
+                                activeClass={
+                                  this.state.projectActiveIndex === index
+                                    ? true
+                                    : false
+                                }
+                                isActiveObject={this.state.isActiveObject}
+                                activeIndex={this.state.activeIndex}
+                                handleActiveProject={this.handleActiveProject}
+                              />
+                            );
+                          })
+                        : null}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          ) : (
+            "TableView"
+          )}
           <Footer />
         </div>
       </>

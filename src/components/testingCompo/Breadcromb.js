@@ -5,6 +5,9 @@ import "../../assets/css/Me_custom.css";
 class Breadcromb extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      defaultActive: "Project"
+    };
   }
   render() {
     const filterType = [
@@ -21,7 +24,7 @@ class Breadcromb extends Component {
             {filterType.map((itemType, index) => {
               return (
                 <li
-                  key={itemType}
+                  key={index}
                   className={this.props.activeIndex === index ? "active" : ""}
                   onClick={() =>
                     this.props.filterUserData(
@@ -37,15 +40,12 @@ class Breadcromb extends Component {
             })}
           </ul>
           <div className="secund-menu-listview">
-            <a href="">
-              <i className="fa fa-sort"></i> Date Added
-            </a>
-            <a href="">
-              <i className="fa fa-clock-o" aria-hidden="true"></i> All Time
-            </a>
-            <a href="">
-              <i className="fa fa-bars"></i> List View
-            </a>
+            <ul className="nav nav-pills">
+              <li className="fa fa-sort">Date Added</li>
+              <li className="fa fa-bars" onClick={this.props.handleListView}>
+                List View
+              </li>
+            </ul>
           </div>
         </div>
       </>

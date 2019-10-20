@@ -31,7 +31,7 @@ class UploadPageSection extends React.Component {
     this.state.filesName.forEach(file => {
       formData.append("media[]", file, file.name);
       formData.append("user_id", Number(userId));
-      formData.append("folder_id", this.props.isActiveObject.id);
+      formData.append("folder_id", this.props.activeProject.id);
     });
 
     this.props.getUploadFolderData(formData);

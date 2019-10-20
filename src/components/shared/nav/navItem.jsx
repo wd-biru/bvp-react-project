@@ -1,6 +1,5 @@
 import React from "react";
-import createproject from './img/createproject.png';
-
+import createproject from "./img/createproject.png";
 
 class NavItems extends React.Component {
   constructor(props) {
@@ -46,14 +45,11 @@ class NavItems extends React.Component {
                           e.stopPropagation();
                         }}
                       >
-                        {folderData.folder_status===1 ? 
-                          <img src={createproject}
-                          className="createproject" /> : 
+                        {folderData.folder_status === 1 ? (
+                          <img src={createproject} className="createproject" />
+                        ) : (
                           <i className="far fa-folder"></i>
-                         }
-                        
-                        {/* <i className="far fa-folder"></i> */}
-                        {/* <img src={createproject} className="createproject" /> */}
+                        )}
 
                         {folderData.folder_name}
                       </span>
@@ -75,21 +71,6 @@ class NavItems extends React.Component {
                           ></i>
                         </span>
                       )}
-
-                      {selectedItem &&
-                        selectedItem.id === folderData.id &&
-                        selectedItem.children && (
-                          <NavItems
-                            data={selectedItem.children}
-                            handleFolderData={this.props.handleFolderData}
-                            handleEdit={() =>
-                              this.props.handleEdit(this.props.isActiveObject)
-                            }
-                            handleDelete={() =>
-                              this.props.handleDelete(this.props.isActiveObject)
-                            }
-                          />
-                        )}
                     </li>
                   </ul>
                 </li>

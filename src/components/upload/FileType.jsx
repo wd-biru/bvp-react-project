@@ -1,6 +1,6 @@
 import React from "react";
-import DashboardDropDown from './DashboardDropDown';
-import docuImg from '../../assets/img/docimg.jpg';
+import DashboardDropDown from "./DashboardDropDown";
+import docuImg from "../../assets/img/docimg.jpg";
 
 class FileType extends React.Component {
   constructor(props) {
@@ -16,6 +16,24 @@ class FileType extends React.Component {
     return (
       <div className="col-lg-3">
         <div className="cardss">
+          {this.props.activeIndex === 0 && (
+            <div
+              className={`cardss ${this.props.activeClass ? "active" : ""}`}
+              onClick={() =>
+                this.props.handleActiveProject(
+                  this.props.data,
+                  this.props.index
+                )
+              }
+            >
+              <div className="card-body">
+                <div className="cappadd">
+                  <h5>{this.props.data.folder_name}</h5>
+                  <DashboardDropDown />
+                </div>
+              </div>
+            </div>
+          )}
           {this.props.data.type === "video" && (
             <div className="card-body">
               <video controls>
@@ -25,10 +43,12 @@ class FileType extends React.Component {
                 />
               </video>
               <div className="cappadd">
-              <h5>{this.props.isActiveObject.folder_name}</h5>
-              <p className="title">{this.handleFileType(`${filePath}/${this.props.data.file}`)}{" "} </p>
-              <DashboardDropDown />
-            </div>
+                <h5>{this.props.isActiveObject.folder_name}</h5>
+                <p className="title">
+                  {this.handleFileType(`${filePath}/${this.props.data.file}`)}{" "}
+                </p>
+                <DashboardDropDown />
+              </div>
             </div>
           )}
           {this.props.data.type === "image" && (
@@ -36,11 +56,11 @@ class FileType extends React.Component {
               <div className="card-body">
                 <img src={`${filePath}/${this.props.data.file}`} alt="John" />
                 <div className="cappadd">
-                <h5>{this.props.isActiveObject.folder_name}</h5>
-                <p className="title">
-                {this.handleFileType(`${filePath}/${this.props.data.file}`)}
-                </p>
-                <DashboardDropDown />
+                  <h5>{this.props.isActiveObject.folder_name}</h5>
+                  <p className="title">
+                    {this.handleFileType(`${filePath}/${this.props.data.file}`)}
+                  </p>
+                  <DashboardDropDown />
                 </div>
               </div>
             </div>
@@ -48,25 +68,17 @@ class FileType extends React.Component {
           {this.props.data.type === "document" && (
             <div className="cardss">
               <div className="card-body">
-                {/* <a href={`${filePath}/${this.props.data.file}`}>
+                <img src={docuImg} />
+                <div className="cappadd">
+                  <h5>{this.props.isActiveObject.folder_name}</h5>
                   {this.handleFileType(`${filePath}/${this.props.data.file}`)}
-                </a>
-                <div className="cappadd">
-                <br />
-                <h5>{this.props.isActiveObject.folder_name}</h5>
-                <p className="title">doc</p> */}
-                <img src={docuImg} /> 
-                <div className="cappadd">
-                <h5>{this.props.isActiveObject.folder_name}</h5>
-                {this.handleFileType(`${filePath}/${this.props.data.file}`)}
-                <DashboardDropDown />
+                  <DashboardDropDown />
                 </div>
               </div>
             </div>
           )}
-          </div>
         </div>
-      
+      </div>
     );
   }
 }

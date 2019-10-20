@@ -59,10 +59,10 @@ class LeftNavbar extends React.Component {
   };
 
   componentDidUpdate(prevProps) {
-    const userId = localStorage.getItem("userId");
-    const payload = {
-      user_id: Number(userId)
-    };
+    // const userId = localStorage.getItem("userId");
+    // const payload = {
+    //   user_id: Number(userId)
+    // };
     if (
       prevProps.folderDetails !== this.props.folderDetails &&
       this.props.folderDetails.data.code === 200
@@ -74,7 +74,7 @@ class LeftNavbar extends React.Component {
       });
       this.closeModal();
       this.handleResetFields();
-      this.props.getUserFolderData(payload);
+      // this.props.getUserFolderData(payload);
     } else if (
       prevProps.folderDetails !== this.props.folderDetails &&
       this.props.folderDetails.data.code !== 200
@@ -103,15 +103,6 @@ class LeftNavbar extends React.Component {
     });
   };
 
-  handleParentId = () => {
-    let parentId = 0;
-    if (this.props.isActiveObject) {
-      parentId = this.props.isActiveObject.id;
-    }
-
-    return parentId;
-  };
-
   handleFolderId = () => {
     let folderId = 0;
     if (
@@ -125,15 +116,14 @@ class LeftNavbar extends React.Component {
   };
 
   createFolder = actionType => {
-    const userId=localStorage.getItem('userId');
+    const userId = localStorage.getItem("userId");
     const payLoad = {
       folder_name: this.state.deleteMode
         ? this.props.isActiveObject.folder_name
         : this.state.folderName,
       user_id: Number(userId),
-      parent_id: this.handleParentId(),
+      parent_id: 0,
       action: actionType,
-      //folder_id: this.props.isActiveObject ? this.props.isActiveObject.id : 0
       folder_id: this.handleFolderId()
     };
     this.setState({
@@ -191,21 +181,17 @@ class LeftNavbar extends React.Component {
     const actionType = this.renderModalBtnText().toLowerCase();
     return (
       <>
-        {/* Sidebar Header*/}
         <div className="nav-sidebar-main">
           <div className="sidebar-header d-flex align-items-center">
             <div className="title">
               <h1 className="h4">
-                My Folder{" "}
+                My Folder
                 <img src={Myfolder} onClick={this.handleCreateFolder} />
               </h1>
             </div>
           </div>
-          {/* Sidebar Navidation Menus*/}
-          {/* <span className="heading">Main</span> */}
-
           <ul className="list-unstyled">
-            <li className="">
+            <li className="" onClick={() => this.props.handleHomeToggle()}>
               <span>
                 {this.props.userFolderDetails &&
                   this.props.userFolderDetails.folders.length}
@@ -215,21 +201,23 @@ class LeftNavbar extends React.Component {
             </li>
           </ul>
         </div>
-        <nav className="side-navbar">
-          <ul className="list-unstyled">
-            <NavItems
-              data={
-                this.props.userFolderDetails
-                  ? this.props.userFolderDetails.folders
-                  : null
-              }
-              handleFolderData={this.props.handleFolderData}
-              handleEdit={this.handleEdit}
-              handleDelete={this.handleDelete}
-              isActiveObject={this.props.isActiveObject}
-            />
-          </ul>
-        </nav>
+        {this.props.renderHomeChild ? (
+          <nav className="side-navbar">
+            <ul className="list-unstyled">
+              <NavItems
+                data={
+                  this.props.userFolderDetails
+                    ? this.props.userFolderDetails.folders
+                    : null
+                }
+                handleFolderData={this.props.handleFolderData}
+                handleEdit={this.handleEdit}
+                handleDelete={this.handleDelete}
+                isActiveObject={this.props.isActiveObject}
+              />
+            </ul>
+          </nav>
+        ) : null}
         {this.state.showModal && (
           <Modal
             modalIsOpen={this.state.showModal}
@@ -257,13 +245,11 @@ class LeftNavbar extends React.Component {
                   name="folderName"
                   key={this.state.inputDefaultText}
                   className="form-control"
-                  // placeholder={this.state.inputDefaultText}
                   defaultValue={
                     this.props.isActiveObject
                       ? this.props.isActiveObject.folder_name
                       : this.state.folder_name
                   }
-                  //value={this.state.folderName}
                   onChange={this.handleInputChange}
                 />
               ) : (

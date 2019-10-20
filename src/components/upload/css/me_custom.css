@@ -397,6 +397,9 @@ header.page-header {
 .cardss {
     position: relative;
 }
+.cardss .active {
+    border: 1px solid #bb6a6a;
+}
 /* Dashboard page css end */
 
 /* modal popup css start */
