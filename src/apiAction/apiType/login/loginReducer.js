@@ -5,6 +5,7 @@ const initialState = {
 };
 
 export default function userReducer(state = initialState, action) {
+
   switch (action.type) {
     case userDataConsts.USER_DATA_SUCCESS:
       return {
@@ -18,6 +19,11 @@ export default function userReducer(state = initialState, action) {
         error: action.payload,
         userData: null
       };
+      case userDataConsts.USER_LOGOUT:
+      return {
+          ...state,         
+          userData: null
+        };
 
     default:
       return state;

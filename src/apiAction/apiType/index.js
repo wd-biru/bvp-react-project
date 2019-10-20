@@ -1,6 +1,6 @@
 import { all } from "redux-saga/effects";
 
-import { fetchUserDataSaga } from "./login/loginSaga";
+import { fetchUserDataSaga,logoutUserSaga } from "./login/loginSaga";
 import {
   fetchFolderDataSaga,
   fetchUserFolderDataSaga,
@@ -9,10 +9,12 @@ import {
 
 function* rootSaga() {
   yield all([
+    logoutUserSaga(),
     fetchUserDataSaga(),
     fetchFolderDataSaga(),
     fetchUserFolderDataSaga(),
     fetchUploadFolderDataSaga()
+
   ]);
 }
 

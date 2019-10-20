@@ -4,14 +4,23 @@ import util from "./apiAction/axios/utility";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/Custom.css";
 import "./assets/css/Me_responsive.css";
-
+//import { logoutUser } from "../../apiAction/apiType/login/loginActions";
+import {logoutUser} from "../src/apiAction/apiType/login/loginActions"
 import Login from "./components/login/Login";
-import TopHeader from "./components/shared/header/Header";
+//import TopHeader from "./components/shared/header/Header";
 import LeftNav from "./components/shared/nav/LeftNav";
 import Footer from "./components/shared/footer/Footer";
+import Header from "./components/shared/header/Header";
 //import Studio from './components/studio-me/Studio';
 
 class App extends Component {
+
+
+  logout= ()=> { 
+    this.props.logoutUser({})
+    }
+
+
   render() {
     const userToken = localStorage.getItem("userToken");
     return (
@@ -20,7 +29,7 @@ class App extends Component {
           <div className="App">
             <body className="dashboardsty">
               <div className="page">
-                <TopHeader />
+              <Header Clickhandle={this.logout} />
                 {this.props.children}
               </div>
             </body>
@@ -36,5 +45,5 @@ class App extends Component {
 const mapStateToProps = state => ({
   userData: state.userDataResponse.userData
 });
+export default util.storeConnect(App, mapStateToProps,{ logoutUser});
 
-export default util.storeConnect(App, mapStateToProps);

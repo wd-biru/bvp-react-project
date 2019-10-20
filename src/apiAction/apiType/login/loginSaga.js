@@ -1,12 +1,13 @@
 import { userDataConsts } from "../login/loginActions";
 import { call, put, takeLatest } from "redux-saga/effects";
-import { getUserData } from "../login/loginApi";
+import { getUserData,logoutUserData } from "../login/loginApi";
 
 export function* fetchUserDataSaga() {
   yield takeLatest(userDataConsts.USER_DATA_REQUEST, fetchUserData);
 }
 
 function* fetchUserData(action) {
+
   const userData = yield call(() => {
     return getUserData(action.data);
   });
@@ -21,4 +22,18 @@ function* fetchUserData(action) {
       type: userDataConsts.USER_DATA_FAIL
     });
   }
+}
+
+export function* logoutUserSaga() {
+  
+  yield takeLatest(userDataConsts.USER_LOGOUTREQUEST,logoutUser);
+}
+
+function* logoutUser(action) {
+  
+  yield call(() => {logoutUserData()});
+   yield put({
+    payload: null,
+    type: userDataConsts.USER_LOGOUT
+  }); 
 }

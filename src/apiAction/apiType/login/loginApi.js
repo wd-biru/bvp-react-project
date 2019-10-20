@@ -13,3 +13,9 @@ export function getUserData(data) {
     })
     .catch(err => err);
 }
+export function logoutUserData() {
+   
+      localStorage.removeItem("userToken");
+      localStorage.removeItem("userId");
+       
+}
