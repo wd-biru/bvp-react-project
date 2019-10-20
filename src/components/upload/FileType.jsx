@@ -1,4 +1,6 @@
 import React from "react";
+import DashboardDropDown from './DashboardDropDown';
+import docuImg from '../../assets/img/docimg.jpg';
 
 class FileType extends React.Component {
   constructor(props) {
@@ -16,7 +18,6 @@ class FileType extends React.Component {
         <div className="cardss">
           {this.props.data.type === "video" && (
             <div className="card-body">
-              
               <video controls>
                 <source
                   src={`${filePath}/${this.props.data.file}`}
@@ -26,6 +27,7 @@ class FileType extends React.Component {
               <div className="cappadd">
               <h5>{this.props.isActiveObject.folder_name}</h5>
               <p className="title">{this.handleFileType(`${filePath}/${this.props.data.file}`)}{" "} </p>
+              <DashboardDropDown />
             </div>
             </div>
           )}
@@ -38,6 +40,7 @@ class FileType extends React.Component {
                 <p className="title">
                 {this.handleFileType(`${filePath}/${this.props.data.file}`)}
                 </p>
+                <DashboardDropDown />
                 </div>
               </div>
             </div>
@@ -45,13 +48,18 @@ class FileType extends React.Component {
           {this.props.data.type === "document" && (
             <div className="cardss">
               <div className="card-body">
-                <a href={`${filePath}/${this.props.data.file}`}>
+                {/* <a href={`${filePath}/${this.props.data.file}`}>
                   {this.handleFileType(`${filePath}/${this.props.data.file}`)}
                 </a>
                 <div className="cappadd">
                 <br />
                 <h5>{this.props.isActiveObject.folder_name}</h5>
-                <p className="title">doc</p>
+                <p className="title">doc</p> */}
+                <img src={docuImg} /> 
+                <div className="cappadd">
+                <h5>{this.props.isActiveObject.folder_name}</h5>
+                {this.handleFileType(`${filePath}/${this.props.data.file}`)}
+                <DashboardDropDown />
                 </div>
               </div>
             </div>

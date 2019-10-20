@@ -591,4 +591,9 @@ img.createproject {
     width: 15px;
     margin-right: 5px;
 }
+nav.side-navbar ul li i {
+    font-size: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
 
