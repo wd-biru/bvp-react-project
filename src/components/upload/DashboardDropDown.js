@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 
-function DashboardDropDown() {
+class DashboardDropDown extends Component {
+
+    // shoot = e => {
+    //     alert('hello'); 
+    //   }
+    deleteHandler(i, e) {
+        e.preventDefault();
+        this.props.onDelete(this.props.blogPosts[i].id);
+    };
+    
+      render(){
     return (
         <div>
           <div class="cappadd-bot">
@@ -19,12 +29,14 @@ function DashboardDropDown() {
                             <Dropdown.Item href="#/action-3" class="dropdown-item edit"> <i class="fa fa-files-o"></i>Duplicate</Dropdown.Item>
                             <Dropdown.Item href="#/action-4" class="dropdown-item edit"> <i class="fa fa-arrows"></i>Move Project To</Dropdown.Item>
                             <hr />
-                       <Dropdown.Item href="#/action-5" class="dropdown-item remove"> <i class="fa fa-trash"></i>Delete</Dropdown.Item>
+                       {/* <Dropdown.Item onClick={e => { this.shoot(this.props.id) }} class="dropdown-item remove"> <i class="fa fa-trash"></i>Delete</Dropdown.Item> */}
+                       <Dropdown.Item onClick={this.deleteHandler.bind(this, i)} class="dropdown-item remove"> <i class="fa fa-trash"></i>Delete</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
     </div>
     )
 }
+}
 
-export default DashboardDropDown
+export default DashboardDropDown;

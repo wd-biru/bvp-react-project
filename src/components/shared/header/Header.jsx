@@ -1,12 +1,10 @@
 import React from "react";
-//import HeaderRight from "./HeaderRight";
 import logo from "./studio-bvp-logo.png";
-import './css/MystyleDefault.css';
-import './css/me_custom.css';
-import './css/me_responsive.css';
+
+import PropTypes from 'prop-types';
 
 
-function Header() {
+const Header = ({ Clickhandle }) => {
   return (
     <header className="header">
         <nav className="navbar">
@@ -39,7 +37,7 @@ function Header() {
                 <li className="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link"><i className="fa fa-bell"></i></a>
                 </li>
                 {/* Logout    */}
-                <li className="nav-item"><a href="login.html" className="nav-link logout"> <i className="fa fa-user"></i></a></li>
+                <li className="nav-item" onClick={Clickhandle }><a href="#" className="nav-link logout"> <i className="fa fa-user"></i></a></li>
               </ul>
             </div>
           </div>
@@ -47,5 +45,11 @@ function Header() {
     </header>
   );
 }
+
+Header.propTypes = {
+  Clickhandle: PropTypes.func.isRequired,
+};
+
+
 export default Header;
 
