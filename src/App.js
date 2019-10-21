@@ -4,8 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/Custom.css";
 import "./assets/css/Me_responsive.css";
 import Login from "./components/login/Login";
-import LeftNav from "./components/shared/nav/LeftNav";
-import Footer from "./components/shared/footer/Footer";
+
 import Header from "./components/shared/header/Header";
 
 class App extends Component {
