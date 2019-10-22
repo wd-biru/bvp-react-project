@@ -22,6 +22,8 @@ class UploadPage extends React.Component {
             <UploadPageSection
               getUploadFolderData={this.props.getUploadFolderData}
               activeProject={this.props.activeProject}
+              uploadFolderData={this.props.uploadFolderData}
+              handleUploadClose={this.props.handleUploadClose}
             />
             <Footer />
           </div>

@@ -10,6 +10,20 @@ import {
   createFolderData
 } from "../apiAction/apiType/userFolder/folderActions";
 import FileType from "../components/upload/FileType";
+import DataTable from "react-data-table-component";
+
+const columns = [
+  {
+    name: "Id",
+    selector: "id",
+    sortable: true
+  },
+  {
+    name: "Project Name",
+    selector: "folder_name",
+    sortable: true
+  }
+];
 
 class Dashboard extends Component {
   constructor(props) {
@@ -17,7 +31,7 @@ class Dashboard extends Component {
     this.state = {
       isActiveObject: null,
       activeIndex: 0,
-      projectActiveIndex: 0,
+      projectActiveIndex: null,
       userFileData: this.props.isActiveObject
         ? this.props.isActiveObject.files
         : null,
@@ -30,6 +44,7 @@ class Dashboard extends Component {
     this.setState({
       isActiveObject: selectedFolder,
       activeIndex: 0,
+      handleListView: false,
       userFileData:
         this.state.activeIndex === 0
           ? selectedFolder.children
@@ -43,12 +58,13 @@ class Dashboard extends Component {
       user_id: Number(userId)
     };
     const foldChildren =
-      this.props.folderDetails &&
-      this.props.folderDetails.data.data.filter(folderData => {
-        if (folderData.id === this.state.isActiveObject.id) {
-          return folderData.children;
-        }
-      });
+      this.props.folderDetails && this.state.isActiveObject
+        ? this.props.folderDetails.data.data.filter(folderData => {
+            if (folderData.id === this.state.isActiveObject.id) {
+              return folderData.children;
+            }
+          })
+        : null;
     if (
       prevProps.folderDetails !== this.props.folderDetails &&
       this.props.folderDetails.data.code === 200
@@ -56,7 +72,7 @@ class Dashboard extends Component {
       this.props.getUserFolderData(payload);
       this.setState({
         activeIndex: 0,
-        userFileData: foldChildren[0].children
+        userFileData: foldChildren && foldChildren[0].children
       });
     }
   }
@@ -80,7 +96,8 @@ class Dashboard extends Component {
       });
     }
     this.setState({
-      activeIndex: index
+      activeIndex: index,
+      handleListView: false
     });
   };
 
@@ -126,6 +143,8 @@ class Dashboard extends Component {
             folderDetails={this.props.folderDetails}
             getUserFolderData={this.props.getUserFolderData}
             activeProject={this.state.activeProject}
+            isActiveObject={this.state.isActiveObject}
+            uploadFolderData={this.props.uploadFolderData}
           />
           <Breadcromb
             filterUserData={this.filterUserData}
@@ -166,7 +185,10 @@ class Dashboard extends Component {
               </div>
             </section>
           ) : (
-            "TableView"
+            <DataTable
+              columns={columns}
+              data={this.state.isActiveObject.children}
+            />
           )}
           <Footer />
         </div>
@@ -177,7 +199,8 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => ({
   userFolderDetails: state.folderData.userFolderData,
-  folderDetails: state.folderData.folderData
+  folderDetails: state.folderData.folderData,
+  uploadFolderData: state.folderData && state.folderData.uploadFolderData
 });
 
 export default util.storeConnect(Dashboard, mapStateToProps, {

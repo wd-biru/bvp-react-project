@@ -1,14 +1,24 @@
 import React from "react";
 import Dropzone from "react-dropzone";
 import Img from "./img/uploadicon.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class UploadPageSection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filesName: ""
+      filesName: "",
+      fileUrl: "",
+      showToastMsg: false
     };
   }
+
+  handleInputChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
 
   onDrop = acceptedFiles => {
     this.setState({
@@ -24,18 +34,51 @@ class UploadPageSection extends React.Component {
     };
   };
 
-  handleUpload = e => {
+  handleUpload = (e, type) => {
     const userId = localStorage.getItem("userId");
     e.preventDefault();
-    let formData = new FormData(this.formRef);
-    this.state.filesName.forEach(file => {
-      formData.append("media[]", file, file.name);
-      formData.append("user_id", Number(userId));
-      formData.append("folder_id", this.props.activeProject.id);
-    });
-
-    this.props.getUploadFolderData(formData);
+    if (type === "local") {
+      let formData = new FormData(this.formRef);
+      this.state.filesName.forEach(file => {
+        formData.append("media[]", file, file.name);
+        formData.append("user_id", Number(userId));
+        formData.append("folder_id", this.props.activeProject.id);
+      });
+      this.props.getUploadFolderData(formData);
+    }
+    if (type === "url") {
+      let payload = {
+        user_id: Number(userId),
+        folder_id: this.props.activeProject.id,
+        isYoutube: 1,
+        link: this.state.fileUrl
+      };
+      this.props.getUploadFolderData(payload);
+    }
   };
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.uploadFolderData !== this.props.uploadFolderData &&
+      this.props.uploadFolderData.code === 200
+    ) {
+      toast.success(this.props.uploadFolderData.message);
+      this.setState({
+        showToastMsg: true
+      });
+      this.props.handleUploadClose();
+    }
+
+    if (
+      prevProps.uploadFolderData !== this.props.uploadFolderData &&
+      this.props.uploadFolderData.code !== 200
+    ) {
+      toast.error(this.props.uploadFolderData.message);
+      this.setState({
+        showToastMsg: true
+      });
+    }
+  }
 
   handleRemoveSelectedFile = acceptedFile => {
     const filterArray = this.state.filesName.filter(
@@ -89,9 +132,11 @@ class UploadPageSection extends React.Component {
                     </div>
                   )}
                 </Dropzone>
-                <h6 className="text-center mb-4 text-muted">Upload a file</h6>
                 <h6 className="text-center mb-4 text-muted">
-                  Drop files here or choose an upload option below
+                  Upload Local Or Drag a file
+                </h6>
+                <h6 className="text-center mb-4 text-muted">
+                  Drop files here then click on upload button below
                 </h6>
                 <label
                   for="fileUpload"
@@ -102,8 +147,8 @@ class UploadPageSection extends React.Component {
                   <input
                     id="fileUpload"
                     type="button"
-                    onClick={event => this.handleUpload(event)}
-                    value={"Upload a Local file"}
+                    onClick={event => this.handleUpload(event, "local")}
+                    value={"Upload"}
                     disabled={this.state.filesName.length > 0 ? false : true}
                   />
                 </label>
@@ -115,7 +160,9 @@ class UploadPageSection extends React.Component {
                   <input
                     id="customFile"
                     type="url"
+                    name="fileUrl"
                     className="custom-file-input"
+                    onChange={this.handleInputChange}
                     placeholder="Paste a YouTube, Vimeo or Google Drive URL here"
                   />
                 </div>
@@ -123,7 +170,13 @@ class UploadPageSection extends React.Component {
                   className="file-upload btn btn-primary btn-block
                      rounded-pill shadow upbtnfile mb-4"
                 >
-                  UPLOAD FROM URL
+                  <input
+                    id="urlUpload"
+                    name="url"
+                    type="button"
+                    onClick={event => this.handleUpload(event, "url")}
+                    value={"Upload"}
+                  />
                 </label>
               </div>
             </div>
