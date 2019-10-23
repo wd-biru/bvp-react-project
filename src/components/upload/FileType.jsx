@@ -1,6 +1,7 @@
 import React from "react";
 import DashboardDropDown from "./DashboardDropDown";
 import docuImg from "../../assets/img/docimg.jpg";
+import projectImg from "../../assets/img/createproject.png";
 
 class FileType extends React.Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class FileType extends React.Component {
             >
               <div className="card-body">
                 <div className="cappadd">
+                  <img src={projectImg} className="projectImgs" />
                   <h5>{this.props.data.folder_name}</h5>
                   <DashboardDropDown />
                 </div>
@@ -35,11 +37,11 @@ class FileType extends React.Component {
             </div>
           )}
           {this.props.userFileData &&
-            this.props.userFileData.file_type === "video" && (
+            this.props.userFileData.file_type,this.props.data.type === "video" && (
               <div className="card-body">
                 <video controls>
                   <source
-                    src={`${filePath}/${this.props.data}`}
+                    src={`${filePath}/${this.props.data.url}`}
                     type="video/mp4"
                   />
                 </video>
@@ -55,10 +57,10 @@ class FileType extends React.Component {
               </div>
             )}
           {this.props.userFileData &&
-            this.props.userFileData.file_type === "image" && (
+            this.props.userFileData.file_type,this.props.data.type === "image" && (
               <div className="cardss">
                 <div className="card-body">
-                  <img src={`${filePath}/${this.props.data}`} />
+                  <img src={`${filePath}/${this.props.data.url}`} />
                   <div className="cappadd">
                     <h5>
                       {this.props.isActiveObject
@@ -72,7 +74,7 @@ class FileType extends React.Component {
               </div>
             )}
           {this.props.userFileData &&
-            this.props.userFileData.file_type === "docs" && (
+            this.props.userFileData.file_type,this.props.data.type === "docs" && (
               <div className="cardss">
                 <div className="card-body">
                   <img src={docuImg} />
