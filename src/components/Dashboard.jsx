@@ -15,13 +15,25 @@ import DataTable from "react-data-table-component";
 
 const columns = [
   {
-    name: "File Type",
-    selector: "file_type",
+    name: "File Name",
+    selector: "actual_name",
     sortable: true
   },
   {
-    name: "File Name",
-    selector: "files",
+    name: "Type",
+    selector: "type",
+    sortable: true
+  },
+  ,
+  {
+    name: "File Size",
+    selector: "size",
+    sortable: true
+  },
+  ,
+  {
+    name: "File Url",
+    selector: "url",
     sortable: true
   }
 ];
@@ -33,13 +45,12 @@ class Dashboard extends Component {
       isActiveObject: null,
       activeIndex: 0,
       projectActiveIndex: null,
-      userFileData: this.props.isActiveObject
-        ? this.props.isActiveObject.files
-        : null,
-      renderHomeChild: true,
+      userFileData: null,
+      // renderHomeChild: true,
       activeProject: null,
       handleListView: false,
-      breadcombItemType: null
+      breadcombItemType: null,
+      homeActive: true
     };
   }
   handleFolderData = selectedFolder => {
@@ -47,10 +58,8 @@ class Dashboard extends Component {
       isActiveObject: selectedFolder,
       activeIndex: 0,
       handleListView: false,
-      userFileData:
-        this.state.activeIndex === 0
-          ? selectedFolder.children
-          : selectedFolder.files
+      userFileData: selectedFolder.children,
+      homeActive: false
     });
   };
 
@@ -98,11 +107,17 @@ class Dashboard extends Component {
     });
   };
 
+  // handleHomeToggle = () => {
+  //   this.setState({
+  //     renderHomeChild: !this.state.renderHomeChild
+  //     // isActiveObject: null,
+  //     // activeIndex: 0
+  //   });
+  // };
+
   handleHomeToggle = () => {
     this.setState({
-      renderHomeChild: !this.state.renderHomeChild
-      // isActiveObject: null,
-      // activeIndex: 0
+      homeActive: !this.state.homeActive
     });
   };
 
@@ -138,7 +153,7 @@ class Dashboard extends Component {
           getUserFolderData={this.props.getUserFolderData}
           createFolderData={this.props.createFolderData}
           handleHomeToggle={this.handleHomeToggle}
-          renderHomeChild={this.state.renderHomeChild}
+          homeActive={this.state.homeActive}
         />
         <div className="content-inner">
           <TopPageHeader

@@ -191,7 +191,10 @@ class LeftNavbar extends React.Component {
             </div>
           </div>
           <ul className="list-unstyled">
-            <li className="" onClick={() => this.props.handleHomeToggle()}>
+            <li
+              className={this.props.homeActive ? "active" : ""}
+              onClick={() => this.props.handleHomeToggle()}
+            >
               <span>
                 {this.props.userFolderDetails &&
                   this.props.userFolderDetails.folders.length}
@@ -201,23 +204,23 @@ class LeftNavbar extends React.Component {
             </li>
           </ul>
         </div>
-        {this.props.renderHomeChild ? (
-          <nav className="side-navbar">
-            <ul className="list-unstyled">
-              <NavItems
-                data={
-                  this.props.userFolderDetails
-                    ? this.props.userFolderDetails.folders
-                    : null
-                }
-                handleFolderData={this.props.handleFolderData}
-                handleEdit={this.handleEdit}
-                handleDelete={this.handleDelete}
-                isActiveObject={this.props.isActiveObject}
-              />
-            </ul>
-          </nav>
-        ) : null}
+
+        <nav className="side-navbar">
+          <ul className="list-unstyled">
+            <NavItems
+              data={
+                this.props.userFolderDetails
+                  ? this.props.userFolderDetails.folders
+                  : null
+              }
+              handleFolderData={this.props.handleFolderData}
+              handleEdit={this.handleEdit}
+              handleDelete={this.handleDelete}
+              isActiveObject={this.props.isActiveObject}
+              homeActive={this.props.homeActive}
+            />
+          </ul>
+        </nav>
         {this.state.showModal && (
           <Modal
             modalIsOpen={this.state.showModal}

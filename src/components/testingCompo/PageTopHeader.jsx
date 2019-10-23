@@ -130,7 +130,7 @@ class PageTopHeader extends React.Component {
               value="UPLOAD"
               className="UPLOAD"
               onClick={this.handleUploadData}
-              disabled={this.props.activeProject ? false : true}
+              disabled={this.props.isActiveObject ? false : true}
             />
           </div>
         </div>

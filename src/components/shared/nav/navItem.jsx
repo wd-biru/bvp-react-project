@@ -28,7 +28,9 @@ class NavItems extends React.Component {
               return (
                 <li
                   className={
-                    selectedItem && selectedItem.id === folderData.id
+                    selectedItem &&
+                    selectedItem.id === folderData.id &&
+                    !this.props.homeActive
                       ? "active"
                       : ""
                   }
@@ -37,7 +39,9 @@ class NavItems extends React.Component {
                   <ul className="sub_folder">
                     <li>
                       <span>
-                        {folderData.children ? folderData.children.length : 0}
+                        {folderData.files.length > 0
+                          ? folderData.files.length
+                          : 0}
                       </span>
                       <span
                         onClick={e => {
@@ -53,7 +57,9 @@ class NavItems extends React.Component {
 
                         {folderData.folder_name}
                       </span>
-                      {selectedItem && selectedItem.id === folderData.id && (
+                      {selectedItem &&
+                      selectedItem.id === folderData.id &&
+                      !this.props.homeActive ? (
                         <span className="temp-class">
                           <i
                             className="fa fa-edit"
@@ -70,7 +76,7 @@ class NavItems extends React.Component {
                             }}
                           ></i>
                         </span>
-                      )}
+                      ) : null}
                     </li>
                   </ul>
                 </li>
