@@ -7,20 +7,21 @@ import Footer from "../components/shared/footer/Footer";
 import util from "../apiAction/axios/utility";
 import {
   getUserFolderData,
-  createFolderData
+  createFolderData,
+  getUploadFolderFileData
 } from "../apiAction/apiType/userFolder/folderActions";
 import FileType from "../components/upload/FileType";
 import DataTable from "react-data-table-component";
 
 const columns = [
   {
-    name: "Id",
-    selector: "id",
+    name: "File Type",
+    selector: "file_type",
     sortable: true
   },
   {
-    name: "Project Name",
-    selector: "folder_name",
+    name: "File Name",
+    selector: "files",
     sortable: true
   }
 ];
@@ -37,7 +38,8 @@ class Dashboard extends Component {
         : null,
       renderHomeChild: true,
       activeProject: null,
-      handleListView: false
+      handleListView: false,
+      breadcombItemType: null
     };
   }
   handleFolderData = selectedFolder => {
@@ -64,7 +66,7 @@ class Dashboard extends Component {
               return folderData.children;
             }
           })
-        : null;
+        : [];
     if (
       prevProps.folderDetails !== this.props.folderDetails &&
       this.props.folderDetails.data.code === 200
@@ -72,32 +74,27 @@ class Dashboard extends Component {
       this.props.getUserFolderData(payload);
       this.setState({
         activeIndex: 0,
-        userFileData: foldChildren && foldChildren[0].children
+        userFileData: foldChildren.length > 0 && foldChildren[0].children
       });
     }
   }
 
   filterUserData = (itemType, activeItem, index) => {
-    let activeObjectFileData = activeItem.files;
-    activeObjectFileData = activeObjectFileData.filter(
-      data => data.type === itemType
-    );
-    this.setState({
-      userFileData: activeObjectFileData
-    });
-    if (itemType === "all") {
-      this.setState({
-        userFileData: activeItem.files
-      });
-    }
-    if (itemType === "project") {
-      this.setState({
-        userFileData: activeItem.children
-      });
+    if (itemType !== "project") {
+      const userId = localStorage.getItem("userId");
+      const payload = {
+        user_id: Number(userId),
+        folder_id: this.state.isActiveObject ? this.state.isActiveObject.id : 0,
+        file_type: itemType
+      };
+      this.props.getUploadFolderFileData(payload);
     }
     this.setState({
       activeIndex: index,
-      handleListView: false
+      handleListView: false,
+      userFileData:
+        this.state.activeIndex === 0 ? this.state.userFileData : null,
+      breadcombItemType: itemType
     });
   };
 
@@ -110,7 +107,6 @@ class Dashboard extends Component {
   };
 
   handleActiveProject = (data, index) => {
-    console.log(data);
     this.setState({
       activeProject: data,
       projectActiveIndex: index
@@ -118,6 +114,14 @@ class Dashboard extends Component {
   };
 
   handleListView = () => {
+    const userId = localStorage.getItem("userId");
+    const payload = {
+      user_id: Number(userId),
+      folder_id: this.state.isActiveObject ? this.state.isActiveObject.id : 0,
+      file_type: "all"
+    };
+    this.props.getUploadFolderFileData(payload);
+
     this.setState({
       handleListView: !this.state.handleListView
     });
@@ -161,11 +165,42 @@ class Dashboard extends Component {
                     id="home2"
                   >
                     <div className="row">
-                      {this.state.isActiveObject && this.state.userFileData
+                      {this.props.userFileData &&
+                      this.state.activeIndex !== 0 &&
+                      this.props.userFileData.data.length !== 0
+                        ? this.props.userFileData.data.files.map(
+                            (data, index) => {
+                              return (
+                                <FileType
+                                  data={data}
+                                  index={index}
+                                  activeClass={
+                                    this.state.projectActiveIndex === index
+                                      ? true
+                                      : false
+                                  }
+                                  isActiveObject={this.state.isActiveObject}
+                                  activeIndex={this.state.activeIndex}
+                                  handleActiveProject={this.handleActiveProject}
+                                  userFileData={this.props.userFileData.data}
+                                  breadcombItemType={
+                                    this.state.breadcombItemType
+                                  }
+                                />
+                              );
+                            }
+                          )
+                        : null}
+                    </div>
+                    <div className="row">
+                      {this.state.activeIndex === 0 && this.state.userFileData
                         ? this.state.userFileData.map((data, index) => {
                             return (
                               <FileType
                                 data={data}
+                                projectActiveIndex={
+                                  this.state.projectActiveIndex
+                                }
                                 index={index}
                                 activeClass={
                                   this.state.projectActiveIndex === index
@@ -175,10 +210,11 @@ class Dashboard extends Component {
                                 isActiveObject={this.state.isActiveObject}
                                 activeIndex={this.state.activeIndex}
                                 handleActiveProject={this.handleActiveProject}
+                                breadcombItemType={this.state.breadcombItemType}
                               />
                             );
                           })
-                        : null}
+                        : ""}
                     </div>
                   </div>
                 </div>
@@ -187,7 +223,10 @@ class Dashboard extends Component {
           ) : (
             <DataTable
               columns={columns}
-              data={this.state.isActiveObject.children}
+              data={
+                this.props.userFileData !== null &&
+                this.props.userFileData.data.files
+              }
             />
           )}
           <Footer />
@@ -200,10 +239,12 @@ class Dashboard extends Component {
 const mapStateToProps = state => ({
   userFolderDetails: state.folderData.userFolderData,
   folderDetails: state.folderData.folderData,
-  uploadFolderData: state.folderData && state.folderData.uploadFolderData
+  uploadFolderData: state.folderData && state.folderData.uploadFolderData,
+  userFileData: state.folderData && state.folderData.userFileData
 });
 
 export default util.storeConnect(Dashboard, mapStateToProps, {
   getUserFolderData,
-  createFolderData
+  createFolderData,
+  getUploadFolderFileData
 });

@@ -64,9 +64,10 @@ class UploadPageSection extends React.Component {
     ) {
       toast.success(this.props.uploadFolderData.message);
       this.setState({
-        showToastMsg: true
+        showToastMsg: true,
+        filesName: ""
       });
-      this.props.handleUploadClose();
+      // this.props.handleUploadClose();
     }
 
     if (
@@ -75,7 +76,8 @@ class UploadPageSection extends React.Component {
     ) {
       toast.error(this.props.uploadFolderData.message);
       this.setState({
-        showToastMsg: true
+        showToastMsg: true,
+        filesName: ""
       });
     }
   }
@@ -181,6 +183,7 @@ class UploadPageSection extends React.Component {
               </div>
             </div>
           </div>
+          {this.state.showToastMsg && <ToastContainer />}
         </div>
       </section>
     );

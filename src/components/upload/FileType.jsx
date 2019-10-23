@@ -34,49 +34,60 @@ class FileType extends React.Component {
               </div>
             </div>
           )}
-          {this.props.data.type === "video" && (
-            <div className="card-body">
-              <video controls>
-                <source
-                  src={`${filePath}/${this.props.data.file}`}
-                  type="video/mp4"
-                />
-              </video>
-              <div className="cappadd">
-                <h5>{this.props.isActiveObject.folder_name}</h5>
-                <p className="title">
-                  {this.handleFileType(`${filePath}/${this.props.data.file}`)}{" "}
-                </p>
-                <DashboardDropDown />
-              </div>
-            </div>
-          )}
-          {this.props.data.type === "image" && (
-            <div className="cardss">
+          {this.props.userFileData &&
+            this.props.userFileData.file_type === "video" && (
               <div className="card-body">
-                <img src={`${filePath}/${this.props.data.file}`} alt="John" />
+                <video controls>
+                  <source
+                    src={`${filePath}/${this.props.data}`}
+                    type="video/mp4"
+                  />
+                </video>
                 <div className="cappadd">
-                  <h5>{this.props.isActiveObject.folder_name}</h5>
-                  <p className="title">
-                    {this.handleFileType(`${filePath}/${this.props.data.file}`)}
-                  </p>
+                  <h5>
+                    {this.props.isActiveObject
+                      ? this.props.isActiveObject.folder_name
+                      : ""}
+                  </h5>
+                  <p className="title">{this.props.userFileData.file_type}</p>
                   <DashboardDropDown />
                 </div>
               </div>
-            </div>
-          )}
-          {this.props.data.type === "document" && (
-            <div className="cardss">
-              <div className="card-body">
-                <img src={docuImg} />
-                <div className="cappadd">
-                  <h5>{this.props.isActiveObject.folder_name}</h5>
-                  {this.handleFileType(`${filePath}/${this.props.data.file}`)}
-                  <DashboardDropDown />
+            )}
+          {this.props.userFileData &&
+            this.props.userFileData.file_type === "image" && (
+              <div className="cardss">
+                <div className="card-body">
+                  <img src={`${filePath}/${this.props.data}`} />
+                  <div className="cappadd">
+                    <h5>
+                      {this.props.isActiveObject
+                        ? this.props.isActiveObject.folder_name
+                        : ""}
+                    </h5>
+                    <p className="title">{this.props.userFileData.file_type}</p>
+                    <DashboardDropDown />
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          {this.props.userFileData &&
+            this.props.userFileData.file_type === "docs" && (
+              <div className="cardss">
+                <div className="card-body">
+                  <img src={docuImg} />
+                  <div className="cappadd">
+                    <h5>
+                      {this.props.isActiveObject
+                        ? this.props.isActiveObject.folder_name
+                        : ""}
+                    </h5>
+                    {this.props.userFileData.file_type}
+                    <DashboardDropDown />
+                  </div>
+                </div>
+              </div>
+            )}
         </div>
       </div>
     );

@@ -14,7 +14,7 @@ class Breadcromb extends Component {
       { name: "Projects", type: "project" },
       { name: "Videos", type: "video" },
       { name: "Images", type: "image" },
-      { name: "Documents", type: "document" },
+      { name: "Documents", type: "docs" },
       { name: "All", type: "all" }
     ];
     return (

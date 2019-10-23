@@ -19,6 +19,15 @@ export function getUserFolderData(data) {
     .catch(err => err);
 }
 
+export function getUserFolderFilesData(data) {
+  return util.networkMain
+    .post("/project", data)
+    .then(res => {
+      return res;
+    })
+    .catch(err => err);
+}
+
 export function uploadUserFolderData(data) {
   return util.networkMain
     .post("/uploadimage", data, {

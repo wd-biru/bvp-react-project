@@ -4,7 +4,8 @@ import { fetchUserDataSaga } from "./login/loginSaga";
 import {
   fetchFolderDataSaga,
   fetchUserFolderDataSaga,
-  fetchUploadFolderDataSaga
+  fetchUploadFolderDataSaga,
+  fetchFolderFileDataSaga,
 } from "./userFolder/folderSaga";
 
 function* rootSaga() {
@@ -12,7 +13,8 @@ function* rootSaga() {
     fetchUserDataSaga(),
     fetchFolderDataSaga(),
     fetchUserFolderDataSaga(),
-    fetchUploadFolderDataSaga()
+    fetchUploadFolderDataSaga(),
+    fetchFolderFileDataSaga()
   ]);
 }
 
