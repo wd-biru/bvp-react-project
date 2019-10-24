@@ -1,8 +1,8 @@
-import React from 'react';
+import React,{Component} from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 
-
-function DashboardDropDown() {
+class DashboardDropDown extends Component{
+    render(){
     return (
         <div>
           <div class="cappadd-bot">
@@ -19,12 +19,22 @@ function DashboardDropDown() {
                             <Dropdown.Item href="#/action-3" class="dropdown-item edit"> <i class="fa fa-files-o"></i>Duplicate</Dropdown.Item>
                             <Dropdown.Item href="#/action-4" class="dropdown-item edit"> <i class="fa fa-arrows"></i>Move Project To</Dropdown.Item>
                             <hr />
-                       <Dropdown.Item href="#/action-5" class="dropdown-item remove"> <i class="fa fa-trash"></i>Delete</Dropdown.Item>
+                       {/* <Dropdown.Item class="dropdown-item remove" onClick={e => {
+                              this.props.handleDelete(
+                                this.props.index
+                              );
+                            }} > <i class="fa fa-trash"></i>Delete</Dropdown.Item> */}
+                            <Dropdown.Item class="dropdown-item remove" onClick={e => {
+                              this.props.handleDelete(
+                                this.props.isActiveObject
+                              );
+                            }} > <i class="fa fa-trash"></i>Delete</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
     </div>
-    )
+    );
+}
 }
 
-export default DashboardDropDown
+export default DashboardDropDown;
