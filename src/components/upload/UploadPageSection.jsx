@@ -36,13 +36,16 @@ class UploadPageSection extends React.Component {
 
   handleUpload = (e, type) => {
     const userId = localStorage.getItem("userId");
+    const activeId = this.props.isActiveObject
+      ? this.props.isActiveObject.id
+      : 0;
     e.preventDefault();
     if (type === "local") {
       let formData = new FormData(this.formRef);
       this.state.filesName.forEach(file => {
         formData.append("media[]", file, file.name);
         formData.append("user_id", Number(userId));
-        formData.append("folder_id", this.props.isActiveObject.id);
+        formData.append("folder_id", activeId);
       });
       this.props.getUploadFolderData(formData);
     }

@@ -48,7 +48,7 @@ class FileType extends React.Component {
                     ? this.props.isActiveObject.folder_name
                     : ""}
                 </h5>
-                <p className="title">{this.props.userFileData.file_type}</p>
+                <p className="title">{this.props.data.type}</p>
                 <DashboardDropDown />
               </div>
             </div>
@@ -79,7 +79,7 @@ class FileType extends React.Component {
                       ? this.props.isActiveObject.folder_name
                       : ""}
                   </h5>
-                  {this.props.userFileData.file_type}
+                  {this.props.data.actual_name}
                   <DashboardDropDown />
                 </div>
               </div>

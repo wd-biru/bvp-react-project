@@ -122,7 +122,7 @@ class PageTopHeader extends React.Component {
               data-toggle="modal"
               data-target="#myModal"
               onClick={this.handleProjectFolder}
-              disabled={this.props.isActiveObject ? false : true}
+              // disabled={this.props.isActiveObject ? false : true}
             />
             <input
               type="button"
@@ -130,7 +130,7 @@ class PageTopHeader extends React.Component {
               value="UPLOAD"
               className="UPLOAD"
               onClick={this.handleUploadData}
-              disabled={this.props.isActiveObject ? false : true}
+              // disabled={this.props.isActiveObject ? false : true}
             />
           </div>
         </div>

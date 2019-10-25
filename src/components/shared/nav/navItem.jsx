@@ -9,6 +9,15 @@ class NavItems extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const findHomeData =
+      this.props.data && this.props.data.find(data => data.id === 0);
+
+    this.setState({
+      selectedItem: findHomeData
+    });
+  }
+
   handleToggle = data => {
     this.setState(({ selectedItem }) => {
       return {
@@ -28,9 +37,7 @@ class NavItems extends React.Component {
               return (
                 <li
                   className={
-                    selectedItem &&
-                    selectedItem.id === folderData.id &&
-                    !this.props.homeActive
+                    selectedItem && selectedItem.id === folderData.id
                       ? "active"
                       : ""
                   }
@@ -59,7 +66,7 @@ class NavItems extends React.Component {
                       </span>
                       {selectedItem &&
                       selectedItem.id === folderData.id &&
-                      !this.props.homeActive ? (
+                      folderData.id !== 0 ? (
                         <span className="temp-class">
                           <i
                             className="fa fa-edit"
@@ -82,7 +89,7 @@ class NavItems extends React.Component {
                 </li>
               );
             })
-          : "Loading..."}
+          : null}
       </>
     );
   }

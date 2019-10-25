@@ -38,15 +38,16 @@ const columns = [
   }
 ];
 
+const userId = localStorage.getItem("userId");
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isActiveObject: null,
-      activeIndex: 0,
+      activeIndex: 4,
       projectActiveIndex: null,
       userFileData: null,
-      // renderHomeChild: true,
       activeProject: null,
       handleListView: false,
       breadcombItemType: null,
@@ -54,14 +55,37 @@ class Dashboard extends Component {
     };
   }
   handleFolderData = selectedFolder => {
+    const payload = {
+      user_id: Number(userId),
+      folder_id: selectedFolder.id,
+      file_type: this.state.breadcombItemType
+    };
     this.setState({
       isActiveObject: selectedFolder,
-      activeIndex: 0,
+      activeIndex: this.state.activeIndex,
       handleListView: false,
       userFileData: selectedFolder.children,
       homeActive: false
     });
+    this.props.getUploadFolderFileData(payload);
   };
+
+  componentDidMount() {
+    const payload = {
+      user_id: Number(userId),
+      folder_id: this.state.isActiveObject ? this.state.isActiveObject.id : 0,
+      file_type: "all"
+    };
+    this.setState({
+      activeIndex: 4
+    });
+    const getFolderpayload = {
+      user_id: Number(userId)
+    };
+    this.props.getUserFolderData(getFolderpayload);
+    this.props.getUserFolderData(payload);
+    this.props.getUploadFolderFileData(payload);
+  }
 
   componentDidUpdate(prevProps) {
     const userId = localStorage.getItem("userId");

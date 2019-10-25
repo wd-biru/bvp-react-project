@@ -38,13 +38,13 @@ class LeftNavbar extends React.Component {
     };
   }
 
-  componentDidMount() {
-    const userId = localStorage.getItem("userId");
-    const payload = {
-      user_id: Number(userId)
-    };
-    this.props.getUserFolderData(payload);
-  }
+  // componentDidMount() {
+  //   const userId = localStorage.getItem("userId");
+  //   const payload = {
+  //     user_id: Number(userId)
+  //   };
+  //   this.props.getUserFolderData(payload);
+  // }
 
   handleInputChange = e => {
     this.setState({
@@ -190,7 +190,7 @@ class LeftNavbar extends React.Component {
               </h1>
             </div>
           </div>
-          <ul className="list-unstyled">
+          {/* <ul className="list-unstyled">
             <li
               className={this.props.homeActive ? "active" : ""}
               onClick={() => this.props.handleHomeToggle()}
@@ -202,23 +202,29 @@ class LeftNavbar extends React.Component {
               <i className="far fa-folder"></i>
               {"Home"}
             </li>
-          </ul>
+          </ul> */}
         </div>
 
         <nav className="side-navbar">
           <ul className="list-unstyled">
-            <NavItems
-              data={
-                this.props.userFolderDetails
-                  ? this.props.userFolderDetails.folders
-                  : null
-              }
-              handleFolderData={this.props.handleFolderData}
-              handleEdit={this.handleEdit}
-              handleDelete={this.handleDelete}
-              isActiveObject={this.props.isActiveObject}
-              homeActive={this.props.homeActive}
-            />
+            {this.props.userFolderDetails ? (
+              <NavItems
+                data={
+                  this.props.userFolderDetails
+                    ? this.props.userFolderDetails.folders.sort(
+                        (a, b) => a.id - b.id
+                      )
+                    : null
+                }
+                handleFolderData={this.props.handleFolderData}
+                handleEdit={this.handleEdit}
+                handleDelete={this.handleDelete}
+                isActiveObject={this.props.isActiveObject}
+                homeActive={this.props.homeActive}
+              />
+            ) : (
+              "Loading..."
+            )}
           </ul>
         </nav>
         {this.state.showModal && (
