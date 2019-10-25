@@ -250,6 +250,8 @@ class Dashboard extends Component {
                                 activeIndex={this.state.activeIndex}
                                 handleActiveProject={this.handleActiveProject}
                                 breadcombItemType={this.state.breadcombItemType}
+                                createFolderData={this.props.createFolderData}
+                                
                               />
                             );
                           })

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ Component } from "react";
 //import HeaderRight from "./HeaderRight";
 import logo from "./studio-bvp-logo.png";
 import './css/MystyleDefault.css';
@@ -6,7 +6,20 @@ import './css/me_custom.css';
 import './css/me_responsive.css';
 
 
-function Header() {
+class Header extends Component {
+ constructor(props){
+   super(props);
+ }
+
+ logout_User=()=>{
+  localStorage.removeItem("userToken");
+  }
+
+  logo_Icon = () => {
+    window.location.reload();
+  }
+
+  render(){
   return (
     <header className="header">
         <nav className="navbar">
@@ -17,8 +30,8 @@ function Header() {
               <div className="navbar-header">
                 {/* Navbar Brand */}
                   <div className="brand-text d-none d-lg-inline-block">
-                    <a href="dashboard.html">
-                      <img src={logo} alt="BVP" className="logo-menu" />
+                    <a href="" onClick={this.logo_Icon}>
+                      <img src={logo} alt="BVP" className="logo-menu"  />
                     </a>
                     <form className="navbar-form navbar-left" action="/action_page.php">
                       <i className="fa fa-search"></i>
@@ -39,13 +52,14 @@ function Header() {
                 <li className="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link"><i className="fa fa-bell"></i></a>
                 </li>
                 {/* Logout    */}
-                <li className="nav-item"><a href="login.html" className="nav-link logout"> <i className="fa fa-user"></i></a></li>
+                <li className="nav-item" onClick={this.logout_User}><a href="#" className="nav-link logout"> <i className="fa fa-user"></i></a></li>
               </ul>
             </div>
           </div>
         </nav>
     </header>
   );
+}
 }
 export default Header;
 
