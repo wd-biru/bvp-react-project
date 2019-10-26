@@ -12,6 +12,7 @@ import {
 } from "../apiAction/apiType/userFolder/folderActions";
 import FileType from "../components/upload/FileType";
 import DataTable from "react-data-table-component";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const columns = [
   {
@@ -50,8 +51,11 @@ class Dashboard extends Component {
       userFileData: null,
       activeProject: null,
       handleListView: false,
-      breadcombItemType: null,
-      homeActive: true
+      breadcombItemType: "all",
+      homeActive: true,
+      dataSortBy: true,
+      projectMove: false,
+      showMediaDelete: false
     };
   }
   handleFolderData = selectedFolder => {
@@ -166,7 +170,50 @@ class Dashboard extends Component {
     });
   };
 
+  toogleDateTimeView = () => {
+    this.setState({
+      dataSortBy: !this.state.dataSortBy
+    });
+  };
+
+  prepareFileData = () => {
+    let data =
+      this.props.userFileData && this.props.userFileData.data.length !== 0
+        ? [...this.props.userFileData.data.files]
+        : [];
+    if (this.state.dataSortBy) {
+      data = data.reverse();
+    }
+    return data;
+  };
+
+  handleProjectMove = () => {
+    this.setState({
+      projectMove: true
+    });
+  };
+
+  handleDefaultHomeActive = isHomeActive => {
+    this.setState({
+      isActiveObject: isHomeActive
+    });
+  };
+
+  closeMediaModal = () => {
+    this.setState({
+      projectMove: false,
+      showMediaDelete: false
+    });
+  };
+
+  handleMediaDelete = () => {
+    this.setState({
+      showMediaDelete: true
+    });
+  };
+
   render() {
+    const fileData = this.prepareFileData();
     return (
       <>
         <LeftNav
@@ -178,6 +225,7 @@ class Dashboard extends Component {
           createFolderData={this.props.createFolderData}
           handleHomeToggle={this.handleHomeToggle}
           homeActive={this.state.homeActive}
+          handleDefaultHomeActive={this.handleDefaultHomeActive}
         />
         <div className="content-inner">
           <TopPageHeader
@@ -194,6 +242,8 @@ class Dashboard extends Component {
             isActiveObject={this.state.isActiveObject}
             activeIndex={this.state.activeIndex}
             handleListView={this.handleListView}
+            toogleDateTimeView={this.toogleDateTimeView}
+            dataSortBy={this.state.dataSortBy}
           />
           {!this.state.handleListView ? (
             <section className="tables list-view">
@@ -207,28 +257,30 @@ class Dashboard extends Component {
                       {this.props.userFileData &&
                       this.state.activeIndex !== 0 &&
                       this.props.userFileData.data.length !== 0
-                        ? this.props.userFileData.data.files.map(
-                            (data, index) => {
-                              return (
-                                <FileType
-                                  data={data}
-                                  index={index}
-                                  activeClass={
-                                    this.state.projectActiveIndex === index
-                                      ? true
-                                      : false
-                                  }
-                                  isActiveObject={this.state.isActiveObject}
-                                  activeIndex={this.state.activeIndex}
-                                  handleActiveProject={this.handleActiveProject}
-                                  userFileData={this.props.userFileData.data}
-                                  breadcombItemType={
-                                    this.state.breadcombItemType
-                                  }
-                                />
-                              );
-                            }
-                          )
+                        ? fileData.map((data, index) => {
+                            return (
+                              <FileType
+                                data={data}
+                                index={index}
+                                activeClass={
+                                  this.state.projectActiveIndex === index
+                                    ? true
+                                    : false
+                                }
+                                isActiveObject={this.state.isActiveObject}
+                                activeIndex={this.state.activeIndex}
+                                handleActiveProject={this.handleActiveProject}
+                                userFileData={this.props.userFileData.data}
+                                breadcombItemType={this.state.breadcombItemType}
+                                handleProjectMove={this.handleProjectMove}
+                                projectMove={this.state.projectMove}
+                                userFolderDetails={this.props.userFolderDetails}
+                                closeMediaModal={this.closeMediaModal}
+                                handleMediaDelete={this.handleMediaDelete}
+                                showMediaDelete={this.state.showMediaDelete}
+                              />
+                            );
+                          })
                         : null}
                     </div>
                     <div className="row">
@@ -250,6 +302,12 @@ class Dashboard extends Component {
                                 activeIndex={this.state.activeIndex}
                                 handleActiveProject={this.handleActiveProject}
                                 breadcombItemType={this.state.breadcombItemType}
+                                handleProjectMove={this.handleProjectMove}
+                                projectMove={this.state.projectMove}
+                                userFolderDetails={this.props.userFolderDetails}
+                                closeMediaModal={this.closeMediaModal}
+                                handleMediaDelete={this.handleMediaDelete}
+                                showMediaDelete={this.state.showMediaDelete}
                               />
                             );
                           })
@@ -268,6 +326,7 @@ class Dashboard extends Component {
               }
             />
           )}
+
           <Footer />
         </div>
       </>

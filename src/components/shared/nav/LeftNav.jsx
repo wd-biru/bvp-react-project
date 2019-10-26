@@ -221,6 +221,7 @@ class LeftNavbar extends React.Component {
                 handleDelete={this.handleDelete}
                 isActiveObject={this.props.isActiveObject}
                 homeActive={this.props.homeActive}
+                handleDefaultHomeActive={this.props.handleDefaultHomeActive}
               />
             ) : (
               "Loading..."

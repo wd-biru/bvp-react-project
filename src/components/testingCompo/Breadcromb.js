@@ -41,7 +41,16 @@ class Breadcromb extends Component {
           </ul>
           <div className="secund-menu-listview">
             <ul className="nav nav-pills">
-              <li className="fa fa-sort">Date Added</li>
+              <li
+                className={`fa fa-sort active ${
+                  this.props.dataSortBy
+                    ? " active fa-sort-asc"
+                    : " active fa-sort-desc"
+                }`}
+                onClick={this.props.toogleDateTimeView}
+              >
+                Date Added
+              </li>
               <li className="fa fa-bars" onClick={this.props.handleListView}>
                 List View
               </li>

@@ -16,13 +16,13 @@ class NavItems extends React.Component {
     this.setState({
       selectedItem: findHomeData
     });
+    this.props.handleDefaultHomeActive(findHomeData);
   }
 
   handleToggle = data => {
     this.setState(({ selectedItem }) => {
       return {
-        selectedItem: selectedItem && selectedItem.id === data.id ? null : data,
-        isActive: selectedItem && selectedItem.id === data.id ? true : false
+        selectedItem: selectedItem && selectedItem.id === data.id ? null : data
       };
     });
     this.props.handleFolderData(data);

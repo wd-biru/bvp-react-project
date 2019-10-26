@@ -26,13 +26,16 @@ class DashboardDropDown extends React.Component {
               <Dropdown.Item class="dropdown-item edit">
                 <i class="fa fa-files-o"></i>Duplicate
               </Dropdown.Item>
-              <Dropdown.Item class="dropdown-item edit">
+              <Dropdown.Item
+                class="dropdown-item edit"
+                onClick={this.props.handleProjectMove}
+              >
                 <i class="fa fa-arrows"></i>Move Project To
               </Dropdown.Item>
               <hr />
               <Dropdown.Item
                 class="dropdown-item remove"
-                onClick={this.handleDelete}
+                onClick={this.props.handleMediaDelete}
               >
                 <i class="fa fa-trash"></i>Delete
               </Dropdown.Item>
