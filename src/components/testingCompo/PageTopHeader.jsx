@@ -1,6 +1,6 @@
 import React from "react";
 import util from "../../apiAction/axios/utility";
-import { getUploadFolderData } from "../../apiAction/apiType/userFolder/folderActions";
+import { getUploadFolderData,resetLoader } from "../../apiAction/apiType/userFolder/folderActions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "../shared/modal/Modal";
@@ -25,6 +25,7 @@ const customStyles = {
 class PageTopHeader extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
       showModal: false,
       projectrName: "",
@@ -182,10 +183,13 @@ class PageTopHeader extends React.Component {
         {this.state.showUploadModal && (
           <UploadPage
             getUploadFolderData={this.props.getUploadFolderData}
+            resetLoader={this.props.resetLoader}
             activeProject={this.props.activeProject}
             handleUploadClose={this.handleUploadClose}
             uploadFolderData={this.props.uploadFolderData}
             isActiveObject={this.props.isActiveObject}
+            fileProgressData={this.props.fileProgressData}
+        
           />
         )}
       </header>
@@ -193,10 +197,13 @@ class PageTopHeader extends React.Component {
   }
 }
 
+
+ 
 const mapStateToProps = state => ({
-  uploadFolderDetails: state.folderData.uploadFolderData
+  uploadFolderDetails: state.folderData.uploadFolderData,
+  fileProgressData: state.folderData.fileProgressData,
 });
 
 export default util.storeConnect(PageTopHeader, mapStateToProps, {
-  getUploadFolderData
+  getUploadFolderData,resetLoader
 });

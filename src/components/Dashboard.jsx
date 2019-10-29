@@ -151,6 +151,22 @@ class Dashboard extends Component {
       projectActiveIndex: index
     });
   };
+ 
+  handleDeleteProject = (data) => {
+  debugger;
+    const userId = localStorage.getItem("userId");
+    const payLoad = {
+      folder_name: data.folder_name,
+      user_id: Number(userId),
+      parent_id:  data.parent_id,
+      action: "delete",
+      folder_id: data.id
+    };
+   
+    this.props.createFolderData(payLoad);
+
+  };
+  
 
   handleListView = () => {
     const userId = localStorage.getItem("userId");
@@ -188,6 +204,7 @@ class Dashboard extends Component {
             activeProject={this.state.activeProject}
             isActiveObject={this.state.isActiveObject}
             uploadFolderData={this.props.uploadFolderData}
+           
           />
           <Breadcromb
             filterUserData={this.filterUserData}
@@ -225,6 +242,7 @@ class Dashboard extends Component {
                                   breadcombItemType={
                                     this.state.breadcombItemType
                                   }
+                                  handleDeleteProject={this.handleDeleteProject}
                                 />
                               );
                             }
@@ -250,8 +268,7 @@ class Dashboard extends Component {
                                 activeIndex={this.state.activeIndex}
                                 handleActiveProject={this.handleActiveProject}
                                 breadcombItemType={this.state.breadcombItemType}
-                                createFolderData={this.props.createFolderData}
-                                
+                                handleDeleteProject={this.handleDeleteProject}
                               />
                             );
                           })
@@ -281,7 +298,8 @@ const mapStateToProps = state => ({
   userFolderDetails: state.folderData.userFolderData,
   folderDetails: state.folderData.folderData,
   uploadFolderData: state.folderData && state.folderData.uploadFolderData,
-  userFileData: state.folderData && state.folderData.userFileData
+  userFileData: state.folderData && state.folderData.userFileData,
+
 });
 
 export default util.storeConnect(Dashboard, mapStateToProps, {

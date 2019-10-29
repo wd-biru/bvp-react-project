@@ -4,10 +4,12 @@ const initialState = {
   folderData: null,
   userFolderData: null,
   uploadFolderData: null,
-  userFileData: null
+  userFileData: null,
+  fileProgressData:0
 };
 
 export default function folderReducer(state = initialState, action) {
+  debugger;
   switch (action.type) {
     case folderDataConsts.CREATE_FOLDER_DATA_SUCCESS:
       return {
@@ -57,6 +59,12 @@ export default function folderReducer(state = initialState, action) {
         error: action.payload,
         userFileData: null
       };
+      case folderDataConsts.GET_FOLDER_FILE_PROGRESS:
+      return {
+        ...state,
+        fileProgressData: action.payload     
+      };
+      
     default:
       return state;
   }

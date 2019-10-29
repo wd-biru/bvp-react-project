@@ -3,6 +3,8 @@ import Dropzone from "react-dropzone";
 import Img from "./img/uploadicon.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProgressBar from "react-bootstrap/ProgressBar";
+
 
 class UploadPageSection extends React.Component {
   constructor(props) {
@@ -12,7 +14,9 @@ class UploadPageSection extends React.Component {
       fileUrl: "",
       showToastMsg: false
     };
+    this.props.resetLoader(0)
   }
+
 
   handleInputChange = e => {
     this.setState({
@@ -59,7 +63,7 @@ class UploadPageSection extends React.Component {
       this.props.getUploadFolderData(payload);
     }
   };
-
+   
   componentDidUpdate(prevProps) {
     if (
       prevProps.uploadFolderData !== this.props.uploadFolderData &&
@@ -171,6 +175,7 @@ class UploadPageSection extends React.Component {
                     placeholder="Paste a YouTube, Vimeo or Google Drive URL here"
                   />
                 </div>
+                <ProgressBar now={this.props.fileProgressData} label={`${this.props.fileProgressData}%`} />;
                 <label
                   className="file-upload btn btn-primary btn-block
                      rounded-pill shadow upbtnfile mb-4"

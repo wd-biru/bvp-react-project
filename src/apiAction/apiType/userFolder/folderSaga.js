@@ -1,5 +1,5 @@
 import { folderDataConsts } from "../userFolder/folderActions";
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest,take } from "redux-saga/effects";
 import {
   getUserFolderData,
   getFolderData,
@@ -18,6 +18,7 @@ function* createFolderData(action) {
   const folderData = yield call(() => {
     return getFolderData(action.data);
   });
+  debugger
   if (!folderData.error) {
     yield put({
       payload: folderData,
@@ -60,20 +61,36 @@ export function* fetchUploadFolderDataSaga() {
 }
 
 function* uploadFolderData(action) {
-  const uploadfolderData = yield call(() => {
-    return uploadUserFolderData(action.data);
-  });
-  if (!uploadfolderData.error) {
+   
+  const channel = yield call(uploadUserFolderData,action.data);
+ 
+  while (true) {
+    const { progressPercentage = 0, err, res } = yield take(channel);
+    if (err) {
+      console.log(err)
+      yield put({
+              payload: err,
+              type: folderDataConsts.GET_FOLDER_FILE_DATA_FAIL
+            });
+        return;
+    }
+    if (res) {
+      console.log(res)
+        
+        yield put({
+          payload: res,
+          type: folderDataConsts.GET_UPLOAD_FOLDER_DATA_SUCCESS
+        });
+    return;
+        
+    }
     yield put({
-      payload: uploadfolderData,
-      type: folderDataConsts.GET_UPLOAD_FOLDER_DATA_SUCCESS
+      payload: progressPercentage,
+      type: folderDataConsts.GET_FOLDER_FILE_PROGRESS
     });
-  } else {
-    yield put({
-      payload: uploadfolderData,
-      type: folderDataConsts.GET_UPLOAD_FOLDER_DATA_FAIL
-    });
-  }
+   
+ }
+ 
 }
 
 export function* fetchFolderFileDataSaga() {

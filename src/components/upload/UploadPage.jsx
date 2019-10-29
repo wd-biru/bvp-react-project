@@ -3,6 +3,7 @@ import React from "react";
 import MainNavbarHeader from "./MainNavbarHeader";
 import UploadBreadcrumb from "./UploadBreadcrumb";
 import UploadPageSection from "./UploadPageSection";
+
 import Footer from "./Footer";
 
 import "./css/MystyleDefault.css";
@@ -10,6 +11,10 @@ import "./css/me_custom.css";
 import "./css/me_responsive.css";
 
 class UploadPage extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(props);
+  }
   render() {
     return (
       <body className="uploadpage">
@@ -21,10 +26,13 @@ class UploadPage extends React.Component {
             />
             <UploadPageSection
               getUploadFolderData={this.props.getUploadFolderData}
+              resetLoader={this.props.getUploadFolderData}
               activeProject={this.props.activeProject}
               uploadFolderData={this.props.uploadFolderData}
               handleUploadClose={this.props.handleUploadClose}
               isActiveObject={this.props.isActiveObject}
+              fileProgressData={this.props.fileProgressData}
+             
             />
             <Footer />
           </div>

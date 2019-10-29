@@ -10,7 +10,8 @@ export const folderDataConsts = {
   GET_UPLOAD_FOLDER_DATA_FAIL: "GET_UPLOAD_FOLDER_DATA_FAIL",
   GET_FOLDER_FILE_DATA_REQUEST: "GET_FOLDER_FILE_DATA_REQUEST",
   GET_FOLDER_FILE_DATA_SUCCESS: "GET_FOLDER_FILE_DATA_SUCCESS",
-  GET_FOLDER_FILE_DATA_FAIL: "GET_FOLDER_FILE_DATA_FAIL"
+  GET_FOLDER_FILE_DATA_FAIL: "GET_FOLDER_FILE_DATA_FAIL",
+  GET_FOLDER_FILE_PROGRESS: "GET_FOLDER_FILE_PROGRESS"
 };
 
 export function createFolderData(data) {
@@ -30,6 +31,12 @@ export function getUserFolderData(data) {
 export function getUploadFolderData(data) {
   return {
     type: folderDataConsts.GET_UPLOAD_FOLDER_DATA_REQUEST,
+    data
+  };
+}
+export function resetLoader(data) {
+  return {
+    type: folderDataConsts.GET_FOLDER_FILE_PROGRESS,
     data
   };
 }

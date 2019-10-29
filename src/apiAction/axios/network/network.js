@@ -12,5 +12,8 @@ class networkType {
   post(path, data, reqHeaders = {}) {
     return this.$http.post(path, data, { headers: reqHeaders });
   }
+  postWithProgress(path, data, reqHeaders = {},progress={}) {
+    return this.$http.post(path, data, { headers: reqHeaders,onUploadProgress:progress });
+  }
 }
 export default networkType;
