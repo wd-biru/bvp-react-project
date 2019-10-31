@@ -6,6 +6,7 @@ import {
   fetchUserFolderDataSaga,
   fetchUploadFolderDataSaga,
   fetchFolderFileDataSaga,
+  fetchFolderMoveDataSaga
 } from "./userFolder/folderSaga";
 
 function* rootSaga() {
@@ -14,7 +15,8 @@ function* rootSaga() {
     fetchFolderDataSaga(),
     fetchUserFolderDataSaga(),
     fetchUploadFolderDataSaga(),
-    fetchFolderFileDataSaga()
+    fetchFolderFileDataSaga(),
+    fetchFolderMoveDataSaga()
   ]);
 }
 

@@ -2,9 +2,6 @@ import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 
 class DashboardDropDown extends React.Component {
-  //   handleDelete = () => {
-  //     alert("Hi");
-  //   };
   render() {
     return (
       <div>
@@ -23,12 +20,15 @@ class DashboardDropDown extends React.Component {
               <Dropdown.Item class="dropdown-item edit">
                 <i class="fa fa-eye"></i>Preview
               </Dropdown.Item>
-              <Dropdown.Item class="dropdown-item edit">
+              <Dropdown.Item
+                class="dropdown-item edit"
+                onClick={() => this.props.handleMediaDuplicate(this.props.data)}
+              >
                 <i class="fa fa-files-o"></i>Duplicate
               </Dropdown.Item>
               <Dropdown.Item
                 class="dropdown-item edit"
-                onClick={this.props.handleProjectMove}
+                onClick={() => this.props.handleMediaDuplicate(this.props.data)}
               >
                 <i class="fa fa-arrows"></i>Move Project To
               </Dropdown.Item>

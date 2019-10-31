@@ -38,3 +38,12 @@ export function uploadUserFolderData(data) {
     })
     .catch(err => err);
 }
+
+export function userFolderMoveData(data, actionType) {
+  return util.networkMain
+    .post(`/${actionType.action}`, data)
+    .then(res => {
+      return res;
+    })
+    .catch(err => err);
+}

@@ -8,11 +8,14 @@ import util from "../apiAction/axios/utility";
 import {
   getUserFolderData,
   createFolderData,
-  getUploadFolderFileData
+  getUploadFolderFileData,
+  getuserFolderMoveData
 } from "../apiAction/apiType/userFolder/folderActions";
 import FileType from "../components/upload/FileType";
 import DataTable from "react-data-table-component";
 import Dropdown from "react-bootstrap/Dropdown";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const columns = [
   {
@@ -35,7 +38,15 @@ const columns = [
   {
     name: "File Url",
     selector: "url",
-    sortable: true
+    sortable: true,
+    cell: row => (
+      <img
+        height="84px"
+        width="56px"
+        alt={row.type}
+        src={`https://apiv2.bossvideoplayer.com/public/user/${row.url}`}
+      />
+    )
   }
 ];
 
@@ -55,7 +66,10 @@ class Dashboard extends Component {
       homeActive: true,
       dataSortBy: true,
       projectMove: false,
-      showMediaDelete: false
+      showMediaDelete: false,
+      selectedMedia: null,
+      showToast: false,
+      showMediaDuplicate: false
     };
   }
   handleFolderData = selectedFolder => {
@@ -87,7 +101,7 @@ class Dashboard extends Component {
       user_id: Number(userId)
     };
     this.props.getUserFolderData(getFolderpayload);
-    this.props.getUserFolderData(payload);
+    // this.props.getUserFolderData(payload);
     this.props.getUploadFolderFileData(payload);
   }
 
@@ -95,6 +109,11 @@ class Dashboard extends Component {
     const userId = localStorage.getItem("userId");
     const payload = {
       user_id: Number(userId)
+    };
+    const mediaPayload = {
+      user_id: Number(userId),
+      folder_id: this.state.isActiveObject ? this.state.isActiveObject.id : 0,
+      file_type: this.state.breadcombItemType
     };
     const foldChildren =
       this.props.folderDetails && this.state.isActiveObject
@@ -113,6 +132,20 @@ class Dashboard extends Component {
         activeIndex: 0,
         userFileData: foldChildren.length > 0 && foldChildren[0].children
       });
+    }
+    // Move code success
+    if (
+      prevProps.userMoveData !== this.props.userMoveData &&
+      this.props.userMoveData.code === 200
+    ) {
+      this.setState({
+        projectMove: false,
+        showMediaDuplicate: false,
+        showToast: true
+      });
+      this.props.getUserFolderData(payload);
+      this.props.getUploadFolderFileData(mediaPayload);
+      toast.success(this.props.userMoveData.message);
     }
   }
 
@@ -187,9 +220,10 @@ class Dashboard extends Component {
     return data;
   };
 
-  handleProjectMove = () => {
+  handleProjectMove = selectedMedia => {
     this.setState({
-      projectMove: true
+      projectMove: true,
+      selectedMedia: selectedMedia ? selectedMedia.actual_name : null
     });
   };
 
@@ -202,7 +236,8 @@ class Dashboard extends Component {
   closeMediaModal = () => {
     this.setState({
       projectMove: false,
-      showMediaDelete: false
+      showMediaDelete: false,
+      showMediaDuplicate: false
     });
   };
 
@@ -210,6 +245,40 @@ class Dashboard extends Component {
     this.setState({
       showMediaDelete: true
     });
+  };
+
+  moveFolder = moveTo => {
+    const userId = Number(localStorage.getItem("userId"));
+    const movePayload = {
+      actual_name: this.state.selectedMedia,
+      user_id: userId,
+      folder_from: this.state.isActiveObject ? this.state.isActiveObject.id : 0,
+      folder_to: moveTo ? moveTo.value : 0
+    };
+    const actionType = {
+      action: "move"
+    };
+    this.props.getuserFolderMoveData(movePayload, actionType);
+  };
+
+  handleMediaDuplicate = selectedMedia => {
+    this.setState({
+      showMediaDuplicate: true,
+      selectedMedia: selectedMedia ? selectedMedia.actual_name : null
+    });
+  };
+
+  duplicateFolder = () => {
+    const userId = Number(localStorage.getItem("userId"));
+    const movePayload = {
+      actual_name: this.state.selectedMedia,
+      user_id: userId,
+      folder_id: this.state.isActiveObject ? this.state.isActiveObject.id : 0
+    };
+    const actionType = {
+      action: "duplicate"
+    };
+    this.props.getuserFolderMoveData(movePayload, actionType);
   };
 
   render() {
@@ -278,6 +347,13 @@ class Dashboard extends Component {
                                 closeMediaModal={this.closeMediaModal}
                                 handleMediaDelete={this.handleMediaDelete}
                                 showMediaDelete={this.state.showMediaDelete}
+                                moveFolder={this.moveFolder}
+                                userMoveData={this.props.userMoveData}
+                                showMediaDuplicate={
+                                  this.state.showMediaDuplicate
+                                }
+                                handleMediaDuplicate={this.handleMediaDuplicate}
+                                duplicateFolder={this.duplicateFolder}
                               />
                             );
                           })
@@ -308,6 +384,12 @@ class Dashboard extends Component {
                                 closeMediaModal={this.closeMediaModal}
                                 handleMediaDelete={this.handleMediaDelete}
                                 showMediaDelete={this.state.showMediaDelete}
+                                moveFolder={this.moveFolder}
+                                showMediaDuplicate={
+                                  this.state.showMediaDuplicate
+                                }
+                                handleMediaDuplicate={this.handleMediaDuplicate}
+                                duplicateFolder={this.duplicateFolder}
                               />
                             );
                           })
@@ -326,7 +408,7 @@ class Dashboard extends Component {
               }
             />
           )}
-
+          {this.state.showToast && <ToastContainer />}
           <Footer />
         </div>
       </>
@@ -338,11 +420,13 @@ const mapStateToProps = state => ({
   userFolderDetails: state.folderData.userFolderData,
   folderDetails: state.folderData.folderData,
   uploadFolderData: state.folderData && state.folderData.uploadFolderData,
-  userFileData: state.folderData && state.folderData.userFileData
+  userFileData: state.folderData && state.folderData.userFileData,
+  userMoveData: state.folderData && state.folderData.userMoveData
 });
 
 export default util.storeConnect(Dashboard, mapStateToProps, {
   getUserFolderData,
   createFolderData,
-  getUploadFolderFileData
+  getUploadFolderFileData,
+  getuserFolderMoveData
 });

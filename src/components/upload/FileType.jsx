@@ -68,7 +68,10 @@ class FileType extends React.Component {
                   <div className="cappadd">
                     <h5>{this.props.data.folder_name}</h5>
                     <DashboardDropDown
-                      handleProjectMove={this.props.handleProjectMove}
+                      handleProjectMove={() =>
+                        this.props.handleProjectMove(this.props.data)
+                      }
+                      handleMediaDuplicate={this.props.handleMediaDuplicate}
                       handleMediaDelete={this.props.handleMediaDelete}
                       data={this.props.data}
                     />
@@ -92,7 +95,10 @@ class FileType extends React.Component {
                   </h5>
                   <p className="title">{this.props.data.type}</p>
                   <DashboardDropDown
-                    handleProjectMove={this.props.handleProjectMove}
+                    handleProjectMove={() =>
+                      this.props.handleProjectMove(this.props.data)
+                    }
+                    handleMediaDuplicate={this.props.handleMediaDuplicate}
                     handleMediaDelete={this.props.handleMediaDelete}
                     data={this.props.data}
                   />
@@ -111,7 +117,10 @@ class FileType extends React.Component {
                     </h5>
                     <p className="title">{this.props.data.type}</p>
                     <DashboardDropDown
-                      handleProjectMove={this.props.handleProjectMove}
+                      handleProjectMove={() =>
+                        this.props.handleProjectMove(this.props.data)
+                      }
+                      handleMediaDuplicate={this.props.handleMediaDuplicate}
                       handleMediaDelete={this.props.handleMediaDelete}
                       data={this.props.data}
                     />
@@ -132,6 +141,7 @@ class FileType extends React.Component {
                     {this.props.data.actual_name}
                     <DashboardDropDown
                       handleProjectMove={this.props.handleProjectMove}
+                      handleMediaDuplicate={this.props.handleMediaDuplicate}
                       handleMediaDelete={this.props.handleMediaDelete}
                       data={this.props.data}
                     />
@@ -173,7 +183,7 @@ class FileType extends React.Component {
                 id="createFolder"
                 name="createName"
                 className="btn btn-info btn-md modal-btn text-center form-group"
-                // onClick={() => this.createFolder(actionType)}
+                onClick={() => this.props.moveFolder(this.state.selectedOption)}
                 // disabled={!this.state.deleteMode && this.handleBtnDisable()}
               >
                 Move
@@ -185,11 +195,21 @@ class FileType extends React.Component {
             </div>
           </Modal>
         )}
+        {this.props.showMediaDuplicate && (
+          <MediaModal
+            modalIsOpen={this.props.showMediaDuplicate}
+            closeMediaModal={this.props.closeMediaModal}
+            btnText={"Clone"}
+            consfirmMsg={"Are you sure you want to make duplicate?"}
+            handleClick={this.props.duplicateFolder}
+          />
+        )}
         {this.props.showMediaDelete && (
           <MediaModal
-            showMediaDelete={this.props.showMediaDelete}
+            modalIsOpen={this.props.showMediaDelete}
             closeMediaModal={this.props.closeMediaModal}
-            btnText={this.props.showMediaDelete ? "Delete" : "Clone"}
+            btnText={"Delete"}
+            consfirmMsg={"Are you sure you want to delete?"}
           />
         )}
       </>

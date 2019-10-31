@@ -52,7 +52,7 @@ class UploadPageSection extends React.Component {
     if (type === "url") {
       let payload = {
         user_id: Number(userId),
-        folder_id: this.props.activeProject.id,
+        folder_id: activeId,
         isYoutube: 1,
         link: this.state.fileUrl
       };

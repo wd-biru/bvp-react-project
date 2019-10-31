@@ -26,7 +26,7 @@ class MediaModal extends React.Component {
     return (
       <>
         <Modal
-          modalIsOpen={this.props.showMediaDelete}
+          modalIsOpen={this.props.modalIsOpen}
           closeModal={this.props.closeMediaModal}
           customStyles={customStyles}
           contentLabel={"Create Folder"}
@@ -45,12 +45,12 @@ class MediaModal extends React.Component {
           </div>
 
           <div className="modal-body text-center">
-            Are you sure you want to delete? <br />
+            {this.props.consfirmMsg} <br />
             <button
               id="createFolder"
               name="createName"
               className="btn btn-info btn-md modal-btn text-center form-group"
-              // onClick={() => this.createFolder(actionType)}
+              onClick={() => this.props.handleClick()}
               // disabled={!this.state.deleteMode && this.handleBtnDisable()}
             >
               {this.props.btnText}

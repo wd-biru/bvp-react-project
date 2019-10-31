@@ -4,7 +4,8 @@ import {
   getUserFolderData,
   getFolderData,
   uploadUserFolderData,
-  getUserFolderFilesData
+  getUserFolderFilesData,
+  userFolderMoveData
 } from "../userFolder/folderApi";
 
 export function* fetchFolderDataSaga() {
@@ -96,6 +97,30 @@ function* folderFileData(action) {
     yield put({
       payload: folderFile,
       type: folderDataConsts.GET_FOLDER_FILE_DATA_FAIL
+    });
+  }
+}
+
+export function* fetchFolderMoveDataSaga() {
+  yield takeLatest(
+    folderDataConsts.GET_FOLDER_MOVE_DATA_REQUEST,
+    folderMoveData
+  );
+}
+
+function* folderMoveData(action) {
+  const folderMove = yield call(() => {
+    return userFolderMoveData(action.data, action.actionType);
+  });
+  if (!folderMove.error) {
+    yield put({
+      payload: folderMove,
+      type: folderDataConsts.GET_FOLDER_MOVE_DATA_SUCCESS
+    });
+  } else {
+    yield put({
+      payload: folderMove,
+      type: folderDataConsts.GET_FOLDER_MOVE_DATA_FAIL
     });
   }
 }
