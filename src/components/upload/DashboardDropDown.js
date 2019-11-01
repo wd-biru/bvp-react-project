@@ -28,7 +28,7 @@ class DashboardDropDown extends React.Component {
               </Dropdown.Item>
               <Dropdown.Item
                 class="dropdown-item edit"
-                onClick={() => this.props.handleMediaDuplicate(this.props.data)}
+                onClick={() => this.props.handleProjectMove(this.props.data)}
               >
                 <i class="fa fa-arrows"></i>Move Project To
               </Dropdown.Item>

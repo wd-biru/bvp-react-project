@@ -4,6 +4,8 @@ import { fetchUserData } from "../../apiAction/apiType/login/loginActions";
 import LogoImg from "./bvp-logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import ForgotPass from './ForgotPassword';
 
 import "./Me_custom.css";
 
@@ -61,16 +63,24 @@ class Login extends React.Component {
     return btnDisable;
   };
 
+  forgot_pass = () => {
+  document.getElementById("loginid").style.display = "none";
+  document.getElementById("loginid2").style.display = "block";
+  }
+
   render() {
     return (
-      <div className="loginpage">
+      <Router>
+      <div className="loginpage" id="loginid">
         <div id="login" className="text-center">
           <div id="login">
             <div className="container">
+           
               <div
                 id="login-row"
                 className="row justify-content-center align-items-center"
               >
+               
                 <div id="login-column" className="col-md-6">
                   <div id="login-box" className="col-md-12">
                     <form
@@ -105,11 +115,12 @@ class Login extends React.Component {
                       <div className="form-group">
                         <label htmlFor="remember-me" className="text-infoss">
                           <span>
-                            <a href="#" className="text-infoss">
+                          <Link to="" href="#" className="text-infoss" onClick={this.forgot_pass}>
                               Help, I forgot my password
-                            </a>
-                          </span>
+                            </Link>
+                          </span>                          
                         </label>
+                        
                         <br />
                         <input
                           type="button"
@@ -133,11 +144,15 @@ class Login extends React.Component {
                   </div>
                 </div>
               </div>
+             
+             
             </div>
           </div>
         </div>
         {this.state.showErrorMsg && <ToastContainer />}
       </div>
+      <Route exact path="" component={ForgotPass} />
+      </Router>
     );
   }
 }
