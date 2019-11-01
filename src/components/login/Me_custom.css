@@ -537,3 +537,18 @@ div#login-row {
   padding: 0.375rem 1rem;
   height: 41px;
 }
+/*  */
+.btn.btn-info.btn-md.passcancel {
+  float: right;
+}
+.form-group.password_div {
+  margin-top: 45px;
+}
+.passformcont {
+  margin-top: 35px;
+}
+h2.forgot-head {
+  text-align: center;
+  color: white;
+  margin-bottom: 35px;
+}

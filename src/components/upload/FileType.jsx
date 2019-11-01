@@ -4,6 +4,7 @@ import docuImg from "../../assets/img/docimg.jpg";
 import Modal from "../shared/modal/Modal";
 import Select from "react-select";
 import MediaModal from "../upload/MediaModal";
+
 const customStyles = {
   content: {
     top: "50%",
@@ -93,7 +94,7 @@ class FileType extends React.Component {
                       ? this.props.isActiveObject.folder_name
                       : ""}
                   </h5>
-                  <p className="title">{this.props.data.type}</p>
+                  <p className="title">{this.props.data.actual_name}</p>
                   <DashboardDropDown
                     handleProjectMove={() =>
                       this.props.handleProjectMove(this.props.data)
@@ -115,7 +116,7 @@ class FileType extends React.Component {
                         ? this.props.isActiveObject.folder_name
                         : ""}
                     </h5>
-                    <p className="title">{this.props.data.type}</p>
+                    <p className="title">{this.props.data.actual_name}</p>
                     <DashboardDropDown
                       handleProjectMove={() =>
                         this.props.handleProjectMove(this.props.data)

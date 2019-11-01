@@ -163,7 +163,7 @@ class Dashboard extends Component {
       activeIndex: index,
       handleListView: false,
       userFileData:
-        this.state.activeIndex === 0 ? this.state.userFileData : null,
+      this.state.activeIndex === 0 ? this.state.userFileData : null,
       breadcombItemType: itemType
     });
   };
@@ -270,10 +270,12 @@ class Dashboard extends Component {
 
   duplicateFolder = () => {
     const userId = Number(localStorage.getItem("userId"));
+    const clonebb = 'duplicate';
     const movePayload = {
       actual_name: this.state.selectedMedia,
       user_id: userId,
-      folder_id: this.state.isActiveObject ? this.state.isActiveObject.id : 0
+      folder_id: this.state.isActiveObject ? this.state.isActiveObject.id : 0,
+      action: clonebb
     };
     const actionType = {
       action: "duplicate"

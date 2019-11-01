@@ -79,7 +79,7 @@ class Header extends React.Component {
                 </li>
                 {/* Logout    */}
                 <li className="nav-item" onClick={this.handleLogout}>
-                  <a href="#" className="nav-link logout">
+                  <a href="" className="nav-link logout">
                     {" "}
                     <i className="fa fa-user"></i>
                   </a>
