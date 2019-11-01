@@ -1,7 +1,8 @@
 import { userDataConsts } from "./loginActions";
 
 const initialState = {
-  userData: null
+  userData: null,
+  createPwd: null
 };
 
 export default function userReducer(state = initialState, action) {
@@ -18,7 +19,18 @@ export default function userReducer(state = initialState, action) {
         error: action.payload,
         userData: null
       };
+    case userDataConsts.CREATE_PWD_SUCCESS:
+      return {
+        ...state,
+        createPwd: action.payload
+      };
 
+    case userDataConsts.CREATE_PWD_FAIL:
+      return {
+        ...state,
+        error: action.payload,
+        createPwd: null
+      };
     default:
       return state;
   }

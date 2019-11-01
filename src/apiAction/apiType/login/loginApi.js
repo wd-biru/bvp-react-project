@@ -13,3 +13,12 @@ export function getUserData(data) {
     })
     .catch(err => err);
 }
+
+export function createforgetPwd(data) {
+  return util.networkMain
+    .post("/password/create", data)
+    .then(res => {
+      return res.data;
+    })
+    .catch(err => err);
+}

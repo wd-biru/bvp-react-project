@@ -35,7 +35,7 @@ class DashboardDropDown extends React.Component {
               <hr />
               <Dropdown.Item
                 class="dropdown-item remove"
-                onClick={this.props.handleMediaDelete}
+                onClick={() => this.props.handleMediaDelete(this.props.data)}
               >
                 <i class="fa fa-trash"></i>Delete
               </Dropdown.Item>

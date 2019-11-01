@@ -1,6 +1,6 @@
 import { all } from "redux-saga/effects";
 
-import { fetchUserDataSaga } from "./login/loginSaga";
+import { fetchUserDataSaga, createPwdSaga } from "./login/loginSaga";
 import {
   fetchFolderDataSaga,
   fetchUserFolderDataSaga,
@@ -16,7 +16,8 @@ function* rootSaga() {
     fetchUserFolderDataSaga(),
     fetchUploadFolderDataSaga(),
     fetchFolderFileDataSaga(),
-    fetchFolderMoveDataSaga()
+    fetchFolderMoveDataSaga(),
+    createPwdSaga()
   ]);
 }
 

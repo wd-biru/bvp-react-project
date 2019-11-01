@@ -1,6 +1,6 @@
 import { userDataConsts } from "../login/loginActions";
 import { call, put, takeLatest } from "redux-saga/effects";
-import { getUserData } from "../login/loginApi";
+import { getUserData, createforgetPwd } from "../login/loginApi";
 
 export function* fetchUserDataSaga() {
   yield takeLatest(userDataConsts.USER_DATA_REQUEST, fetchUserData);
@@ -19,6 +19,27 @@ function* fetchUserData(action) {
     yield put({
       payload: userData.response,
       type: userDataConsts.USER_DATA_FAIL
+    });
+  }
+}
+
+export function* createPwdSaga() {
+  yield takeLatest(userDataConsts.CREATE_PWD_REQUEST, createPwd);
+}
+
+function* createPwd(action) {
+  const createPassword = yield call(() => {
+    return createforgetPwd(action.data);
+  });
+  if (!createPassword.error) {
+    yield put({
+      payload: createPassword,
+      type: userDataConsts.CREATE_PWD_SUCCESS
+    });
+  } else {
+    yield put({
+      payload: createPassword,
+      type: userDataConsts.CREATE_PWD_FAIL
     });
   }
 }

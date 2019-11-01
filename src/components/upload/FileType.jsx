@@ -211,6 +211,7 @@ class FileType extends React.Component {
             closeMediaModal={this.props.closeMediaModal}
             btnText={"Delete"}
             consfirmMsg={"Are you sure you want to delete?"}
+            handleClick={this.props.duplicateFolder}
           />
         )}
       </>

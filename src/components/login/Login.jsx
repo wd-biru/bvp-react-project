@@ -5,7 +5,7 @@ import LogoImg from "./bvp-logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import ForgotPass from './ForgotPassword';
+import ForgotPass from "./ForgotPassword";
 
 import "./Me_custom.css";
 
@@ -16,7 +16,8 @@ class Login extends React.Component {
       userEmail: "",
       userPwd: "",
       loginBtnDisable: false,
-      showErrorMsg: false
+      showErrorMsg: false,
+      showForgetPwd: false
     };
   }
 
@@ -63,96 +64,109 @@ class Login extends React.Component {
     return btnDisable;
   };
 
-  forgot_pass = () => {
-  document.getElementById("loginid").style.display = "none";
-  document.getElementById("loginid2").style.display = "block";
-  }
+  handleForgetPwd = () => {
+    this.setState({
+      showForgetPwd: true
+    });
+  };
+
+  cancelForgetPwd = () => {
+    this.setState({
+      showForgetPwd: false
+    });
+  };
 
   render() {
     return (
-      <Router>
       <div className="loginpage" id="loginid">
-        <div id="login" className="text-center">
-          <div id="login">
-            <div className="container">
-           
-              <div
-                id="login-row"
-                className="row justify-content-center align-items-center"
-              >
-               
-                <div id="login-column" className="col-md-6">
-                  <div id="login-box" className="col-md-12">
-                    <form
-                      id="login-form"
-                      className="form"
-                      action=""
-                      method="post"
-                    >
-                      <img src={LogoImg} className="login-logo" alt="BVP" />
-                      <div className="form-group">
-                        <input
-                          type="text"
-                          name="userEmail"
-                          id="username"
-                          className="form-control"
-                          placeholder="Email"
-                          value={this.state.userEmail}
-                          onChange={this.handleInputChange}
-                        />
-                      </div>
-                      <div className="form-group">
-                        <input
-                          type="password"
-                          name="userPwd"
-                          id="password"
-                          className="form-control"
-                          placeholder="password"
-                          value={this.state.userPwd}
-                          onChange={this.handleInputChange}
-                        />
-                      </div>
-                      <div className="form-group">
-                        <label htmlFor="remember-me" className="text-infoss">
-                          <span>
-                          <Link to="" href="#" className="text-infoss" onClick={this.forgot_pass}>
-                              Help, I forgot my password
-                            </Link>
-                          </span>                          
-                        </label>
-                        
-                        <br />
-                        <input
-                          type="button"
-                          name="submit"
-                          className="btn btn-info btn-md"
-                          disabled={
-                            this.handleBtnDisable() ||
-                            this.state.loginBtnDisable
-                          }
-                          value="LOG IN"
-                          onClick={() => this.handleClick()}
-                        />
-                        <i className="fa fa-long-arrow-right"></i>
-                        {this.state.loginBtnDisable && (
+        {!this.state.showForgetPwd && (
+          <div id="login" className="text-center">
+            <div id="login">
+              <div className="container">
+                <div
+                  id="login-row"
+                  className="row justify-content-center align-items-center"
+                >
+                  <div id="login-column" className="col-md-6">
+                    <div id="login-box" className="col-md-12">
+                      <form
+                        id="login-form"
+                        className="form"
+                        action=""
+                        method="post"
+                      >
+                        <img src={LogoImg} className="login-logo" alt="BVP" />
+                        <div className="form-group">
+                          <input
+                            type="text"
+                            name="userEmail"
+                            id="username"
+                            className="form-control"
+                            placeholder="Email"
+                            value={this.state.userEmail}
+                            onChange={this.handleInputChange}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <input
+                            type="password"
+                            name="userPwd"
+                            id="password"
+                            className="form-control"
+                            placeholder="password"
+                            value={this.state.userPwd}
+                            onChange={this.handleInputChange}
+                          />
+                        </div>
+                        <div className="form-group">
                           <label htmlFor="remember-me" className="text-infoss">
-                            <span>Please Wait...</span>
+                            <span>
+                              <Link
+                                to=""
+                                href="#"
+                                className="text-infoss"
+                                onClick={this.handleForgetPwd}
+                              >
+                                Help, I forgot my password
+                              </Link>
+                            </span>
                           </label>
-                        )}
-                      </div>
-                    </form>
+
+                          <br />
+                          <input
+                            type="button"
+                            name="submit"
+                            className="btn btn-info btn-md"
+                            disabled={
+                              this.handleBtnDisable() ||
+                              this.state.loginBtnDisable
+                            }
+                            value="LOG IN"
+                            onClick={() => this.handleClick()}
+                          />
+                          <i className="fa fa-long-arrow-right"></i>
+                          {this.state.loginBtnDisable && (
+                            <label
+                              htmlFor="remember-me"
+                              className="text-infoss"
+                            >
+                              <span>Please Wait...</span>
+                            </label>
+                          )}
+                        </div>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
-             
-             
             </div>
           </div>
-        </div>
+        )}
         {this.state.showErrorMsg && <ToastContainer />}
+        {this.state.showForgetPwd && (
+          <ForgotPass cancelForgetPwd={this.cancelForgetPwd} />
+        )}
       </div>
-      <Route exact path="" component={ForgotPass} />
-      </Router>
     );
   }
 }

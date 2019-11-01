@@ -141,6 +141,7 @@ class Dashboard extends Component {
       this.setState({
         projectMove: false,
         showMediaDuplicate: false,
+        showMediaDelete: false,
         showToast: true
       });
       this.props.getUserFolderData(payload);
@@ -163,7 +164,7 @@ class Dashboard extends Component {
       activeIndex: index,
       handleListView: false,
       userFileData:
-      this.state.activeIndex === 0 ? this.state.userFileData : null,
+        this.state.activeIndex === 0 ? this.state.userFileData : null,
       breadcombItemType: itemType
     });
   };
@@ -241,9 +242,10 @@ class Dashboard extends Component {
     });
   };
 
-  handleMediaDelete = () => {
+  handleMediaDelete = selectedMedia => {
     this.setState({
-      showMediaDelete: true
+      showMediaDelete: true,
+      selectedMedia: selectedMedia ? selectedMedia : null
     });
   };
 
@@ -264,18 +266,18 @@ class Dashboard extends Component {
   handleMediaDuplicate = selectedMedia => {
     this.setState({
       showMediaDuplicate: true,
-      selectedMedia: selectedMedia ? selectedMedia.actual_name : null
+      selectedMedia: selectedMedia ? selectedMedia : null
     });
   };
 
   duplicateFolder = () => {
     const userId = Number(localStorage.getItem("userId"));
-    const clonebb = 'duplicate';
     const movePayload = {
-      actual_name: this.state.selectedMedia,
+      actual_name: this.state.selectedMedia.actual_name,
       user_id: userId,
       folder_id: this.state.isActiveObject ? this.state.isActiveObject.id : 0,
-      action: clonebb
+      action: this.state.showMediaDelete ? "delete" : "duplicate",
+      id: this.state.selectedMedia.id
     };
     const actionType = {
       action: "duplicate"
