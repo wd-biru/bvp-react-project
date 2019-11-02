@@ -575,3 +575,16 @@ i.fa.fa-gear {
   color: #999 !important;
   height: 27px;
 }
+span.fabbremove {
+  font-size: 16px;
+  float: right;
+}
+.Progess_bar{
+    display: -ms-flexbox;
+    display: flex;
+    height: 1rem;
+    overflow: hidden;
+    font-size: .75rem;
+    background-color: #8292a2;
+    border-radius: .25rem;
+}

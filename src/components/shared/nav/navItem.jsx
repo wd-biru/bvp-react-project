@@ -42,6 +42,10 @@ class NavItems extends React.Component {
                       : ""
                   }
                   key={folderData.id}
+                  onClick={e => {
+                    this.handleToggle(folderData);
+                    e.stopPropagation();
+                  }}
                 >
                   <ul className="sub_folder">
                     <li>
@@ -51,10 +55,6 @@ class NavItems extends React.Component {
                           : 0}
                       </span>
                       <span
-                        onClick={e => {
-                          this.handleToggle(folderData);
-                          e.stopPropagation();
-                        }}
                       >
                         {folderData.folder_status === 1 ? (
                           <img src={createproject} className="createproject" />

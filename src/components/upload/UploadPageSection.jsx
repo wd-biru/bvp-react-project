@@ -98,23 +98,7 @@ class UploadPageSection extends React.Component {
     return (
       <section className="tables mb-0">
         <div className="container-fluid">
-          <ul className="col-md-4">
-            {this.state.filesName.length > 0 &&
-              this.state.filesName.map((acceptedFile, index) => (
-                <>
-                  <li className="list-group-item list-group-item-success">
-                    {acceptedFile.name}
-                    <span
-                      onClick={() =>
-                        this.handleRemoveSelectedFile(acceptedFile)
-                      }
-                    >
-                      Remove
-                    </span>
-                  </li>
-                </>
-              ))}
-          </ul>
+          
           <div className="row">
             <div className="col-lg-5 mx-auto">
               <div className="p-1 rounded-lg">
@@ -153,12 +137,30 @@ class UploadPageSection extends React.Component {
                     id="fileUpload"
                     type="button"
                     onClick={event => this.handleUpload(event, "local")}
-                    value={"Upload"}
+                    value={"Upload A Local Files"}
                     disabled={this.state.filesName.length > 0 ? false : true}
                   />
                 </label>
                 <br />
                 <h6 className="text-center mb-4 text-muted">
+                <ul className="col-md-4">
+            {this.state.filesName.length > 0 &&
+              this.state.filesName.map((acceptedFile, index) => (
+                <>
+                  <li className="list-group-item list-group-item-success">
+                    {acceptedFile.name}
+                    <span
+                      onClick={() =>
+                        this.handleRemoveSelectedFile(acceptedFile)
+                      }
+                      className="fabbremove"
+                    >
+                     <i class="fa fa-remove"></i>
+                    </span>
+                  </li>
+                </>
+              ))}
+          </ul>
                   <b>or</b>
                 </h6>
                 <div className="custom-file overflow-hidden mb-2">
