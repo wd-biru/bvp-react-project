@@ -51,14 +51,12 @@ class MediaModal extends React.Component {
               name="createName"
               className="btn btn-info btn-md modal-btn text-center form-group"
               onClick={() => this.props.handleClick()}
-              // disabled={!this.state.deleteMode && this.handleBtnDisable()}
+              disabled={this.props.actionBtnDisable}
             >
               {this.props.btnText}
             </button>
             <br />
-            {/* {this.state.submitBtnDisable && (
-                <span>Please Wait while your project is moving...</span>
-              )} */}
+            {this.props.actionBtnDisable && <span>Please Wait...</span>}
           </div>
         </Modal>
       </>

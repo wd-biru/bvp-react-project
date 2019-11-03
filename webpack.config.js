@@ -48,6 +48,17 @@ module.exports = {
         loader: "url-loader?limit=8192"
       },
       {
+        test: /\.(mov|mp4)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]"
+            }
+          }
+        ]
+      },
+      {
         test: /\.css$/,
         loader: "style-loader!css-loader"
       }

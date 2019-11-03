@@ -50,7 +50,10 @@ class FileType extends React.Component {
   }
 
   render() {
-    const filePath = "https://apiv2.bossvideoplayer.com/public/user";
+    const filePath =
+      this.props.data && this.props.data.type !== "youtube"
+        ? `https://apiv2.bossvideoplayer.com/public/user/${this.props.data.url}`
+        : this.props.data.url;
     return (
       <>
         <div className="col-lg-3">
@@ -74,55 +77,50 @@ class FileType extends React.Component {
                       }
                       handleMediaDuplicate={this.props.handleMediaDuplicate}
                       handleMediaDelete={this.props.handleMediaDelete}
+                      handlePreview={this.props.handlePreview}
                       data={this.props.data}
                     />
                   </div>
                 </div>
               </div>
             )}
-            {this.props.userFileData && this.props.data.type === "video" && (
+            {(this.props.userFileData && this.props.data.type === "video") ||
+            this.props.data.type === "youtube" ? (
               <div className="card-body">
                 <video controls>
-                  <source
-                    src={`${filePath}/${this.props.data.url}`}
-                    type="video/mp4"
-                  />
+                  <source src={filePath} type="video/mp4" />
                 </video>
                 <div className="cappadd">
-                  <h5>
-                    {this.props.isActiveObject
-                      ? this.props.isActiveObject.folder_name
-                      : ""}
-                  </h5>
-                  <p className="title">{this.props.data.actual_name}</p>
+                  <p className="title" title={this.props.data.actual_name}>
+                    {this.props.data.actual_name}
+                  </p>
                   <DashboardDropDown
                     handleProjectMove={() =>
                       this.props.handleProjectMove(this.props.data)
                     }
                     handleMediaDuplicate={this.props.handleMediaDuplicate}
                     handleMediaDelete={this.props.handleMediaDelete}
+                    handlePreview={this.props.handlePreview}
                     data={this.props.data}
                   />
                 </div>
               </div>
-            )}
+            ) : null}
             {this.props.userFileData && this.props.data.type === "image" && (
               <div className="cardss">
                 <div className="card-body">
-                  <img src={`${filePath}/${this.props.data.url}`} />
+                  <img src={filePath} />
                   <div className="cappadd">
-                    <h5>
-                      {this.props.isActiveObject
-                        ? this.props.isActiveObject.folder_name
-                        : ""}
-                    </h5>
-                    <p className="title">{this.props.data.actual_name}</p>
+                    <p className="title" title={this.props.data.actual_name}>
+                      {this.props.data.actual_name}
+                    </p>
                     <DashboardDropDown
                       handleProjectMove={() =>
                         this.props.handleProjectMove(this.props.data)
                       }
                       handleMediaDuplicate={this.props.handleMediaDuplicate}
                       handleMediaDelete={this.props.handleMediaDelete}
+                      handlePreview={this.props.handlePreview}
                       data={this.props.data}
                     />
                   </div>
@@ -134,16 +132,14 @@ class FileType extends React.Component {
                 <div className="card-body">
                   <img src={docuImg} />
                   <div className="cappadd">
-                    <h5>
-                      {this.props.isActiveObject
-                        ? this.props.isActiveObject.folder_name
-                        : ""}
-                    </h5>
-                    {this.props.data.actual_name}
+                    <p className="title" title={this.props.data.actual_name}>
+                      {this.props.data.actual_name}
+                    </p>
                     <DashboardDropDown
                       handleProjectMove={this.props.handleProjectMove}
                       handleMediaDuplicate={this.props.handleMediaDuplicate}
                       handleMediaDelete={this.props.handleMediaDelete}
+                      handlePreview={this.props.handlePreview}
                       data={this.props.data}
                     />
                   </div>
@@ -185,14 +181,14 @@ class FileType extends React.Component {
                 name="createName"
                 className="btn btn-info btn-md modal-btn text-center form-group"
                 onClick={() => this.props.moveFolder(this.state.selectedOption)}
-                // disabled={!this.state.deleteMode && this.handleBtnDisable()}
+                disabled={this.props.actionBtnDisable}
               >
                 Move
               </button>
               <br />
-              {/* {this.state.submitBtnDisable && (
+              {this.props.actionBtnDisable && (
                 <span>Please Wait while your project is moving...</span>
-              )} */}
+              )}
             </div>
           </Modal>
         )}
@@ -203,6 +199,7 @@ class FileType extends React.Component {
             btnText={"Clone"}
             consfirmMsg={"Are you sure you want to make duplicate?"}
             handleClick={this.props.duplicateFolder}
+            actionBtnDisable={this.props.actionBtnDisable}
           />
         )}
         {this.props.showMediaDelete && (
@@ -212,6 +209,7 @@ class FileType extends React.Component {
             btnText={"Delete"}
             consfirmMsg={"Are you sure you want to delete?"}
             handleClick={this.props.duplicateFolder}
+            actionBtnDisable={this.props.actionBtnDisable}
           />
         )}
       </>

@@ -51,8 +51,13 @@ class Breadcromb extends Component {
               >
                 Date Added
               </li>
-              <li className="fa fa-bars" onClick={this.props.handleListView}>
-                List View
+              <li
+                className={`fa fa-bars ${
+                  this.props.handleListViewItem ? "active" : ""
+                }`}
+                onClick={this.props.handleListView}
+              >
+                {this.props.handleListViewItem ? "Thumb View" : "List View"}
               </li>
             </ul>
           </div>

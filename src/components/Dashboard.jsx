@@ -16,6 +16,22 @@ import DataTable from "react-data-table-component";
 import Dropdown from "react-bootstrap/Dropdown";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import FileViewer from "react-file-viewer";
+import Modal from "../components/shared/modal/Modal";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "500px",
+    paddingtop: "0px",
+    padding: "0px"
+  }
+};
 
 const columns = [
   {
@@ -61,7 +77,7 @@ class Dashboard extends Component {
       projectActiveIndex: null,
       userFileData: null,
       activeProject: null,
-      handleListView: false,
+      handleListViewItem: false,
       breadcombItemType: "all",
       homeActive: true,
       dataSortBy: true,
@@ -69,7 +85,9 @@ class Dashboard extends Component {
       showMediaDelete: false,
       selectedMedia: null,
       showToast: false,
-      showMediaDuplicate: false
+      showMediaDuplicate: false,
+      actionBtnDisable: false,
+      showPreview: false
     };
   }
   handleFolderData = selectedFolder => {
@@ -81,7 +99,7 @@ class Dashboard extends Component {
     this.setState({
       isActiveObject: selectedFolder,
       activeIndex: this.state.activeIndex,
-      handleListView: false,
+      handleListViewItem: false,
       userFileData: selectedFolder.children,
       homeActive: false
     });
@@ -136,17 +154,20 @@ class Dashboard extends Component {
     // Move code success
     if (
       prevProps.userMoveData !== this.props.userMoveData &&
-      this.props.userMoveData.code === 200
+      this.props.userMoveData.code
     ) {
       this.setState({
         projectMove: false,
         showMediaDuplicate: false,
         showMediaDelete: false,
-        showToast: true
+        showToast: true,
+        actionBtnDisable: false
       });
       this.props.getUserFolderData(payload);
       this.props.getUploadFolderFileData(mediaPayload);
-      toast.success(this.props.userMoveData.message);
+      this.props.userMoveData.code === 200
+        ? toast.success(this.props.userMoveData.message)
+        : toast.error(this.props.userMoveData.message);
     }
   }
 
@@ -162,7 +183,7 @@ class Dashboard extends Component {
     }
     this.setState({
       activeIndex: index,
-      handleListView: false,
+      handleListViewItem: false,
       userFileData:
         this.state.activeIndex === 0 ? this.state.userFileData : null,
       breadcombItemType: itemType
@@ -200,7 +221,7 @@ class Dashboard extends Component {
     this.props.getUploadFolderFileData(payload);
 
     this.setState({
-      handleListView: !this.state.handleListView
+      handleListViewItem: !this.state.handleListViewItem
     });
   };
 
@@ -238,7 +259,8 @@ class Dashboard extends Component {
     this.setState({
       projectMove: false,
       showMediaDelete: false,
-      showMediaDuplicate: false
+      showMediaDuplicate: false,
+      showPreview: false
     });
   };
 
@@ -261,6 +283,9 @@ class Dashboard extends Component {
       action: "move"
     };
     this.props.getuserFolderMoveData(movePayload, actionType);
+    this.setState({
+      actionBtnDisable: true
+    });
   };
 
   handleMediaDuplicate = selectedMedia => {
@@ -283,6 +308,52 @@ class Dashboard extends Component {
       action: "duplicate"
     };
     this.props.getuserFolderMoveData(movePayload, actionType);
+    this.setState({
+      actionBtnDisable: true
+    });
+  };
+
+  handlePreview = selectedMedia => {
+    this.setState({
+      showPreview: true,
+      selectedMedia: selectedMedia ? selectedMedia : null
+    });
+    selectedMedia && this.renderPreview();
+  };
+
+  renderPreview = () => {
+    const fileType =
+      this.state.selectedMedia && this.state.selectedMedia.type !== "youtube"
+        ? this.state.selectedMedia.url.split(".").pop()
+        : "mp4";
+    const filePath =
+      this.state.selectedMedia && this.state.selectedMedia.type !== "youtube"
+        ? `https://apiv2.bossvideoplayer.com/public/user/${this.state.selectedMedia.url}`
+        : this.state.selectedMedia && this.state.selectedMedia.url;
+    return (
+      this.state.selectedMedia && (
+        <Modal
+          modalIsOpen={this.state.showPreview}
+          closeModal={this.closeMediaModal}
+          customStyles={customStyles}
+          contentLabel={"Preview"}
+          pauseOnFocusLoss={false}
+        >
+          <div className="modal-header text-center">
+            <h4 className="modal-title">Preview</h4>
+            <button
+              type="button"
+              className="close"
+              onClick={this.closeMediaModal}
+              data-dismiss="modal"
+            >
+              &times;
+            </button>
+          </div>
+          <FileViewer fileType={fileType} filePath={filePath} />
+        </Modal>
+      )
+    );
   };
 
   render() {
@@ -317,8 +388,9 @@ class Dashboard extends Component {
             handleListView={this.handleListView}
             toogleDateTimeView={this.toogleDateTimeView}
             dataSortBy={this.state.dataSortBy}
+            handleListViewItem={this.state.handleListViewItem}
           />
-          {!this.state.handleListView ? (
+          {!this.state.handleListViewItem ? (
             <section className="tables list-view">
               <div className="container-fluid">
                 <div className="tab-content">
@@ -358,6 +430,8 @@ class Dashboard extends Component {
                                 }
                                 handleMediaDuplicate={this.handleMediaDuplicate}
                                 duplicateFolder={this.duplicateFolder}
+                                actionBtnDisable={this.state.actionBtnDisable}
+                                handlePreview={this.handlePreview}
                               />
                             );
                           })
@@ -394,6 +468,8 @@ class Dashboard extends Component {
                                 }
                                 handleMediaDuplicate={this.handleMediaDuplicate}
                                 duplicateFolder={this.duplicateFolder}
+                                actionBtnDisable={this.state.actionBtnDisable}
+                                handlePreview={this.handlePreview}
                               />
                             );
                           })
@@ -413,6 +489,7 @@ class Dashboard extends Component {
             />
           )}
           {this.state.showToast && <ToastContainer />}
+          {this.state.showPreview && this.renderPreview()}
           <Footer />
         </div>
       </>

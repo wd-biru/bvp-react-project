@@ -14,12 +14,19 @@ class DashboardDropDown extends React.Component {
               <i class="fa fa-ellipsis-v"></i>
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item class="dropdown-item edit">
-                <i class="fa fa-plus-circle"></i>Open Editor
-              </Dropdown.Item>
-              <Dropdown.Item class="dropdown-item edit">
-                <i class="fa fa-eye"></i>Preview
-              </Dropdown.Item>
+              {this.props.data.type !== "docs" && (
+                <Dropdown.Item class="dropdown-item edit">
+                  <i class="fa fa-plus-circle"></i>Open Editor
+                </Dropdown.Item>
+              )}
+              {this.props.data.type !== "docs" && (
+                <Dropdown.Item
+                  class="dropdown-item edit"
+                  onClick={() => this.props.handlePreview(this.props.data)}
+                >
+                  <i class="fa fa-eye"></i>Preview
+                </Dropdown.Item>
+              )}
               <Dropdown.Item
                 class="dropdown-item edit"
                 onClick={() => this.props.handleMediaDuplicate(this.props.data)}

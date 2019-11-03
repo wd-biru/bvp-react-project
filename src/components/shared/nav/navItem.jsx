@@ -45,24 +45,29 @@ class NavItems extends React.Component {
                 >
                   <ul className="sub_folder">
                     <li>
-                      <span>
-                        {folderData.files.length > 0
-                          ? folderData.files.length
-                          : 0}
-                      </span>
                       <span
                         onClick={e => {
                           this.handleToggle(folderData);
                           e.stopPropagation();
                         }}
                       >
-                        {folderData.folder_status === 1 ? (
-                          <img src={createproject} className="createproject" />
-                        ) : (
-                          <i className="far fa-folder"></i>
-                        )}
+                        <span class="number">
+                          {folderData.files.length > 0
+                            ? folderData.files.length
+                            : 0}
+                        </span>
+                        <span>
+                          {folderData.folder_status === 1 ? (
+                            <img
+                              src={createproject}
+                              className="createproject"
+                            />
+                          ) : (
+                            <i className="far fa-folder"></i>
+                          )}
 
-                        {folderData.folder_name}
+                          {folderData.folder_name}
+                        </span>
                       </span>
                       {selectedItem &&
                       selectedItem.id === folderData.id &&
