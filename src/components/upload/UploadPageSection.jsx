@@ -3,8 +3,6 @@ import Dropzone from "react-dropzone";
 import Img from "./img/uploadicon.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-//import ProgressBar from 'react-bootstrap/ProgressBar'
-import imgg from '../../assets/img/me/limages.gif';
 
 class UploadPageSection extends React.Component {
   constructor(props) {
@@ -12,10 +10,7 @@ class UploadPageSection extends React.Component {
     this.state = {
       filesName: "",
       fileUrl: "",
-      showToastMsg: false,
-      now: 20,
-      now2 : 21,
-      checkStatus: 100
+      showToastMsg: false
     };
   }
 
@@ -40,8 +35,6 @@ class UploadPageSection extends React.Component {
   };
 
   handleUpload = (e, type) => {
-
-    document.getElementById("uploadingt").style.display="block";
        
     const userId = localStorage.getItem("userId");
     const activeId = this.props.isActiveObject
@@ -64,32 +57,23 @@ class UploadPageSection extends React.Component {
         isYoutube: 1,
         link: this.state.fileUrl
       };
-        
       this.props.getUploadFolderData(payload);
-    
     }
   };
 
   componentDidUpdate(prevProps) {
-    { prevProps.uploadFolderData !== this.props.uploadFolderData &&
-      this.props.uploadFolderData.code !== 200 ?
-      document.getElementById("uploadingt").style.display="none"
-    : null
-    }
+    {
     if (
       prevProps.uploadFolderData !== this.props.uploadFolderData &&
       this.props.uploadFolderData.code === 200
     ) {
-      document.getElementById("uploadingt").style.display="block";
       toast.success(this.props.uploadFolderData.message);
       this.setState({
         showToastMsg: true,
-        filesName: "",
-        checkStatus: 200
+        filesName: ""
       });
       // this.props.handleUploadClose();
     }
-
     if (
       prevProps.uploadFolderData !== this.props.uploadFolderData &&
       this.props.uploadFolderData.code !== 200
@@ -102,6 +86,7 @@ class UploadPageSection extends React.Component {
       
     }
   }
+}
 
   handleRemoveSelectedFile = acceptedFile => {
     const filterArray = this.state.filesName.filter(
@@ -112,21 +97,10 @@ class UploadPageSection extends React.Component {
     });
   };
 
-  
-
   render() {
-
-  {this.state.checkStatus == 200 ?
-    document.getElementById("uploadingt").style.display="none"
-  : null
-  }
-  
-   
     return (
       <section className="tables mb-0">
-        
         <div className="container-fluid">
-          
           <div className="row">
             <div className="col-lg-5 mx-auto">
               <div className="p-1 rounded-lg">
@@ -189,14 +163,6 @@ class UploadPageSection extends React.Component {
                       ))}
                   </ul>
                 <h6 className="text-center mb-4 text-muted">
-                  
-                <h1 id="uploadingt" style={{display: "none"}}>
-                  <img src={imgg} className="loading_Img" /> 
-                  <br />
-                  Loading...</h1>
-
-                  
-      
                   <b>or</b>
                 </h6>
                 <div className="custom-file overflow-hidden mb-2">
