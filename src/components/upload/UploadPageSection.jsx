@@ -71,7 +71,11 @@ class UploadPageSection extends React.Component {
   };
 
   componentDidUpdate(prevProps) {
-    
+    { prevProps.uploadFolderData !== this.props.uploadFolderData &&
+      this.props.uploadFolderData.code !== 200 ?
+      document.getElementById("uploadingt").style.display="none"
+    : null
+    }
     if (
       prevProps.uploadFolderData !== this.props.uploadFolderData &&
       this.props.uploadFolderData.code === 200
@@ -95,6 +99,7 @@ class UploadPageSection extends React.Component {
         showToastMsg: true,
         filesName: ""
       });
+      
     }
   }
 
@@ -190,10 +195,7 @@ class UploadPageSection extends React.Component {
                   <br />
                   Loading...</h1>
 
-                  <h1 id="uploadingt_bb" style={{display: "none"}}>
-                  <img src={imgg} className="loading_Img" /> 
-                  <br />
-                  Loading...</h1>
+                  
       
                   <b>or</b>
                 </h6>
