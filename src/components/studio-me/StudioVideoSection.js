@@ -1,6 +1,7 @@
 import React from 'react';
 
 import StudioVideoSectionRight from './StudioVideoSectionRight';
+import Video from '../../assets/img/me/video-test.mp4'
 
 const StudioVideoSection = () => {
     return (
@@ -8,7 +9,7 @@ const StudioVideoSection = () => {
   		<div class="row">
 			<div class="col-sm-7 Studioed-seund">
 				<video width="100%" controls>
-				  <source src="img/me/video-test.mp4" type="video/mp4" />
+				  <source src={Video} type="video/mp4" />
 				</video>
 			</div>
             {/* this is video part col-sm-05 section */}

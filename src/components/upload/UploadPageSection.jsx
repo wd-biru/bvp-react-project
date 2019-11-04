@@ -3,6 +3,8 @@ import Dropzone from "react-dropzone";
 import Img from "./img/uploadicon.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+//import ProgressBar from 'react-bootstrap/ProgressBar'
+import imgg from '../../assets/img/me/limages.gif';
 
 class UploadPageSection extends React.Component {
   constructor(props) {
@@ -10,7 +12,10 @@ class UploadPageSection extends React.Component {
     this.state = {
       filesName: "",
       fileUrl: "",
-      showToastMsg: false
+      showToastMsg: false,
+      now: 20,
+      now2 : 21,
+      checkStatus: 100
     };
   }
 
@@ -35,6 +40,9 @@ class UploadPageSection extends React.Component {
   };
 
   handleUpload = (e, type) => {
+
+    document.getElementById("uploadingt").style.display="block";
+       
     const userId = localStorage.getItem("userId");
     const activeId = this.props.isActiveObject
       ? this.props.isActiveObject.id
@@ -56,19 +64,24 @@ class UploadPageSection extends React.Component {
         isYoutube: 1,
         link: this.state.fileUrl
       };
+        
       this.props.getUploadFolderData(payload);
+    
     }
   };
 
   componentDidUpdate(prevProps) {
+    
     if (
       prevProps.uploadFolderData !== this.props.uploadFolderData &&
       this.props.uploadFolderData.code === 200
     ) {
+      document.getElementById("uploadingt").style.display="block";
       toast.success(this.props.uploadFolderData.message);
       this.setState({
         showToastMsg: true,
-        filesName: ""
+        filesName: "",
+        checkStatus: 200
       });
       // this.props.handleUploadClose();
     }
@@ -94,27 +107,21 @@ class UploadPageSection extends React.Component {
     });
   };
 
+  
+
   render() {
+
+  {this.state.checkStatus == 200 ?
+    document.getElementById("uploadingt").style.display="none"
+  : null
+  }
+  
+   
     return (
       <section className="tables mb-0">
+        
         <div className="container-fluid">
-          <ul className="col-md-4">
-            {this.state.filesName.length > 0 &&
-              this.state.filesName.map((acceptedFile, index) => (
-                <>
-                  <li className="list-group-item list-group-item-success">
-                    {acceptedFile.name}
-                    <span
-                      onClick={() =>
-                        this.handleRemoveSelectedFile(acceptedFile)
-                      }
-                    >
-                      Remove
-                    </span>
-                  </li>
-                </>
-              ))}
-          </ul>
+          
           <div className="row">
             <div className="col-lg-5 mx-auto">
               <div className="p-1 rounded-lg">
@@ -153,12 +160,41 @@ class UploadPageSection extends React.Component {
                     id="fileUpload"
                     type="button"
                     onClick={event => this.handleUpload(event, "local")}
-                    value={"Upload"}
+                    value={"Upload A Local File"}
                     disabled={this.state.filesName.length > 0 ? false : true}
                   />
                 </label>
                 <br />
+                <ul className="col-md-12">
+                    {this.state.filesName.length > 0 &&
+                      this.state.filesName.map((acceptedFile, index) => (
+                        <>
+                          <li className="list-group-item list-group-item-success">
+                            {acceptedFile.name}
+                            <span
+                              onClick={() =>
+                                this.handleRemoveSelectedFile(acceptedFile)
+                              }
+                              className="spanremove"
+                            >
+                              <i className="fa fa-remove "></i>
+                            </span>
+                          </li>
+                        </>
+                      ))}
+                  </ul>
                 <h6 className="text-center mb-4 text-muted">
+                  
+                <h1 id="uploadingt" style={{display: "none"}}>
+                  <img src={imgg} className="loading_Img" /> 
+                  <br />
+                  Loading...</h1>
+
+                  <h1 id="uploadingt_bb" style={{display: "none"}}>
+                  <img src={imgg} className="loading_Img" /> 
+                  <br />
+                  Loading...</h1>
+      
                   <b>or</b>
                 </h6>
                 <div className="custom-file overflow-hidden mb-2">
@@ -168,7 +204,7 @@ class UploadPageSection extends React.Component {
                     name="fileUrl"
                     className="custom-file-input"
                     onChange={this.handleInputChange}
-                    placeholder="Paste a YouTube, Vimeo or Google Drive URL here"
+                    placeholder="Paste a YouTube URL here"
                   />
                 </div>
                 <label
@@ -180,13 +216,13 @@ class UploadPageSection extends React.Component {
                     name="url"
                     type="button"
                     onClick={event => this.handleUpload(event, "url")}
-                    value={"Upload"}
+                    value={"Upload From URL"}
                   />
                 </label>
               </div>
             </div>
           </div>
-          {this.state.showToastMsg && <ToastContainer />}
+           {this.state.showToastMsg && <ToastContainer />}
         </div>
       </section>
     );

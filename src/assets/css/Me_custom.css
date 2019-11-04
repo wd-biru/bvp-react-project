@@ -575,3 +575,12 @@ i.fa.fa-gear {
   color: #999 !important;
   height: 27px;
 }
+
+/* Modify CSS On DashBoard and uploaing page */
+img.loading_Img {
+  width: 60px;
+}
+span.spanremove {
+  float: right;
+  font-size: 18px;
+}

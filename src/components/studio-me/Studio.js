@@ -4,6 +4,7 @@ import StudioHeader from './StudioHeader';
 import StudioPreviewModel from './StudioPreviewModel';
 import StudioVideoSection from './StudioVideoSection';
 import StudioPlayButton from './StudioPlayListButton';
+import StudioToolsCompo from './StudioToolsCompo';
 
 import './css/me_studio.css';
 import './css/me_responsive.css';
@@ -16,7 +17,8 @@ const Studio = () => {
                 <StudioHeader />
                 <StudioPreviewModel />
                 <StudioVideoSection />
-                {/* <StudioPlayButton /> */}
+                <StudioPlayButton /> 
+                <StudioToolsCompo />
             </body>
         </div>
     )
