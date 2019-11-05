@@ -1,9 +1,11 @@
 import React from 'react';
+
 import backward from '../../assets/img/me/fa-backward.png';
-import play from '../../assets/img/me/fa-play.png.png';
+import play from '../../assets/img/me/fa-step-backward.png';
 import faplay from '../../assets/img/me/fa-play.png';
-import backward from '../../assets/img/me/fa-backward.png';
-import backward from '../../assets/img/me/fa-backward.png';
+import forward from '../../assets/img/me/fa-step-forward.png';
+import forward2 from '../../assets/img/me/fa-forward.png';
+import volumedown from '../../assets/img/me/fa-volume-down.png';
 
 
 
@@ -14,13 +16,13 @@ const StudioPlayListButton = () => {
 			<div className="col-sm-7">
 				<div className="Studioed-section2-1">
 	    			<ul className="margin-b-7">
-	    				<li><a href="#"><img src={backward} /></a></li>    			
-	    				<li><a href="#"><img src={play} /></a></li>
-	    				<li><a href="#"><img src="img/me/fa-play.png" /></a></li>
+					<li><a href="#"><img src={backward} /></a></li>    			
+	    				<li><a href="#"><img src={play}/></a></li>
+	    				<li><a href="#"><img src={faplay} /></a></li>
 	    				
-	    				<li><a href="#"><img src="img/me/fa-step-forward.png" /></a></li> 
-	    				<li><a href="#"><img src="img/me/fa-forward.png" /></a></li> 
-	    				<li><a href="#"><img src="img/me/fa-volume-down.png" /></a></li>
+	    				<li><a href="#"><img src={forward} /></a></li> 
+	    				<li><a href="#"><img src={forward2}/></a></li> 
+	    				<li><a href="#"><img src={volumedown} /></a></li>
 	    				
 	    			</ul>
 	    		</div>

@@ -4,6 +4,9 @@ import StudioHeader from './StudioHeader';
 import StudioPreviewModel from './StudioPreviewModel';
 import StudioVideoSection from './StudioVideoSection';
 import StudioPlayButton from './StudioPlayListButton';
+import StudioToolsCompo from './StudioToolsCompo';
+import StudioToolsTime from './StudioToolsTime';
+import StudioPageFooterSection from './StudioPageFooterSection';
 
 import './css/me_studio.css';
 import './css/me_responsive.css';
@@ -16,7 +19,13 @@ const Studio = () => {
                 <StudioHeader />
                 <StudioPreviewModel />
                 <StudioVideoSection />
-                {/* <StudioPlayButton /> */}
+                <StudioPlayButton /> 
+                
+                <div className="container-fluid Studioed-section2">
+                  <StudioToolsCompo />
+                  <StudioToolsTime />
+                  <StudioPageFooterSection />
+                </div>
             </body>
         </div>
     )

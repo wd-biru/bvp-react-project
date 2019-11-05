@@ -80,12 +80,12 @@ ul.navbar-nav.my-2.my-lg-0 li a img {
 }
 
 .logo-menu{width: 99px;}
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+.nav-pills .nav-link2.active, .nav-pills .show>.nav-link {
     color: #fff;
     background-color: #727272;
     border-radius: 0;
 }
-.nav-pills .nav-link {
+.nav-pills .nav-link2 {
     font-size: 12px;
     color: #bababa;
     padding:1rem;
@@ -93,12 +93,12 @@ ul.navbar-nav.my-2.my-lg-0 li a img {
     background: #252425;
     border-radius: 0;
 }
-.nav-pills .nav-link img{width: 30px; height: 30px;}
+.nav-pills .nav-link2 img{width: 30px; height: 30px;}
 .nav-pills .nav-item{
     margin-right: 7px;
     padding-bottom: .3rem;
 }
-.nav-link {
+.nav-link2 {
     padding: .5rem 1.7rem;
     padding-bottom: .2rem;
 }
@@ -216,11 +216,11 @@ td span {
     font-size: 9px;
     margin-left: 3px;
 }
-.tab-content {
+.tab-content1 {
     position: relative;
     height: 76.5%;
 }
-.Studioed-three .tab-content>.active{
+.Studioed-three .tab-content1>.active{
     position: absolute;
     left: 0;
     top: 0;
@@ -228,16 +228,20 @@ td span {
     overflow-y: auto;
 }
 
-.Studioed-three .tab-content>.active .metrics-sec .tab-content {
+.Studioed-three .tab-content1>.active .metrics-sec .tab-content1 {
     position: inherit;
     height: auto;
 }
-.Studioed-three .tab-content>.active .metrics-sec .tab-content>.active {
+.Studioed-three .tab-content1>.active .metrics-sec .tab-content1>.active {
     position: inherit;
     left: 0;
     top: 50px;
     height: 100%;
     overflow-y: inherit;
+}
+.Studioed-three .Library-sec .tab-content1>.active {
+    position: inherit;
+    overflow: hidden;
 }
 /*.table-responsive.two {
     display: block;
@@ -431,7 +435,9 @@ hr {
     padding: 0 10px;
     width: 32px;
 }
-.sear-drop .card-header {padding: .55rem 1rem; border-bottom: 1px solid #000;}
+.sear-drop .card-header {
+    padding: .55rem 1rem; border-bottom: 2px solid #000;
+}
 .sear-drop .card-header a{color: #fff;font-size: 12px;}    
 .sear-drop .card-header a p>i {
     margin-left: 5px;
@@ -537,7 +543,7 @@ hr {
 /* modal popup styles end*/
 
 /* Details section styles start*/
-.tab-content label {
+.tab-content1 label {
     font-size: 12px;
     color: #bababa;
 }
@@ -552,7 +558,7 @@ hr {
     font-size: 14px;
     text-transform: uppercase;
 }
-.tab-content .form-control {
+.tab-content1 .form-control {
     display: block;
     width: 100%;
     height: calc(2.25rem + 2px);
@@ -2020,4 +2026,33 @@ input.CRFR {
 div#menu21 {
     padding-left: 0px;
     padding-right: 8px;
+}
+
+
+/* Editing Mode Studio Page */
+span.toolss {
+    display: inline-flex;
+    float: right;
+    margin-left: 5%;
+}
+.Studioed-section2 .tool ul {
+    padding: 0 15px;
+    display: inline-flex;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    padding-left: 0px;
+}
+.logo-menu2{
+        width: 110px;
+        height: 45px;
+    
+}
+.col_publish{
+    padding-left: 0px;
+}
+body.studio_page {
+    line-height: 1.5;
+}
+.toolstimes {
+    height: 40px;
 }

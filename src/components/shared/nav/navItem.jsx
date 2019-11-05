@@ -42,14 +42,15 @@ class NavItems extends React.Component {
                       : ""
                   }
                   key={folderData.id}
+                  onClick={e => {
+                    this.handleToggle(folderData);
+                    e.stopPropagation();
+                  }}
                 >
                   <ul className="sub_folder">
                     <li>
                       <span
-                        onClick={e => {
-                          this.handleToggle(folderData);
-                          e.stopPropagation();
-                        }}
+                        
                       >
                         <span class="number">
                           {folderData.files.length > 0
