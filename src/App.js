@@ -14,13 +14,17 @@ import Footer from "./components/shared/footer/Footer";
 class App extends Component {
   render() {
     const userToken = localStorage.getItem("userToken");
+    console.log(this.props.history);
     return (
       <>
         {userToken ? (
           <div className="App">
             <body className="dashboardsty">
               <div className="page">
-                <TopHeader />
+                {this.props.history &&
+                this.props.history.location.pathname !== "/password" ? (
+                  <TopHeader />
+                ) : null}
                 {this.props.children}
               </div>
             </body>
