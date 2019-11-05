@@ -37,7 +37,7 @@ class DashboardDropDown extends React.Component {
                 class="dropdown-item edit"
                 onClick={() => this.props.handleProjectMove(this.props.data)}
               >
-                <i class="fa fa-arrows"></i>Move Project To
+                <i class="fa fa-arrows"></i>Move To
               </Dropdown.Item>
               <hr />
               <Dropdown.Item
