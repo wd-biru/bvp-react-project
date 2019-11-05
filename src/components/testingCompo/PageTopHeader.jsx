@@ -103,9 +103,16 @@ class PageTopHeader extends React.Component {
   };
 
   handleUploadClose = () => {
+    const userId = localStorage.getItem("userId");
     this.setState({
       showUploadModal: false
     });
+    const payload = {
+      user_id: Number(userId),
+      folder_id: this.props.isActiveObject ? this.props.isActiveObject.id : 0,
+      file_type: this.props.breadcombItemType
+    };
+    this.props.getUploadFolderFileData(payload);
   };
 
   render() {

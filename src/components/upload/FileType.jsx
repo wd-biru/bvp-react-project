@@ -4,7 +4,7 @@ import docuImg from "../../assets/img/docimg.jpg";
 import Modal from "../shared/modal/Modal";
 import Select from "react-select";
 import MediaModal from "../upload/MediaModal";
-//import Moment from 'react-moment';
+import moment from "moment";
 
 const customStyles = {
   content: {
@@ -96,8 +96,10 @@ class FileType extends React.Component {
                     {this.props.data.actual_name}
                   </p>
                   <p className="title" title={this.props.data.date_time}>
-                      {(this.props.data.date_time)}
-                    </p>
+                    {moment(this.props.data.date_time).format(
+                      "MM/DD/YYYY, hh:mm:ss a"
+                    )}
+                  </p>
                   <DashboardDropDown
                     handleProjectMove={() =>
                       this.props.handleProjectMove(this.props.data)
@@ -117,9 +119,11 @@ class FileType extends React.Component {
                   <div className="cappadd2">
                     <p className="title" title={this.props.data.actual_name}>
                       {this.props.data.actual_name}
-                      </p>
+                    </p>
                     <p className="title" title={this.props.data.date_time}>
-                      {this.props.data.date_time}
+                      {moment(this.props.data.date_time).format(
+                        "MM/DD/YYYY, hh:mm:ss a"
+                      )}
                     </p>
                     <DashboardDropDown
                       handleProjectMove={() =>
@@ -143,7 +147,9 @@ class FileType extends React.Component {
                       {this.props.data.actual_name}
                     </p>
                     <p className="title" title={this.props.data.date_time}>
-                      {this.props.data.date_time}
+                      {moment(this.props.data.date_time).format(
+                        "MM/DD/YYYY, hh:mm:ss a"
+                      )}
                     </p>
                     <DashboardDropDown
                       handleProjectMove={this.props.handleProjectMove}
@@ -207,7 +213,7 @@ class FileType extends React.Component {
             modalIsOpen={this.props.showMediaDuplicate}
             closeMediaModal={this.props.closeMediaModal}
             btnText={"Clone"}
-            consfirmMsg={"Are you sure you want to make duplicate?"}
+            consfirmMsg={`Are you sure you want to make duplicate of ${this.props.selectedMedia.actual_name}?`}
             handleClick={this.props.duplicateFolder}
             actionBtnDisable={this.props.actionBtnDisable}
           />
@@ -217,7 +223,7 @@ class FileType extends React.Component {
             modalIsOpen={this.props.showMediaDelete}
             closeMediaModal={this.props.closeMediaModal}
             btnText={"Delete"}
-            consfirmMsg={"Are you sure you want to delete?"}
+            consfirmMsg={`Are you sure you want to delete ${this.props.selectedMedia.actual_name}?`}
             handleClick={this.props.duplicateFolder}
             actionBtnDisable={this.props.actionBtnDisable}
           />

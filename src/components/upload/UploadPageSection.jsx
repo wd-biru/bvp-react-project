@@ -3,8 +3,8 @@ import Dropzone from "react-dropzone";
 import Img from "./img/uploadicon.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Loader from "react-loader-spinner";
 //import Studio from '../../components/studio-me/Studio';
-
 
 class UploadPageSection extends React.Component {
   constructor(props) {
@@ -12,7 +12,8 @@ class UploadPageSection extends React.Component {
     this.state = {
       filesName: "",
       fileUrl: "",
-      showToastMsg: false
+      showToastMsg: false,
+      showLoader: false
     };
   }
 
@@ -37,7 +38,6 @@ class UploadPageSection extends React.Component {
   };
 
   handleUpload = (e, type) => {
-       
     const userId = localStorage.getItem("userId");
     const activeId = this.props.isActiveObject
       ? this.props.isActiveObject.id
@@ -61,34 +61,37 @@ class UploadPageSection extends React.Component {
       };
       this.props.getUploadFolderData(payload);
     }
+    this.setState({
+      showLoader: true
+    });
   };
 
   componentDidUpdate(prevProps) {
     {
-    if (
-      prevProps.uploadFolderData !== this.props.uploadFolderData &&
-      this.props.uploadFolderData.code === 200
-    ) {
-      toast.success(this.props.uploadFolderData.message);
-      this.setState({
-        showToastMsg: true,
-        filesName: ""
-      });
-      // this.props.handleUploadClose();
-    }
-    if (
-      prevProps.uploadFolderData !== this.props.uploadFolderData &&
-      this.props.uploadFolderData.code !== 200
-    ) {
-      toast.error(this.props.uploadFolderData.message);
-      this.setState({
-        showToastMsg: true,
-        filesName: ""
-      });
-      
+      if (
+        prevProps.uploadFolderData !== this.props.uploadFolderData &&
+        this.props.uploadFolderData.code === 200
+      ) {
+        toast.success(this.props.uploadFolderData.message);
+        this.setState({
+          showToastMsg: true,
+          filesName: "",
+          showLoader: false
+        });
+        // this.props.handleUploadClose();
+      }
+      if (
+        prevProps.uploadFolderData !== this.props.uploadFolderData &&
+        this.props.uploadFolderData.code !== 200
+      ) {
+        toast.error(this.props.uploadFolderData.message);
+        this.setState({
+          showToastMsg: true,
+          filesName: ""
+        });
+      }
     }
   }
-}
 
   handleRemoveSelectedFile = acceptedFile => {
     const filterArray = this.state.filesName.filter(
@@ -147,23 +150,33 @@ class UploadPageSection extends React.Component {
                 </label>
                 <br />
                 <ul className="col-md-12">
-                    {this.state.filesName.length > 0 &&
-                      this.state.filesName.map((acceptedFile, index) => (
-                        <>
-                          <li className="list-group-item list-group-item-success">
-                            {acceptedFile.name}
-                            <span
-                              onClick={() =>
-                                this.handleRemoveSelectedFile(acceptedFile)
-                              }
-                              className="spanremove"
-                            >
-                              <i className="fa fa-remove "></i>
-                            </span>
-                          </li>
-                        </>
-                      ))}
-                  </ul>
+                  {this.state.filesName.length > 0 &&
+                    this.state.filesName.map((acceptedFile, index) => (
+                      <>
+                        <li className="list-group-item list-group-item-success">
+                          {acceptedFile.name}
+                          <span
+                            onClick={() =>
+                              this.handleRemoveSelectedFile(acceptedFile)
+                            }
+                            className="spanremove"
+                          >
+                            <i className="fa fa-remove "></i>
+                          </span>
+                        </li>
+                      </>
+                    ))}
+                </ul>
+                <div className="Loader">
+                  {this.state.showLoader && (
+                    <Loader
+                      type="Oval"
+                      color="#00BFFF"
+                      height={70}
+                      width={70}
+                    />
+                  )}{" "}
+                </div>
                 <h6 className="text-center mb-4 text-muted">
                   <b>or</b>
                 </h6>
@@ -192,9 +205,9 @@ class UploadPageSection extends React.Component {
               </div>
             </div>
           </div>
-           {this.state.showToastMsg && <ToastContainer />}
+          {this.state.showToastMsg && <ToastContainer />}
         </div>
-        <Studio />
+        {/* <Studio /> */}
       </section>
     );
   }

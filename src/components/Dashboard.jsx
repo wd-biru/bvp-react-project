@@ -350,7 +350,15 @@ class Dashboard extends Component {
               &times;
             </button>
           </div>
-          <FileViewer fileType={fileType} filePath={filePath} />
+          {this.state.selectedMedia.type === "image" && (
+            <img className="previewImg" src={filePath} />
+          )}
+          {this.state.selectedMedia.type === "video" && (
+            <video width="100%" height="340" controls>
+              <source src={filePath} type="video/mp4" />
+            </video>
+          )}
+          {/* <FileViewer fileType={fileType} filePath={filePath} /> */}
         </Modal>
       )
     );
@@ -380,6 +388,8 @@ class Dashboard extends Component {
             activeProject={this.state.activeProject}
             isActiveObject={this.state.isActiveObject}
             uploadFolderData={this.props.uploadFolderData}
+            getUploadFolderFileData={this.props.getUploadFolderFileData}
+            breadcombItemType={this.state.breadcombItemType}
           />
           <Breadcromb
             filterUserData={this.filterUserData}
@@ -432,6 +442,7 @@ class Dashboard extends Component {
                                 duplicateFolder={this.duplicateFolder}
                                 actionBtnDisable={this.state.actionBtnDisable}
                                 handlePreview={this.handlePreview}
+                                selectedMedia={this.state.selectedMedia}
                               />
                             );
                           })

@@ -265,7 +265,6 @@ img.login-logo {
 }
 .card-body .cappadd2 h5 {
   font-size: 0.9rem;
-  
 }
 .page-header .container-fluid {
   padding-left: 50px;
@@ -371,7 +370,6 @@ div.tab-pane {
 }
 .card-body .cappadd2 {
   padding: 10px 15px;
-  
 }
 .card-body .cappadd-bot {
   margin: 5px 0;
@@ -533,7 +531,7 @@ label.file-upload.btn.btn-primary.btn-block.rounded-pill.shadow {
   padding: 0.5rem 1rem;
   color: #aaa;
   font-weight: 300;
-  font-size: .8rem !important;
+  font-size: 0.8rem !important;
 }
 .card-body video {
   width: 100%;
@@ -589,4 +587,12 @@ span.spanremove {
 .video-container video {
   width: 100%;
   height: auto;
+}
+
+.previewImg {
+  width: 100%;
+}
+
+.Loader {
+  text-align: center;
 }
