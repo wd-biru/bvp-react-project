@@ -3,7 +3,7 @@
 
 const StudioLinkPublishRight = () => {
     return (
-                     <div class="col-sm-6">
+                     <div class="col-sm-6 col_publish">
 					  						<form action="/action_page.php">
 											  <div class="form-group mb-0">
 											    <label>Embed Code</label>

@@ -1,9 +1,9 @@
 import React from "react";
 //import HeaderRight from "./HeaderRight";
 import logo from "./studio-bvp-logo.png";
-import "./css/MystyleDefault.css";
-import "./css/me_custom.css";
-import "./css/me_responsive.css";
+// import "./css/MystyleDefault.css";
+// import "./css/me_custom.css";
+// import "./css/me_responsive.css";
 
 class Header extends React.Component {
   handleLogout = () => {

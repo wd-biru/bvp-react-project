@@ -4,6 +4,7 @@ import docuImg from "../../assets/img/docimg.jpg";
 import Modal from "../shared/modal/Modal";
 import Select from "react-select";
 import MediaModal from "../upload/MediaModal";
+//import Moment from 'react-moment';
 
 const customStyles = {
   content: {
@@ -69,7 +70,7 @@ class FileType extends React.Component {
                 }
               >
                 <div className="card-body">
-                  <div className="cappadd">
+                  <div className="cappadd2">
                     <h5>{this.props.data.folder_name}</h5>
                     <DashboardDropDown
                       handleProjectMove={() =>
@@ -90,10 +91,13 @@ class FileType extends React.Component {
                 <video controls>
                   <source src={filePath} type="video/mp4" />
                 </video>
-                <div className="cappadd">
+                <div className="cappadd2">
                   <p className="title" title={this.props.data.actual_name}>
                     {this.props.data.actual_name}
                   </p>
+                  <p className="title" title={this.props.data.date_time}>
+                      {(this.props.data.date_time)}
+                    </p>
                   <DashboardDropDown
                     handleProjectMove={() =>
                       this.props.handleProjectMove(this.props.data)
@@ -110,9 +114,12 @@ class FileType extends React.Component {
               <div className="cardss">
                 <div className="card-body">
                   <img src={filePath} />
-                  <div className="cappadd">
+                  <div className="cappadd2">
                     <p className="title" title={this.props.data.actual_name}>
                       {this.props.data.actual_name}
+                      </p>
+                    <p className="title" title={this.props.data.date_time}>
+                      {this.props.data.date_time}
                     </p>
                     <DashboardDropDown
                       handleProjectMove={() =>
@@ -131,9 +138,12 @@ class FileType extends React.Component {
               <div className="cardss">
                 <div className="card-body">
                   <img src={docuImg} />
-                  <div className="cappadd">
+                  <div className="cappadd2">
                     <p className="title" title={this.props.data.actual_name}>
                       {this.props.data.actual_name}
+                    </p>
+                    <p className="title" title={this.props.data.date_time}>
+                      {this.props.data.date_time}
                     </p>
                     <DashboardDropDown
                       handleProjectMove={this.props.handleProjectMove}

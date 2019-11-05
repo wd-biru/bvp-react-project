@@ -9,7 +9,7 @@ const StudioHeader = () => {
     return (
 <header>
 	<nav className="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-	  <a className="navbar-brand" href="dashboard.html"><img src={logo} alt="BVP" className="studio logo-menu" /> </a>
+	  <a className="navbar-brand" href="dashboard.html"><img src={logo} alt="BVP" className="studio logo-menu2" /> </a>
 	  <div className="">
 	    
 	    <ul className="navbar-nav my-2 my-lg-0">
