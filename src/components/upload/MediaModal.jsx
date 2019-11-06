@@ -45,7 +45,9 @@ class MediaModal extends React.Component {
           </div>
 
           <div className="modal-body text-center">
+            <br />
             {this.props.consfirmMsg} <br />
+            <br />
             <button
               id="createFolder"
               name="createName"

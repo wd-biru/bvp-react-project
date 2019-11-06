@@ -11,7 +11,7 @@ const StudioToolsTime = () => {
                      	<form class="navbar-form navbar-left" action="/action_page.php">
 				            <i class="fa fa-search"></i>
                             <input type="text" 
-                            class="form-control navseacrh" 
+                            class="form-control navseacrh3" 
                             placeholder="Search" name="search" />
 				            <img src={search_multiple_users} />
 				        </form>

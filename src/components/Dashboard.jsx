@@ -354,7 +354,7 @@ class Dashboard extends Component {
             <img className="previewImg" src={filePath} />
           )}
           {this.state.selectedMedia.type === "video" && (
-            <video width="100%" height="340" controls>
+            <video width="100%" controls>
               <source src={filePath} type="video/mp4" />
             </video>
           )}

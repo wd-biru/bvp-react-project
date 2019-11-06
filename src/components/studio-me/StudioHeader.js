@@ -14,12 +14,12 @@ const StudioHeader = () => {
 	    
 	    <ul className="navbar-nav my-2 my-lg-0">
 
-            <li className="nav-item d-flex align-items-center"><a href="#" className="nav-link"><img src={ques} /></a></li>
+            <li className="nav-item d-flex align-items-center"><a href="#" className="nav-link2"><img src={ques} /></a></li>
            
-            <li className="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link"><img src={alarm} /> </a>
+            <li className="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link2"><img src={alarm} /> </a>
             </li>
            
-            <li className="nav-item"><a href="login.html" className="nav-link logout"> <img src={user} /></a></li>   
+            <li className="nav-item"><a href="login.html" className="nav-link2 logout"> <img src={user} /></a></li>   
 	    </ul>
 	  </div>  
 	</nav>
