@@ -92,9 +92,9 @@ class FileType extends React.Component {
                   <source src={filePath} type="video/mp4" />
                 </video>
                 <div className="cappadd2">
-                  <p className="title" title={this.props.data.actual_name}>
+                  <h5 title={this.props.data.actual_name}>
                     {this.props.data.actual_name}
-                  </p>
+                  </h5>
                   <p className="title" title={this.props.data.date_time}>
                     {moment(this.props.data.date_time).format(
                       "MM/DD/YYYY, hh:mm:ss a"
@@ -117,9 +117,9 @@ class FileType extends React.Component {
                 <div className="card-body">
                   <img src={filePath} />
                   <div className="cappadd2">
-                    <p className="title" title={this.props.data.actual_name}>
+                    <h5 title={this.props.data.actual_name}>
                       {this.props.data.actual_name}
-                    </p>
+                    </h5>
                     <p className="title" title={this.props.data.date_time}>
                       {moment(this.props.data.date_time).format(
                         "MM/DD/YYYY, hh:mm:ss a"
@@ -143,9 +143,9 @@ class FileType extends React.Component {
                 <div className="card-body">
                   <img src={docuImg} />
                   <div className="cappadd2">
-                    <p className="title" title={this.props.data.actual_name}>
+                    <h5 title={this.props.data.actual_name}>
                       {this.props.data.actual_name}
-                    </p>
+                    </h5>
                     <p className="title" title={this.props.data.date_time}>
                       {moment(this.props.data.date_time).format(
                         "MM/DD/YYYY, hh:mm:ss a"
@@ -185,11 +185,14 @@ class FileType extends React.Component {
             </div>
 
             <div className="modal-body text-center">
+              <div className="select-box" >
               <Select
                 value={this.state.selectedOption}
                 onChange={this.handleChange}
                 options={this.allFolderData()}
+                className="select-box2"
               />
+              </div>
               <br />
 
               <button
@@ -205,6 +208,7 @@ class FileType extends React.Component {
               {this.props.actionBtnDisable && (
                 <span>Please Wait while your project is moving...</span>
               )}
+              <br />
             </div>
           </Modal>
         )}

@@ -1357,7 +1357,7 @@ sup {
     width: 81%;
     color: #a1a1a2;
     border: none;
-    background-color: #fff0;
+    background-color: #a1a1a2;
     background-clip: padding-box;
     border-radius: 0;
     padding: .375rem 1.5rem;
@@ -2056,3 +2056,43 @@ body.studio_page {
 .toolstimes {
     height: 40px;
 }
+input.form-control.navseacrh2 {
+    margin-top: 0px;
+    height: 35px;
+    border-right: 1px solid #a1a1a2 !important;
+    width: 100%;
+    padding-left: 15px;
+    color: #a1a1a2;
+    background-color: #252425;
+    border: none;
+}
+
+ul.navbar-nav li {
+     margin: 0px;
+}
+a.nav-link.studio-nav-link {
+    text-align: center;
+    padding-top: 13px;
+    border-radius: 0px;
+    background-color: #252425;
+    height: 50px;
+}
+a.nav-link.studio-nav-link {
+    padding-left: 9px !important;
+}
+.Studioed-section2 .tool-time .seaech-upload form input.form-control.navseacrh3 {
+    height: 40px;
+    width: 81%;
+    color: #a1a1a2;
+    border: none;
+    background-color: rgb(8, 0, 0);
+    background-clip: padding-box;
+    border-radius: 0;
+    padding: .375rem 1.5rem;
+    display: inline-block;
+    margin-top: 1px;
+}
+.accordion2 {
+    background-color: #252425;
+}
+/* Editing Mode Studio Page Closed CSS */

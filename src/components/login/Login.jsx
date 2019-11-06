@@ -56,6 +56,19 @@ class Login extends React.Component {
     this.props.fetchUserData(payLoad);
   };
 
+  handleKeyPress = (event) => {
+    if(event.key === 'Enter'){
+      const payLoad = {
+        email: this.state.userEmail,
+        password: this.state.userPwd
+      };
+      this.setState({
+        loginBtnDisable: true
+      });
+      this.props.fetchUserData(payLoad);
+    }
+  }
+
   handleBtnDisable = () => {
     let btnDisable = false;
     if (this.state.userEmail === "" && this.state.userPwd === "") {
@@ -116,6 +129,7 @@ class Login extends React.Component {
                             placeholder="password"
                             value={this.state.userPwd}
                             onChange={this.handleInputChange}
+                            onKeyPress={this.handleKeyPress}
                           />
                         </div>
                         <div className="form-group">
@@ -143,6 +157,7 @@ class Login extends React.Component {
                             }
                             value="LOG IN"
                             onClick={() => this.handleClick()}
+                            
                           />
                           <i className="fa fa-long-arrow-right"></i>
                           {this.state.loginBtnDisable && (

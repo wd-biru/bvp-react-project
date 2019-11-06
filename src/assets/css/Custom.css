@@ -1,1 +1,11 @@
 /* your styles go here */
+.Toastify__toast-container {
+    z-index: 9999;
+    -webkit-transform: translate3d(0, 0, 9999px);
+    position: fixed;
+    padding: 4px;
+    top: 6% !important;
+    width: 520px;
+    box-sizing: border-box;
+    color: #fff; 
+    z-index: 99999 !important;}

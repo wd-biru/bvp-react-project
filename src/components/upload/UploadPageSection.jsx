@@ -87,8 +87,10 @@ class UploadPageSection extends React.Component {
         toast.error(this.props.uploadFolderData.message);
         this.setState({
           showToastMsg: true,
-          filesName: ""
+          filesName: "",
+          showLoader: false
         });
+        
       }
     }
   }
