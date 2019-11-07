@@ -29,7 +29,8 @@ class Password extends Component {
   };
   handleClick = () => {
     const payload = {
-      email: this.state.userEmail
+      email: this.state.userEmail,
+      resetLink: `${window.location.origin}/password`
     };
     this.props.createUserPwd(payload);
   };

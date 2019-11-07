@@ -56,8 +56,8 @@ class Login extends React.Component {
     this.props.fetchUserData(payLoad);
   };
 
-  handleKeyPress = (event) => {
-    if(event.key === 'Enter'){
+  handleKeyPress = event => {
+    if (event.key === "Enter") {
       const payLoad = {
         email: this.state.userEmail,
         password: this.state.userPwd
@@ -67,7 +67,7 @@ class Login extends React.Component {
       });
       this.props.fetchUserData(payLoad);
     }
-  }
+  };
 
   handleBtnDisable = () => {
     let btnDisable = false;
@@ -129,7 +129,6 @@ class Login extends React.Component {
                             placeholder="password"
                             value={this.state.userPwd}
                             onChange={this.handleInputChange}
-                            onKeyPress={this.handleKeyPress}
                           />
                         </div>
                         <div className="form-group">
@@ -140,6 +139,7 @@ class Login extends React.Component {
                                 href="#"
                                 className="text-infoss"
                                 onClick={this.handleForgetPwd}
+                                onKeyPress={this.handleKeyPress}
                               >
                                 Help, I forgot my password
                               </Link>
@@ -157,7 +157,6 @@ class Login extends React.Component {
                             }
                             value="LOG IN"
                             onClick={() => this.handleClick()}
-                            
                           />
                           <i className="fa fa-long-arrow-right"></i>
                           {this.state.loginBtnDisable && (

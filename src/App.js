@@ -6,15 +6,13 @@ import "./assets/css/Custom.css";
 import "./assets/css/Me_responsive.css";
 
 import Login from "./components/login/Login";
+import ResetPassword from "./components/login/ResetPassword";
 import TopHeader from "./components/shared/header/Header";
-import LeftNav from "./components/shared/nav/LeftNav";
-import Footer from "./components/shared/footer/Footer";
 //import Studio from './components/studio-me/Studio';
 
 class App extends Component {
   render() {
     const userToken = localStorage.getItem("userToken");
-    console.log(this.props.history);
     return (
       <>
         {userToken ? (
@@ -29,9 +27,16 @@ class App extends Component {
               </div>
             </body>
           </div>
-        ) : (
+        ) : null}
+        {!userToken &&
+        this.props.history &&
+        this.props.history.location.pathname === "/" ? (
           <Login />
-        )}
+        ) : null}
+        {this.props.history &&
+          this.props.history.location.pathname === "/password" && (
+            <ResetPassword />
+          )}
       </>
     );
   }

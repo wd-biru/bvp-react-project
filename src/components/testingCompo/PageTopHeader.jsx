@@ -112,7 +112,11 @@ class PageTopHeader extends React.Component {
       folder_id: this.props.isActiveObject ? this.props.isActiveObject.id : 0,
       file_type: this.props.breadcombItemType
     };
+    const getFolderpayload = {
+      user_id: Number(userId)
+    };
     this.props.getUploadFolderFileData(payload);
+    this.props.getUserFolderData(getFolderpayload);
   };
 
   render() {

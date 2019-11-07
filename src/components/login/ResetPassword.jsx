@@ -69,7 +69,7 @@ class ResetPassword extends Component {
                         <input
                           type="password"
                           name="cnfNewPwd"
-                          id="username"
+                          id="userCnfPwd"
                           className="form-control passformcont"
                           placeholder="Confirm New Password"
                           value={this.state.cnfNewPwd}
