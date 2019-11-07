@@ -18,6 +18,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import FileViewer from "react-file-viewer";
 import Modal from "../components/shared/modal/Modal";
+import s
 
 const customStyles = {
   content: {
@@ -363,6 +364,12 @@ class Dashboard extends Component {
       )
     );
   };
+
+  handlePreview = () => {
+    return (
+      <FileViewer fileType={fileType} filePath={filePath} />
+    )
+  }
 
   render() {
     const fileData = this.prepareFileData();

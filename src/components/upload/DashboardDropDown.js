@@ -15,7 +15,10 @@ class DashboardDropDown extends React.Component {
             </Dropdown.Toggle>
             <Dropdown.Menu>
               {this.props.data.type !== "docs" && (
-                <Dropdown.Item class="dropdown-item edit">
+                <Dropdown.Item
+                  class="dropdown-item edit"
+                  onClick={() => this.props.handleEditor(this.props.data)}
+                >
                   <i class="fa fa-plus-circle"></i>Open Editor
                 </Dropdown.Item>
               )}
