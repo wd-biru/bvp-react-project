@@ -107,7 +107,7 @@ class UploadPageSection extends React.Component {
   render() {
     return (
       <section className="tables mb-0">
-        <div className="container-fluid">
+        <div className="container-fluid upload-bd-se">
           <div className="row">
             <div className="col-lg-5 mx-auto">
               <div className="p-1 rounded-lg">
@@ -131,7 +131,7 @@ class UploadPageSection extends React.Component {
                   )}
                 </Dropzone>
                 <h6 className="text-center mb-4 text-muted">
-                  Upload Local Or Drag a file
+                  Upload a file
                 </h6>
                 <h6 className="text-center mb-4 text-muted">
                   Drop files here then click on upload button below
@@ -150,7 +150,6 @@ class UploadPageSection extends React.Component {
                     disabled={this.state.filesName.length > 0 ? false : true}
                   />
                 </label>
-                <br />
                 <ul className="col-md-12">
                   {this.state.filesName.length > 0 &&
                     this.state.filesName.map((acceptedFile, index) => (
@@ -179,7 +178,7 @@ class UploadPageSection extends React.Component {
                     />
                   )}{" "}
                 </div>
-                <h6 className="text-center mb-4 text-muted">
+                <h6 className="text-center mb-4 text-muted spaceHover">
                   <b>or</b>
                 </h6>
                 <div className="custom-file overflow-hidden mb-2">
@@ -196,6 +195,7 @@ class UploadPageSection extends React.Component {
                   className="file-upload btn btn-primary btn-block
                      rounded-pill shadow upbtnfile mb-4"
                 >
+                  Upload From URL
                   <input
                     id="urlUpload"
                     name="url"

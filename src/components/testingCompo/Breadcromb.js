@@ -52,7 +52,7 @@ class Breadcromb extends Component {
                 Date Added
               </li> */}
               <li
-                className={`fa active`}
+                className={`active`}
                 onClick={this.props.toogleDateTimeView}
               >
                 <i className="fa fa-sort"></i>
@@ -67,7 +67,7 @@ class Breadcromb extends Component {
                 {this.props.handleListViewItem ? "Thumb View" : "List View"}
               </li> */}
               <li
-                className={`fa ${
+                className={`${
                   this.props.handleListViewItem ? "active" : ""
                 }`}
                 onClick={this.props.handleListView}
