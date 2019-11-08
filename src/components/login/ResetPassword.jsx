@@ -19,7 +19,8 @@ class ResetPassword extends Component {
     if (prevProps.createPwd !== this.props.createPwd && this.props.createPwd) {
       toast.success(this.props.createPwd.message);
       this.setState({
-        showToast: true
+        showToast: true,
+        showGoLoginMsg: true
       });
     }
   }
@@ -29,7 +30,7 @@ class ResetPassword extends Component {
     });
   };
   handleClick = () => {
-    const params = new URL(document.location).searchParams;
+    const params = new URLSearchParams(window.location.search);
     const payload = {
       password: this.state.userPwd,
       password_confirmation: this.state.cnfNewPwd,
@@ -58,7 +59,7 @@ class ResetPassword extends Component {
               >
                 <div id="login-column" className="col-md-6">
                   <div id="login-box" className="col-md-12 pass">
-                    {this.state.showGoLoginMsg ? (
+                    {!this.state.showGoLoginMsg ? (
                       <form
                         id="login-form"
                         className="form"
