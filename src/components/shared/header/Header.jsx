@@ -9,6 +9,9 @@ class Header extends React.Component {
   handleLogout = () => {
     localStorage.removeItem("userToken");
   };
+  handleGoHome = () => {
+    return this.props.history.push("/");
+  };
   render() {
     return (
       <header className="header">
@@ -19,7 +22,7 @@ class Header extends React.Component {
               <div className="navbar-header">
                 {/* Navbar Brand */}
                 <div className="brand-text d-none d-lg-inline-block">
-                  <a href="dashboard.html">
+                  <a href="" onClick={this.handleGoHome}>
                     <img src={logo} alt="BVP" className="logo-menu" />
                   </a>
                   <form

@@ -18,7 +18,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import FileViewer from "react-file-viewer";
 import Modal from "../components/shared/modal/Modal";
-//import s
+import Studio from "../components/studio-me/Studio";
 
 const customStyles = {
   content: {
@@ -104,7 +104,8 @@ class Dashboard extends Component {
       userFileData: selectedFolder.children,
       homeActive: false
     });
-    this.props.getUploadFolderFileData(payload);
+    this.state.breadcombItemType !== "project" &&
+      this.props.getUploadFolderFileData(payload);
   };
 
   componentDidMount() {
@@ -186,7 +187,9 @@ class Dashboard extends Component {
       activeIndex: index,
       handleListViewItem: false,
       userFileData:
-        this.state.activeIndex === 0 ? this.state.userFileData : null,
+        this.state.activeIndex === 0
+          ? this.state.userFileData
+          : this.state.isActiveObject.children,
       breadcombItemType: itemType
     });
   };
@@ -359,17 +362,14 @@ class Dashboard extends Component {
               <source src={filePath} type="video/mp4" />
             </video>
           )}
-          {/* <FileViewer fileType={fileType} filePath={filePath} /> */}
         </Modal>
       )
     );
   };
 
-  handlePreview = () => {
-    return (
-      <FileViewer fileType={fileType} filePath={filePath} />
-    )
-  }
+  handleEditor = data => {
+    return this.props.history.push("/studio");
+  };
 
   render() {
     const fileData = this.prepareFileData();
@@ -450,6 +450,7 @@ class Dashboard extends Component {
                                 actionBtnDisable={this.state.actionBtnDisable}
                                 handlePreview={this.handlePreview}
                                 selectedMedia={this.state.selectedMedia}
+                                showEditor={false}
                               />
                             );
                           })
@@ -488,6 +489,8 @@ class Dashboard extends Component {
                                 duplicateFolder={this.duplicateFolder}
                                 actionBtnDisable={this.state.actionBtnDisable}
                                 handlePreview={this.handlePreview}
+                                showEditor={true}
+                                handleEditor={this.handleEditor}
                               />
                             );
                           })

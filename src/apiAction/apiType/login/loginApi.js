@@ -14,9 +14,9 @@ export function getUserData(data) {
     .catch(err => err);
 }
 
-export function createforgetPwd(data) {
+export function createforgetPwd(data, actionType) {
   return util.networkMain
-    .post("/password/create", data)
+    .post(`/password/${actionType.action}`, data)
     .then(res => {
       return res.data;
     })

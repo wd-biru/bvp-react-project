@@ -29,7 +29,7 @@ export function* createPwdSaga() {
 
 function* createPwd(action) {
   const createPassword = yield call(() => {
-    return createforgetPwd(action.data);
+    return createforgetPwd(action.data, action.actionType);
   });
   if (!createPassword.error) {
     yield put({

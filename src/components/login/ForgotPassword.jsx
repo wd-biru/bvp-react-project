@@ -32,7 +32,10 @@ class Password extends Component {
       email: this.state.userEmail,
       resetLink: `${window.location.origin}/password`
     };
-    this.props.createUserPwd(payload);
+    const actionType = {
+      action: "create"
+    };
+    this.props.createUserPwd(payload, actionType);
   };
 
   render() {

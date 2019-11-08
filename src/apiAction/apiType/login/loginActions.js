@@ -14,10 +14,11 @@ export function fetchUserData(data) {
   };
 }
 
-export function createUserPwd(data) {
+export function createUserPwd(data, actionType) {
   return {
     type: userDataConsts.CREATE_PWD_REQUEST,
-    data
+    data,
+    actionType
   };
 }
 

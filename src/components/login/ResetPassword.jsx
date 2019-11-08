@@ -11,7 +11,8 @@ class ResetPassword extends Component {
     this.state = {
       cnfNewPwd: "",
       userPwd: "",
-      showToast: false
+      showToast: false,
+      showGoLoginMsg: false
     };
   }
   componentDidUpdate(prevProps) {
@@ -28,10 +29,21 @@ class ResetPassword extends Component {
     });
   };
   handleClick = () => {
+    const params = new URL(document.location).searchParams;
     const payload = {
-      userPwd: this.state.userPwd
+      password: this.state.userPwd,
+      password_confirmation: this.state.cnfNewPwd,
+      token: params.get("token"),
+      email: params.get("email")
     };
-    this.props.createUserPwd(payload);
+    const actionType = {
+      action: "reset"
+    };
+    this.props.createUserPwd(payload, actionType);
+  };
+
+  goToLogin = () => {
+    return this.props.history.push("/");
   };
 
   render() {
@@ -46,51 +58,67 @@ class ResetPassword extends Component {
               >
                 <div id="login-column" className="col-md-6">
                   <div id="login-box" className="col-md-12 pass">
-                    <form
-                      id="login-form"
-                      className="form"
-                      action=""
-                      method="post"
-                    >
-                      <h2 className="forgot-head">Reset Password</h2>
-                      <img src={LogoImg} className="login-logo" alt="BVP" />
-                      <div className="form-group">
-                        <input
-                          type="password"
-                          name="userPwd"
-                          id="username"
-                          className="form-control passformcont"
-                          placeholder="New Password"
-                          value={this.state.userPwd}
-                          onChange={this.handleInputChange}
-                        />
-                      </div>
-                      <div className="form-group">
-                        <input
-                          type="password"
-                          name="cnfNewPwd"
-                          id="userCnfPwd"
-                          className="form-control passformcont"
-                          placeholder="Confirm New Password"
-                          value={this.state.cnfNewPwd}
-                          onChange={this.handleInputChange}
-                        />
-                      </div>
-                      <div className="form-group password_div">
+                    {this.state.showGoLoginMsg ? (
+                      <form
+                        id="login-form"
+                        className="form"
+                        action=""
+                        method="post"
+                      >
+                        <h2 className="forgot-head">Reset Password</h2>
+                        <img src={LogoImg} className="login-logo" alt="BVP" />
+                        <div className="form-group">
+                          <input
+                            type="password"
+                            name="userPwd"
+                            id="username"
+                            className="form-control passformcont"
+                            placeholder="New Password"
+                            value={this.state.userPwd}
+                            onChange={this.handleInputChange}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <input
+                            type="password"
+                            name="cnfNewPwd"
+                            id="userCnfPwd"
+                            className="form-control passformcont"
+                            placeholder="Confirm New Password"
+                            value={this.state.cnfNewPwd}
+                            onChange={this.handleInputChange}
+                          />
+                        </div>
+                        <div className="form-group password_div">
+                          <input
+                            type="button"
+                            name="submit"
+                            className="btn btn-info btn-md"
+                            value="Submit"
+                            onClick={() => this.handleClick()}
+                            disabled={
+                              this.state.userPwd === this.state.cnfNewPwd
+                                ? false
+                                : true
+                            }
+                          />
+                        </div>
+                      </form>
+                    ) : (
+                      <div className="goLoginMsg">
+                        <p>
+                          Your password has been updated sucessfully. Click on
+                          Login Button to continue.
+                        </p>
                         <input
                           type="button"
                           name="submit"
                           className="btn btn-info btn-md"
-                          value="Submit"
-                          onClick={() => this.handleClick()}
-                          disabled={
-                            this.state.userPwd === this.state.cnfNewPwd
-                              ? false
-                              : true
-                          }
+                          value="Login"
+                          onClick={() => this.goToLogin()}
                         />
                       </div>
-                    </form>
+                    )}
                   </div>
                 </div>
               </div>
@@ -108,5 +136,5 @@ const mapStateToProps = state => ({
 });
 
 export default util.storeConnect(ResetPassword, mapStateToProps, {
-  ResetPassword
+  createUserPwd
 });

@@ -80,6 +80,8 @@ class FileType extends React.Component {
                       handleMediaDelete={this.props.handleMediaDelete}
                       handlePreview={this.props.handlePreview}
                       data={this.props.data}
+                      showEditor={this.props.showEditor}
+                      handleEditor={this.props.handleEditor}
                     />
                   </div>
                 </div>
@@ -108,6 +110,7 @@ class FileType extends React.Component {
                     handleMediaDelete={this.props.handleMediaDelete}
                     handlePreview={this.props.handlePreview}
                     data={this.props.data}
+                    showEditor={this.props.showEditor}
                   />
                 </div>
               </div>
@@ -133,6 +136,7 @@ class FileType extends React.Component {
                       handleMediaDelete={this.props.handleMediaDelete}
                       handlePreview={this.props.handlePreview}
                       data={this.props.data}
+                      showEditor={this.props.showEditor}
                     />
                   </div>
                 </div>
@@ -157,6 +161,7 @@ class FileType extends React.Component {
                       handleMediaDelete={this.props.handleMediaDelete}
                       handlePreview={this.props.handlePreview}
                       data={this.props.data}
+                      showEditor={this.props.showEditor}
                     />
                   </div>
                 </div>
@@ -185,13 +190,13 @@ class FileType extends React.Component {
             </div>
 
             <div className="modal-body text-center">
-              <div className="select-box" >
-              <Select
-                value={this.state.selectedOption}
-                onChange={this.handleChange}
-                options={this.allFolderData()}
-                className="select-box2"
-              />
+              <div className="select-box">
+                <Select
+                  value={this.state.selectedOption}
+                  onChange={this.handleChange}
+                  options={this.allFolderData()}
+                  className="select-box2"
+                />
               </div>
               <br />
 

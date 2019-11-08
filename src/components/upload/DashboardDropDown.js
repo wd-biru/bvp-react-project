@@ -14,7 +14,7 @@ class DashboardDropDown extends React.Component {
               <i class="fa fa-ellipsis-v"></i>
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              {this.props.data.type !== "docs" && (
+              {this.props.showEditor && (
                 <Dropdown.Item
                   class="dropdown-item edit"
                   onClick={() => this.props.handleEditor(this.props.data)}
@@ -40,7 +40,7 @@ class DashboardDropDown extends React.Component {
                 class="dropdown-item edit"
                 onClick={() => this.props.handleProjectMove(this.props.data)}
               >
-                <i class="fa fa-arrows"></i>Move To
+                <i class="fa fa-arrows"></i>Move
               </Dropdown.Item>
               <hr />
               <Dropdown.Item
