@@ -57,7 +57,7 @@ class NavItems extends React.Component {
                             ? folderData.files.length
                             : 0}
                         </span>
-                        <span>
+                        <span className="folderName">
                           {folderData.folder_status === 1 ? (
                             <img
                               src={createproject}

@@ -93,7 +93,7 @@ ul.nav-menu li a:hover i {
 form.navbar-form.navbar-left i {
   position: absolute;
   left: 140px;
-  top: 16px;
+  top: 17px;
   color: #a1a1a2;
 }
 /* Navbar section css end */
@@ -266,13 +266,25 @@ img.login-logo {
 .card-body .cappadd2 h5 {
   font-size: 0.9rem;
   text-transform: capitalize;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .page-header .container-fluid {
   padding-left: 50px;
 }
+.uploadpage section.tables .upload-bd-se {
+  padding: 0 30px;
+}
+input#urlUpload {
+  display: none;
+}
 .breadcrumb-holder.container-fluid {
   padding-left: 50px !important;
-  padding: 10px 0;
+  padding: 11px 0;
+}
+.main-footer .container-fluid {
+  padding: 0 30px;
 }
 .dashboardsty {
   background: #eeeeee;
@@ -305,7 +317,7 @@ input.SYNC {
   border-radius: 0px;
   font-weight: normal;
   cursor: pointer;
-  margin-right: 20px;
+  margin-right: 24px;
 }
 input.UPLOAD {
   background: #796aee;
@@ -319,7 +331,7 @@ input.UPLOAD {
 h2.no-margin-bottom {
   display: inline-block;
   float: left;
-  margin-top: 10px;
+  margin-top: 11px;
   font-weight: normal;
   font-size: 1.1rem;
 }
@@ -327,18 +339,22 @@ h2.no-margin-bottom {
   text-align: right;
   display: initial;
   float: right;
-  margin-top: -34px;
+  margin-top: -40px;
 }
-.secund-menu-listview li {
-  color: #ababab;
-  font-size: 13px;
-  padding: 10px;
+.secund-menu-listview ul.nav.nav-pills li {
+  color: #ababab !important;
+  font-size: 13px !important;
+  padding: 10px !important;
+  cursor: pointer;
+  float: left;
+  display: inherit;
 }
 .secund-menu-listview li i {
   color: #000;
   font-size: 16px;
   vertical-align: middle;
-  margin-right: 5px;
+  margin-right: 8.5px;
+  margin-top: 2px;
 }
 .logo-menu {
   width: 110px;
@@ -382,7 +398,10 @@ div.tab-pane {
   top: auto;
 }
 header.page-header {
-  padding: 19px 0;
+  padding: 20px 0;
+}
+section.tables.list-view {
+  padding-top: 50px !important;
 }
 .card-body {
   padding: 0;
@@ -433,10 +452,16 @@ header.page-header {
   transform: rotate(90deg);
 }
 .close {
-  transition: transform 0.25s, opacity 0.25s;
-  font-size: 33px;
-  font-family: serif;
-  line-height: 1;
+    transition: transform 0.25s, opacity 0.25s;
+    font-size: 35px;
+    font-family: serif;
+    line-height: 30px;
+    color: #796AEE;
+    opacity: 1;
+    margin-right: 2px;
+}
+h6.text-center.mb-4.text-muted.spaceHover {
+  margin-top: 20px;
 }
 .modal-btn {
   background: #796aee;
@@ -448,7 +473,7 @@ header.page-header {
 /* Upload page css start */
 .uploadpage section.tables {
   background: #eeeeee;
-  padding-top: 40px;
+  padding-top: 40px !important;
 }
 .uploadpage .text-muted {
   color: #a3a5ac !important;
@@ -499,6 +524,7 @@ header.page-header {
   border-bottom: 2px solid #796aee;
   font-size: 13px;
   z-index: 0;
+  height: 36px;
 }
 .upbtnfile {
   background: #d8d9da;
@@ -515,6 +541,8 @@ label.file-upload.btn.btn-primary.btn-block.rounded-pill.shadow {
   width: 59%;
   box-shadow: none !important;
   font-size: 0.9rem;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 .uploadiconsty {
   background: #fff;
@@ -529,10 +557,11 @@ label.file-upload.btn.btn-primary.btn-block.rounded-pill.shadow {
 .breadcrumb-holder .nav-pills li {
   padding-left: 0 !important;
   padding-right: 2rem !important;
-  padding: 0.5rem 1rem;
-  color: #aaa;
+  padding: 0.45rem 1rem;
+  color: #ababab;
   font-weight: 300;
   font-size: 0.9rem !important;
+  font-weight: 400;
 }
 .card-body video {
   width: 100%;

@@ -18,7 +18,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import FileViewer from "react-file-viewer";
 import Modal from "../components/shared/modal/Modal";
-import s
+//import s
 
 const customStyles = {
   content: {
@@ -58,8 +58,8 @@ const columns = [
     sortable: true,
     cell: row => (
       <img
-        height="84px"
-        width="56px"
+        height="auto"
+        width="60px"
         alt={row.type}
         src={`https://apiv2.bossvideoplayer.com/public/user/${row.url}`}
       />
