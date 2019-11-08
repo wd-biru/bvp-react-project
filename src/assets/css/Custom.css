@@ -9,3 +9,34 @@
     box-sizing: border-box;
     color: #fff; 
     z-index: 99999 !important;}
+
+    .ReactModal__Content.ReactModal__Content--after-open {
+        border-radius: 0 !important;
+      }
+      .ReactModal__Overlay.ReactModal__Overlay--after-open {
+        background-color: #0000007a !important;
+        z-index: 999;
+      }
+      .modal-header{padding: 1rem !important;}
+      .modal-header .close {
+        padding: 0rem 0rem !important;
+        position: absolute;
+        right: 15px;
+        margin-top: 0px !important;
+    }
+      .modal-body {
+        position: relative;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: 1rem !important;
+    }
+    .modal-btn {
+        background: #7c6cff !important;
+        border: 1px solid #7c6cff !important;
+        border-radius: 0px;
+    }
+    .modal-btn:hover {
+        background: #17a2b8 !important;
+        border: 1px solid #17a2b8 !important;
+        border-radius: 0px;
+    }

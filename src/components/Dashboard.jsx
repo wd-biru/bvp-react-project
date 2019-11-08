@@ -18,7 +18,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import FileViewer from "react-file-viewer";
 import Modal from "../components/shared/modal/Modal";
-import Studio from "../components/studio-me/Studio";
+//import Studio from "../components/studio-me/Studio";
 
 const customStyles = {
   content: {

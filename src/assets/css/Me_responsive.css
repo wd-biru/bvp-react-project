@@ -170,3 +170,27 @@
     display: none;
 	}
 }
+@media screen and (max-width: 1520px) and (min-width: 1367px) {
+	.card-body img {height: 157px !important;}
+	.card-body video {height: 157px !important;}
+}
+@media screen and (max-width: 1710px) and (min-width: 1521px) {
+	.card-body img {height: 184.5px !important;}
+	.card-body video {height: 184.5px !important;}
+}
+@media screen and (max-width: 1821px) and (min-width: 1711px) {
+	.card-body img {height: 201px !important;}
+	.card-body video {height: 201px !important;}
+}
+@media screen and (max-width: 2049px) and (min-width: 1822px) {
+	.card-body img {height: 234px !important;}
+	.card-body video {height: 234px !important;}
+}
+@media screen and (max-width: 2732px) and (min-width: 2050px) {
+	.card-body img {height: 334px !important;}
+	.card-body video {height: 334px !important;}
+}
+@media screen and (max-width: 4098px) and (min-width: 2733px) {
+	.card-body img {height: 536px !important;}
+	.card-body video {height: 536px !important;}
+}

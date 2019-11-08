@@ -19,6 +19,20 @@ const customStyles = {
     padding: "0px"
   }
 };
+const customStyles2 = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "700px",
+    height: "300px",
+    paddingtop: "0px",
+    padding: "0px"
+  }
+};
 
 class FileType extends React.Component {
   constructor(props) {
@@ -173,7 +187,7 @@ class FileType extends React.Component {
           <Modal
             modalIsOpen={this.props.projectMove}
             closeModal={this.props.closeMediaModal}
-            customStyles={customStyles}
+            customStyles={customStyles2}
             contentLabel={"Create Folder"}
             pauseOnFocusLoss={false}
           >

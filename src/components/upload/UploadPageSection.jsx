@@ -150,7 +150,7 @@ class UploadPageSection extends React.Component {
                     disabled={this.state.filesName.length > 0 ? false : true}
                   />
                 </label>
-                <ul className="col-md-12">
+                <ul className="col-md-12 fileUploadSpace">
                   {this.state.filesName.length > 0 &&
                     this.state.filesName.map((acceptedFile, index) => (
                       <>
