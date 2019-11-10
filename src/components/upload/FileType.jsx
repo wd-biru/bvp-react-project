@@ -3,6 +3,35 @@ import DashboardDropDown from "./DashboardDropDown";
 import docuImg from "../../assets/img/docimg.jpg";
 import moment from "moment";
 
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "500px",
+    paddingtop: "0px",
+    padding: "0px"
+  }
+};
+const customStyles2 = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "700px",
+    height: "300px",
+    paddingtop: "0px",
+    padding: "0px"
+  }
+};
+
 class FileType extends React.Component {
   constructor(props) {
     super(props);
@@ -131,6 +160,7 @@ class FileType extends React.Component {
             )}
           </div>
         </div>
+
       </>
     );
   }

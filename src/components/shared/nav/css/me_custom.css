@@ -113,7 +113,7 @@ nav.side-navbar .title h1 img {
   margin-right: 0.5rem;
 }
 nav.side-navbar {
-  position: absolute;
+  position: fixed !important;
   height: 100%;
 }
 nav.side-navbar {
@@ -145,6 +145,7 @@ nav.side-navbar .sidebar-header {
   margin-bottom: 0;
   padding-right: 5px;
   background: white;
+  padding-bottom: 68px;
 }
 nav.side-navbar ul li.active > a {
   background: #eeeeee;
@@ -153,6 +154,9 @@ nav.side-navbar ul li.active > a {
 }
 nav.side-navbar ul li a {
   padding: 7px 15px;
+}
+nav.side-navbar {
+  z-index: 0 !important;
 }
 nav.side-navbar ul li a:hover {
   background: #eeeeee;
@@ -471,7 +475,7 @@ span.temp-class {
 /* modal popup css start */
 .modal-title {
   width: 100%;
-  color: #000;
+  color: #000 !important;
 }
 .close:hover {
   opacity: 1;
