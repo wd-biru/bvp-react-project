@@ -27,14 +27,13 @@ class LeftNavbar extends React.Component {
     super(props);
     this.state = {
       showModal: false,
-      folderName: this.props.isActiveObject
-        ? this.props.isActiveObject.folder_name
-        : "",
+      folderName: "",
       showToastMsg: false,
       submitBtnDisable: false,
       editMode: false,
       deleteMode: false,
-      inputDefaultText: "Folder Name"
+      inputDefaultText: "Folder Name",
+      addNewFolder: false
     };
   }
 
@@ -91,7 +90,8 @@ class LeftNavbar extends React.Component {
   closeModal = () => {
     this.setState({
       showModal: false,
-      inputDefaultText: !this.state.inputDefaultText
+      inputDefaultText: !this.state.inputDefaultText,
+      addNewFolder: false
     });
   };
 
@@ -99,7 +99,8 @@ class LeftNavbar extends React.Component {
     this.setState({
       showModal: !this.state.showModal,
       editMode: false,
-      deleteMode: false
+      deleteMode: false,
+      addNewFolder: true
     });
   };
 
@@ -256,9 +257,9 @@ class LeftNavbar extends React.Component {
                   key={this.state.inputDefaultText}
                   className="form-control"
                   defaultValue={
-                    this.props.isActiveObject
-                      ? this.props.isActiveObject.folder_name
-                      : this.state.folder_name
+                    this.state.addNewFolder
+                      ? this.state.folder_name
+                      : this.props.isActiveObject.folder_name
                   }
                   onChange={this.handleInputChange}
                 />
@@ -284,7 +285,7 @@ class LeftNavbar extends React.Component {
             </div>
           </Modal>
         )}
-        {this.state.showToastMsg && <ToastContainer />}
+        {this.state.showToastMsg && <ToastContainer autoClose={1500} />}
       </>
     );
   }

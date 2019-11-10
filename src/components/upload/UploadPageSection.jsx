@@ -90,7 +90,6 @@ class UploadPageSection extends React.Component {
           filesName: "",
           showLoader: false
         });
-        
       }
     }
   }
@@ -130,9 +129,7 @@ class UploadPageSection extends React.Component {
                     </div>
                   )}
                 </Dropzone>
-                <h6 className="text-center mb-4 text-muted">
-                  Upload a file
-                </h6>
+                <h6 className="text-center mb-4 text-muted">Upload a file</h6>
                 <h6 className="text-center mb-4 text-muted">
                   Drop files here then click on upload button below
                 </h6>
@@ -207,7 +204,7 @@ class UploadPageSection extends React.Component {
               </div>
             </div>
           </div>
-          {this.state.showToastMsg && <ToastContainer />}
+          {this.state.showToastMsg && <ToastContainer autoClose={1500} />}
         </div>
         {/* <Studio /> */}
       </section>

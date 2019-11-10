@@ -176,7 +176,7 @@ class Login extends React.Component {
             </div>
           </div>
         )}
-        {this.state.showErrorMsg && <ToastContainer />}
+        {this.state.showErrorMsg && <ToastContainer autoClose={1500} />}
         {this.state.showForgetPwd && (
           <ForgotPass cancelForgetPwd={this.cancelForgetPwd} />
         )}
