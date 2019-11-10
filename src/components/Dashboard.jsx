@@ -18,7 +18,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import FileViewer from "react-file-viewer";
 import Modal from "../components/shared/modal/Modal";
-//import Studio from "../components/studio-me/Studio";
+import Studio from "../components/studio-me/Studio";
+import MediaModal from "../components/upload/MediaModal";
+import Select from "react-select";
 
 const customStyles = {
   content: {
@@ -88,7 +90,8 @@ class Dashboard extends Component {
       showToast: false,
       showMediaDuplicate: false,
       actionBtnDisable: false,
-      showPreview: false
+      showPreview: false,
+      selectedOption: null
     };
   }
   handleFolderData = selectedFolder => {
@@ -371,6 +374,24 @@ class Dashboard extends Component {
     return this.props.history.push("/studio");
   };
 
+  handleChange = selectedOption => {
+    this.setState({ selectedOption });
+  };
+
+  allFolderData() {
+    const filterFolder =
+      this.props.userFolderDetails && this.state.isActiveObject
+        ? this.props.userFolderDetails.folders.filter(
+            element => element.id !== this.state.isActiveObject.id
+          )
+        : [];
+    const options = filterFolder.map(element => ({
+      label: element.folder_name,
+      value: element.id
+    }));
+    return options;
+  }
+
   render() {
     const fileData = this.prepareFileData();
     return (
@@ -509,8 +530,72 @@ class Dashboard extends Component {
               }
             />
           )}
-          {this.state.showToast && <ToastContainer />}
+          {this.state.showToast && <ToastContainer autoClose={1500}/>}
           {this.state.showPreview && this.renderPreview()}
+          {this.state.showMediaDuplicate || this.state.showMediaDelete ? (
+            <MediaModal
+              modalIsOpen={
+                this.state.showMediaDuplicate || this.state.showMediaDelete
+              }
+              closeMediaModal={this.closeMediaModal}
+              btnText={this.state.showMediaDuplicate ? "Clone" : "Delete"}
+              consfirmMsg={
+                this.state.showMediaDuplicate
+                  ? `Are you sure you want to make duplicate of ${this.state.selectedMedia.actual_name}?`
+                  : `Are you sure you want to delete ${this.state.selectedMedia.actual_name}?`
+              }
+              handleClick={this.duplicateFolder}
+              actionBtnDisable={this.state.actionBtnDisable}
+            />
+          ) : null}
+          {this.state.projectMove && (
+            <Modal
+              modalIsOpen={this.state.projectMove}
+              closeModal={this.closeMediaModal}
+              customStyles={customStyles}
+              contentLabel={"Create Folder"}
+              pauseOnFocusLoss={false}
+            >
+              <div className="modal-header text-center">
+                <h4 className="modal-title">Project Move</h4>
+                <button
+                  type="button"
+                  className="close"
+                  onClick={this.closeMediaModal}
+                  data-dismiss="modal"
+                >
+                  &times;
+                </button>
+              </div>
+
+              <div className="modal-body text-center">
+                <div className="select-box">
+                  <Select
+                    value={this.state.selectedOption}
+                    onChange={this.handleChange}
+                    options={this.allFolderData()}
+                    className="select-box2"
+                  />
+                </div>
+                <br />
+
+                <button
+                  id="createFolder"
+                  name="createName"
+                  className="btn btn-info btn-md modal-btn text-center form-group"
+                  onClick={() => this.moveFolder(this.state.selectedOption)}
+                  disabled={this.state.actionBtnDisable}
+                >
+                  Move
+                </button>
+                <br />
+                {this.state.actionBtnDisable && (
+                  <span>Please Wait while your project is moving...</span>
+                )}
+                <br />
+              </div>
+            </Modal>
+          )}
           <Footer />
         </div>
       </>

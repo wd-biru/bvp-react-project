@@ -126,7 +126,7 @@ class ResetPassword extends Component {
             </div>
           </div>
         </div>
-        {this.state.showToast && <ToastContainer />}
+        {this.state.showToast && <ToastContainer autoClose={1500} />}
       </div>
     );
   }
