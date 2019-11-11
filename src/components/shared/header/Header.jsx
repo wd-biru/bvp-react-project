@@ -6,12 +6,23 @@ import logo from "./studio-bvp-logo.png";
 // import "./css/me_responsive.css";
 
 class Header extends React.Component {
+  constructor(props){
+  super(props);
+  this.state={
+    isToggle: false
+  }
+}
   handleLogout = () => {
     localStorage.removeItem("userToken");
   };
   handleGoHome = () => {
     return this.props.history.push("/");
   };
+  handleClick = () => {
+    this.setState({
+      isToggle: !this.state.isToggle
+    })
+  }
   render() {
     return (
       <header className="header">
@@ -40,7 +51,7 @@ class Header extends React.Component {
                 </div>
 
                 {/* Toggle Button*/}
-                <a id="toggle-btn" href="#" className="menu-btn active">
+                <a id="toggle-btn" href="#" className="menu-btn active" onClick={this.props.handleClick}>
                   <span></span>
                   <span></span>
                   <span></span>

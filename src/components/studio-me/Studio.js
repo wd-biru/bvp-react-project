@@ -10,23 +10,23 @@ import StudioPageFooterSection from "./StudioPageFooterSection";
 import util from "../../apiAction/axios/utility";
 
 import "./css/me_studio.css";
-import "./css/me_responsive.css";
+//import "./css/me_responsive.css";
 
 class Studio extends React.Component {
   render() {
     return (
       <div>
         <body className="studio_page">
-          <StudioHeader />
-          <StudioPreviewModel />
-          <StudioVideoSection />
-          <StudioPlayButton />
+            <StudioHeader />
+            <StudioPreviewModel />
+            <StudioVideoSection />
+            <StudioPlayButton />
 
-          <div className="container-fluid Studioed-section2">
-            <StudioToolsCompo />
-            <StudioToolsTime />
-            <StudioPageFooterSection />
-          </div>
+            <div className="container-fluid Studioed-section2">
+              <StudioToolsCompo />
+              <StudioToolsTime />
+              <StudioPageFooterSection />
+            </div>
         </body>
       </div>
     );

@@ -91,7 +91,8 @@ class Dashboard extends Component {
       showMediaDuplicate: false,
       actionBtnDisable: false,
       showPreview: false,
-      selectedOption: null
+      selectedOption: null,
+      isToggle: true
     };
   }
   handleFolderData = selectedFolder => {
@@ -369,9 +370,9 @@ class Dashboard extends Component {
       )
     );
   };
-
+  
   handleEditor = data => {
-    return this.props.history.push("/studio");
+      return this.props.history.push("/studio");
   };
 
   handleChange = selectedOption => {
@@ -392,6 +393,12 @@ class Dashboard extends Component {
     return options;
   }
 
+  handleClick = () =>{
+           this.setState({
+             isToggle : !this.state.isToggle
+           })
+  }
+  
   render() {
     const fileData = this.prepareFileData();
     return (
@@ -406,6 +413,7 @@ class Dashboard extends Component {
           handleHomeToggle={this.handleHomeToggle}
           homeActive={this.state.homeActive}
           handleDefaultHomeActive={this.handleDefaultHomeActive}
+          handleClick={this.handleClick}
         />
         <div className="content-inner">
           <TopPageHeader

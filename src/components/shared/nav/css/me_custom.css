@@ -89,12 +89,6 @@ ul.nav-menu li a:hover i {
 .brand-text form.navbar-form.navbar-left {
   margin-left: 110px;
 }
-form.navbar-form.navbar-left i {
-  position: absolute;
-  left: 140px;
-  top: 18px;
-  color: #a1a1a2;
-}
 /* Navbar section css end */
 
 /* sidebar section css start */
@@ -203,6 +197,9 @@ nav.side-navbar.shrinked ul li.active > a i {
 nav.side-navbar.shrinked ul li.active > a {
   color: #000;
 }
+nav.side-navbar ul li.active span {
+  color: #000;
+}
 /* sidebar section css end */
 
 /* Login page css start */
@@ -292,11 +289,6 @@ img.login-logo {
   font-size: 16px;
   vertical-align: middle;
   margin-right: 5px;
-}
-.logo-menu {
-  width: 110px;
-  background: #796aee;
-  height: 45px;
 }
 div.tab-pane {
   padding: inherit;
@@ -440,7 +432,9 @@ nav.side-navbar ul li {
 }
 nav.side-navbar ul li span {
   font-size: 13px;
-  color: #686a76;
+  /* color: #686a76; */
+  color: #959595;
+  font-weight: 400;
 }
 nav.side-navbar ul li.active {
   background: #796aee00;
