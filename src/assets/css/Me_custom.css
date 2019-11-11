@@ -339,7 +339,7 @@ input.SYNC {
   border-radius: 0px;
   font-weight: normal;
   cursor: pointer;
-  margin-right: 24px !important;
+  margin-right: 24px;
 }
 input.UPLOAD {
   background: #796aee;
@@ -366,7 +366,7 @@ h2.no-margin-bottom {
 .secund-menu-listview ul.nav.nav-pills li {
   color: #ababab !important;
   font-size: 13px !important;
-  padding: 10px !important;
+  padding: 10px 10px 10px 10px !important;
   cursor: pointer;
   float: left;
   display: inherit;
@@ -379,7 +379,7 @@ h2.no-margin-bottom {
   margin-top: 2px;
 }
 .logo-menu {
-  width: 110px !important;
+  width: 110px;
   background: #796aee;
   height: 45px;
 }
@@ -441,6 +441,7 @@ section.tables.list-view {
 .card-close .dropdown-menu a i {
   width: 15px;
   text-align: left;
+  font-size: 15px;
 }
 .fa.fa-arrows {
   font-family: FontAwesome;
@@ -585,8 +586,7 @@ html {
 /* Upload page css end */
 .breadcrumb-holder .nav-pills li {
   padding-left: 0 !important;
-  padding-right: 2rem !important;
-  padding: 0.45rem 1rem;
+  padding: 0.45rem 2rem;
   color: #ababab;
   font-weight: 300;
   font-size: 0.9rem !important;
@@ -673,4 +673,33 @@ span.spanremove {
 }
 ul.col-md-12.fileUploadSpace {
   margin-top: 15px;
+}
+.ellipsisdrop .ellipsisnn .dropdown-menu.show hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.ellipsisdrop .ellipsisnn .dropdown-menu.show {
+  right: 4px !important;
+  top: 0px !important;
+  left: auto !important;
+}
+.btn:focus, .btn.focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+.modal-header .close {
+  padding: 0rem 0rem !important;
+  position: absolute;
+  right: 30px;
+  margin-top: 0px !important;
+  opacity: 1;
+}
+a#toggle-btn {
+  position: absolute;
+  left: 15px;
+  top: 55px;
 }

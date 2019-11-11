@@ -89,12 +89,6 @@ ul.nav-menu li a:hover i {
 .brand-text form.navbar-form.navbar-left {
   margin-left: 110px;
 }
-form.navbar-form.navbar-left i {
-  position: absolute;
-  left: 140px;
-  top: 18px;
-  color: #a1a1a2;
-}
 /* Navbar section css end */
 
 /* sidebar section css start */
@@ -295,16 +289,7 @@ img.login-logo {
 .secund-menu-button {
   text-align: right;
 }
-input.SYNC {
-  background: #d8d9da;
-  border: 1px solid #d8d9da;
-  color: #000;
-  padding: 5px 25px;
-  border-radius: 0px;
-  font-weight: normal;
-  cursor: pointer;
-  margin-right: 20px;
-}
+
 input.UPLOAD {
   background: #796aee;
   border: 1px solid #796aee;
@@ -337,11 +322,6 @@ h2.no-margin-bottom {
   font-size: 16px;
   vertical-align: middle;
   margin-right: 5px;
-}
-.logo-menu {
-  width: 110px;
-  background: #796aee;
-  height: 45px;
 }
 div.tab-pane {
   padding: inherit;

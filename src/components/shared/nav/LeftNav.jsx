@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/MystyleDefault.css";
 import "./css/me_custom.css";
-import "./css/me_responsive.css";
+//import "./css/me_responsive.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "../../shared/modal/Modal";
@@ -44,7 +44,11 @@ class LeftNavbar extends React.Component {
   //   };
   //   this.props.getUserFolderData(payload);
   // }
-
+  handleCreateFolder = () => {
+    this.setState({
+      isToggle: !this.state.isToggle
+    })
+  }
   handleInputChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -157,6 +161,7 @@ class LeftNavbar extends React.Component {
       editMode: false
     });
   };
+  
 
   renderModalHeader = () => {
     let headerText = "Create Folder Name";
@@ -262,6 +267,7 @@ class LeftNavbar extends React.Component {
                       : this.props.isActiveObject.folder_name
                   }
                   onChange={this.handleInputChange}
+                  placeholder="Enter Folder Name"
                 />
               ) : (
                 <span>
@@ -269,6 +275,7 @@ class LeftNavbar extends React.Component {
                   {this.props.isActiveObject.folder_name}?
                 </span>
               )}
+              <br />
               <br />
 
               <button

@@ -24,7 +24,7 @@ const StudioVideoSectionRight = () => {
         <div class="col-sm-5 Studioed-three">
 				<ul class="nav nav-pills">
 				  <li class="nav-item">
-				  <Link to="/" class="nav-link2 " data-toggle="pill" href="#menu1">
+				  <Link to="/studio" class="nav-link2 " data-toggle="pill" href="#menu1">
 				    	<img src={detail} /><br /> Details</Link>
 				  </li>
 				  <li class="nav-item active">
@@ -53,7 +53,7 @@ const StudioVideoSectionRight = () => {
 				  </li>
 				</ul>
                 <div class="tab-content1">
-				     <Route exact path="/" component={Studiolinkdetails} />
+				     <Route exact path="/studio" component={Studiolinkdetails} />
 					 <Route exact path="/library" component={Studiolinklibary} />
 					 <Route exact path="/hotspots" component={Studiolinkhotsports} />
 					 <Route exact path="/timetrigger" component={StudioLinkTimeTrigger} />

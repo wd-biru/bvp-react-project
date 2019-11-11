@@ -161,16 +161,17 @@ class Login extends React.Component {
                           />
                           <i className="fa fa-long-arrow-right"></i>
                           
-                          {this.state.loginBtnDisable && (
+                        </div>
+                        {this.state.loginBtnDisable && (
                             <label
                               htmlFor="remember-me"
                               className="text-infoss"
                             >
-                              <span>Please Wait...</span>
+                              <span className="spanlogin">Please Wait...</span>
                             </label>
                           )}
-                        </div>
                       </form>
+                      
                     </div>
                   </div>
                 </div>

@@ -11,7 +11,7 @@ import Footer from './Footer';
 
 import './css/MystyleDefault.css';
 import './css/me_custom.css';
-import './css/me_responsive.css';
+//import './css/me_responsive.css';
 
 
 
