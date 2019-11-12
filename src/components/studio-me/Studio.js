@@ -17,16 +17,19 @@ class Studio extends React.Component {
     return (
       <div>
         <body className="studio_page">
-            <StudioHeader />
-            <StudioPreviewModel />
-            <StudioVideoSection />
-            <StudioPlayButton />
+          <StudioHeader />
+          <StudioPreviewModel />
+          <StudioVideoSection
+            folderProjectData={this.props.folderProjectData}
+            selectedMedia={this.props.selectedMedia}
+          />
+          <StudioPlayButton />
 
-            <div className="container-fluid Studioed-section2">
-              <StudioToolsCompo />
-              <StudioToolsTime />
-              <StudioPageFooterSection />
-            </div>
+          <div className="container-fluid Studioed-section2">
+            <StudioToolsCompo />
+            <StudioToolsTime />
+            <StudioPageFooterSection />
+          </div>
         </body>
       </div>
     );
