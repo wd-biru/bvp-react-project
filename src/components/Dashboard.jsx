@@ -106,7 +106,8 @@ class Dashboard extends Component {
       actionBtnDisable: false,
       showPreview: false,
       selectedOption: null,
-      isToggle: true
+      isToggle: true,
+      showEditor: false
     };
   }
   handleFolderData = selectedFolder => {
@@ -255,7 +256,9 @@ class Dashboard extends Component {
 
   prepareFileData = () => {
     let data =
-      this.props.userFileData && this.props.userFileData.data.length !== 0
+      this.props.userFileData &&
+      this.props.userFileData.data &&
+      this.props.userFileData.data.length !== 0
         ? [...this.props.userFileData.data.files]
         : [];
     if (this.state.dataSortBy) {
@@ -384,9 +387,12 @@ class Dashboard extends Component {
       )
     );
   };
-  
-  handleEditor = data => {
-      return this.props.history.push("/studio");
+
+  handleEditor = editordata => {
+    this.setState({
+      showEditor: true,
+      selectedMedia: editordata
+    });
   };
 
   handleChange = selectedOption => {
@@ -407,15 +413,15 @@ class Dashboard extends Component {
     return options;
   }
 
-  handleClick = () =>{
-           this.setState({
-             isToggle : !this.state.isToggle
-           })
-  }
-  
+  handleClick = () => {
+    this.setState({
+      isToggle: !this.state.isToggle
+    });
+  };
+
   render() {
     const fileData = this.prepareFileData();
-    return (
+    return !this.state.showEditor ? (
       <>
         <LeftNav
           handleFolderData={this.handleFolderData}
@@ -461,6 +467,7 @@ class Dashboard extends Component {
                     <div className="row">
                       {this.props.userFileData &&
                       this.state.activeIndex !== 0 &&
+                      this.props.userFileData.data &&
                       this.props.userFileData.data.length !== 0
                         ? fileData.map((data, index) => {
                             return (
@@ -552,7 +559,7 @@ class Dashboard extends Component {
               }
             />
           )}
-          {this.state.showToast && <ToastContainer autoClose={1500}/>}
+          {this.state.showToast && <ToastContainer autoClose={1500} />}
           {this.state.showPreview && this.renderPreview()}
           {this.state.showMediaDuplicate || this.state.showMediaDelete ? (
             <MediaModal
@@ -618,8 +625,16 @@ class Dashboard extends Component {
               </div>
             </Modal>
           )}
+
           <Footer />
         </div>
+      </>
+    ) : (
+      <>
+        <Studio
+          folderProjectData={this.state.userFileData}
+          selectedMedia={this.state.selectedMedia}
+        />
       </>
     );
   }

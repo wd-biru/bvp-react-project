@@ -47,8 +47,8 @@ class LeftNavbar extends React.Component {
   handleCreateFolder = () => {
     this.setState({
       isToggle: !this.state.isToggle
-    })
-  }
+    });
+  };
   handleInputChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -161,7 +161,6 @@ class LeftNavbar extends React.Component {
       editMode: false
     });
   };
-  
 
   renderModalHeader = () => {
     let headerText = "Create Folder Name";
@@ -216,7 +215,8 @@ class LeftNavbar extends React.Component {
             {this.props.userFolderDetails ? (
               <NavItems
                 data={
-                  this.props.userFolderDetails
+                  this.props.userFolderDetails &&
+                  this.props.userFolderDetails.folders
                     ? this.props.userFolderDetails.folders.sort(
                         (a, b) => a.id - b.id
                       )
