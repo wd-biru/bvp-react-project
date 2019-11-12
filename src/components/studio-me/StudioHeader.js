@@ -13,20 +13,20 @@ class StudioHeader extends React.Component {
     return (
       <header>
         <nav className="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-          <a className="navbar-brand" href="" onClick={this.handleGoHome}>
+          <span className="navbar-brand" href="" onClick={this.handleGoHome}>
             <img src={logo} alt="BVP" className="studio logo-menu2" />{" "}
-          </a>
+          </span>
           <div className="">
             <ul className="navbar-nav my-2 my-lg-0">
               <li className="nav-item d-flex align-items-center">
-                <a href="#" className="nav-link2">
+                <span href="#" className="nav-link2">
                   <img src={ques} />
-                </a>
+                </span>
               </li>
 
               <li className="nav-item dropdown">
                 {" "}
-                <a
+                <span
                   id="notifications"
                   rel="nofollow"
                   data-target="#"
@@ -37,14 +37,14 @@ class StudioHeader extends React.Component {
                   className="nav-link2"
                 >
                   <img src={alarm} />{" "}
-                </a>
+                </span>
               </li>
 
               <li className="nav-item">
-                <a href="login.html" className="nav-link2 logout">
+                <span href="login.html" className="nav-link2 logout">
                   {" "}
                   <img src={user} />
-                </a>
+                </span>
               </li>
             </ul>
           </div>

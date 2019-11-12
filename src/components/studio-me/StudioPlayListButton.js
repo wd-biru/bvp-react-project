@@ -16,13 +16,13 @@ const StudioPlayListButton = () => {
 			<div className="col-sm-7">
 				<div className="Studioed-section2-1">
 	    			<ul className="margin-b-7">
-					<li><a href="#"><img src={backward} /></a></li>    			
-	    				<li><a href="#"><img src={play}/></a></li>
-	    				<li><a href="#"><img src={faplay} /></a></li>
+					<li><span><img src={backward} /></span></li>    			
+	    				<li><span><img src={play}/></span></li>
+	    				<li><span><img src={faplay} /></span></li>
 	    				
-	    				<li><a href="#"><img src={forward} /></a></li> 
-	    				<li><a href="#"><img src={forward2}/></a></li> 
-	    				<li><a href="#"><img src={volumedown} /></a></li>
+	    				<li><span><img src={forward} /></span></li> 
+	    				<li><span><img src={forward2}/></span></li> 
+	    				<li><span><img src={volumedown} /></span></li>
 	    				
 	    			</ul>
 	    		</div>

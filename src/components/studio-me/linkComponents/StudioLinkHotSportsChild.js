@@ -19,7 +19,6 @@ const StudioLinkHotSportsChild = () => {
                     </h4>
                   </div>
                   <StudioLinkHotSportsChildLink />
-                  
                   </div>
                 </div>
             </div>

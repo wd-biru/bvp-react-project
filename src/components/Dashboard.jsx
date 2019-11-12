@@ -35,6 +35,20 @@ const customStyles = {
     padding: "0px"
   }
 };
+const customStyles22 = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "550px",
+    height: "350px",
+    paddingtop: "0px",
+    padding: "0px"
+  }
+};
 
 const columns = [
   {
@@ -560,7 +574,7 @@ class Dashboard extends Component {
             <Modal
               modalIsOpen={this.state.projectMove}
               closeModal={this.closeMediaModal}
-              customStyles={customStyles}
+              customStyles={customStyles22}
               contentLabel={"Create Folder"}
               pauseOnFocusLoss={false}
             >

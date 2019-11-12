@@ -7,7 +7,7 @@ const StudioLinkHotSportsChildLink = () => {
              <div className="container-fluid">
 			  	<div className="row">
 			  		<div className="col-sm-5">
-			  			<form action="/action_page.php">
+			  			<form >
 			    			<div className="form-group">
 			      			<label for="sel1">Hotspot action</label>
 			      			<select className="form-control" id="sel1">
@@ -45,7 +45,7 @@ const StudioLinkHotSportsChildLink = () => {
         	</div>
         </div>
      </div>
-	    </div>
+</div>
 		  	
     );
 }

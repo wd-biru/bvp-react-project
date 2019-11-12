@@ -12,9 +12,8 @@ const StudioVideoSection = () => {
 				  <source src={Video} type="video/mp4" />
 				</video>
 			</div>
-            {/* this is video part col-sm-05 section */}
-            <StudioVideoSectionRight />
-          </div>
+          <StudioVideoSectionRight />
+        </div>
       </div>
 
     )

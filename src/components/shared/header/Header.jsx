@@ -51,7 +51,7 @@ class Header extends React.Component {
                 </div>
 
                 {/* Toggle Button*/}
-                <a id="toggle-btn" href="#" className="menu-btn active" onClick={this.props.handleClick}>
+                <a id="toggle-btn" href="" className="menu-btn active" onClick={this.props.handleClick}>
                   <span></span>
                   <span></span>
                   <span></span>

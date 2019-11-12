@@ -22,9 +22,9 @@ const StudioLinkLibary = () => {
 								<form class="navbar-form navbar-left mb-2" action="/action_page.php">
 				                    <input type="text" class="form-control navsearch2" placeholder="Search " name="search" />
 				                </form>
-								</div>
+							</div>
                         </div>
-				</div>
+			    	</div>
 				<div className="tab-content1">
 					<StudioLinkLibaryChild />
 				</div>

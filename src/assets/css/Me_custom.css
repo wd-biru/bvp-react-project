@@ -429,6 +429,10 @@ header.page-header {
 section.tables.list-view {
   padding-top: 50px !important;
 }
+.ReactModal__Content.ReactModal__Content--after-open {
+  max-width: 95%;
+  width: 95%;
+}
 .card-body {
   padding: 0;
 }
@@ -650,20 +654,21 @@ span.spanremove {
 .video-container video {
   width: 100%;
   height: 450px;
+  object-fit: cover;
 }
-
 .previewImg {
   width: 100%;
   height: 450px;
+  object-fit: cover;
 }
-
 .Loader {
   text-align: center;
 }
 .select-box {
-  width: 85%;
+  width: 92%;
   margin: auto;
-  margin-top: 25px;
+  margin-top: 22px;
+  margin-bottom: 15px;
 }
 .cappadd-bot i.fa.fa-gear {
   font-size: 16px !important;
@@ -703,3 +708,15 @@ a#toggle-btn {
   left: 15px;
   top: 55px;
 }
+img.thumbimglogo {
+  background-color: #d8d9da;
+  object-fit: fill;
+}
+.kJdJTV {padding: 50px 50px;padding-bottom: 85px;}
+header.sc-kAzzGY.gXlqCi.rdt_TableHeader {display: none;}
+.sc-bwzfXH.gXdTHx.rdt_TableHead {background: #c4c4c4;}
+.ftSrFl:first-of-type {padding-left: calc(26px / 2) !important;}
+.iMLKlc:first-of-type {padding-left: calc(26px / 2) !important;}
+.sc-gZMcBi.bUtpgR.rdt_TableRow {background: #e2e2e2;}
+nav .navbar-holder ul li i.fa.fa-question {font-size: 18px;}
+nav .navbar-holder ul li i.fa.fa-user {font-size: 17px;}
