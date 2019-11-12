@@ -31,20 +31,20 @@ const StudioToolsCompo = () => {
 			<div className="row">
 				<div className="col-sm-7 paddin-rigth-0">					
 					<ul className="small-view">
-						<li><a href="#" title="Storyboard View"><img src={tool1} /></a></li>
-						<li><a href="#" title="Timeline View" className="active"><img src={tool2} /></a></li>
-						<li><a href="#" title="Customize Toolbar"><img src={tool3} /></a></li>
-						<li><a href="#" title="Undo"><img src={tool4} /></a></li>
-						<li><a href="#" title="Redo"><img src={tool5} /></a></li>
-						<li><a href="#" title="Record/Capture Option"><img src={tool6} /></a></li>
-						<li><a href="#" title="Sound Mixer"><img src={tool7} /></a></li>
-						<li><a href="#" title="Track Motion"><img src={tool8} /></a></li>
-						<li><a href="#" title="Subtitle Editor"><img src={tool9} /></a></li>
-						<li><a href="#" title="Multi-Camera Editor"><img src={tool10} /></a></li>
-						<li><a href="#" title="Time Remapping"><img src={tool11} /></a></li>
-						<li><a href="#" title="Mask Creator"><img src={tool12} /></a></li>
-						<li><a href="#" title="Pan and Zoom"><img src={tool13} /></a></li>
-						<li><a href="#" title="Split Screen Template Creator"><img src={tool14} /></a></li>						
+						<li><span href="#" title="Storyboard View"><img src={tool1} /></span></li>
+						<li><span href="#" title="Timeline View" className="active"><img src={tool2} /></span></li>
+						<li><span href="#" title="Customize Toolbar"><img src={tool3} /></span></li>
+						<li><span href="#" title="Undo"><img src={tool4} /></span></li>
+						<li><span href="#" title="Redo"><img src={tool5} /></span></li>
+						<li><span href="#" title="Record/Capture Option"><img src={tool6} /></span></li>
+						<li><span href="#" title="Sound Mixer"><img src={tool7} /></span></li>
+						<li><span href="#" title="Track Motion"><img src={tool8} /></span></li>
+						<li><span href="#" title="Subtitle Editor"><img src={tool9} /></span></li>
+						<li><span href="#" title="Multi-Camera Editor"><img src={tool10} /></span></li>
+						<li><span href="#" title="Time Remapping"><img src={tool11} /></span></li>
+						<li><span href="#" title="Mask Creator"><img src={tool12} /></span></li>
+						<li><span href="#" title="Pan and Zoom"><img src={tool13} /></span></li>
+						<li><span href="#" title="Split Screen Template Creator"><img src={tool14} /></span></li>						
 					<span className="toolss">
 					  <div id="add-click-toggal">
                             <div className="one">
@@ -56,21 +56,21 @@ const StudioToolsCompo = () => {
                                 <p>Hot Spots that are in a fixed position anywhere on the screen.</p>
                             </div>
                         </div>
-						<li><a title="Add Hotspots" onclick="displayHotspot()"><img src={addhotspot} className="icon" /></a></li>
-						<li><a href="#" data-toggle="modal" data-target="#myModalHotspots"  title="Hotspots Designer"><img src={hotspotdesign} className="icon" /></a></li>
-						<li><a href="#" data-toggle="modal" data-target="#myModal" title="Preview"><img src={preview} className="icon" /></a></li>
+						<li><span title="Add Hotspots" onclick="displayHotspot()"><img src={addhotspot} className="icon" /></span></li>
+						<li><span href="#" data-toggle="modal" data-target="#myModalHotspots"  title="Hotspots Designer"><img src={hotspotdesign} className="icon" /></span></li>
+						<li><span href="#" data-toggle="modal" data-target="#myModal" title="Preview"><img src={preview} className="icon" /></span></li>
                         </span>
                     </ul>
 					
 				</div>
 				<div className="col-sm-5">    
 					<ul className="my-2 my-lg-0">
-			            <li><a href="#" title="Zoom Out"><img src={tool15} /></a></li>
-			            <li> <a href="#"><img src={tool16} /></a></li>
-			            <li> <a href="#" title="Zoom In"><img src={tool17} /></a></li>
-			            <li><a href="#" title="Fit Project in Timeline Window"><img src={tool18} /></a></li>  
-			            <li><a href="#" title="Project Duration"><img src={tool19} /></a></li> 
-			            <li><a href="#" title="Project Duration">00:00:00:01</a></li> 
+			            <li><span href="#" title="Zoom Out"><img src={tool15} /></span></li>
+			            <li> <span href="#"><img src={tool16} /></span></li>
+			            <li> <span href="#" title="Zoom In"><img src={tool17} /></span></li>
+			            <li><span href="#" title="Fit Project in Timeline Window"><img src={tool18} /></span></li>  
+			            <li><span href="#" title="Project Duration"><img src={tool19} /></span></li> 
+			            <li><span href="#" title="Project Duration">00:00:00:01</span></li> 
 				    </ul>
 				</div>
 			</div>

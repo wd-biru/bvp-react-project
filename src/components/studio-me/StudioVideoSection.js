@@ -6,6 +6,7 @@ import Video from "../../assets/img/me/video-test.mp4";
 class StudioVideoSection extends React.Component {
   render() {
     return (
+
       <div class="container-fluid Studioed">
         <div class="row">
           <div class="col-sm-7 Studioed-seund">
@@ -18,6 +19,7 @@ class StudioVideoSection extends React.Component {
             folderProjectData={this.props.folderProjectData}
             selectedMedia={this.props.selectedMedia}
           />
+
         </div>
       </div>
     );

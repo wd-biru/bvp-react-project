@@ -25,9 +25,9 @@ const StudioLinkMetrics = () => {
 										</div>
 									</div>
 									<div class="col-sm-6">
-										<form action="/action_page.php">
+										<form >
 										  <div class="form-group">
-										    <a href="playerSettings.html"><input type="button" name="" value="Player Settings" class="Player-Settings createnew-top" /></a>
+										    <a href=""><input type="button" name="" value="Player Settings" class="Player-Settings createnew-top" /></a>
 										  </div>						  
 										</form>
 									</div>

@@ -59,9 +59,10 @@ nav.navbar.navbar-expand-md.bg-dark.navbar-dark {
     vertical-align: middle;
 }*/
 .navbar-dark .navbar-brand {padding: 0; width: auto; display: contents;}
-ul.navbar-nav.my-2.my-lg-0 li a img {
+ul.navbar-nav.my-2.my-lg-0 li span img {
     width: 23px;
     border-radius: 100px;
+    margin-left: -24px;
 }
 /* header navbar page styles start*/
 
@@ -271,10 +272,10 @@ td span {
     display: inline-block;
     padding: 6px;
 }
-.Studioed-section2-1 ul li a {
+.Studioed-section2-1 ul li span {
     color: #bababa;
 }
-.Studioed-section2-1 ul li a img {
+.Studioed-section2-1 ul li span img {
     width: 17px;
 }
 .Studioed-section2-2 {
@@ -1380,19 +1381,19 @@ sup {
 .Studioed-section2 .tool .add-pop-show{float: right; padding: 0;}
 .Studioed-section2 .tool .add-pop-show li {}
 .Studioed-section2 .tool .add-pop-show li:nth-child(3) a{margin-right: 0;}
-.Studioed-section2 .tool ul li a{
+.Studioed-section2 .tool ul li span{
     padding: 4px 10px;
     margin-right: 5px;
     color: white;
     font-size: 14px;
 }
-.Studioed-section2 .tool ul li:hover a{
+.Studioed-section2 .tool ul li:hover span{
     background: #0101018c;
 }
-.Studioed-section2 .tool ul li a.active{
+.Studioed-section2 .tool ul li span.active{
     background: #0101018c;
 }
-.Studioed-section2 .tool ul li a img{width: 18px;}
+.Studioed-section2 .tool ul li span img{width: 18px;}
 .Studioed-section2 ul.my-2.my-lg-0 {
     float: right;
     padding-top: 7px;
@@ -1400,17 +1401,17 @@ sup {
 .Studioed-section2 ul.my-2.my-lg-0 li:nth-child(2) img {
     width: 60px;
 }
-.Studioed-section2 ul.my-2.my-lg-0 li:nth-child(6) a {
+.Studioed-section2 ul.my-2.my-lg-0 li:nth-child(6) span {
     background: #000;
     font-size:12px;
 }
-.Studioed-section2 .tool ul.my-2.my-lg-0 li:hover a {
+.Studioed-section2 .tool ul.my-2.my-lg-0 li:hover span {
     background: none !important;
 }
-.Studioed-section2 ul.my-2.my-lg-0 li a img {
+.Studioed-section2 ul.my-2.my-lg-0 li span img {
     width: 15px;
 }
-.Studioed-section2 ul.my-2.my-lg-0 li a {
+.Studioed-section2 ul.my-2.my-lg-0 li span {
     padding: 4px 5px;
 }
 .Studioed-section2 .tool-time ul {
@@ -1419,7 +1420,7 @@ sup {
     margin-bottom: 5px;
     margin-top: 5px;
 }
-.Studioed-section2 .tool-time ul li a {
+.Studioed-section2 .tool-time ul li span {
     padding: 5px 15px;
     margin-right: 5px;
     color: white;
@@ -1428,7 +1429,7 @@ sup {
 .Studioed-section2 .tool-time .col-sm-2 {
     background: #000;
 }
-.Studioed-section2 .tool-time ul li a img{width: 14px;}
+.Studioed-section2 .tool-time ul li span img{width: 14px;}
 .Studioed-section2 .timeline-img{padding-left: 0px;padding-right: 0;}
 .Studioed-section2 .timeline-img img{width: 100%; margin-top: -2px; height: 23px;}
 
@@ -1588,7 +1589,7 @@ input.UPLOAD {
 .createoverlay_head nav.navbar.navbar-expand-md.bg-dark.navbar-dark {
     padding-left: 0;
 }
-.createoverlay_head .navbar-dark ul.navbar-nav.my-2.my-lg-0 li a img {
+.createoverlay_head .navbar-dark ul.navbar-nav.my-2.my-lg-0 li span img {
     width: 16px;
     border-radius: 0;
     vertical-align: -webkit-baseline-middle;

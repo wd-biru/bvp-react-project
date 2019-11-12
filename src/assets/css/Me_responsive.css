@@ -10,8 +10,10 @@
 	.card {max-width: 100% !important;display: block !important;margin-bottom: 20px !important;}
 	.Studioed-section2-1 ul {padding-top: 0px !important;}
 	input.SYNC {margin-bottom: 10px  !important; margin-right: 0 !important;margin-left: 2px !important;}
+	input.UPLOAD{margin-left: 4px !important;}
 	.secund-menu-listview {text-align: left !important;float: initial !important;margin-top: -41px !important;}
 	.page-header .container-fluid {padding-left: 30px !important;}
+	.uploadpage section.tables .upload-bd-se {padding-left: 15px !important;}
 	.breadcrumb-holder.container-fluid {padding-left: 30px !important;}
 	.col-lg-3 {width: 50% !important;}
 	.breadcrumb li a {display: none !important;}
@@ -97,9 +99,10 @@
 	.panel-title a span {width: 22% !important;font-size: 11px !important;}
 	.Library-sec .col-lg-4 {width: 50% !important;}
 	.breadcrumb-holder .nav-pills li {padding-right: 1rem !important;}
-	.secund-menu-listview ul.nav.nav-pills li {padding-left: 0 !important;}
-	.card-body img{height: 75px !important;}
-	.card-body video{height: 75px !important;}
+	.secund-menu-listview ul.nav.nav-pills li:nth-child(1) {padding: 10px 10px 10px 0px !important;}
+	.tab-content>.active {padding-right: 0px !important;}
+	section.tables.list-view .tab-content {margin-top: -20px !important;}
+	.kJdJTV {padding: 30px 0px !important;padding-bottom: 85px !important;}
 }
 @media screen and (max-width: 991px) and (min-width: 768px) {
 	.Studioed-section2 .tool-time .seaech-upload form input.form-control.navseacrh {height: 40px !important;width: 74% !important;}
@@ -116,6 +119,8 @@
 	.dashboardsty form.navbar-form.navbar-left i {left: 90px !important;top:17px !important;}
 	.uploadpage form.navbar-form.navbar-left i {left: 90px !important;top:17px !important;}
 	input.form-control.navseacrh {width: 99px !important; padding-left: 30px !important; padding-bottom: 0px !important;}
+	.card-body img{height: 75px !important;}
+	.card-body video{height: 75px !important;}
 }
 @media screen and (max-width: 411px) and (min-width: 360px) {
 	.panel-title a span {width: 22% !important;font-size: 11px !important;}
@@ -128,6 +133,8 @@
 	.uploadpage form.navbar-form.navbar-left i {left: 90px !important;top:17px !important;}
 	input.form-control.navseacrh {width: 115px !important; padding-left: 45px !important; padding-bottom: 0 !important;}
 	.dashboardsty form.navbar-form.navbar-left i {left: 105px !important; top: 17px !important;}
+	.card-body img{height: 86px !important;}
+	.card-body video{height: 86px !important;}
 }
 @media screen and (max-width: 440px) and (min-width: 412px) {
 	.nav-menu a.nav-link {padding: .5rem 8px !important;}
@@ -135,6 +142,8 @@
 	.uploadpage form.navbar-form.navbar-left i {left: 120px !important;top:15px !important;}
 	.dashboardsty form.navbar-form.navbar-left i {left: 120px !important; top: 13px !important;}
 	input.form-control.navseacrh {width: 108px !important; padding-left: 37px !important;}
+	.card-body img{height: 102px !important;}
+	.card-body video{height: 102px !important;}
 }
 @media screen and (max-width: 500px) and (min-width: 441px) {
 	.nav-menu a.nav-link {padding: .5rem 8px !important;}
@@ -142,6 +151,8 @@
 	.uploadpage form.navbar-form.navbar-left i {left: 120px !important;top:15px !important;}
 	.dashboardsty form.navbar-form.navbar-left i {left: 120px !important; top: 13px !important;}
 	input.form-control.navseacrh {width: 108px !important;padding-left: 37px !important;}
+	.card-body img{height: 110px !important;}
+	.card-body video{height: 110px !important;}
 }
 @media screen and (max-width: 767px) and (min-width: 501px) {
 	.nav-menu a.nav-link {padding: .5rem 1rem !important;}
@@ -149,11 +160,36 @@
 	.uploadpage form.navbar-form.navbar-left i {left: 120px !important;top:15px !important;}
 	.dashboardsty form.navbar-form.navbar-left i {left: 120px !important; top: 13px !important;}
 	input.form-control.navseacrh {width: 108px !important;padding-left: 37px !important;}
+	.card-body img{height: 149px !important;}
+	.card-body video{height: 149px !important;}
+}
+@media (min-width: 576px){
+	.ReactModal__Content.ReactModal__Content--after-open {
+		max-width: 500px;
+	}
 }
 @media screen and (max-width: 991px) and (min-width: 200px) {
 	.studio_page .navbar ul.navbar-nav.my-2.my-lg-0 {top: -2px !important;}
 }
 @media screen and (max-width: 1199px) and (min-width: 200px) {
+	nav.side-navbar {
+		margin-left: -90px;
+		min-width: 90px;
+		max-width: 90px;
+		text-align: center;
+		overflow: hidden;
+	}
+	nav.side-navbar.shrinked {
+		margin-left: 0;
+	}
+	nav.navbar .menu-btn.active span:nth-of-type(2) {
+		-webkit-transform: rotateY(180deg);
+		transform: rotateY(180deg);
+	}
+	nav.navbar .menu-btn span:nth-of-type(2) {
+		-webkit-transform: none;
+		transform: none;
+	}
 	a#toggle-btn {
     display: block !important;
 	}
