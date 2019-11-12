@@ -1,142 +1,63 @@
-import React from 'react';
+import React from "react";
 
-import ChildImg from '../../../assets/img/me/images.jpg';
+// import ChildImg from "../../../assets/img/me/images.jpg";
 
-const StudioLinkLibaryClild = () => {
+import docuImg from "../../../assets/img/docimg.jpg";
+
+class StudioLinkLibaryClild extends React.Component {
+  render() {
+    const filePath =
+      this.props.data && this.props.data.type !== "youtube"
+        ? `https://apiv2.bossvideoplayer.com/public/user/${this.props.data.file}`
+        : this.props.data.file;
     return (
-	<div class="tab-pane container active col-lg-12" id="Videos">
-		<div class="row">
-			<div class="col-lg-4">
-			  <div class="card">
-				<div class="card-body">
-				  <img src={ChildImg} alt="John" />
-				  <div class="cappadd">
-					<h5>John Doe</h5>
-					<p class="title">CEO &amp; Founder, Example</p>
-				  </div>
-				</div>
-			  </div>
-			</div>
-
-			<div class="col-lg-4">
-			  <div class="card">
-				<div class="card-body">
-				  <img src={ChildImg} alt="John" />
-				  <div class="cappadd">
-					<h5>John Doe</h5>
-					<p class="title">CEO &amp; Founder, Example</p>
-				  </div>
-				</div>
-			  </div>
-			</div>
-
-
-			<div class="col-lg-4">
-			  <div class="card">
-				<div class="card-body">
-				  <img src={ChildImg} alt="John" />
-				  <div class="cappadd">
-					<h5>John Doe</h5>
-					<p class="title">CEO &amp; Founder, Example</p>
-				  </div>
-				</div>
-			  </div>
-			</div>
-
-
-			<div class="col-lg-4">
-			  <div class="card">
-				<div class="card-body">
-				  <img src={ChildImg} alt="John" />
-				  <div class="cappadd">
-					<h5>John Doe</h5>
-					<p class="title">CEO &amp; Founder, Example</p>
-				  </div>
-				</div>
-			  </div>
-			</div>
-
-
-			<div class="col-lg-4">
-			  <div class="card">
-				<div class="card-body">
-				  <img src={ChildImg} alt="John" />
-				  <div class="cappadd">
-					<h5>John Doe</h5>
-					<p class="title">CEO &amp; Founder, Example</p>
-				  </div>
-				</div>
-			  </div>
-			</div>
-
-
-			<div class="col-lg-4">
-			  <div class="card">
-				<div class="card-body">
-				  <img src={ChildImg} alt="John" />
-				  <div class="cappadd">
-					<h5>John Doe</h5>
-					<p class="title">CEO &amp; Founder, Example</p>
-				  </div>
-				</div>
-			  </div>
-			</div>
-
-
-			<div class="col-lg-4">
-			  <div class="card">
-				<div class="card-body">
-				  <img src={ChildImg} alt="John" />
-				  <div class="cappadd">
-					<h5>John Doe</h5>
-					<p class="title">CEO &amp; Founder, Example</p>
-				  </div>
-				</div>
-			  </div>
-			</div>
-
-
-			<div class="col-lg-4">
-			  <div class="card">
-				<div class="card-body">
-				  <img src={ChildImg} alt="John" />
-				  <div class="cappadd">
-					<h5>John Doe</h5>
-					<p class="title">CEO &amp; Founder, Example</p>
-				  </div>
-				</div>
-			  </div>
-			</div>
-
-
-			<div class="col-lg-4">
-			  <div class="card">
-				<div class="card-body">
-				  <img src={ChildImg} alt="John" />
-				  <div class="cappadd">
-					<h5>John Doe</h5>
-					<p class="title">CEO &amp; Founder, Example</p>
-				  </div>
-				</div>
-			  </div>
-			</div>
-
-
-			<div class="col-lg-4">
-			  <div class="card">
-				<div class="card-body">
-				  <img src={ChildImg} alt="John" />
-				  <div class="cappadd">
-					<h5>John Doe</h5>
-					<p class="title">CEO &amp; Founder, Example</p>
-				  </div>
-				</div>
-			  </div>
-			</div>
-			
-         </div>
-     </div>               
-  )
+      <>
+        {this.props.navActiveItem === "video" && (
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-body">
+                <video controls>
+                  <source src={filePath} type="video/mp4" />
+                </video>
+                <div class="cappadd">
+                  <h5 title={this.props.data.actual_name}>
+                    {this.props.data.actual_name}
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        {this.props.navActiveItem === "image" && (
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-body">
+                <img src={filePath} />
+                <div class="cappadd">
+                  <h5 title={this.props.data.actual_name}>
+                    {this.props.data.actual_name}
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        {this.props.navActiveItem === "docs" && (
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-body">
+                <img src={docuImg} />
+                <div class="cappadd">
+                  <h5 title={this.props.data.actual_name}>
+                    {this.props.data.actual_name}
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </>
+    );
+  }
 }
 export default StudioLinkLibaryClild;
-		  

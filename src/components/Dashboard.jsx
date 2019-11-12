@@ -632,7 +632,7 @@ class Dashboard extends Component {
     ) : (
       <>
         <Studio
-          folderProjectData={this.state.userFileData}
+          isActiveObject={this.state.isActiveObject}
           selectedMedia={this.state.selectedMedia}
         />
       </>

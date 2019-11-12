@@ -1,9 +1,8 @@
 import React from "react";
 import DashboardDropDown from "./DashboardDropDown";
 import docuImg from "../../assets/img/docimg.jpg";
-import createproject from "../../assets/img/createproject.png";
 import moment from "moment";
-import ThumbImg from '../../assets/img/me/bvp-logo.png';
+import ThumbImg from "../../assets/img/me/bvp-logo.png";
 
 const customStyles = {
   content: {
@@ -62,9 +61,8 @@ class FileType extends React.Component {
                 }
               >
                 <div className="card-body">
-                <img src={ThumbImg} className="thumbimglogo" />
+                  <img src={ThumbImg} className="thumbimglogo" />
                   <div className="cappadd2">
-                    <img src={createproject} />
                     <h5>{this.props.data.folder_name}</h5>
                     <DashboardDropDown
                       handleProjectMove={() =>

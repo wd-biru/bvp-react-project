@@ -20,7 +20,7 @@ class Studio extends React.Component {
           <StudioHeader />
           <StudioPreviewModel />
           <StudioVideoSection
-            folderProjectData={this.props.folderProjectData}
+            isActiveObject={this.props.isActiveObject}
             selectedMedia={this.props.selectedMedia}
           />
           <StudioPlayButton />

@@ -70,6 +70,7 @@ class UploadPageSection extends React.Component {
     {
       if (
         prevProps.uploadFolderData !== this.props.uploadFolderData &&
+        this.props.uploadFolderData &&
         this.props.uploadFolderData.code === 200
       ) {
         toast.success(this.props.uploadFolderData.message);
@@ -82,6 +83,7 @@ class UploadPageSection extends React.Component {
       }
       if (
         prevProps.uploadFolderData !== this.props.uploadFolderData &&
+        this.props.uploadFolderData &&
         this.props.uploadFolderData.code !== 200
       ) {
         toast.error(this.props.uploadFolderData.message);

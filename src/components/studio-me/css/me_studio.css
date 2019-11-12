@@ -586,6 +586,15 @@ hr {
     cursor: pointer;
     width: 100px;
 }
+.posterframe-btn-sec label.UPNEW {
+    background: #ff000000;
+    color: #bababa;
+    border: 1px solid #bababa;
+    font-size: 12px;
+    padding: 3px;
+    cursor: pointer;
+    width: 100px;
+}
 .posterframe-btn-sec input.CRFR {
     background: #ff000000;
     color: #bababa;
@@ -2094,5 +2103,8 @@ a.nav-link.studio-nav-link {
 }
 .accordion2 {
     background-color: #252425;
+}
+.hidden {
+    visibility: hidden;
 }
 /* Editing Mode Studio Page Closed CSS */

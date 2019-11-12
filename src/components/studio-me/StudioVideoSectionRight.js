@@ -35,7 +35,7 @@ class StudioVideoSectionRight extends React.Component {
       case "detail": {
         return (
           <Studiolinkdetails
-            folderProjectData={this.props.folderProjectData}
+            isActiveObject={this.props.isActiveObject}
             selectedMedia={this.props.selectedMedia}
           />
         );
@@ -43,7 +43,7 @@ class StudioVideoSectionRight extends React.Component {
       case "library": {
         return (
           <Studiolinklibary
-            folderProjectData={this.props.folderProjectData}
+            isActiveObject={this.props.isActiveObject}
             selectedMedia={this.props.selectedMedia}
           />
         );
@@ -51,7 +51,7 @@ class StudioVideoSectionRight extends React.Component {
       case "hotspots": {
         return (
           <Studiolinkhotsports
-            folderProjectData={this.props.folderProjectData}
+            isActiveObject={this.props.isActiveObject}
             selectedMedia={this.props.selectedMedia}
           />
         );
@@ -59,7 +59,7 @@ class StudioVideoSectionRight extends React.Component {
       case "timetrigger": {
         return (
           <StudioLinkTimeTrigger
-            folderProjectData={this.props.folderProjectData}
+            isActiveObject={this.props.isActiveObject}
             selectedMedia={this.props.selectedMedia}
           />
         );
@@ -67,7 +67,7 @@ class StudioVideoSectionRight extends React.Component {
       case "subtitles": {
         return (
           <StudioLinkSubtiles
-            folderProjectData={this.props.folderProjectData}
+            isActiveObject={this.props.isActiveObject}
             selectedMedia={this.props.selectedMedia}
           />
         );
@@ -75,7 +75,7 @@ class StudioVideoSectionRight extends React.Component {
       case "publish": {
         return (
           <StudioLinkPublish
-            folderProjectData={this.props.folderProjectData}
+            isActiveObject={this.props.isActiveObject}
             selectedMedia={this.props.selectedMedia}
           />
         );
@@ -83,7 +83,7 @@ class StudioVideoSectionRight extends React.Component {
       case "metrics": {
         return (
           <StudioLinkMetrics
-            folderProjectData={this.props.folderProjectData}
+            isActiveObject={this.props.isActiveObject}
             selectedMedia={this.props.selectedMedia}
           />
         );
@@ -140,7 +140,9 @@ class StudioVideoSectionRight extends React.Component {
                 <li
                   key={index}
                   onClick={() => this.handleStudioNav(itemType.type)}
-                  class="nav-item nav-link2"
+                  className={`nav-item nav-link2 ${
+                    this.state.navActiveItem === itemType.type ? "active" : ""
+                  }`}
                 >
                   <img src={itemType.imgSrc} />
                   <br /> {itemType.name}

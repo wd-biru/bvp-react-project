@@ -6,7 +6,8 @@ class StudioLinkDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedOption: null
+      selectedOption: null,
+      description: ""
     };
   }
   componentDidMount() {
@@ -23,13 +24,24 @@ class StudioLinkDetails extends React.Component {
 
   allFolderData() {
     const options =
-      this.props.folderProjectData &&
-      this.props.folderProjectData.map(element => ({
+      this.props.isActiveObject &&
+      this.props.isActiveObject.children.map(element => ({
         label: element.folder_name,
         value: element.id
       }));
     return options;
   }
+
+  saveStudioDetails = () => {
+    //   const userId = Number(localStorage.getItem("userId"));
+    //   const payload = {
+    // 	  user_id:userId,
+    // 	  projectId:selectedOption.value,
+    // 	  decription: this.state.description,
+    // 	  thumbImg: ""
+    //   };
+    //   this.props.saveStuidoDetails(payload);
+  };
 
   render() {
     return (
@@ -49,7 +61,8 @@ class StudioLinkDetails extends React.Component {
             <textarea
               class="form-control"
               rows="5"
-              id="comment"
+              id="description"
+              name="description"
               placeholder="Please Enter Description"
             ></textarea>
           </div>
@@ -60,23 +73,39 @@ class StudioLinkDetails extends React.Component {
                 <label for="email">Thumbnail</label>
                 <img src={LinkImg} class="img-w" />
                 <div class="posterframe-btn-sec">
-                  <input type="button" value="UPLOAD NEW" class="UPNEW" />
+                  <label for="files" class="UPNEW">
+                    UPLOAD NEW
+                  </label>
+                  <input
+                    id="files"
+                    type="file"
+                    name="myImage"
+                    accept="image/x-png,image/gif,image/jpeg"
+                    class="hidden"
+                  />
                   <input type="button" value="CURRENT FRAME" class="CRFR" />
                 </div>
               </div>
               <div class="col-sm-6">
-                <form action="/action_page.php">
-                  <div class="form-group">
-                    <a href="playerSettings.html">
-                      <input
-                        type="button"
-                        name=""
-                        value="Player Settings"
-                        class="Player-Settings createnew-top"
-                      />
-                    </a>
-                  </div>
-                </form>
+                <div class="form-group">
+                  <input
+                    type="button"
+                    name=""
+                    value="Player Settings"
+                    class="Player-Settings createnew-top"
+                  />
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <input
+                    type="button"
+                    name=""
+                    value="Save"
+                    class="Player-Settings createnew-top"
+                    onClick={this.saveStudioDetails}
+                  />
+                </div>
               </div>
             </div>
           </div>
