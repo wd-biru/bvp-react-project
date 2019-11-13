@@ -5,13 +5,11 @@ import UploadBreadcrumb from "./UploadBreadcrumb";
 import UploadPageSection from "./UploadPageSection";
 import Footer from "./Footer";
 
-
 import "./css/MystyleDefault.css";
 import "./css/me_custom.css";
 //import "./css/me_responsive.css";
 
 class UploadPage extends React.Component {
-  
   render() {
     return (
       <body className="uploadpage">
@@ -27,6 +25,7 @@ class UploadPage extends React.Component {
               uploadFolderData={this.props.uploadFolderData}
               handleUploadClose={this.props.handleUploadClose}
               isActiveObject={this.props.isActiveObject}
+              clearUploadStatus={this.props.clearUploadStatus}
             />
             <Footer />
           </div>

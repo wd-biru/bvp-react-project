@@ -9,7 +9,8 @@ import {
   getUserFolderData,
   createFolderData,
   getUploadFolderFileData,
-  getuserFolderMoveData
+  getuserFolderMoveData,
+  clearUploadStatus
 } from "../apiAction/apiType/userFolder/folderActions";
 import FileType from "../components/upload/FileType";
 import DataTable from "react-data-table-component";
@@ -446,6 +447,7 @@ class Dashboard extends Component {
             uploadFolderData={this.props.uploadFolderData}
             getUploadFolderFileData={this.props.getUploadFolderFileData}
             breadcombItemType={this.state.breadcombItemType}
+            clearUploadStatus={this.props.clearUploadStatus}
           />
           <Breadcromb
             filterUserData={this.filterUserData}
@@ -652,5 +654,6 @@ export default util.storeConnect(Dashboard, mapStateToProps, {
   getUserFolderData,
   createFolderData,
   getUploadFolderFileData,
-  getuserFolderMoveData
+  getuserFolderMoveData,
+  clearUploadStatus
 });

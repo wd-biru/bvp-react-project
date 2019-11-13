@@ -93,6 +93,18 @@ class UploadPageSection extends React.Component {
           showLoader: false
         });
       }
+      if (
+        prevProps.uploadFolderData !== this.props.uploadFolderData &&
+        this.props.uploadFolderData === undefined
+      ) {
+        toast.error("Failed, Try Again");
+        this.setState({
+          showToastMsg: true,
+          filesName: "",
+          showLoader: false
+        });
+        this.props.clearUploadStatus();
+      }
     }
   }
 

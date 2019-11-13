@@ -197,6 +197,7 @@ class PageTopHeader extends React.Component {
             handleUploadClose={this.handleUploadClose}
             uploadFolderData={this.props.uploadFolderData}
             isActiveObject={this.props.isActiveObject}
+            clearUploadStatus={this.props.clearUploadStatus}
           />
         )}
       </header>

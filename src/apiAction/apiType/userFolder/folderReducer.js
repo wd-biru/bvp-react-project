@@ -46,6 +46,12 @@ export default function folderReducer(state = initialState, action) {
         error: action.payload,
         uploadFolderData: null
       };
+    case folderDataConsts.GET_UPLOAD_FOLDER_DATA_CLEAR:
+      return {
+        ...state,
+        error: action.payload,
+        uploadFolderData: null
+      };
     case folderDataConsts.GET_FOLDER_FILE_DATA_SUCCESS:
       return {
         ...state,
@@ -59,7 +65,7 @@ export default function folderReducer(state = initialState, action) {
         userFileData: null
       };
 
-      case folderDataConsts.GET_FOLDER_MOVE_DATA_SUCCESS:
+    case folderDataConsts.GET_FOLDER_MOVE_DATA_SUCCESS:
       return {
         ...state,
         userMoveData: action.payload.data

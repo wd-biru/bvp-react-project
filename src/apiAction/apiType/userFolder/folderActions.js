@@ -13,7 +13,8 @@ export const folderDataConsts = {
   GET_FOLDER_FILE_DATA_FAIL: "GET_FOLDER_FILE_DATA_FAIL",
   GET_FOLDER_MOVE_DATA_REQUEST: "GET_FOLDER_MOVE_DATA_REQUEST",
   GET_FOLDER_MOVE_DATA_SUCCESS: "GET_FOLDER_MOVE_DATA_SUCCESS",
-  GET_FOLDER_MOVE_DATA_FAIL: "GET_FOLDER_MOVE_DATA_FAIL"
+  GET_FOLDER_MOVE_DATA_FAIL: "GET_FOLDER_MOVE_DATA_FAIL",
+  GET_UPLOAD_FOLDER_DATA_CLEAR: "GET_UPLOAD_FOLDER_DATA_CLEAR"
 };
 
 export function createFolderData(data) {
@@ -49,5 +50,11 @@ export function getuserFolderMoveData(data, actionType) {
     type: folderDataConsts.GET_FOLDER_MOVE_DATA_REQUEST,
     data,
     actionType
+  };
+}
+
+export function clearUploadStatus() {
+  return {
+    type: folderDataConsts.GET_UPLOAD_FOLDER_DATA_CLEAR
   };
 }
