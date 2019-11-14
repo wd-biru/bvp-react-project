@@ -173,7 +173,8 @@ a#toggle-btn {
   position: absolute;
   left: 15px;
   top: 55px;
-}
+  display: none;
+} 
 nav.navbar .menu-btn span {
   background: #000;
 }

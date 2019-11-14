@@ -186,7 +186,13 @@ class LeftNavbar extends React.Component {
     const actionType = this.renderModalBtnText().toLowerCase();
     return (
       <>
-        <div className="nav-sidebar-main">
+       <p id="toggle-btn" href="#" className={`menu-btn ${this.props.isToggleNew ? "" : "active"}`}
+                    onClick={this.props.handleClickToggle} >
+                    <span></span>
+                    <span></span>
+                    <span></span>        
+          </p>
+        <div className={`nav-sidebar-main ${this.props.isToggleNew ? "shrinked" : ""}`} >
           <div className="sidebar-header d-flex align-items-center">
             <div className="title">
               <h1 className="h4">
@@ -209,8 +215,10 @@ class LeftNavbar extends React.Component {
             </li>
           </ul> */}
         </div>
-
-        <nav className="side-navbar">
+          
+        {/* <nav className="side-navbar"> */}
+        <nav className={`side-navbar ${this.props.isToggleNew ? "shrinked" : ""}`}>
+        
           <ul className="list-unstyled">
             {this.props.userFolderDetails ? (
               <NavItems

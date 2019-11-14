@@ -108,7 +108,8 @@ class Dashboard extends Component {
       showPreview: false,
       selectedOption: null,
       isToggle: true,
-      showEditor: false
+      showEditor: false,
+      isToggleNew: false
     };
   }
   handleFolderData = selectedFolder => {
@@ -419,6 +420,11 @@ class Dashboard extends Component {
       isToggle: !this.state.isToggle
     });
   };
+  handleClickToggle = () => {
+    this.setState({
+      isToggleNew: !this.state.isToggleNew
+    });
+  };
 
   render() {
     const fileData = this.prepareFileData();
@@ -435,8 +441,12 @@ class Dashboard extends Component {
           homeActive={this.state.homeActive}
           handleDefaultHomeActive={this.handleDefaultHomeActive}
           handleClick={this.handleClick}
+          handleClickToggle={this.handleClickToggle}
+          isToggleNew={this.state.isToggleNew}
+
         />
-        <div className="content-inner">
+        
+        <div className={`content-inner ${this.state.isToggleNew ? "active" : ""}`} >
           <TopPageHeader
             userData={this.props.userData}
             createFolderData={this.props.createFolderData}
