@@ -2108,3 +2108,7 @@ a.nav-link.studio-nav-link {
     visibility: hidden;
 }
 /* Editing Mode Studio Page Closed CSS */
+.previous {
+    background-color: #f1f1f1;
+    color: black;
+  }

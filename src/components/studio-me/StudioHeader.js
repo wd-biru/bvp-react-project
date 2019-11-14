@@ -9,6 +9,7 @@ class StudioHeader extends React.Component {
   handleGoHome = () => {
     return this.props.history.push("/");
   };
+  
   render() {
     return (
       <header>
@@ -16,6 +17,8 @@ class StudioHeader extends React.Component {
           <span className="navbar-brand" href="" onClick={this.handleGoHome}>
             <img src={logo} alt="BVP" className="studio logo-menu2" />{" "}
           </span>
+          <button class="btn btn-primary"
+          >Back</button>
           <div className="">
             <ul className="navbar-nav my-2 my-lg-0">
               <li className="nav-item d-flex align-items-center">

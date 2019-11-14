@@ -50,11 +50,11 @@ class StudioLinkDetails extends React.Component {
           <div class="form-group">
             <label for="project">Project Name</label>
             <Select
-              value={this.state.selectedOption}
-              onChange={this.handleChange}
-              options={this.allFolderData()}
-              className="form-control"
-            />
+            value={this.state.selectedOption}
+            onChange={this.handleChange}
+            options={this.allFolderData()}
+            className="form-control"
+            />            
           </div>
           <div class="form-group">
             <label for="email">Description</label>
