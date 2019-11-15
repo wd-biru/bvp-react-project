@@ -103,6 +103,10 @@
 	.tab-content>.active {padding-right: 0px !important;}
 	section.tables.list-view .tab-content {margin-top: -20px !important;}
 	.kJdJTV {padding: 30px 0px !important;padding-bottom: 85px !important;}
+	.content-inner {top: 36px !important;}
+	section {padding: 36px 0 !important;}
+	.breadcrumb-item+.breadcrumb-item { padding-left: 0rem;}
+	.side-navbar ul.list-unstyled {padding-bottom: 120px !important}
 }
 @media screen and (max-width: 991px) and (min-width: 768px) {
 	.Studioed-section2 .tool-time .seaech-upload form input.form-control.navseacrh {height: 40px !important;width: 74% !important;}
@@ -114,9 +118,9 @@
 	.panel-title a span img {width: 15px !important; margin-left: 0 !important;}
 	.nav-menu a.nav-link {padding: .5rem 8px !important;}
 	.brand-text form.navbar-form.navbar-left {margin-left: 80px !important;}
-	.logo-menu {width: 80px !important; height: 45px !important;}
+	.logo-menu {width: 80px !important; height: 34px !important;}
 	form.navbar-form.navbar-left i {left: 90px !important;}
-	.dashboardsty form.navbar-form.navbar-left i {left: 90px !important;top:17px !important;}
+	.dashboardsty form.navbar-form.navbar-left i {left: 90px !important;top:9px !important;}
 	.uploadpage form.navbar-form.navbar-left i {left: 90px !important;top:17px !important;}
 	input.form-control.navseacrh {width: 99px !important; padding-left: 30px !important; padding-bottom: 0px !important;}
 	.card-body img{height: 75px !important;}
@@ -126,40 +130,43 @@
 	.panel-title a span {width: 22% !important;font-size: 11px !important;}
 	.panel-title a span img {width: 15px !important; margin-left: 0 !important;}
 	.nav-menu a.nav-link {padding: .5rem 8px !important;}
-	.logo-menu {width: 80px !important; height: 45px !important;}
+	.logo-menu {width: 80px !important; height: 34px !important;}
 	form.navbar-form.navbar-left i {left: 90px !important;}
 	.brand-text form.navbar-form.navbar-left {margin-left: 80px !important;}
 	.dashboardst form.navbar-form.navbar-left i {left: 90px !important; top: 11px !important;}
 	.uploadpage form.navbar-form.navbar-left i {left: 90px !important;top:17px !important;}
 	input.form-control.navseacrh {width: 115px !important; padding-left: 45px !important; padding-bottom: 0 !important;}
-	.dashboardsty form.navbar-form.navbar-left i {left: 105px !important; top: 17px !important;}
+	.dashboardsty form.navbar-form.navbar-left i {left: 105px !important; top: 8px !important;}
 	.card-body img{height: 86px !important;}
 	.card-body video{height: 86px !important;}
 }
 @media screen and (max-width: 440px) and (min-width: 412px) {
 	.nav-menu a.nav-link {padding: .5rem 8px !important;}
-	.logo-menu {width: 80px !important; height: 45px !important;}
+	.logo-menu {width: 80px !important; height: 34px !important;}
 	.uploadpage form.navbar-form.navbar-left i {left: 120px !important;top:15px !important;}
-	.dashboardsty form.navbar-form.navbar-left i {left: 120px !important; top: 13px !important;}
-	input.form-control.navseacrh {width: 108px !important; padding-left: 37px !important;}
+	.dashboardsty form.navbar-form.navbar-left i {left: 95px !important; top: 10px !important;}
+	input.form-control.navseacrh {width: 150px !important; padding-bottom: 0 !important;padding-top: 12px !important;padding-left: 37px !important;}
+	.brand-text form.navbar-form.navbar-left {margin-left: 80px !important;}
 	.card-body img{height: 102px !important;}
 	.card-body video{height: 102px !important;}
 }
 @media screen and (max-width: 500px) and (min-width: 441px) {
+	.brand-text form.navbar-form.navbar-left {margin-left: 80px !important;}
 	.nav-menu a.nav-link {padding: .5rem 8px !important;}
-	.logo-menu {width: 80px !important; height: 45px !important;}
+	.logo-menu {width: 80px !important; height: 34px !important;}
 	.uploadpage form.navbar-form.navbar-left i {left: 120px !important;top:15px !important;}
-	.dashboardsty form.navbar-form.navbar-left i {left: 120px !important; top: 13px !important;}
-	input.form-control.navseacrh {width: 108px !important;padding-left: 37px !important;}
+	.dashboardsty form.navbar-form.navbar-left i {left: 95px !important; top: 10px !important;}
+	input.form-control.navseacrh {width: 150px !important;padding-bottom: 0 !important;padding-top: 12px !important;padding-left: 37px !important;}
 	.card-body img{height: 110px !important;}
 	.card-body video{height: 110px !important;}
 }
 @media screen and (max-width: 767px) and (min-width: 501px) {
 	.nav-menu a.nav-link {padding: .5rem 1rem !important;}
-	.logo-menu {width: 80px !important; height: 45px !important;}
+	.logo-menu {width: 80px !important; height: 34px !important;}
 	.uploadpage form.navbar-form.navbar-left i {left: 120px !important;top:15px !important;}
-	.dashboardsty form.navbar-form.navbar-left i {left: 120px !important; top: 13px !important;}
-	input.form-control.navseacrh {width: 108px !important;padding-left: 37px !important;}
+	.brand-text form.navbar-form.navbar-left {margin-left: 80px !important;}
+	.dashboardsty form.navbar-form.navbar-left i {left: 95px !important; top: 10px !important;}
+	input.form-control.navseacrh {width: 170px !important;padding-left: 37px !important;padding-top: 12px !important;padding-bottom: 0 !important;}
 	.card-body img{height: 149px !important;}
 	.card-body video{height: 149px !important;}
 }
@@ -205,7 +212,9 @@
     margin-top: 0 !important;
 	}
 	nav.side-navbar ul li span.number {width: 100% !important;text-align: center !important;}
-	nav.side-navbar ul li i {margin-bottom: 2px;text-align: center !important;margin-right: 0 !important;display: block !important;}
+	nav.side-navbar ul li .folderName i {margin-bottom: 5px;text-align: center !important;margin-right: 0 !important;display: block !important;font-size: 1rem !important;}
+	nav.side-navbar ul li span {font-size: 11px !important;}
+	nav.side-navbar ul.sub_folder li {border-left: 0 !important;}
 	nav.side-navbar ul li span:nth-child(1) {width: 100% !important;}
 	span.folderName {width: 100% !important;text-align: center !important;}
 	.nav-sidebar-main .sidebar-header .title h1 img {float: initial !important;margin-top: 0 !important;}

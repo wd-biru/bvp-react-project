@@ -15,7 +15,7 @@ class UploadPage extends React.Component {
       <body className="uploadpage">
         <MainNavbarHeader />
         <div className="page-content d-flex align-items-stretch">
-          <div className="content-inner upload">
+          <div className={`content-inner upload ${this.props.isToggleNew ? "active" : ""}`} >
             <UploadBreadcrumb
               handleUploadClose={this.props.handleUploadClose}
             />
