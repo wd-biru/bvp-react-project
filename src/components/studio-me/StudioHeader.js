@@ -10,6 +10,10 @@ class StudioHeader extends React.Component {
     return this.props.history.push("/");
   };
   
+  goBackBtn = () => {
+    window.history.go('/');
+  }
+  
   render() {
     return (
       <header>
@@ -17,10 +21,15 @@ class StudioHeader extends React.Component {
           <span className="navbar-brand" href="" onClick={this.handleGoHome}>
             <img src={logo} alt="BVP" className="studio logo-menu2" />{" "}
           </span>
-          <button class="btn btn-primary"
-          >Back</button>
+               <button class="btn btn-primary BackBtn"
+                onClick={this.goBackBtn}
+                >
+                <i class="fa fa-angle-double-left"></i>
+                Back
+                </button>
           <div className="">
             <ul className="navbar-nav my-2 my-lg-0">
+              
               <li className="nav-item d-flex align-items-center">
                 <span href="#" className="nav-link2">
                   <img src={ques} />

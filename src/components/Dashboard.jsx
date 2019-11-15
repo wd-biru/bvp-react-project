@@ -366,7 +366,7 @@ class Dashboard extends Component {
           contentLabel={"Preview"}
           pauseOnFocusLoss={false}
         >
-          <div className="modal-header text-center">
+          <div className="modal-header text-center preview">
             <h4 className="modal-title">Preview</h4>
             <button
               type="button"
@@ -458,6 +458,7 @@ class Dashboard extends Component {
             getUploadFolderFileData={this.props.getUploadFolderFileData}
             breadcombItemType={this.state.breadcombItemType}
             clearUploadStatus={this.props.clearUploadStatus}
+            isToggleNew={this.state.isToggleNew}
           />
           <Breadcromb
             filterUserData={this.filterUserData}

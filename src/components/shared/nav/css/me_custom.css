@@ -397,6 +397,7 @@ div.tab-pane {
   float: right;
   margin-top: -3px;
   margin-right: 0.5rem;
+  cursor: pointer;
 }
 .nav-sidebar-main ul.list-unstyled {
   padding-top: 0;
@@ -430,7 +431,7 @@ div.tab-pane {
   vertical-align: middle;
 }
 section {
-  padding: 45px 0 !important;
+  padding: 45px 0;
 }
 nav.side-navbar ul li {
   padding: 3.5px 5.5px;
@@ -470,7 +471,7 @@ span.temp-class {
   width: auto !important;
   margin-left: 10px;
 }
-.side-navbar.shrinked span.temp-class {margin-left: 0px;}
+.side-navbar.shrinked span.temp-class {margin-left: 0px;margin-top: 5px;}
 /* Dashboard page css end */
 
 /* modal popup css start */
@@ -613,7 +614,7 @@ nav.side-navbar ul li i {
 p#toggle-btn {
   position: absolute;
   left: 15px;
-  top: 55px;
+  top: 45px;
   z-index: 99999;
 }
 .menu-btn span:nth-of-type(2)::before, .menu-btn span:nth-of-type(2)::after {

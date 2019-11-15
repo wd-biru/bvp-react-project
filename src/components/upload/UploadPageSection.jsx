@@ -80,7 +80,7 @@ class UploadPageSection extends React.Component {
           showLoader: false
         });
         // this.props.handleUploadClose();
-      }
+       }
       if (
         prevProps.uploadFolderData !== this.props.uploadFolderData &&
         this.props.uploadFolderData &&

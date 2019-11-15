@@ -17,6 +17,9 @@
         background-color: #0000007a !important;
         z-index: 999;
       }
+      .modal-header.text-center.preview {
+        padding: 4px 20px !important;
+      }
       .modal-header{padding: 1rem !important;}
       .modal-header .close {
         padding: 0rem 0rem !important;

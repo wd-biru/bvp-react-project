@@ -45,7 +45,7 @@ class StudioLinkDetails extends React.Component {
 
   render() {
     return (
-      <div class="tab-pane container fade active" id="menu11">
+      <div class="tab-panel container fade active" id="menu11">
         <div class="table-responsive two">
           <div class="form-group">
             <label for="project">Project Name</label>
@@ -53,7 +53,7 @@ class StudioLinkDetails extends React.Component {
             value={this.state.selectedOption}
             onChange={this.handleChange}
             options={this.allFolderData()}
-            className="form-control"
+            className="form-control select-value"
             />            
           </div>
           <div class="form-group">

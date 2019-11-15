@@ -22,7 +22,7 @@ const MainNavbarHeader = () => {
                   </div>
                   
                 {/* Toggle Button*/}
-                <a id="toggle-btn" href="#" className="menu-btn active"><span></span><span></span><span></span></a> 
+                {/* <a id="toggle-btn" href="#" className="menu-btn active"><span></span><span></span><span></span></a>  */}
               </div>
               {/* Navbar Menu */}
               <ul className="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
