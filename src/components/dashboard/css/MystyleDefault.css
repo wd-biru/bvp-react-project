@@ -46,9 +46,9 @@ canvas {
   user-select: none;
 }
 
-.container-fluid {
+/* .container-fluid {
   padding: 0 30px;
-}
+} */
 
 @media (max-width: 575px) {
   .container-fluid {

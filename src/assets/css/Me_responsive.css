@@ -93,7 +93,7 @@
 	.border-r-2 {border-right: 2px solid #d3d3d300 !important;}
 	.standard-uploadbg .seaech-upload form.navbar-form.navbar-left i {left: 35px !important;}
 	.Studioed-three .tab-content>.active {position: inherit !important;}
-	label.file-upload.btn.btn-primary.btn-block.rounded-pill.shadow {width: 85% !important;}
+	label.file-upload.btn.btn-primary.btn-block.rounded-pill.shadow {width: 85%;}
 	.Studioed-section2 .tool-time .col-sm-2 {flex: 100% !important; max-width: 100% !important;}
 	.Studioed-section2 .tool-time .col-sm-10 {flex: 100% !important; max-width: 100% !important;}
 	.panel-title a span {width: 22% !important;font-size: 11px !important;}
@@ -107,6 +107,7 @@
 	section {padding: 36px 0 !important;}
 	.breadcrumb-item+.breadcrumb-item { padding-left: 0rem;}
 	.side-navbar ul.list-unstyled {padding-bottom: 120px !important}
+	.btn-primary.disabled, .btn-primary:disabled {width: 175px !important;}
 }
 @media screen and (max-width: 991px) and (min-width: 768px) {
 	.Studioed-section2 .tool-time .seaech-upload form input.form-control.navseacrh {height: 40px !important;width: 74% !important;}
