@@ -83,7 +83,7 @@ class FileType extends React.Component {
             this.props.data.type === "youtube" ? (
               <div className="card-body">
                 <video controls>
-                  <source src={filePath} type="video/mp4" />
+                  <source src={filePath} type="video/mp4" title="video" />
                 </video>
                 <div className="cappadd2">
                   <h5 title={this.props.data.actual_name}>
@@ -110,7 +110,7 @@ class FileType extends React.Component {
             {this.props.userFileData && this.props.data.type === "image" && (
               <div className="cardss">
                 <div className="card-body">
-                  <img src={filePath} />
+                  <img src={filePath} title="Image" />
                   <div className="cappadd2">
                     <h5 title={this.props.data.actual_name}>
                       {this.props.data.actual_name}
@@ -137,7 +137,7 @@ class FileType extends React.Component {
             {this.props.userFileData && this.props.data.type === "docs" && (
               <div className="cardss">
                 <div className="card-body">
-                  <img src={docuImg} />
+                  <img src={docuImg} title="docs" />
                   <div className="cappadd2">
                     <h5 title={this.props.data.actual_name}>
                       {this.props.data.actual_name}

@@ -42,6 +42,7 @@ class StudioLinkLibary extends React.Component {
       }
     ];
     return (
+      <div className="tab-content1">
       <div class="tab-pane container fade active" id="menu11">
         <div class="Library-sec">
           <div class="table-responsive two">
@@ -63,7 +64,7 @@ class StudioLinkLibary extends React.Component {
                   );
                 })}
             </ul>
-            <div>
+            
               <form
                 class="navbar-form navbar-left mb-2"
                 action="/action_page.php"
@@ -75,8 +76,8 @@ class StudioLinkLibary extends React.Component {
                   name="search"
                 />
               </form>
-            </div>
-          </div>
+            
+         
           <div className="tab-content1">
             <div class="tab-pane container active col-lg-12">
               <div class="row">
@@ -94,6 +95,8 @@ class StudioLinkLibary extends React.Component {
           </div>
         </div>
       </div>
+     </div>
+     </div>
     );
   }
 }

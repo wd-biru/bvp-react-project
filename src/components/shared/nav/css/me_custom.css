@@ -121,14 +121,7 @@ nav.side-navbar {
   overflow: auto;
   height: 100%;
 }
-footer.main-footer {
-  position: fixed;
-  bottom: 0;
-  width: inherit;
-}
-.content-inner {
-  padding-bottom: 47px !important;
-}
+
 nav.side-navbar .sidebar-header {
   padding-bottom: 15px;
 }

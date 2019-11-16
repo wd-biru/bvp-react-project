@@ -122,14 +122,15 @@ nav.side-navbar {
   right: 0;
   overflow: auto;
   height: 100%;
+  z-index: 9;
 }
 footer.main-footer {
-  position: fixed;
+  position: initial !important;
   bottom: 0;
-  width: inherit;
+  width: 100% !important;
 }
 .content-inner {
-  padding-bottom: 47px !important;
+  padding-bottom: 45px !important;
 }
 nav.side-navbar .sidebar-header {
   padding-bottom: 15px;
@@ -314,6 +315,10 @@ input#urlUpload {
 .dashboardsty section.tables {
   background: #eeeeee;
   margin-bottom: 40px;
+  overflow: overlay;
+    height: 100%;
+    z-index: 0;
+    padding-bottom: 0;
 }
 .page-header {
   background: #eeeeee;
@@ -626,7 +631,6 @@ input#fileUpload {
   color: #fff;
 }
 .content-inner {
-  padding-bottom: 47px !important;
   background-color: #eeeeee;
 }
 i.fa.fa-gear {
