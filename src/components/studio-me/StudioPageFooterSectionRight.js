@@ -21,7 +21,7 @@ const StudioPageFooterSectionRight = () => {
     			<div class="cutimages-bot4"></div>
     			<div class="cutimages-bot4"></div>
     			<div class="cutimages-bot4"></div>
-    			<div class="cutimages-bot4"></div>
+    			<div class="cutimages-bot4 last"></div>
     		</div>
     )
 }

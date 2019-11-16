@@ -45,9 +45,11 @@ class StudioLinkDetails extends React.Component {
 
   render() {
     return (
-      <div class="tab-panel container fade active" id="menu11">
+      <div className="tab-content1">
+      <div class="tab-pane container fade active" id="menu11">
         <div class="table-responsive two">
-          <div class="form-group">
+          <form >
+            <div className="form-group">
             <label for="project">Project Name</label>
             <Select
             value={this.state.selectedOption}
@@ -55,8 +57,8 @@ class StudioLinkDetails extends React.Component {
             options={this.allFolderData()}
             className="form-control select-value"
             />            
-          </div>
-          <div class="form-group">
+            </div>
+            <div className="form-group">
             <label for="email">Description</label>
             <textarea
               class="form-control"
@@ -65,8 +67,9 @@ class StudioLinkDetails extends React.Component {
               name="description"
               placeholder="Please Enter Description"
             ></textarea>
-          </div>
-
+            </div>
+          </form>
+          
           <div class="container">
             <div class="row">
               <div class="col-sm-6 p-0">
@@ -110,6 +113,7 @@ class StudioLinkDetails extends React.Component {
             </div>
           </div>
         </div>
+      </div>
       </div>
     );
   }

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import LeftNav from "../components/shared/nav/LeftNav";
-import TopPageHeader from "../components/testingCompo/PageTopHeader";
-import Breadcromb from "../components/testingCompo/Breadcromb";
+import TopPageHeader from "../components/dashboard/PageTopHeader";
+import Breadcromb from "../components/dashboard/Breadcromb";
 import Footer from "../components/shared/footer/Footer";
 import util from "../apiAction/axios/utility";
 import {

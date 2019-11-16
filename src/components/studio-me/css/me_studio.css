@@ -2027,6 +2027,7 @@ input.CRFR {
 .table-responsive {
     display: block;
     width: 100%;
+    overflow-x: auto ;
 }
 .tab-content>.tab-pane {
     display: block;
@@ -2081,8 +2082,9 @@ span.toolss {
     padding-left: 0px;
 }
 .logo-menu2{
-        width: 110px;
-        height: 45px;
+        width: 99px;
+        height: 43px;
+        margin-left: 15px;
     
 }
 .col_publish{
@@ -2148,33 +2150,7 @@ button.btn.btn-primary.BackBtn {
     border-left: 1px solid #fff;
     display: flex;
 }
-.css-1hwfws3 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    padding: 0px 246px;
-    -webkit-overflow-scrolling: touch;
-    position: relative;
-    overflow: hidden;
-    box-sizing: border-box;
-}
 
-.css-yk16xz-control {
-    /* width: 100%; */
-    /* padding-left: 44px !important;  */
-    margin-top: -8px;
-    margin-left: -17px;
-    background-color: #252425 !important;
-    color: #eeeeee !important;
-    position: fixed !important;
-}
 div#menu11 {
     padding-left: 0px;
     padding-right: 0px;
@@ -2184,10 +2160,56 @@ div#menu11 {
     padding-bottom: 10px;
     color: #eeeeee;
     background-color: #252425;
-    padding-left: 13px;
-    padding-right: 12px;
-    padding-bottom: 12px;
+    font-size: 12px;
+    padding: 1rem;
 }
 label {
     color: #eeeeee;
+}
+input#files {
+    display: none;
+}
+input.form-control.navsearch2 {
+    border: none;
+    background-color: #252425;
+}
+li.nav-item.active {
+    background-color: #727272;
+}
+textarea#description {
+    height: 50px;
+    background-color: #252425;
+}
+.tab-content1 .form-control {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #bababa;
+    background-color: #252425;
+    background-clip: padding-box;
+    border: 1px solid #343a40;
+    border-radius: 0;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    border-bottom: 1px solid #bababa;
+    height: 33px;
+}
+.container-fluid.Studioed {
+    margin-top: -12px;
+    padding-top: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.table-responsive.two {
+    padding-right: 15px;
+}
+.tab-content1 label {
+    font-size: 12px;
+    color: #bababa;
+}
+section{
+background: #252425;
 }
