@@ -101,7 +101,7 @@ class StudioLinkDetails extends React.Component {
                     value={this.state.selectedOption}
                     onChange={this.handleChange}
                     options={this.allFolderData()}
-                    className="form-control select-value"
+                    className="select-value"
                   />
                 </div>
                 <div className="form-group">
@@ -148,6 +148,7 @@ class StudioLinkDetails extends React.Component {
                         name=""
                         value="Player Settings"
                         class="Player-Settings createnew-top"
+                        onClick={() => this.props.handlePlayerSetting()}
                       />
                     </div>
                   </div>
