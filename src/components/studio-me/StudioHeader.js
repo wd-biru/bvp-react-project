@@ -7,6 +7,7 @@ import user from "./img/user.png";
 
 class StudioHeader extends React.Component {
   handleGoHome = () => {
+    alert('Hello');
     return this.props.history.push("/");
   };
   
