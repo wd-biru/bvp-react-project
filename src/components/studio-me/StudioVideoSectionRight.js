@@ -30,6 +30,7 @@ class StudioVideoSectionRight extends React.Component {
       navActiveItem: itemType
     });
   };
+
   renderNavItem = type => {
     switch (type) {
       case "detail": {
@@ -40,6 +41,7 @@ class StudioVideoSectionRight extends React.Component {
             createFolderData={this.props.createFolderData}
             folderDetails={this.props.folderDetails}
             getUserFolderData={this.props.getUserFolderData}
+            handlePlayerSetting={this.props.handlePlayerSetting}
           />
         );
       }

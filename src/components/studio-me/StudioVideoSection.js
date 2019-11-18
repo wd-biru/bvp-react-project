@@ -20,6 +20,7 @@ class StudioVideoSection extends React.Component {
             createFolderData={this.props.createFolderData}
             folderDetails={this.props.folderDetails}
             getUserFolderData={this.props.getUserFolderData}
+            handlePlayerSetting={this.props.handlePlayerSetting}
           />
         </div>
       </div>

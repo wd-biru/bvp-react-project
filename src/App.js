@@ -8,7 +8,7 @@ import "./assets/css/Me_responsive.css";
 import Login from "./components/login/Login";
 import ResetPassword from "./components/login/ResetPassword";
 import TopHeader from "./components/shared/header/Header";
-//import Studio from './components/studio-me/Studio';
+//import PlayerSetting from './components/studio-me/playerSetting/PlayerSetting';
 
 class App extends Component {
   componentDidMount() {
@@ -18,7 +18,7 @@ class App extends Component {
     const userToken = localStorage.getItem("userToken");
     return (
       <>
-        {userToken ? (
+         {userToken ? (
           <div className="App">
             <body className="dashboardsty">
               <div className="page">
@@ -40,6 +40,7 @@ class App extends Component {
           this.props.history.location.pathname === "/password" && (
             <ResetPassword />
           )}
+          
       </>
     );
   }

@@ -130,7 +130,7 @@ footer.main-footer {
   width: 100% !important;
 }
 .content-inner {
-  padding-bottom: 45px !important;
+  padding-bottom: 45px;
 }
 nav.side-navbar .sidebar-header {
   padding-bottom: 15px;
@@ -716,7 +716,7 @@ img.thumbimglogo {
   background-color: #d8d9da;
   object-fit: fill;
 }
-.kJdJTV {padding: 50px 50px;padding-bottom: 85px;}
+.kJdJTV {padding: 50px 50px;padding-bottom: 85px;height: 100%;}
 header.sc-kAzzGY.gXlqCi.rdt_TableHeader {display: none;}
 .sc-bwzfXH.gXdTHx.rdt_TableHead {background: #c4c4c4;}
 .ftSrFl:first-of-type {padding-left: calc(26px / 2) !important;}

@@ -9,13 +9,33 @@ import StudioToolsTime from "./StudioToolsTime";
 import StudioPageFooterSection from "./StudioPageFooterSection";
 import util from "../../apiAction/axios/utility";
 
+import PlayerSetting from "./playerSetting/PlayerSetting";
+
 import "./css/me_studio.css";
 //import "./css/me_responsive.css";
 
 class Studio extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showPlayerSetting: false
+    };
+  }
+
+  handlePlayerSetting = () => {
+    this.setState({
+      showPlayerSetting: true
+    });
+  };
+  // cancelPlayerSetting = () => {
+  //   this.setState({
+  //     showPlayerSetting: false,
+  //   });
+  // };
+
   render() {
-    return (
-      <div>
+    return !this.state.showPlayerSetting ? (
+      <>
         <body className="studio_page">
           <StudioHeader
             handleBackBtn={this.props.handleBackBtn}
@@ -28,6 +48,7 @@ class Studio extends React.Component {
             folderDetails={this.props.folderDetails}
             createFolderData={this.props.createFolderData}
             getUserFolderData={this.props.getUserFolderData}
+            handlePlayerSetting={this.handlePlayerSetting}
           />
           <StudioPlayButton />
 
@@ -37,7 +58,11 @@ class Studio extends React.Component {
             <StudioPageFooterSection />
           </div>
         </body>
-      </div>
+      </>
+    ) : (
+      <>
+        <PlayerSetting />
+      </>
     );
   }
 }

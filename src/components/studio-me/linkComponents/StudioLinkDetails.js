@@ -71,22 +71,14 @@ class StudioLinkDetails extends React.Component {
   saveStudioDetails = () => {
     const userId = Number(localStorage.getItem("userId"));
     const selectedFile = document.getElementById("files").files[0];
-    // let formData = new FormData(this.formRef);
     const formData = new FormData();
-    formData.append("thumbnail", selectedFile || this.state.thumbImage);
+    formData.append("thumbnail", selectedFile);
     formData.append("user_id", userId);
     formData.append("folder_id", this.state.selectedOption.value);
     formData.append("folder_name", this.state.selectedOption.label);
     formData.append("description", this.state.description);
     formData.append("action", "description");
-    // const payload = {
-    //   user_id: userId,
-    //   folder_id: this.state.selectedOption.value,
-    //   folder_name: this.state.selectedOption.label,
-    //   description: this.state.description,
-    //   thumbnail: selectedFile,
-    //   action: "description"
-    // };
+
     this.props.createFolderData(formData);
   };
 

@@ -1571,7 +1571,7 @@ sup {
 /* Hot Spots collapse section styles end*/
 
 /* create overlay section styles start*/
-.createoverlay_head ul li a img {
+.createoverlay_head ul li p img {
     width: 16px;
 }
 .createoverlay_head ul li:nth-child(2) a img{width: 18px;}
@@ -1630,7 +1630,7 @@ input.UPLOAD {
 .createoverlay-one li:nth-child(1) {
     margin-top: 40px; 
 }
-.createoverlay-one ul li a img {
+.createoverlay-one ul li span img {
     width: 18px;
 }
 .createoverlay-two {
@@ -2213,3 +2213,20 @@ textarea#description {
 section{
 background: #252425;
 }
+.Studioed-three .tab-content1 .tab-pane .table-responsive.two .form-group .select-value.css-2b097c-container .css-yk16xz-control {
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #b2b2b2;
+    background-color: #252425;
+    background-clip: padding-box;
+    border: 1px solid #343a40;
+    border-radius: 0;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    border-bottom: 1px solid #bababa;
+    height: 33px;
+}
+.Studioed-three .tab-content1 .tab-pane .table-responsive.two .form-group .css-1uccc91-singleValue {color: hsl(0, 0%, 65%) !important;}
+.Studioed-three .tab-content1 .tab-pane .table-responsive.two .form-group  .css-1pahdxg-control{background-color: #252425 !important;}
