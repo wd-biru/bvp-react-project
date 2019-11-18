@@ -108,6 +108,7 @@
 	.breadcrumb-item+.breadcrumb-item { padding-left: 0rem;}
 	.side-navbar ul.list-unstyled {padding-bottom: 120px !important}
 	.btn-primary.disabled, .btn-primary:disabled {width: 175px !important;}
+	.content-inner {padding-bottom: 36px !important;}
 }
 @media screen and (max-width: 991px) and (min-width: 768px) {
 	.Studioed-section2 .tool-time .seaech-upload form input.form-control.navseacrh {height: 40px !important;width: 74% !important;}

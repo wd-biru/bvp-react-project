@@ -4,6 +4,7 @@ import StudioVideoSectionRight from "./StudioVideoSectionRight";
 import Video from "../../assets/img/me/video-test.mp4";
 
 class StudioVideoSection extends React.Component {
+ 
   render() {
     return (
       <div class="container-fluid Studioed">
@@ -17,6 +18,7 @@ class StudioVideoSection extends React.Component {
           <StudioVideoSectionRight
             isActiveObject={this.props.isActiveObject}
             selectedMedia={this.props.selectedMedia}
+            handlePlayerSetting={this.props.handlePlayerSetting}           
           />
         </div>
       </div>

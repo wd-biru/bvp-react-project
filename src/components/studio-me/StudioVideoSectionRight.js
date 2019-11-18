@@ -30,6 +30,7 @@ class StudioVideoSectionRight extends React.Component {
       navActiveItem: itemType
     });
   };
+  
   renderNavItem = type => {
     switch (type) {
       case "detail": {
@@ -37,6 +38,7 @@ class StudioVideoSectionRight extends React.Component {
           <Studiolinkdetails
             isActiveObject={this.props.isActiveObject}
             selectedMedia={this.props.selectedMedia}
+            handlePlayerSetting={this.props.handlePlayerSetting} 
           />
         );
       }
