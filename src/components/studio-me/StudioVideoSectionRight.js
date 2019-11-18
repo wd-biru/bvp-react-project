@@ -37,6 +37,9 @@ class StudioVideoSectionRight extends React.Component {
           <Studiolinkdetails
             isActiveObject={this.props.isActiveObject}
             selectedMedia={this.props.selectedMedia}
+            createFolderData={this.props.createFolderData}
+            folderDetails={this.props.folderDetails}
+            getUserFolderData={this.props.getUserFolderData}
           />
         );
       }

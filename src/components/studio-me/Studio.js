@@ -17,11 +17,17 @@ class Studio extends React.Component {
     return (
       <div>
         <body className="studio_page">
-          <StudioHeader />
+          <StudioHeader
+            handleBackBtn={this.props.handleBackBtn}
+            history={this.props.history}
+          />
           <StudioPreviewModel />
           <StudioVideoSection
             isActiveObject={this.props.isActiveObject}
             selectedMedia={this.props.selectedMedia}
+            folderDetails={this.props.folderDetails}
+            createFolderData={this.props.createFolderData}
+            getUserFolderData={this.props.getUserFolderData}
           />
           <StudioPlayButton />
 

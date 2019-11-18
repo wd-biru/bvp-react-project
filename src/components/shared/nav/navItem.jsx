@@ -10,13 +10,13 @@ class NavItems extends React.Component {
   }
 
   componentDidMount() {
+    const activeFolderData = JSON.parse(localStorage.getItem("selectedMedia"));
     const findHomeData =
       this.props.data && this.props.data.find(data => data.id === 0);
-
     this.setState({
-      selectedItem: findHomeData
+      selectedItem: activeFolderData ? activeFolderData : findHomeData
     });
-    this.props.handleDefaultHomeActive(findHomeData);
+    !activeFolderData ? this.props.handleDefaultHomeActive(findHomeData) : null;
   }
 
   handleToggle = data => {
@@ -25,6 +25,7 @@ class NavItems extends React.Component {
         selectedItem: selectedItem && selectedItem.id === data.id ? null : data
       };
     });
+
     this.props.handleFolderData(data);
   };
 
@@ -49,9 +50,7 @@ class NavItems extends React.Component {
                 >
                   <ul className="sub_folder">
                     <li>
-                      <span
-                        
-                      >
+                      <span>
                         <span class="number">
                           {folderData.files.length > 0
                             ? folderData.files.length

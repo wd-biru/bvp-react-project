@@ -127,6 +127,7 @@ class Dashboard extends Component {
     });
     this.state.breadcombItemType !== "project" &&
       this.props.getUploadFolderFileData(payload);
+    localStorage.setItem("selectedMedia", JSON.stringify(selectedFolder));
   };
 
   componentDidMount() {
@@ -136,7 +137,8 @@ class Dashboard extends Component {
       file_type: "all"
     };
     this.setState({
-      activeIndex: 4
+      activeIndex: 4,
+      isActiveObject: JSON.parse(localStorage.getItem("selectedMedia"))
     });
     const getFolderpayload = {
       user_id: Number(userId)
@@ -156,23 +158,43 @@ class Dashboard extends Component {
       folder_id: this.state.isActiveObject ? this.state.isActiveObject.id : 0,
       file_type: this.state.breadcombItemType
     };
-    const foldChildren =
-      this.props.folderDetails && this.state.isActiveObject
-        ? this.props.folderDetails.data.data.filter(folderData => {
-            if (folderData.id === this.state.isActiveObject.id) {
-              return folderData.children;
-            }
-          })
-        : [];
+
     if (
       prevProps.folderDetails !== this.props.folderDetails &&
-      this.props.folderDetails.data.code === 200
+      this.props.folderDetails.data.code === 200 &&
+      !this.state.showEditor
     ) {
+      const foldChildren =
+        this.props.folderDetails &&
+        this.state.isActiveObject &&
+        !this.state.showEditor
+          ? this.props.folderDetails.data.data.filter(folderData => {
+              if (folderData.id === this.state.isActiveObject.id) {
+                return folderData.children;
+              }
+            })
+          : [];
       this.props.getUserFolderData(payload);
       this.setState({
         activeIndex: 0,
         userFileData: foldChildren.length > 0 && foldChildren[0].children
       });
+    }
+    if (
+      prevProps.userFolderDetails !== this.props.userFolderDetails &&
+      this.props.folderDetails &&
+      this.state.showEditor
+    ) {
+      const check = this.props.userFolderDetails.folders.filter(data => {
+        if (data.id === this.state.isActiveObject.id) {
+          return data.children;
+        }
+      });
+      this.setState({
+        activeIndex: 0,
+        userFileData: check[0].children
+      });
+      localStorage.setItem("selectedMedia", JSON.stringify(check[0]));
     }
     // Move code success
     if (
@@ -192,6 +214,10 @@ class Dashboard extends Component {
         ? toast.success(this.props.userMoveData.message)
         : toast.error(this.props.userMoveData.message);
     }
+  }
+
+  componentWillUnmount() {
+    localStorage.removeItem("selectedMedia");
   }
 
   filterUserData = (itemType, activeItem, index) => {
@@ -325,7 +351,9 @@ class Dashboard extends Component {
   duplicateFolder = () => {
     const userId = Number(localStorage.getItem("userId"));
     const movePayload = {
-      actual_name: this.state.selectedMedia.actual_name,
+      actual_name:
+        this.state.selectedMedia.actual_name ||
+        this.state.selectedMedia.folder_name,
       user_id: userId,
       folder_id: this.state.isActiveObject ? this.state.isActiveObject.id : 0,
       action: this.state.showMediaDelete ? "delete" : "duplicate",
@@ -426,8 +454,19 @@ class Dashboard extends Component {
     });
   };
 
+  handleBackBtn = () => {
+    const userId = localStorage.getItem("userId");
+    const payload = {
+      user_id: Number(userId)
+    };
+    this.setState({
+      showEditor: false
+    });
+  };
+
   render() {
     const fileData = this.prepareFileData();
+    console.log("Sanjay" + JSON.stringify(this.props.history));
     return !this.state.showEditor ? (
       <>
         <LeftNav
@@ -443,10 +482,11 @@ class Dashboard extends Component {
           handleClick={this.handleClick}
           handleClickToggle={this.handleClickToggle}
           isToggleNew={this.state.isToggleNew}
-
         />
-        
-        <div className={`content-inner ${this.state.isToggleNew ? "active" : ""}`} >
+
+        <div
+          className={`content-inner ${this.state.isToggleNew ? "active" : ""}`}
+        >
           <TopPageHeader
             userData={this.props.userData}
             createFolderData={this.props.createFolderData}
@@ -584,7 +624,8 @@ class Dashboard extends Component {
               consfirmMsg={
                 this.state.showMediaDuplicate
                   ? `Are you sure you want to make duplicate of ${this.state.selectedMedia.actual_name}?`
-                  : `Are you sure you want to delete ${this.state.selectedMedia.actual_name}?`
+                  : `Are you sure you want to delete ${this.state.selectedMedia
+                      .actual_name || this.state.selectedMedia.folder_name}?`
               }
               handleClick={this.duplicateFolder}
               actionBtnDisable={this.state.actionBtnDisable}
@@ -647,6 +688,11 @@ class Dashboard extends Component {
         <Studio
           isActiveObject={this.state.isActiveObject}
           selectedMedia={this.state.selectedMedia}
+          handleBackBtn={this.handleBackBtn}
+          createFolderData={this.props.createFolderData}
+          folderDetails={this.props.folderDetails}
+          getUserFolderData={this.props.getUserFolderData}
+          history={this.props.history}
         />
       </>
     );

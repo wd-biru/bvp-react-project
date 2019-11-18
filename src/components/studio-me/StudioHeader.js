@@ -6,30 +6,22 @@ import alarm from "./img/alarm.png";
 import user from "./img/user.png";
 
 class StudioHeader extends React.Component {
-  handleGoHome = () => {
-    return this.props.history.push("/");
-  };
-  
-  goBackBtn = () => {
-    window.history.go('/');
-  }
-  
   render() {
     return (
       <header>
         <nav className="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-          <span className="navbar-brand" href="" onClick={this.handleGoHome}>
-            <img src={logo} alt="BVP" className="studio logo-menu2" />{" "}
+          <span className="navbar-brand">
+            <img src={logo} alt="BVP" className="studio logo-menu2" />
           </span>
-               <button class="btn btn-primary BackBtn"
-                onClick={this.goBackBtn}
-                >
-                <i class="fa fa-angle-double-left"></i>
-                Back
-                </button>
+          <button
+            class="btn btn-primary BackBtn"
+            onClick={this.props.handleBackBtn}
+          >
+            <i class="fa fa-angle-double-left"></i>
+            Back
+          </button>
           <div className="">
             <ul className="navbar-nav my-2 my-lg-0">
-              
               <li className="nav-item d-flex align-items-center">
                 <span href="#" className="nav-link2">
                   <img src={ques} />
@@ -37,7 +29,6 @@ class StudioHeader extends React.Component {
               </li>
 
               <li className="nav-item dropdown">
-                {" "}
                 <span
                   id="notifications"
                   rel="nofollow"
@@ -48,13 +39,12 @@ class StudioHeader extends React.Component {
                   aria-expanded="false"
                   className="nav-link2"
                 >
-                  <img src={alarm} />{" "}
+                  <img src={alarm} />
                 </span>
               </li>
 
               <li className="nav-item">
                 <span href="login.html" className="nav-link2 logout">
-                  {" "}
                   <img src={user} />
                 </span>
               </li>

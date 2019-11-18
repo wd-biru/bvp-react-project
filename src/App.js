@@ -11,6 +11,9 @@ import TopHeader from "./components/shared/header/Header";
 //import Studio from './components/studio-me/Studio';
 
 class App extends Component {
+  componentDidMount() {
+    // localStorage.removeItem("selectedMedia");
+  }
   render() {
     const userToken = localStorage.getItem("userToken");
     return (

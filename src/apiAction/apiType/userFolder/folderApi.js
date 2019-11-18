@@ -3,7 +3,9 @@ import util from "../../axios/utility";
 export function getFolderData(data) {
   const reqHeaders = { "Content-Type": "" };
   return util.networkMain
-    .post("/createFolder", data, { headers: { "Content-Type": "" } })
+    .post("/createFolder", data, {
+      headers: { "Content-Type": "multipart/form-data" }
+    })
     .then(res => {
       return res;
     })

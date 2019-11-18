@@ -46,6 +46,10 @@ class FileType extends React.Component {
       this.props.data && this.props.data.type !== "youtube"
         ? `https://apiv2.bossvideoplayer.com/public/user/${this.props.data.url}`
         : this.props.data.url;
+    const projectThumbImage =
+      this.props.data && this.props.data.thumbnail !== null
+        ? `https://apiv2.bossvideoplayer.com/public/${this.props.data.thumbnail}`
+        : ThumbImg;
     return (
       <>
         <div className="col-lg-3">
@@ -61,9 +65,13 @@ class FileType extends React.Component {
                 }
               >
                 <div className="card-body">
-                  <img src={ThumbImg} className="thumbimglogo" />
+                  <img src={projectThumbImage} className="thumbimglogo" />
                   <div className="cappadd2">
                     <h5>{this.props.data.folder_name}</h5>
+                    <h5>
+                      {this.props.data.description !== "null" &&
+                        this.props.data.description}
+                    </h5>
                     <DashboardDropDown
                       handleProjectMove={() =>
                         this.props.handleProjectMove(this.props.data)
