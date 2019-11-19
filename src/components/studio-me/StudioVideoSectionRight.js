@@ -30,7 +30,6 @@ class StudioVideoSectionRight extends React.Component {
       navActiveItem: itemType
     });
   };
-
   renderNavItem = type => {
     switch (type) {
       case "detail": {
@@ -58,6 +57,7 @@ class StudioVideoSectionRight extends React.Component {
           <Studiolinkhotsports
             isActiveObject={this.props.isActiveObject}
             selectedMedia={this.props.selectedMedia}
+            handleCeateOverLay={this.props.handleCeateOverLay}
           />
         );
       }

@@ -24,7 +24,9 @@ import addhotspot from '../../assets/img/me/addhotspot.png';
 import hotspotdesign from '../../assets/img/me/hotspotdesign.png';
 import preview from '../../assets/img/me/preview.png';
 
-const StudioToolsCompo = () => {
+class StudioToolsCompo extends React.Component{
+	
+	render(){
     return (
        
 		<div className="tool">
@@ -58,7 +60,8 @@ const StudioToolsCompo = () => {
                         </div>
 						<li><span title="Add Hotspots" onclick="displayHotspot()"><img src={addhotspot} className="icon" /></span></li>
 						<li><span href="#" data-toggle="modal" data-target="#myModalHotspots"  title="Hotspots Designer"><img src={hotspotdesign} className="icon" /></span></li>
-						<li><span href="#" data-toggle="modal" data-target="#myModal" title="Preview"><img src={preview} className="icon" /></span></li>
+						<li><span href="#" data-toggle="modal" data-target="#myModal" 
+						   title="Preview" onClick={this.props.handleEditor2}><img src={preview} className="icon" /></span></li>
                         </span>
                     </ul>
 					
@@ -77,6 +80,7 @@ const StudioToolsCompo = () => {
 		</div>
        
     )
+}
 }
 
 export default StudioToolsCompo;

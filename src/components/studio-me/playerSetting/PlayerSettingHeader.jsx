@@ -8,9 +8,6 @@ import createoverlay3 from '../../../assets/img/me/createoverlay-top3.png';
 
 
 class PlayerSettingHeader extends  React.Component{
-    // cancelPlayerSetting = () => {
-    //     alert('hihi')
-    // }
     
 render() {
 return (
@@ -20,7 +17,7 @@ return (
         <ul className="navbar-nav mr-auto">
             <li className="nav-item">
             <button class="btn btn-primary BackBtn"
-                onClick={this.cancelPlayerSetting}
+                onClick={this.props.cancelPlayerSetting}
                 >
                 <i class="fa fa-angle-double-left"></i>
                 Back

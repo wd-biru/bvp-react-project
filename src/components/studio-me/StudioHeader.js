@@ -6,12 +6,13 @@ import alarm from "./img/alarm.png";
 import user from "./img/user.png";
 
 class StudioHeader extends React.Component {
+  
   render() {
     return (
       <header>
         <nav className="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
           <span className="navbar-brand">
-            <img src={logo} alt="BVP" className="studio logo-menu2" />
+            <img src={logo} alt="BVP" className="studio logo-menu2" onClick={this.handleGoHome} />
           </span>
           <button
             class="btn btn-primary BackBtn"
@@ -44,8 +45,8 @@ class StudioHeader extends React.Component {
               </li>
 
               <li className="nav-item">
-                <span href="login.html" className="nav-link2 logout">
-                  <img src={user} />
+                <span href="login.html" className="nav-link2" onClick={this.handleLogout} >
+                  <img src={user}  />
                 </span>
               </li>
             </ul>
