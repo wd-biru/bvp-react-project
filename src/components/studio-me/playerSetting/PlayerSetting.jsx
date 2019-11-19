@@ -5,11 +5,16 @@ import PlayerSettingSection3 from './PlayerSettingSection3';
 import PlayerSettingSection2 from './PlayerSettingSection2';
 import PlayerSettingSection1 from './PlayerSettingSection1';
 
-function PlayerSetting() {
+
+class PlayerSetting extends React.Component {
+    
+    render(){
     return (
         <div>
             <body className="studio_page createoverlay_page">
-                <PlayerSettingHeader />
+                <PlayerSettingHeader
+                //  cancelPlayerSetting = {this.props.cancelPlayerSetting}
+                />
                 <div className="container-fluid createoverlay-section mt-0">
                     <div className="row">
                        <PlayerSettingSection3 />
@@ -18,8 +23,9 @@ function PlayerSetting() {
                     </div>
                 </div>
             </body>
+            
         </div>
     )
 }
-
+}
 export default PlayerSetting;

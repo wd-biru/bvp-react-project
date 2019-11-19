@@ -10,6 +10,7 @@ import StudioPageFooterSection from "./StudioPageFooterSection";
 import util from "../../apiAction/axios/utility";
 
 import PlayerSetting from "./playerSetting/PlayerSetting";
+//import CreateOverLay from './createoverlay/CreateOverLay';
 
 import "./css/me_studio.css";
 //import "./css/me_responsive.css";
@@ -18,7 +19,8 @@ class Studio extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showPlayerSetting: false
+      showPlayerSetting: false,
+      showOverLay: false
     };
   }
 
@@ -27,20 +29,28 @@ class Studio extends React.Component {
       showPlayerSetting: true
     });
   };
-  // cancelPlayerSetting = () => {
-  //   this.setState({
-  //     showPlayerSetting: false,
-  //   });
-  // };
+  cancelPlayerSetting = () => {
+    //alert('hihi')
+    this.setState({
+      showPlayerSetting: false
+    });
+}
+// handleCeateOverLay = () => {
+//   console.log('hihihi')
+//   this.setState({
+//     showOverLay: true
+//   });
+// };
 
   render() {
     return !this.state.showPlayerSetting ? (
-      <>
+       <>
         <body className="studio_page">
           <StudioHeader
             handleBackBtn={this.props.handleBackBtn}
             history={this.props.history}
           />
+          
           <StudioPreviewModel />
           <StudioVideoSection
             isActiveObject={this.props.isActiveObject}
@@ -49,6 +59,7 @@ class Studio extends React.Component {
             createFolderData={this.props.createFolderData}
             getUserFolderData={this.props.getUserFolderData}
             handlePlayerSetting={this.handlePlayerSetting}
+            handleCeateOverLay={this.handleCeateOverLay}
           />
           <StudioPlayButton />
 
@@ -58,12 +69,14 @@ class Studio extends React.Component {
             <StudioPageFooterSection />
           </div>
         </body>
-      </>
-    ) : (
+        </>
+       ) : ( 
       <>
-        <PlayerSetting />
-      </>
-    );
+      <PlayerSetting 
+      cancelPlayerSetting={this.cancelPlayerSetting}
+     />
+     </>
+    )        
   }
 }
 

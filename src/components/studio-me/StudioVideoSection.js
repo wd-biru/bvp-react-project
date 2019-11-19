@@ -4,6 +4,9 @@ import StudioVideoSectionRight from "./StudioVideoSectionRight";
 import Video from "../../assets/img/me/video-test.mp4";
 
 class StudioVideoSection extends React.Component {
+  // handleCeateOverLay = () => {
+  //   alert('hihihi');
+  // }
   render() {
     return (
       <div class="container-fluid Studioed">
@@ -21,6 +24,7 @@ class StudioVideoSection extends React.Component {
             folderDetails={this.props.folderDetails}
             getUserFolderData={this.props.getUserFolderData}
             handlePlayerSetting={this.props.handlePlayerSetting}
+            handleCeateOverLay={this.props.handleCeateOverLay}
           />
         </div>
       </div>

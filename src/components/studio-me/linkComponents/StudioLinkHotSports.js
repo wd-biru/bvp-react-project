@@ -2,17 +2,19 @@ import React from 'react';
 
 import StudioLinkHotSportsChild from './StudioLinkHotSportsChild';
 
-const StudioLinkHotSports = () => {
+class StudioLinkHotSports extends  React.Component{
+	
+	render(){
     return (
             <div className="tab-pane container fade active fademy" id="menu21">
 				  		<div class="table-responsive">
 							<table class="table table-hover">
 							    <tbody>
 							      <tr>
-							        <td><i class="fas fa-search">Search</i></td>
+							        <td><i class="fas fa-search"></i></td>
 							        <td>Group Name</td>
-							        <td><i class="far fa-edit">Edit</i></td>
-								    <td>Action</td>
+							        <td><i class="far fa-edit">Type</i></td>
+								    <td onClick={this.props.handleCeateOverLay} >Action( HotSports Create Overlay)</td>
 							        <td>Last Updated</td>
 							      </tr>
 							    </tbody>
@@ -26,6 +28,7 @@ const StudioLinkHotSports = () => {
 		</div>
 				  		
     )
+}
 }
 
 export default StudioLinkHotSports;

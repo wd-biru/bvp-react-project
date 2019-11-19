@@ -9,10 +9,10 @@ const StudioLinkHotSportsChild = () => {
                 <div class="panel panel-default">
                   <div class="panel-heading active" role="tab" id="headingOne100">
                     <h4 class="panel-title">
-                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne100" aria-expanded="true" aria-controls="collapseOne100"> ^
+                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne100" aria-expanded="true" aria-controls="collapseOne100">
                         <span><img src={UserImg} /> X1</span>
                         <span>Group John</span>
-                        <span>Edit</span>
+                        <span>Action</span>
                         <span>not defined</span>
                         <span>not saved</span>
                       </a>

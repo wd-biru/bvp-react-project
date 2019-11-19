@@ -6,8 +6,7 @@ import createoverlay7 from '../../../assets/img/me/createoverlay-top7.png';
 
 function PlayerSettingSection3() {
     return (
-       
-        <div className="col-sm-2 createoverlay-three playerSetting-three">
+    <div className="col-sm-2 createoverlay-three playerSetting-three">
          <form>
               <div className="form-group">
                   <label for="sel1">Global Animation</label>
@@ -77,9 +76,8 @@ function PlayerSettingSection3() {
                     </li>
               </ul>
           </div>
-      </div>
-      
-    )
+      </div> 
+    );
 }
 
 export default PlayerSettingSection3
