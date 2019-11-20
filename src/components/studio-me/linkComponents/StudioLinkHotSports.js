@@ -13,8 +13,8 @@ class StudioLinkHotSports extends  React.Component{
 							      <tr>
 							        <td><i class="fas fa-search"></i></td>
 							        <td>Group Name</td>
-							        <td><i class="far fa-edit">Type</i></td>
-								    <td onClick={this.props.handleCeateOverLay} >Action( HotSports Create Overlay)</td>
+							        <td><i class="far fa-edit">Type</i><button onClick={this.props.handleCeateOverLay}>( HotSports Create Overlay)</button></td>
+								    <td>Action</td>
 							        <td>Last Updated</td>
 							      </tr>
 							    </tbody>

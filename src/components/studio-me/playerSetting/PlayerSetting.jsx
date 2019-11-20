@@ -13,7 +13,7 @@ class PlayerSetting extends React.Component {
         <div>
             <body className="studio_page createoverlay_page">
                 <PlayerSettingHeader
-                //  cancelPlayerSetting = {this.props.cancelPlayerSetting}
+                 cancelPlayerSetting = {this.props.cancelPlayerSetting}
                 />
                 <div className="container-fluid createoverlay-section mt-0">
                     <div className="row">

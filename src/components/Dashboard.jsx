@@ -315,7 +315,8 @@ class Dashboard extends Component {
       projectMove: false,
       showMediaDelete: false,
       showMediaDuplicate: false,
-      showPreview: false
+      showPreview: false,
+      showModel: false
     });
   };
 
@@ -480,6 +481,7 @@ class Dashboard extends Component {
     });
   };
 
+ 
   render() {
     const fileData = this.prepareFileData();
     console.log("Sanjay" + JSON.stringify(this.props.history));
@@ -712,7 +714,9 @@ class Dashboard extends Component {
           userFolderDetails={this.props.userFolderDetails}
           handleFolderchange={this.handleFolderchange}
           libraryFolderData={this.state.libraryFolderData}
+          createOverLayModel={this.createOverLayModel}
         />
+
       </>
     );
   }

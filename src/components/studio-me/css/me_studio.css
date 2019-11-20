@@ -1293,8 +1293,9 @@ sup {
 .card-body {
     padding: 0;
 }
-.card-body img {
+.card-body .studio img {
     width: 100%;
+    height: auto;
 }
 .card-body .cappadd {
     padding: 10px 10px;
@@ -1693,8 +1694,8 @@ input.UPLOAD {
     padding: 0 .6rem;
 }
 .createoverlay-three .Layerslist .col-lg-6 {
-    padding: 0 .6rem;
-    margin-bottom: 15px;
+    padding: 0 .6rem !important;
+    margin-bottom: 15px !important;
 }
 .createoverlay-three .Layerslist form{padding: .6rem;}
 .createoverlay-three .Layerslist form input.form-control {
@@ -1782,7 +1783,7 @@ input.UPLOAD {
     margin: 0 40px;
     width: auto;
 }
-.modal-body .nav-select-temp ul.nav.nav-pills li a {
+.nav-select-temp ul.nav.nav-pills li a {
     color: #a3a3a3;
     text-decoration: none;
     background-color: transparent;

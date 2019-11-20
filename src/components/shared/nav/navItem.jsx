@@ -80,7 +80,7 @@ class NavItems extends React.Component {
                             }}
                           ></i>
                           <i
-                            className="fa fa-remove"
+                            className="fa fa-trash"
                             onClick={e => {
                               this.props.handleDelete(
                                 this.props.isActiveObject
