@@ -12,7 +12,6 @@ class StudioLinkLibaryClild extends React.Component {
         : this.props.data.file;
     return (
       <>
-      
         {this.props.navActiveItem === "video" && (
           <div class="col-lg-4">
             <div class="card">
@@ -57,7 +56,6 @@ class StudioLinkLibaryClild extends React.Component {
             </div>
           </div>
         )}
-       
       </>
     );
   }

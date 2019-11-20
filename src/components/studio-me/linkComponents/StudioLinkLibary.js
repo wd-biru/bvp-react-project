@@ -7,7 +7,10 @@ class StudioLinkLibary extends React.Component {
     super(props);
     this.state = {
       navActiveItem: "video",
-      folderOption: null
+      folderOption: {
+        label: this.props.isActiveObject.folder_name,
+        value: this.props.isActiveObject.id
+      }
     };
   }
   handleStudioNav = itemType => {
@@ -17,12 +20,12 @@ class StudioLinkLibary extends React.Component {
   };
 
   componentDidMount() {
-    this.setState({
-      folderOption: {
-        label: this.props.isActiveObject.folder_name,
-        value: this.props.isActiveObject.id
-      }
-    });
+    // this.setState({
+    //   folderOption: {
+    //     label: this.props.isActiveObject.folder_name,
+    //     value: this.props.isActiveObject.id
+    //   }
+    // });
   }
 
   allFolderData() {
@@ -36,15 +39,28 @@ class StudioLinkLibary extends React.Component {
   }
 
   handleFileTypeData = () => {
-    const activedata = this.props.libraryFolderData
-      ? this.props.libraryFolderData
-      : this.props.isActiveObject;
-    const activeFilterData = activedata.files.filter(folderData => {
+    const activeFolderData =
+      this.state.folderOption &&
+      this.props.userFolderDetails.folders.find(folderData => {
+        if (folderData.id === this.state.folderOption.value) {
+          return folderData;
+        }
+      });
+    // const activedata = this.props.libraryFolderData
+    //   ? this.props.libraryFolderData
+    //   : this.props.isActiveObject;
+    const activeFilterData = activeFolderData.files.filter(folderData => {
       if (folderData.file_type === this.state.navActiveItem) {
         return folderData;
       }
     });
     return activeFilterData;
+  };
+
+  handleFolderchange = folderOption => {
+    this.setState({
+      folderOption: folderOption
+    });
   };
   render() {
     const activeFiles = this.handleFileTypeData();
@@ -66,6 +82,12 @@ class StudioLinkLibary extends React.Component {
       <div className="tab-content1">
         <div class="tab-pane container fade active" id="menu11">
           <div class="Library-sec">
+            <Select
+              value={this.state.folderOption}
+              onChange={this.handleFolderchange}
+              options={this.allFolderData()}
+              className="select-value"
+            />
             <div class="table-responsive two">
               <ul class="nav nav-pills">
                 {libNavItem &&
@@ -85,21 +107,6 @@ class StudioLinkLibary extends React.Component {
                     );
                   })}
               </ul>
-
-              <Select
-                value={this.state.folderOption}
-                onChange={() =>
-                  this.props.handleFolderchange(this.state.folderOption)
-                }
-                options={this.allFolderData()}
-                className="select-value"
-              />
-              {/* <input
-                  type="text"
-                  class="form-control navsearch2"
-                  placeholder="Search "
-                  name="search"
-                /> */}
 
               <div className="tab-content1">
                 <div class="tab-pane container active col-lg-12">

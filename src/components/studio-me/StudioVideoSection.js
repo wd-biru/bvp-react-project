@@ -1,6 +1,7 @@
 import React from "react";
 
 import StudioVideoSectionRight from "./StudioVideoSectionRight";
+import ReactPlayer from "react-player";
 import Video from "../../assets/img/me/video-test.mp4";
 
 class StudioVideoSection extends React.Component {
@@ -12,9 +13,12 @@ class StudioVideoSection extends React.Component {
       <div class="container-fluid Studioed">
         <div class="row">
           <div class="col-sm-7 Studioed-seund">
-            <video width="100%" controls>
-              <source src={Video} type="video/mp4" />
-            </video>
+            {this.props.selectedMedia &&
+            this.props.selectedMedia.video === undefined ? (
+              <div className="drop-video">Drag Your Video Here</div>
+            ) : (
+              <ReactPlayer url={Video} playing={false} controls />
+            )}
           </div>
           {/* this is video part col-sm-05 section */}
           <StudioVideoSectionRight

@@ -2230,3 +2230,12 @@ background: #252425;
 }
 .Studioed-three .tab-content1 .tab-pane .table-responsive.two .form-group .css-1uccc91-singleValue {color: hsl(0, 0%, 65%) !important;}
 .Studioed-three .tab-content1 .tab-pane .table-responsive.two .form-group  .css-1pahdxg-control{background-color: #252425 !important;}
+.drop-video {
+    height: 750px;
+    color: white;
+    text-align: center;
+    font-size: 48px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }

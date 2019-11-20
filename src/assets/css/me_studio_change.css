@@ -158,6 +158,9 @@ ul li{list-style-type: none;}
     padding-left: 0;
     padding-right: 0;
 }
+.drop-video {
+    height: 750px;
+  }
 .Studioed-seund img{width: 100%;}
 .Studioed-section2-1 li.timestart{float: right;}
 .time-line .progress-bar{width:100%; background:#1f75c4;}
