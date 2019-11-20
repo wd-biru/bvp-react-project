@@ -109,7 +109,8 @@ class Dashboard extends Component {
       selectedOption: null,
       isToggle: true,
       showEditor: false,
-      isToggleNew: false
+      isToggleNew: false,
+      libraryFolderData: null
     };
   }
   handleFolderData = selectedFolder => {
@@ -131,14 +132,15 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
+    const stateFolderData = JSON.parse(localStorage.getItem("selectedMedia"));
     const payload = {
       user_id: Number(userId),
-      folder_id: this.state.isActiveObject ? this.state.isActiveObject.id : 0,
+      folder_id: stateFolderData ? stateFolderData.id : 0,
       file_type: "all"
     };
     this.setState({
       activeIndex: 4,
-      isActiveObject: JSON.parse(localStorage.getItem("selectedMedia"))
+      isActiveObject: stateFolderData
     });
     const getFolderpayload = {
       user_id: Number(userId)
@@ -464,6 +466,20 @@ class Dashboard extends Component {
     });
   };
 
+  handleFolderchange = selectedId => {
+    const activeId = selectedId ? selectedId : this.state.isActiveObject.id;
+    const selectedFolder =
+      selectedId &&
+      this.props.userFolderDetails.folders.filter(folderData => {
+        if (folderData.id === selectedId) {
+          return folderData;
+        }
+      });
+    this.setState({
+      libraryFolderData: selectedFolder
+    });
+  };
+
   render() {
     const fileData = this.prepareFileData();
     console.log("Sanjay" + JSON.stringify(this.props.history));
@@ -693,6 +709,9 @@ class Dashboard extends Component {
           folderDetails={this.props.folderDetails}
           getUserFolderData={this.props.getUserFolderData}
           history={this.props.history}
+          userFolderDetails={this.props.userFolderDetails}
+          handleFolderchange={this.handleFolderchange}
+          libraryFolderData={this.state.libraryFolderData}
         />
       </>
     );

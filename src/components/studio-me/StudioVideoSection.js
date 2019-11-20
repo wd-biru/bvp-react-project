@@ -25,6 +25,9 @@ class StudioVideoSection extends React.Component {
             getUserFolderData={this.props.getUserFolderData}
             handlePlayerSetting={this.props.handlePlayerSetting}
             handleCeateOverLay={this.props.handleCeateOverLay}
+            userFolderDetails={this.props.userFolderDetails}
+            handleFolderchange={this.props.handleFolderchange}
+            libraryFolderData={this.props.libraryFolderData}
           />
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import Select from "react-select";
+// import Select from "react-select";
 import LinkImg from "./images.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,7 +8,7 @@ class StudioLinkDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedOption: null,
+      projectName: this.props.selectedMedia.folder_name,
       description: "",
       thumbImage: "",
       showToastMsg: false
@@ -58,15 +58,15 @@ class StudioLinkDetails extends React.Component {
     });
   };
 
-  allFolderData() {
-    const options =
-      this.props.isActiveObject &&
-      this.props.isActiveObject.children.map(element => ({
-        label: element.folder_name,
-        value: element.id
-      }));
-    return options;
-  }
+  // allFolderData() {
+  //   const options =
+  //     this.props.isActiveObject &&
+  //     this.props.isActiveObject.children.map(element => ({
+  //       label: element.folder_name,
+  //       value: element.id
+  //     }));
+  //   return options;
+  // }
 
   saveStudioDetails = () => {
     const userId = Number(localStorage.getItem("userId"));
@@ -74,8 +74,9 @@ class StudioLinkDetails extends React.Component {
     const formData = new FormData();
     formData.append("thumbnail", selectedFile);
     formData.append("user_id", userId);
-    formData.append("folder_id", this.state.selectedOption.value);
-    formData.append("folder_name", this.state.selectedOption.label);
+    formData.append("folder_id", this.props.selectedMedia.id);
+    formData.append("folder_name", this.state.projectName);
+    projectName;
     formData.append("description", this.state.description);
     formData.append("action", "description");
 
@@ -97,11 +98,13 @@ class StudioLinkDetails extends React.Component {
               <form>
                 <div className="form-group">
                   <label for="project">Project Name</label>
-                  <Select
-                    value={this.state.selectedOption}
-                    onChange={this.handleChange}
-                    options={this.allFolderData()}
-                    className="select-value"
+                  <input
+                    name="projectName"
+                    id="projectName"
+                    type="text"
+                    value={this.state.projectName}
+                    onChange={this.handleInputChange}
+                    className="form-control"
                   />
                 </div>
                 <div className="form-group">

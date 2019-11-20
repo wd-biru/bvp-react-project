@@ -34,23 +34,23 @@ class Studio extends React.Component {
     this.setState({
       showPlayerSetting: false
     });
-}
-// handleCeateOverLay = () => {
-//   console.log('hihihi')
-//   this.setState({
-//     showOverLay: true
-//   });
-// };
+  };
+  // handleCeateOverLay = () => {
+  //   console.log('hihihi')
+  //   this.setState({
+  //     showOverLay: true
+  //   });
+  // };
 
   render() {
     return !this.state.showPlayerSetting ? (
-       <>
+      <>
         <body className="studio_page">
           <StudioHeader
             handleBackBtn={this.props.handleBackBtn}
             history={this.props.history}
           />
-          
+
           <StudioPreviewModel />
           <StudioVideoSection
             isActiveObject={this.props.isActiveObject}
@@ -60,6 +60,9 @@ class Studio extends React.Component {
             getUserFolderData={this.props.getUserFolderData}
             handlePlayerSetting={this.handlePlayerSetting}
             handleCeateOverLay={this.handleCeateOverLay}
+            userFolderDetails={this.props.userFolderDetails}
+            handleFolderchange={this.props.handleFolderchange}
+            libraryFolderData={this.props.libraryFolderData}
           />
           <StudioPlayButton />
 
@@ -69,14 +72,12 @@ class Studio extends React.Component {
             <StudioPageFooterSection />
           </div>
         </body>
-        </>
-       ) : ( 
+      </>
+    ) : (
       <>
-      <PlayerSetting 
-      cancelPlayerSetting={this.cancelPlayerSetting}
-     />
-     </>
-    )        
+        <PlayerSetting cancelPlayerSetting={this.cancelPlayerSetting} />
+      </>
+    );
   }
 }
 
