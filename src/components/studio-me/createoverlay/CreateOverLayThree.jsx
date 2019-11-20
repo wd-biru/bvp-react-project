@@ -37,31 +37,12 @@ function CreateOverLayThree() {
                   <input type="text" className="form-control navseacrh" placeholder="Search" name="search" />
                     <input type="button" name="" value="UPLOAD" className="UPLOAD" />
               </form>
-            </div>
-              
-            <div className="sectiomtwo">
-                <label>Layers</label>
-            </div>
-            <div className="Layerslist">
-                <ul>
-                    <li>1. Iframe <span><img src={createoverlay6} className="mr-2" /><img src={createoverlay7} /> <input type="radio" className="form-check-input" id="radio1" name="optradio" value="option1" checked /></span></li>
-                    <li>2. Shape square<span><img src={createoverlay6} className="mr-2" /><img src={createoverlay7} /><input type="radio" className="form-check-input" id="radio1" name="optradio" value="option1" /></span></li>
-                </ul>
-            </div>
-            <div className="sectiomtwo">
-                <label>Library</label>
-            </div>
-            <div className="Layerslist">
-              <form className="navbar-form navbar-left" action="/action_page.php">
-                  <input type="text" className="form-control navseacrh" placeholder="Search" name="search" />
-                    <input type="button" name="" value="UPLOAD" className="UPLOAD" />
-                </form>
-            
+            </div>            
               <div className="container-fluid">                
                 <div className="row">
                   <div className="col-lg-6">
                     <div className="card">
-                      <div className="card-body">
+                      <div className="card-body studio">
                         <img src={Images} alt="John" />
                           <div className="cappadd">
                             <h5>John Doe</h5>
@@ -72,7 +53,7 @@ function CreateOverLayThree() {
                   </div>
                   <div className="col-lg-6">
                     <div className="card">
-                      <div className="card-body">
+                      <div className="card-body studio">
                         <img src={Images} alt="John" />
                           <div className="cappadd">
                             <h5>John Doe</h5>
@@ -83,7 +64,7 @@ function CreateOverLayThree() {
                   </div>
                   <div className="col-lg-6">
                     <div className="card">
-                      <div className="card-body">
+                      <div className="card-body studio">
                         <img src={Images} alt="John" />
                           <div className="cappadd">
                             <h5>John Doe</h5>
@@ -96,8 +77,7 @@ function CreateOverLayThree() {
             </div>   
          </div>
 
-     </div>
-        
+     
     )
 }
 
