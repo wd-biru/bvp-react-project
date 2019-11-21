@@ -70,7 +70,7 @@ body {
   margin-top: 0px;
 }
 
-.notfound a {
+.notfound span {
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   text-decoration: none;

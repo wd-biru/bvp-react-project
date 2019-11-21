@@ -16,7 +16,7 @@ class StudioLinkLibaryClild extends React.Component {
           <div class="col-lg-4">
             <div class="card">
               <div class="card-body">
-                <video controls>
+                <video controls draggable="true" >
                   <source src={filePath} type="video/mp4" />
                 </video>
                 <div class="cappadd">
