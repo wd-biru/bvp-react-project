@@ -110,7 +110,9 @@ class Dashboard extends Component {
       isToggle: true,
       showEditor: false,
       isToggleNew: false,
-      libraryFolderData: null
+      libraryFolderData: null,
+      showStudioAlert: false,
+      showStudioPreview: false
     };
   }
   handleFolderData = selectedFolder => {
@@ -316,7 +318,8 @@ class Dashboard extends Component {
       showMediaDelete: false,
       showMediaDuplicate: false,
       showPreview: false,
-      showModel: false
+      showModel: false,
+      showStudioPreview: false
     });
   };
 
@@ -379,11 +382,19 @@ class Dashboard extends Component {
     selectedMedia && this.renderPreview();
   };
 
+  studioPreview = selectedMedia => {
+    this.setState({
+      showEditor: true,
+      showStudioPreview: true,
+      selectedMedia: selectedMedia ? selectedMedia : null
+    });
+  };
+
   renderPreview = () => {
-    const fileType =
-      this.state.selectedMedia && this.state.selectedMedia.type !== "youtube"
-        ? this.state.selectedMedia.url.split(".").pop()
-        : "mp4";
+    // const fileType =
+    //   this.state.selectedMedia && this.state.selectedMedia.type !== "youtube"
+    //     ? this.state.selectedMedia.url.split(".").pop()
+    //     : "mp4";
     const filePath =
       this.state.selectedMedia && this.state.selectedMedia.type !== "youtube"
         ? `https://apiv2.bossvideoplayer.com/public/user/${this.state.selectedMedia.url}`
@@ -424,7 +435,8 @@ class Dashboard extends Component {
   handleEditor = editordata => {
     this.setState({
       showEditor: true,
-      selectedMedia: editordata
+      selectedMedia: editordata,
+      showStudioAlert: false
     });
   };
 
@@ -463,7 +475,8 @@ class Dashboard extends Component {
       user_id: Number(userId)
     };
     this.setState({
-      showEditor: false
+      showEditor: true,
+      showStudioAlert: true
     });
   };
 
@@ -481,10 +494,24 @@ class Dashboard extends Component {
     });
   };
 
- 
+  closeStudioModal = () => {
+    this.setState({
+      showStudioAlert: false,
+      showEditor: true
+    });
+  };
+
+  openStudio = () => {
+    this.setState({
+      showEditor: false,
+      showStudioAlert: false
+    });
+    localStorage.removeItem("dragFile");
+  };
+
   render() {
     const fileData = this.prepareFileData();
-    console.log("Sanjay" + JSON.stringify(this.props.history));
+    const dragFileLocalFile = JSON.parse(localStorage.getItem("draggedFile"));
     return !this.state.showEditor ? (
       <>
         <LeftNav
@@ -609,7 +636,7 @@ class Dashboard extends Component {
                                 handleMediaDuplicate={this.handleMediaDuplicate}
                                 duplicateFolder={this.duplicateFolder}
                                 actionBtnDisable={this.state.actionBtnDisable}
-                                handlePreview={this.handlePreview}
+                                handlePreview={this.studioPreview}
                                 showEditor={true}
                                 handleEditor={this.handleEditor}
                               />
@@ -715,8 +742,12 @@ class Dashboard extends Component {
           handleFolderchange={this.handleFolderchange}
           libraryFolderData={this.state.libraryFolderData}
           createOverLayModel={this.createOverLayModel}
+          showStudioAlert={this.state.showStudioAlert}
+          closeStudioModal={this.closeStudioModal}
+          openStudio={this.openStudio}
+          showStudioPreview={this.state.showStudioPreview}
+          closeMediaModal={this.closeMediaModal}
         />
-
       </>
     );
   }

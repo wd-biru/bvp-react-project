@@ -158,6 +158,7 @@ ul li{list-style-type: none;}
     padding-top: 0px;
     padding-left: 0;
     padding-right: 0;
+    height: 750px;
 }
 .Studioed-seund img{width: 100%;}
 .Studioed-section2-1 li.timestart{float: right;}
@@ -2235,7 +2236,7 @@ background: #252425;
     height: 750px;
     color: white;
     text-align: center;
-    font-size: 48px;
+    font-size: 20px;
     align-items: center;
     display: flex;
     justify-content: center;

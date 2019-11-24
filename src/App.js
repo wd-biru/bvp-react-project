@@ -18,7 +18,7 @@ class App extends Component {
     const userToken = localStorage.getItem("userToken");
     return (
       <>
-         {userToken ? (
+        {userToken ? (
           <div className="App">
             <body className="dashboardsty">
               <div className="page">
@@ -40,7 +40,6 @@ class App extends Component {
           this.props.history.location.pathname === "/password" && (
             <ResetPassword />
           )}
-          
       </>
     );
   }

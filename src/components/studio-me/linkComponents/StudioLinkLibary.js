@@ -117,6 +117,7 @@ class StudioLinkLibary extends React.Component {
                           <StudioLinkLibaryChild
                             data={data}
                             navActiveItem={this.state.navActiveItem}
+                            handleDrag={this.props.handleDrag}
                           />
                         );
                       })}

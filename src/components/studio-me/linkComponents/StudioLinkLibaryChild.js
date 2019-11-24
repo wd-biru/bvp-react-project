@@ -13,7 +13,12 @@ class StudioLinkLibaryClild extends React.Component {
     return (
       <>
         {this.props.navActiveItem === "video" && (
-          <div class="col-lg-4">
+          <div
+            id={this.props.data.actual_name}
+            class="col-lg-4"
+            draggable="true"
+            onDragStart={() => this.props.handleDrag(event, this.props.data)}
+          >
             <div class="card">
               <div class="card-body">
                 <video controls>
@@ -29,7 +34,7 @@ class StudioLinkLibaryClild extends React.Component {
           </div>
         )}
         {this.props.navActiveItem === "image" && (
-          <div class="col-lg-4">
+          <div class="col-lg-4" draggable="true">
             <div class="card">
               <div class="card-body">
                 <img src={filePath} />

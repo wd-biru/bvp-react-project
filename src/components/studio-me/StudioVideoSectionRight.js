@@ -52,6 +52,7 @@ class StudioVideoSectionRight extends React.Component {
             userFolderDetails={this.props.userFolderDetails}
             handleFolderchange={this.props.handleFolderchange}
             libraryFolderData={this.props.libraryFolderData}
+            handleDrag={this.props.handleDrag}
           />
         );
       }
