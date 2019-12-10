@@ -10,7 +10,7 @@ module.exports = {
     filename: "index_bundle.js"
   },
   devServer: {
-    host: "192.168.4.72",
+    host: "localhost",
     inline: true,
     port: 8088,
     contentBase: "./public",
