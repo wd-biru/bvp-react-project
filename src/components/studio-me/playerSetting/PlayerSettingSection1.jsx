@@ -9,36 +9,95 @@ import createoverlayside7 from "../../../assets/img/me/createoverlay-side7.png";
 import createoverlayside8 from "../../../assets/img/me/createoverlay-side8.png";
 import createoverlayside9 from "../../../assets/img/me/createoverlay-side9.png";
 import createoverlayside10 from "../../../assets/img/me/createoverlay-side10.png";
+import * as WidgetTypes from './WidgetType';
+import { connect } from 'react-redux';
+import { bindActionCreators} from 'redux';
+import * as playerControlAction from "../../../apiAction/Player/PlayerControlAction";
 
+class PlayerSettingSection1 extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
-function PlayerSettingSection1() {
-    return (
-        <div className="col-sm-1 createoverlay-one playerSetting-one">
-            <ul>
-                <li><span href="#" title="Square Shape">
-                    <img src={createoverlayside1} /></span></li>
-                <li><span href="#" title="Circle">
-                    <img src={createoverlayside2} /></span></li>
-                <li><span href="#" title="Custom Shape">
-                    <img src={createoverlayside9} /></span></li>
-                <li><span href="#" title="Text">
-                    <img src={createoverlayside3} /></span></li>
-                <li><span href="#" title="Image">
-                    <img src={createoverlayside4} /></span></li>
-                <li><span href="#" title="Arrow Loop">
-                    <img src={createoverlayside5} /></span></li>
-                <li><span href="#" title="Video">
-                    <img src={createoverlayside6} /></span></li>
-                <li><span href="#" title="Image / Video slider">
-                    <img src={createoverlayside10} /></span></li>
-                <li><span href="#" title="Map">
-                    <img src={createoverlayside7} /></span></li>
-                <li><span href="#" title="Web Programming">
-                    <img src={createoverlayside8} /></span></li>
-            </ul>
-        </div>  
-    )
+    render() {
+        return (
+            <div className="col-sm-1 createoverlay-one playerSetting-one">
+                <ul>
+                    {getOverlaySides().map(data=><li><span onDoubleClick={() =>this.handleDoubleClickHandler(data)} href="#" title="Square Shape"><img src={data.imageURL}/></span></li>)}
+                </ul>
+            </div>
+        );
+    }
+
+    handleDoubleClickHandler = (data) =>{
+        this.props.updatePlayerActionData( {
+            widgetType: data.widgetType,
+            name: data.name,
+            imageData : data.imageURL
+        });
+    }
+
 }
 
-export default PlayerSettingSection1
 
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators(playerControlAction, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(PlayerSettingSection1);
+
+const getOverlaySides = () =>{
+    return [
+        {
+            widgetType : WidgetTypes.WIDGET_TYPE_SQUARE_BOX,
+            imageURL : createoverlayside1,
+            name: 'Square Shape'
+        },
+        {
+            widgetType : WidgetTypes.WIDGET_TYPE_CIRCLE,
+            imageURL : createoverlayside2,
+            name : 'Circle'
+        },
+        {
+            widgetType : WidgetTypes.WIDGET_TYPE_CUSTOM_SHAPE,
+            imageURL : createoverlayside9,
+            name : 'Custom Shape'
+        },
+        {
+            widgetType : WidgetTypes.WIDGET_TYPE_TEXT,
+            imageURL : createoverlayside3,
+            name : 'Text'
+        },
+        {
+            widgetType : WidgetTypes.WIDGET_TYPE_IMAGE,
+            imageURL : createoverlayside4,
+            name : 'Image'
+        },
+        {
+            widgetType : WidgetTypes.WIDGET_TYPE_ARROW_LOOP,
+            imageURL : createoverlayside5,
+            name : 'Arrow Loop'
+        },
+        {
+            widgetType : WidgetTypes.WIDGET_TYPE_VIDEO,
+            imageURL : createoverlayside6,
+            name : 'Video'
+        },
+        {
+            widgetType : WidgetTypes.WIDGET_TYPE_SLIDER,
+            imageURL : createoverlayside10,
+            name : 'Image / Video slider'
+        },
+        {
+            widgetType : WidgetTypes.WIDGET_TYPE_MAP,
+            imageURL : createoverlayside7,
+            name : 'Map'
+        },
+        {
+            widgetType : WidgetTypes.WIDGET_TYPE_WEB_PROGRAM,
+            imageURL : createoverlayside8,
+            name : 'Web Programming'
+        }
+
+    ];
+};

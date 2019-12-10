@@ -10,7 +10,7 @@ module.exports = {
     filename: "index_bundle.js"
   },
   devServer: {
-    host: "localhost",
+    host: "192.168.4.72",
     inline: true,
     port: 8088,
     contentBase: "./public",
@@ -45,7 +45,7 @@ module.exports = {
       },
       {
         test: /\.(jpg|jpeg|gif|png|svg)$/,
-        loader: "url-loader?limit=8192"
+        loader: "file-loader?name=images/[name].[ext]"
       },
       {
         test: /\.(mov|mp4)$/,

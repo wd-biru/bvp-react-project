@@ -1,0 +1,12 @@
+.custom-input-file{
+    max-width: 200px;
+    height: 26px;
+    border-radius: 3px;
+    display: inline-block;
+    padding: 3px 20px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 12px;
+    line-height: 21px;
+    border: solid 1px;
+}

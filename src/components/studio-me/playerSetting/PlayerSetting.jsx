@@ -5,7 +5,6 @@ import PlayerSettingSection3 from './PlayerSettingSection3';
 import PlayerSettingSection2 from './PlayerSettingSection2';
 import PlayerSettingSection1 from './PlayerSettingSection1';
 
-
 class PlayerSetting extends React.Component {
     
     render(){
