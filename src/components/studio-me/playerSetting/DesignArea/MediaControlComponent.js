@@ -10,6 +10,7 @@ class MediaControlComponent extends React.Component {
         super(props);
         getDraggableElement = getDraggableElement.bind(this);
         onDragStopHandler = onDragStopHandler.bind(this);
+        resizeHandler = resizeHandler.bind(this);
     }
 
 
@@ -38,15 +39,18 @@ export default connect(mapStateToProps, mapDispatchToProps)(MediaControlComponen
 function getDraggableElement() {
     return this.props.widgetsList.map((widget, index) => {
         return <DraggableCustomComponent key={index} widget={widget} positionIndex={index} bound='draggableContainer'
-                                         onDragStop={onDragStopHandler}><Widget
-            widget={widget}/></DraggableCustomComponent>;
+                                         onDragStop={onDragStopHandler} onResizeHandler = {resizeHandler} ><Widget
+            widget={widget} index={index}/></DraggableCustomComponent>;
     });
 }
 
 
 function onDragStopHandler(event, data, position) {
-    this.props.updateDragPosition(data.x, data.y, position)
-    console.log(event, data, position);
-    // data.x, data.y
+    this.props.updateDragPosition(data.x, data.y, position);
+}
+
+function resizeHandler(ref,position){
+    this.props.updateReSizePosition(ref.offsetWidth, ref.offsetHeight, position);
+
 }
 

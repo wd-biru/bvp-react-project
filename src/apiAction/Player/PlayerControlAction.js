@@ -5,7 +5,10 @@ export const playerActionConsts = {
     PLAYER_COPY: "PLAYER_COPY",
     PLAYER_DRAG: 'PLAYER_DRAG',
     PLAYER_DRAG_UPDATE:'PLAYER_DRAG_UPDATE',
-    PLAYER_SELECTION_UPDATE:'PLAYER_SELECTION_UPDATE'
+    PLAYER_SELECTION_UPDATE:'PLAYER_SELECTION_UPDATE',
+    PLAYER_NAME_EDIT : 'PLAYER_NAME_EDIT',
+    PLAYER_RESIZE_POSITION : 'PLAYER_RESIZE_POSITION',
+SELECTION_EDIT : 'SELECTION_EDIT'
 };
 
 export function updatePlayerActionData(data) {
@@ -53,6 +56,18 @@ export function updateDragPosition(xPosition, yPosition, widgetPosition){
     };
 }
 
+
+
+export function updateReSizePosition(width, height, widgetPosition){
+    return {
+        type : playerActionConsts.PLAYER_RESIZE_POSITION,
+        width : width,
+        height : height,
+        widgetPosition : widgetPosition
+
+    };
+}
+
 export function updateSelection(index){
     return {
         type : playerActionConsts.PLAYER_SELECTION_UPDATE,
@@ -60,6 +75,20 @@ export function updateSelection(index){
     };
 }
 
+export function editName(index,updateName){
+    return {
+        type : playerActionConsts.PLAYER_NAME_EDIT,
+        index:index,
+        updateName : updateName
+    };
+}
+
+export function editSelection(index){
+    return {
+        type : playerActionConsts.SELECTION_EDIT,
+        index:index,
+    };
+}
 export default {
     playerActionConsts
 };

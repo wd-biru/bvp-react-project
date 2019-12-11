@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import * as playerControlAction from "../../../apiAction/Player/PlayerControlAction";
 import * as alertActions from "../../../apiAction/Alert/AlertActions";
-
+import '../../../assets/css/widget.css';
 import CommonAlert from '../../CommonComponents/CommonAlert';
 
 class PlayerSettingSection2 extends React.Component{
@@ -15,12 +15,14 @@ class PlayerSettingSection2 extends React.Component{
     }
     render() {
         return (
-            <div onDrop={this.onDropHandler} onDragOver={this.onDragOverHandler} className="col-sm-9 createoverlay-two playerSetting-two">
-                <video id="videoTag" width="100%" >
-                    <source src={Video} type="video/mp4" />
-                </video>
-                <MediaControlComponent/>
-                <CommonAlert/>
+            <div>
+                <div ref="dropContainer" style={{padding:'0px !important'}} onDrop={this.onDropHandler} onDragOver={this.onDragOverHandler} className="col-sm-9 createoverlay-two draggable-container">
+                    <video id="videoTag" width="100%" >
+                        <source src={Video} type="video/mp4" />
+                    </video>
+                    <MediaControlComponent/>
+                    <CommonAlert/>
+                </div>
             </div>
         );
     }
@@ -39,11 +41,13 @@ class PlayerSettingSection2 extends React.Component{
                 });
             }
             if(isNotPresent){
-                widgetDetail['xPosition'] = event.clientX;
-                widgetDetail['yPosition'] = event.clientY
+                let rect = event.target.getBoundingClientRect()
+
+                widgetDetail['xPosition'] = rect.x;
+                widgetDetail['yPosition'] = rect.y
                 updatePlayerActionData(widgetDetail);
             }else{
-                showAlert();
+                showAlert('error', 'adding duplicate action is not allowed');
             }
 
         }

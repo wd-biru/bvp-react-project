@@ -1,37 +1,36 @@
 import React from 'react';
-import { Modal} from 'react-bootstrap';
+import { Modal, Button} from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
 import * as alertActions from '../../apiAction/Alert/AlertActions';
+import '../../assets/css/custom_modal.css';
 
 class CommonAlert extends React.Component{
 
     render() {
-
+        const { showModel, alertMessage, alertTitle, hideAlert} = this.props
         return(
             <Modal
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
-                centered
-                show = {this.props.showModel}
+                dialogClassName = "custom-modal-style"
+                onHide = {hideAlert}
+                show = {showModel}  
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        Modal heading
+                        {alertTitle}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h4>Centered Modal</h4>
                     <p>
-                        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                        consectetur ac, vestibulum at eros.
+                        {alertMessage}
                     </p>
                 </Modal.Body>
                 <Modal.Footer>
-{/*
-                    <Button onClick={props.onHide}>Close</Button>
-*/}
+
+                    <Button onClick={hideAlert}>Close</Button>
+
                 </Modal.Footer>
             </Modal>
         );
@@ -41,8 +40,8 @@ class CommonAlert extends React.Component{
 const mapStateToProps=(state)=>{
     return {
         showModel : state.alertReducer.showAlert,
-        alertMessage : state.alertReducer.alertMesssage,
-        alertTitle : state.alertReducer.alertTitle,
+        alertMessage : state.alertReducer.message,
+        alertTitle : state.alertReducer.title,
     };
 }
 

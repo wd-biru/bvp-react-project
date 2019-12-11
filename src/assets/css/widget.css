@@ -1,3 +1,16 @@
 .selected{
     border: solid 2px #1f75c4;
 }
+
+.draggable-container{
+    display: block;
+}
+
+.layer-selected{
+    border: solid 2px #736e6e;
+}
+
+
+.widget-selected{
+    border: solid 2px #2F6C73;
+}

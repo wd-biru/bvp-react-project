@@ -6,7 +6,7 @@ import { bindActionCreators } from "redux";
 import CustomInputFile from '../../../CommonComponents/CustomInputFile';
 import '../../../../assets/css/custom_input.css';
 import * as playerControlAction from "../../../../apiAction/Player/PlayerControlAction";
-
+import * as alertActions from "../../../../apiAction/Alert/AlertActions";
 
 class MediaControlComponent extends React.Component{
     constructor(props) {
@@ -91,15 +91,28 @@ class MediaControlComponent extends React.Component{
             xPosition: null,
             yPosition: null
         }
-        this.props.updatePlayerActionData(widgetDetail);
+        let isPresent = this.props.widgetList.find(element => element.widgetType == this.state.selectedOption)
+        if(isPresent){
+            this.props.showAlert("testing title","testing message");
+
+        }else{
+            this.props.updatePlayerActionData(widgetDetail);
+        }
+        
     }
 }
 
+function mapStateToProps(state){
+
+    return {
+        widgetList : state.controlReducer.widgetsList
+    };
+}
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators(playerControlAction, dispatch);
+    return bindActionCreators({...playerControlAction, ...alertActions}, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(MediaControlComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(MediaControlComponent);
 
 function importAll(r) {
     return r.keys().map(r);

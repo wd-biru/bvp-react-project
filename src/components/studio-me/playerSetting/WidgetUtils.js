@@ -1,7 +1,7 @@
 import React from 'react';
 import * as WidgetTypes from './WidgetType';
 import MediaControlChild from './WidgetChildrens/MediaControlChild';
-
+import TextChild from './WidgetChildrens/TextChild';
 
 const GetInnerChidrenByType = (props) => {
     const {widget} = props;
@@ -13,9 +13,9 @@ const GetInnerChidrenByType = (props) => {
         return <MediaControlChild widget={widget}/>;
     }
 
-    // if(widget.widgetType === WidgetTypes.WIDGET_TYPE_TEXT){
-    //     return <input type="text">
-    // }
+    if(widget.widgetType === WidgetTypes.WIDGET_TYPE_TEXT){
+        return <TextChild/>;
+    }
     return <MediaControlChild widget={widget}/>;
 }
 

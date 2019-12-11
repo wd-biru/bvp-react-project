@@ -5,42 +5,51 @@ class EditableInput extends React.Component {
         super(props);
         this.state = {
             editable: false,
-            currentValue: props.cardName,
         }
+
+        this.myRef = React.createRef();
+
     }
 
     render() {
-        if(this.state.editable)
+        if (this.state.editable)
             return (
                 <input
                     autoFocus={true}
                     onBlur={this.onBlueHandler}
-                    onChange={this.onChangeHandler}
                     onFocus={this.onFocusHandler}
                     type={"text"}
-                    value={this.state.currentValue}
+                    ref={this.myRef }
                 />
             );
-      return <div style={this.props.contentStyle} onDoubleClick={this.onDoubleClickHandler}> {this.state.currentValue} </div>
+        return <div style={this.props.contentStyle}
+                    onDoubleClick={this.onDoubleClickHandler}> {this.props.cardName} </div>
 
     }
+
+    componentDidMount() {
+        if(this.myRef  && this.myRef.current){
+            this.myRef.current.value = this.props.cardName;
+        }
+    }
+    componentDidUpdate() {
+        if(this.state.editable){
+            this.myRef.current.value = this.props.cardName;
+        }
+    }
+
 
     onBlueHandler = (event) => {
-        this.setState({ editable: false });
-     //   this.props.getLatestValue(event.target.value);
-    }
-
-    onChangeHandler = (event) => {
-        this.setState({ currentValue: event.target.value });
+        this.setState({editable: false});
+        this.props.getLatestValue(this.props.index, event.target.value);
     }
 
     onDoubleClickHandler = () => {
-        this.setState({ editable: true });
+        this.setState({editable: true});
     }
 
     onFocusHandler = (event) => {
-        event.target.value = "";
-        event.target.value = this.state.currentValue;
+
     }
 }
 

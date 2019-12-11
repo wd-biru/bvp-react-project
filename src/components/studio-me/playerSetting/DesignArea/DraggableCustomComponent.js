@@ -11,21 +11,21 @@ const style = {
 class DraggableCustomComponent extends React.Component {
 
     render() {
-        const {widget} =  this.props;
+        const {widget, onResizeHandler, onDragStop, positionIndex, children} =  this.props;
         return (
             <Rnd style={style}
                  default={{
                      x: 0,
                      y: 0,
-                     width: this.props.widget.width,
-                     height: this.props.widget.height
+                     width: widget.width,
+                     height: widget.height
                  }}
                  position={{ x: widget.xPosition, y: widget.yPosition }}
-
-                 onDragStop={(mouseEvent, dragData)=>this.props.onDragStop(mouseEvent, dragData, this.props.positionIndex)}
-                 bounds={'.createoverlay-two'}
+                 onResizeStop = {(e, direction, ref)=>onResizeHandler(ref,positionIndex)}
+                 onDragStop={(mouseEvent, dragData)=>onDragStop(mouseEvent, dragData, positionIndex)}
+                 bounds={'.draggable-container'}
             >
-                {this.props.children}
+                {children}
             </Rnd>
         );
     }

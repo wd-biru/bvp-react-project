@@ -1,7 +1,8 @@
 import {playerActionConsts} from './PlayerControlAction';
 
 const initialState = {
-    widgetsList: []
+    widgetsList: [],
+    selectedWidget : 0
 };
 
 const defaultWidgetDetail = {
@@ -12,7 +13,6 @@ const defaultWidgetDetail = {
     width: 10,
     height: 10,
     imageData: null,
-    isSelected: false
 }
 
 export default function controlReducer(state = initialState, action) {
@@ -42,8 +42,8 @@ export default function controlReducer(state = initialState, action) {
 
         case playerActionConsts.PLAYER_UPDATE: {
             defaultWidgetDetail.widgetType = action.data.widgetType;
-            defaultWidgetDetail.xPosition = 50;
-            defaultWidgetDetail.yPosition = 50;
+            defaultWidgetDetail.xPosition = action.data.xPosition;
+            defaultWidgetDetail.yPosition = action.data.yPosition;
             defaultWidgetDetail.name = action.data.name;
             defaultWidgetDetail.width = 50;
             defaultWidgetDetail.height = 50;
@@ -72,30 +72,40 @@ export default function controlReducer(state = initialState, action) {
             newArray = newArray.slice();
             reomvedArray[0].xPosition = action.xPosition;
             reomvedArray[0].yPosition = action.yPosition;
-
             newArray.splice(action.widgetPosition, 0, reomvedArray[0]);
-           /*
-            let currentObject = {...state.widgetsList[action.widgetPosition]};
-            currentObject.xPosition = action.xPosition;
-            currentObject.xPosition = data.y;*/
-
             return { ...state, ...{ widgetsList: newArray } };
-
         }
-
-        case playerActionConsts.PLAYER_SELECTION_UPDATE: {
+        case playerActionConsts.PLAYER_RESIZE_POSITION : {
             const { widgetsList } = state;
             let newArray = widgetsList.slice();
-            newArray.forEach((widgetDetail, index) => {
-                let isSelected = false;
-                if (index === action.index) {
-                    isSelected = true;
-                }
-                widgetDetail.isSelected = isSelected;
-            })
+            let reomvedArray = newArray.splice(action.widgetPosition, 1);
+            newArray = newArray.slice();
+            reomvedArray[0].width = action.width;
+            reomvedArray[0].height = action.height;
+            newArray.splice(action.widgetPosition, 0, reomvedArray[0]);
             return { ...state, ...{ widgetsList: newArray } };
         }
 
+
+        case playerActionConsts.PLAYER_SELECTION_UPDATE: {
+      
+            return { ...state, ...{ selectedWidget: action.index } };
+
+        }
+
+        case playerActionConsts.PLAYER_NAME_EDIT :{
+            const { widgetsList } = state;
+            let newArry = widgetsList.slice();
+            let newobj = newArry[action.index];
+            let removedArray = newArry.splice(action.index, 1);
+            newobj.name = action.updateName;
+            newArry.splice(action.index, 0, newobj);
+            return { ...state, ...{ widgetsList: newArry } };
+        }
+   case playerActionConsts.SELECTION_EDIT : {
+
+            return { ...state, ...{ selectedWidget: action.index } };
+        }
         default:
             return state;
     }
