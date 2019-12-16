@@ -8,7 +8,7 @@ class PlayerSettingSection3 extends React.Component{
             <div className="col-sm-2 createoverlay-three playerSetting-three">
                 <form>
                     <div className="form-group">
-                        <label for="sel1">Global Animation</label>
+                        <label htmlFor="sel1">Global Animation</label>
                         <select className="form-control" id="sel1">
                             <option>Fade in Cascode</option>
                             <option>go to link</option>
@@ -16,7 +16,7 @@ class PlayerSettingSection3 extends React.Component{
                         </select>
                     </div>
                     <div className="form-group">
-                        <label for="sel1">Direction</label>
+                        <label htmlFor="sel1">Direction</label>
                         <select className="form-control" id="sel1">
                             <option>None</option>
                             <option>Demo1</option>
@@ -25,7 +25,7 @@ class PlayerSettingSection3 extends React.Component{
                         </select>
                     </div>
                     <a href="#">
-                        <label for="sel1"></label>
+                        <label htmlFor="sel1"></label>
                         <input type="button" name="" value="PREVIEW" className="preview-btn" />
                     </a>
                 </form>

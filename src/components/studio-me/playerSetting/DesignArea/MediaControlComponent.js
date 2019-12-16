@@ -39,8 +39,9 @@ export default connect(mapStateToProps, mapDispatchToProps)(MediaControlComponen
 function getDraggableElement() {
     return this.props.widgetsList.map((widget, index) => {
         return <DraggableCustomComponent key={index} widget={widget} positionIndex={index} bound='draggableContainer'
-                                         onDragStop={onDragStopHandler} onResizeHandler = {resizeHandler} ><Widget
-            widget={widget} index={index}/></DraggableCustomComponent>;
+                                         onDragStop={onDragStopHandler} onResizeHandler={resizeHandler}>
+            <Widget widget={widget} index={index}/>
+        </DraggableCustomComponent>;
     });
 }
 

@@ -34,7 +34,7 @@ class LayersComponent extends React.PureComponent {
         this.props.dragPlayerActionData(dragIndex, hoverIndex);
     }
 
-    onWidgetSelectHandler(index){
+    onWidgetSelectHandler(index) {
         this.props.editSelection(index);
     }
 
@@ -58,7 +58,13 @@ class LayersComponent extends React.PureComponent {
                     }}>>
                         <div style={{display: 'inline-block', padding: '5px'}}><span
                             style={{width: '10px'}}>{index + 1}</span></div>
-                        <EditableInput cardName={card.name} index={index} getLatestValue={this.onGetLatestValue} contentStyle={{display: 'inline-block', padding: '5px'}}/>
+                        <EditableInput cardName={card.name} index={index}
+                                       getLatestValue={this.onGetLatestValue}
+                                       contentStyle={{
+                                           display: 'inline-block',
+                                           padding: '5px',
+                                           width: 'calc(100% - 65px)'
+                                       }}/>
                         <div style={{float: 'right', margin: '5px'}}>
                             <span><img onClick={() => this.props.handleCopy(index)} src={images1}
                                        className="layer-img"/></span>

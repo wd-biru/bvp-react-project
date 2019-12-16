@@ -572,6 +572,7 @@ class Dashboard extends Component {
                               <FileType
                                 data={data}
                                 index={index}
+                                key={{index}}
                                 activeClass={
                                   this.state.projectActiveIndex === index
                                     ? true
@@ -610,6 +611,7 @@ class Dashboard extends Component {
                             return (
                               <FileType
                                 data={data}
+                                key={index}
                                 projectActiveIndex={
                                   this.state.projectActiveIndex
                                 }

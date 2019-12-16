@@ -12,5 +12,37 @@
 
 
 .widget-selected{
-    border: solid 2px #2F6C73;
+    border: solid 2px #2F6C73 !important;
+}
+
+.widget{
+    width: 100%;
+    height: 100%;
+    border: solid 1px #ddd;
+    padding : 1px;
+}
+
+.edit-button{
+    position: absolute;
+    width: calc(100% - 5px);
+    text-align: right;
+    cursor: pointer;
+    top: 18px;
+    display: none;
+}
+
+.delete-button {
+    position: absolute;
+    width: calc(100% - 5px);
+    text-align: right;
+    cursor: pointer;
+    display: none;
+}
+
+.widget-selected:hover .edit-button{
+    display: block;
+}
+
+.widget-selected:hover .delete-button{
+    display: block;
 }

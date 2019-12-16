@@ -11,6 +11,7 @@
     "is-promise": "^2.1.0",
     "react": "^16.7.0",
     "react-bootstrap": "^1.0.0-beta.12",
+    "react-color": "^2.17.3",
     "react-data-table-component": "^3.6.0",
     "react-dates": "^19.0.2",
     "react-dnd": "^9.5.1",

@@ -3,7 +3,7 @@ export const playerActionConsts = {
     PLAYER_DELETE: "PLAYER_DELETE",
     PLAYER_ADD: "PLAYER_ADD",
     PLAYER_COPY: "PLAYER_COPY",
-    PLAYER_DRAG: 'PLAYER_DRAG',
+    PLAYER_DRAG_REORDER: 'PLAYER_DRAG_REORDER',
     PLAYER_DRAG_UPDATE:'PLAYER_DRAG_UPDATE',
     PLAYER_SELECTION_UPDATE:'PLAYER_SELECTION_UPDATE',
     PLAYER_NAME_EDIT : 'PLAYER_NAME_EDIT',
@@ -41,7 +41,7 @@ export function deletePlayerActionData(index) {
 
 export function dragPlayerActionData(dragindex,hoverindex) {
     return {
-        type: playerActionConsts.PLAYER_DRAG,
+        type: playerActionConsts.PLAYER_DRAG_REORDER,
         dragindex,
         hoverindex
     };

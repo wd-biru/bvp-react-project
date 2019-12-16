@@ -44,9 +44,9 @@ class StudioVideoSection extends React.Component {
       `https://apiv2.bossvideoplayer.com/public/user/${mediaUrl}`;
 
     return (
-      <div class="container-fluid Studioed">
-        <div class="row">
-          <div class="col-sm-7 Studioed-seund">
+      <div className="container-fluid Studioed">
+        <div className="row">
+          <div className="col-sm-7 Studioed-seund">
             {this.state.dragFiles && mediaUrl !== null ? (
               <ReactPlayer url={filePath} playing={false} controls />
             ) : (

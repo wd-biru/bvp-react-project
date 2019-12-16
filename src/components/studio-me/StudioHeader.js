@@ -34,10 +34,10 @@ class StudioHeader extends React.Component {
               />
             </span>
             <button
-              class="btn btn-primary BackBtn"
+                className="btn btn-primary BackBtn"
               onClick={this.props.handleBackBtn}
             >
-              <i class="fa fa-angle-double-left"></i>
+              <i className="fa fa-angle-double-left"></i>
               Back
             </button>
             <div className="">

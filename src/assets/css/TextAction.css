@@ -1,0 +1,30 @@
+.text_style{
+    display : flex;
+    justify-content : space-around
+}
+
+.text-container{
+    width: 100%;
+    padding: 5px;
+}
+
+.text-container  > * {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px;
+}
+
+.left-feild{
+    min-width: 170px;
+    color: #707071;
+}
+.text-edit-label-btn {
+    color: black;
+    margin-right: 28px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.save-botton-button{
+    margin-top: 20px;
+}

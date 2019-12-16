@@ -2,6 +2,9 @@ import React from 'react';
 import WidgetUtils from './WidgetUtils';
 import classNames from 'classnames';
 import '../../../assets/css/widget.css';
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import * as playerActions from "../../../apiAction/Player/PlayerControlAction";
 class Widget extends React.Component {
     constructor(props) {
         super(props);
@@ -10,19 +13,40 @@ class Widget extends React.Component {
 
     render() {
         const layerStyle = classNames({
-            'selected': this.props.widget && this.props.widget.isSelected
+            'widget' : true,
+            'widget-selected': this.props.index === this.props.selectedIndex
         })
         return (
-            <div  className={layerStyle} onClick={this.onWidgetSelectHandler}>
+            <div  className={layerStyle}   onClick={() => {
+                this.onWidgetSelectHandler(this.props.index);
+            }}>
+{/*
+                <i className="fa fa-pencil edit-button"/>
+*/}
+{/*
+                <i className="fa fa-trash-o delete-button"/>
+*/}
+
                 <WidgetUtils widget={this.props.widget} />
             </div>
         );
     }
 
     // @TO-DO
-    onWidgetSelectHandler(){
-        console.log("selected");
+
+    onWidgetSelectHandler(index){
+        this.props.editSelection(index);
     }
 }
 
-export default Widget;
+function mapStateToProps(state) {
+    return {
+        selectedIndex: state.controlReducer.selectedWidget
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(playerActions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Widget);

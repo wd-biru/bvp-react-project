@@ -51,7 +51,7 @@ class NavItems extends React.Component {
                   <ul className="sub_folder">
                     <li>
                       <span>
-                        <span class="number">
+                        <span className="number">
                           {folderData.files.length > 0
                             ? folderData.files.length
                             : 0}

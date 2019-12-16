@@ -13,38 +13,53 @@ import * as WidgetTypes from './WidgetType';
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
 import * as playerControlAction from "../../../apiAction/Player/PlayerControlAction";
+import { popupAction,hidePopup } from '../../../apiAction/actions/commonActions';
+import * as alertActions from  '../../../apiAction/Alert/AlertActions';
+import ActionPopup from '../../popup/ActionPopup';
+import AddWidgetPopup from '../../popup/AddWidgetPopup';
+import * as widgetPopupActions from '../../../apiAction/WidgetPopup/WidgetPopupAction';
+import {getWidgetNameByType} from './WidgetUtils';
 
 class PlayerSettingSection1 extends React.Component {
     constructor(props) {
         super(props);
+        handleInputFileChange = handleInputFileChange.bind(this);
+        handleDoubleClickHandler = handleDoubleClickHandler.bind(this);
+
     }
 
     render() {
         return (
             <div className="col-sm-1 createoverlay-one playerSetting-one">
                 <ul>
-                    {getOverlaySides().map(data=><li><span onDoubleClick={() =>this.handleDoubleClickHandler(data)} href="#" title="Square Shape"><img src={data.imageURL}/></span></li>)}
+                    {getOverlaySides().map((data, index)=>{
+                        return <li key={index}>
+                           {getWidgetChildrens(data)}
+                            </li>
+                            })
+                    }
+                    <ActionPopup />
+                    <AddWidgetPopup/>
                 </ul>
             </div>
         );
     }
 
-    handleDoubleClickHandler = (data) =>{
-        this.props.updatePlayerActionData( {
-            widgetType: data.widgetType,
-            name: data.name,
-            imageData : data.imageURL
-        });
-    }
-
+   
 }
 
 
+const mapStateToProps = (state) => {
+    return {
+        widgetList : state.controlReducer.widgetsList,
+        showPopup : state.saveReducer.showSavePopup
+    };
+}
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators(playerControlAction, dispatch);
+    return bindActionCreators({...playerControlAction,...alertActions,popupAction,hidePopup, ...widgetPopupActions}, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(PlayerSettingSection1);
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerSettingSection1);
 
 const getOverlaySides = () =>{
     return [
@@ -101,3 +116,62 @@ const getOverlaySides = () =>{
 
     ];
 };
+
+const getWidgetChildrens = (widget) => {
+    switch (widget.widgetType) {
+        case WidgetTypes.WIDGET_TYPE_PALY_BUTTON:
+            return <span onDoubleClick={() => handleDoubleClickHandler(widget)} href="#" title={widget.name}><img src={widget.imageURL} /></span>
+
+        case WidgetTypes.WIDGET_TYPE_IMAGE:
+             
+            return <span onDoubleClick={() => handleDoubleClickHandler(widget)} href="#" title={widget.name}><img src={widget.imageURL} />
+                <input type="file" id="file" style = {{display : 'none'}} accept="image/x-png,image/gif,image/jpeg" onChange = {(event) => handleInputFileChange(event,widget)}/>
+            </span>
+
+        default:
+            return <span onDoubleClick={() => handleDoubleClickHandler(widget)} href="#" title={widget.name}><img src={widget.imageURL} /></span>;
+    }
+}
+
+
+function handleDoubleClickHandler(data){
+    if(data.widgetType === WidgetTypes.WIDGET_TYPE_TEXT){
+        this.props.popupAction("Text Configuration");
+    }
+    else if(data.widgetType === WidgetTypes.WIDGET_TYPE_IMAGE){
+        document.getElementById('file').click();
+    }
+    else if(data.widgetType === WidgetTypes.WIDGET_TYPE_WEB_PROGRAM ||
+        data.widgetType === WidgetTypes.WIDGET_TYPE_MAP
+    ){
+        this.props.showWidgetPopupAlert();
+    }
+}
+
+function handleInputFileChange(event,data){
+    const image = event.target.files[0];
+
+        if (image.type.indexOf('image') >= 0) {
+            if (event.target.files && event.target.files[0]) {
+            
+                    let reader = new FileReader();
+                    reader.onload = () => {
+                        const imageUrl = reader.result;
+                        const defaultWidgetDetail = {
+                            widgetType: data.widgetType,
+                            xPosition: 50,
+                            yPosition: 50,
+                            name: getWidgetNameByType(data.widgetType),
+                            width: 50,
+                            height: 50,
+                            imageData: imageUrl
+                        }
+                        this.props.updatePlayerActionData(defaultWidgetDetail);
+                    };
+                    reader.readAsDataURL(image);
+            
+            }
+        }else{
+            this.props.showAlert("Wrong Image Formate", "The image you uploaded is not in .png formate");
+        }
+}

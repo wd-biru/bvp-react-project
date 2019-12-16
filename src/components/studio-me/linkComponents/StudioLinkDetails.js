@@ -93,11 +93,11 @@ class StudioLinkDetails extends React.Component {
     return (
       <>
         <div className="tab-content1">
-          <div class="tab-pane container fade active" id="menu11">
-            <div class="table-responsive two">
+          <div className="tab-pane container fade active" id="menu11">
+            <div className="table-responsive two">
               <form>
                 <div className="form-group">
-                  <label for="project">Project Name</label>
+                  <label htmlFor="project">Project Name</label>
                   <input
                     name="projectName"
                     id="projectName"
@@ -108,13 +108,13 @@ class StudioLinkDetails extends React.Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="email">Description</label>
+                  <label htmlFor="email">Description</label>
                   <textarea
-                    class="form-control"
+                      className="form-control"
                     rows="5"
                     id="description"
                     name="description"
-                    value={this.state.description}
+                    value={this.state.description || ''}
                     placeholder={
                       this.props.selectedMedia.description === null &&
                       "Please Enter Description"
@@ -124,13 +124,13 @@ class StudioLinkDetails extends React.Component {
                 </div>
               </form>
 
-              <div class="container">
-                <div class="row">
-                  <div class="col-sm-6 p-0">
-                    <label for="email">Thumbnail</label>
+              <div className="container">
+                <div className="row">
+                  <div className="col-sm-6 p-0">
+                    <label htmlFor="email">Thumbnail</label>
                     <img src={this.state.thumbImage} class="img-w" />
-                    <div class="posterframe-btn-sec">
-                      <label for="files" class="UPNEW">
+                    <div className="posterframe-btn-sec">
+                      <label htmlFor="files" className="UPNEW">
                         UPLOAD NEW
                       </label>
                       <input
@@ -138,30 +138,30 @@ class StudioLinkDetails extends React.Component {
                         type="file"
                         name="myImage"
                         accept="image/x-png,image/gif,image/jpeg"
-                        class="hidden"
+                        className="hidden"
                         onChange={() => this.onChange(event)}
                       />
-                      <input type="button" value="CURRENT FRAME" class="CRFR" />
+                      <input type="button" value="CURRENT FRAME" className="CRFR" />
                     </div>
                   </div>
-                  <div class="col-sm-6">
-                    <div class="form-group">
+                  <div className="col-sm-6">
+                    <div className="form-group">
                       <input
                         type="button"
                         name=""
                         value="Player Settings"
-                        class="Player-Settings createnew-top"
+                        className="Player-Settings createnew-top"
                         onClick={() => this.props.handlePlayerSetting()}
                       />
                     </div>
                   </div>
-                  <div class="col-sm-6">
-                    <div class="form-group">
+                  <div className="col-sm-6">
+                    <div className="form-group">
                       <input
                         type="button"
                         name=""
                         value="Save"
-                        class="Player-Settings createnew-top"
+                        className="Player-Settings createnew-top"
                         onClick={this.saveStudioDetails}
                       />
                     </div>

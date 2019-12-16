@@ -58,7 +58,7 @@ class StudioToolsCompo extends React.Component{
                                 <p>Hot Spots that are in a fixed position anywhere on the screen.</p>
                             </div>
                         </div>
-						<li><span title="Add Hotspots" onclick="displayHotspot()"><img src={addhotspot} className="icon" /></span></li>
+						<li><span title="Add Hotspots" onClick="displayHotspot()"><img src={addhotspot} className="icon" /></span></li>
 						<li><span href="#" data-toggle="modal" data-target="#myModalHotspots"  title="Hotspots Designer"><img src={hotspotdesign} className="icon" /></span></li>
 						<li><span href="#" data-toggle="modal" data-target="#myModal" 
 						   title="Preview" onClick={this.props.handleEditor2}><img src={preview} className="icon" /></span></li>

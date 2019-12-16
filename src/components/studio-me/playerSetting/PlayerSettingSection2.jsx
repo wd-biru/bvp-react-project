@@ -34,13 +34,9 @@ class PlayerSettingSection2 extends React.Component{
             widgetDetail = JSON.parse(widgetDetail);
             let isNotPresent = false;
             if(widgetsList){
-                isNotPresent = widgetsList.every((widget) =>{
-                    if(widget && widget.widgetType === widgetDetail.widgetType)
-                        return false
-                    return true;
-                });
+                isNotPresent = widgetsList.find(element => element.widgetType == widgetDetail.widgetType);
             }
-            if(isNotPresent){
+            if(!isNotPresent){
                 let rect = event.target.getBoundingClientRect()
 
                 widgetDetail['xPosition'] = rect.x;

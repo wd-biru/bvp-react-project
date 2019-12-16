@@ -43,3 +43,7 @@
         border: 1px solid #17a2b8 !important;
         border-radius: 0px;
     }
+
+    html, body{
+        height: 100%;
+    }

@@ -27,7 +27,7 @@ const StudioPlayListButton = () => {
 	    			</ul>
 	    		</div>
 			</div>
-			<div classNameName="col-sm-5"></div>
+			<div className="col-sm-5"></div>
 		</div>
 	</div>
     )

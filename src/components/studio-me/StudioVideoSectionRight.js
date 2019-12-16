@@ -141,8 +141,8 @@ class StudioVideoSectionRight extends React.Component {
     ];
 
     return (
-      <div class="col-sm-5 Studioed-three">
-        <ul class="nav nav-pills">
+      <div className="col-sm-5 Studioed-three">
+        <ul className="nav nav-pills">
           {studioNavItem &&
             studioNavItem.map((itemType, index) => {
               return (

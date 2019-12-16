@@ -12,7 +12,10 @@ const defaultWidgetDetail = {
     name: 'layer1',
     width: 10,
     height: 10,
+    minWidth : 10,
+    minHeight : 10,
     imageData: null,
+    otherData : null,
 }
 
 export default function controlReducer(state = initialState, action) {
@@ -32,9 +35,10 @@ export default function controlReducer(state = initialState, action) {
         case playerActionConsts.PLAYER_COPY: {
             let data = state.widgetsList;
 
+
             if (data) {
                 const firstArr = data;
-                const lastArr = data.splice(action.index + 1, 0, data[action.index]);
+                const lastArr = data.splice(action.index + 1, 0, {...data[action.index]});
                 data = [...firstArr, ...lastArr];
             }
             return {...state, widgetsList: data};
@@ -42,26 +46,30 @@ export default function controlReducer(state = initialState, action) {
 
         case playerActionConsts.PLAYER_UPDATE: {
             defaultWidgetDetail.widgetType = action.data.widgetType;
-            defaultWidgetDetail.xPosition = action.data.xPosition;
-            defaultWidgetDetail.yPosition = action.data.yPosition;
+            defaultWidgetDetail.xPosition = 100;  //action.data.xPosition;
+            defaultWidgetDetail.yPosition = 100; //action.data.yPosition;
             defaultWidgetDetail.name = action.data.name;
             defaultWidgetDetail.width = 50;
             defaultWidgetDetail.height = 50;
-            defaultWidgetDetail.imageData = action.data.imageData;
+            defaultWidgetDetail.minWidth = action.data.minWidth || 10
+            defaultWidgetDetail.minHeight = action.data.minHeight || 10
 
+            defaultWidgetDetail.imageData = action.data.imageData;
+            defaultWidgetDetail.otherData = action.data.otherData
             let newArray = state.widgetsList.slice();
             newArray.splice(state.widgetsList.length, 0, {...defaultWidgetDetail});
             return {...state, widgetsList: newArray};
         }
 
-      case playerActionConsts.PLAYER_DRAG: {
+      case playerActionConsts.PLAYER_DRAG_REORDER: {
         const { widgetsList } = state;
+        console.log(widgetsList);
         let newArray = widgetsList.slice();
-      //  let newPositionX =
         let reomvedArray = newArray.splice(action.dragindex, 1);
+        console.log(reomvedArray);
         newArray = newArray.slice();
-        newArray.splice(action.hoverindex, 0, reomvedArray[0]);
-
+        newArray.splice(action.hoverindex, 0, {...reomvedArray[0]});
+          console.log(newArray);
         return { ...state, ...{ widgetsList: newArray } };
       }
 
@@ -97,7 +105,7 @@ export default function controlReducer(state = initialState, action) {
             const { widgetsList } = state;
             let newArry = widgetsList.slice();
             let newobj = newArry[action.index];
-            let removedArray = newArry.splice(action.index, 1);
+            newArry.splice(action.index, 1);
             newobj.name = action.updateName;
             newArry.splice(action.index, 0, newobj);
             return { ...state, ...{ widgetsList: newArry } };
