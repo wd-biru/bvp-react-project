@@ -1,8 +1,23 @@
 import {playerActionConsts} from './PlayerControlAction';
+import * as WidgetTypes from '../../components/studio-me/playerSetting/WidgetType'
 
 const initialState = {
-    widgetsList: [],
-    selectedWidget : 0
+    widgetsList: [
+        {
+            widgetType: WidgetTypes.WIDGET_TYPE_DEFAULT_VIDEO,
+            xPosition: 340,
+            yPosition: -520,
+            name: 'video layer',
+            width: 564,
+            height: 320,
+            minWidth : 100,
+            minHeight : 100,
+            imageData: null,
+            otherData : null,
+        }
+    ],
+    selectedWidget : 0,
+    templateId : 0
 };
 
 const defaultWidgetDetail = {
@@ -47,7 +62,7 @@ export default function controlReducer(state = initialState, action) {
         case playerActionConsts.PLAYER_UPDATE: {
             defaultWidgetDetail.widgetType = action.data.widgetType;
             defaultWidgetDetail.xPosition = 100;  //action.data.xPosition;
-            defaultWidgetDetail.yPosition = 100; //action.data.yPosition;
+            defaultWidgetDetail.yPosition = -500; //action.data.yPosition;
             defaultWidgetDetail.name = action.data.name;
             defaultWidgetDetail.width = 50;
             defaultWidgetDetail.height = 50;
@@ -61,15 +76,27 @@ export default function controlReducer(state = initialState, action) {
             return {...state, widgetsList: newArray};
         }
 
+      case playerActionConsts.PLAYER_EDIT : {
+          let selectedWidget = state.widgetsList[action.widgetIndex]
+        
+          selectedWidget["otherData"] = action.data.otherData
+          let newArray = state.widgetsList.slice();
+          newArray.splice(action.widgetIndex,1,{...selectedWidget});
+          
+          return {...state , widgetsList: newArray};
+      }
+      case playerActionConsts.PLAYER_STORE_TEMPLATE : {
+      
+        let newArray = action.data
+        
+        return {...state , widgetsList: newArray ,templateId : action.templateId};
+      }
       case playerActionConsts.PLAYER_DRAG_REORDER: {
         const { widgetsList } = state;
-        console.log(widgetsList);
         let newArray = widgetsList.slice();
         let reomvedArray = newArray.splice(action.dragindex, 1);
-        console.log(reomvedArray);
         newArray = newArray.slice();
         newArray.splice(action.hoverindex, 0, {...reomvedArray[0]});
-          console.log(newArray);
         return { ...state, ...{ widgetsList: newArray } };
       }
 

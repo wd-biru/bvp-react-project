@@ -21,7 +21,7 @@ class IframeAction extends React.Component{
         return(
             <>
                 <div className="text-container">
-                    <label className="left-feild">Text</label>
+                    <label className="left-feild">IFrame</label>
                     <input type="text" value={this.state.iFrameUrl} onChange={this.onUrlChangeHandler}></input>
                 </div>
                 <Button className='save-botton-button' onClick={this.onSaveHandler}>Submit</Button>

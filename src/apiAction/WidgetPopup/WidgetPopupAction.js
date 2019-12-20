@@ -4,11 +4,12 @@ export const widgetPopupActionConstants = {
     SHOW_SAVE_POPUP : 'WIDGET_POPUP_SHOW_SAVE_POPUP',
 };
 
-export function showWidgetPopupAlert(title, message) {
+export function showWidgetPopupAlert(title, message,widgetType) {
     return {
         type: widgetPopupActionConstants.SHOW_ALERT,
         title: title,
-        message: message
+        message: message,
+        widgetType : widgetType
     };
 }
 

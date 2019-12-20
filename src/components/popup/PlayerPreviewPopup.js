@@ -5,14 +5,10 @@ import { bindActionCreators} from 'redux';
 import '../../assets/css/custom_modal.css';
 import '../../assets/css/TextAction.css';
 import * as widgetPopupActions from "../../apiAction/WidgetPopup/WidgetPopupAction";
-import IframeAction from "./IframeAction";
-import ShapeColourPopup from "./ShapeColourPopup";
-import * as WidgetTypes from '../studio-me/playerSetting/WidgetType';
 class ActionPopup extends React.Component{
 
     render() {
-        const { showModel, alertTitle, hideWidgetPopupAlert,widgetType } = this.props;
-
+        const { showModel, alertTitle, hideWidgetPopupAlert} = this.props;
         return(
             <Modal
                 size="lg"
@@ -20,7 +16,6 @@ class ActionPopup extends React.Component{
                 dialogClassName = "custom-modal-style"
                 onHide = {hideWidgetPopupAlert}
                 show = {showModel}
-                onClick={this.handleOutSideClick}
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
@@ -29,26 +24,12 @@ class ActionPopup extends React.Component{
                 </Modal.Header>
                 <Modal.Body>
                     <div >
-                        {this.getRespectiveChild(widgetType)}
+                        <IframeAction widget={this.props.widget} />
                     </div>
                 </Modal.Body>
             </Modal>
         );
     }
-
-    getRespectiveChild = (widgetType) =>{
-        switch(widgetType){
-            case WidgetTypes.WIDGET_TYPE_IFRAME :
-                return <IframeAction widget={this.props.widget} />;
-            case WidgetTypes.WIDGET_TYPE_CIRCLE:
-                return <ShapeColourPopup widgetType = {this.props.widgetType} />
-            case WidgetTypes.WIDGET_TYPE_SQUARE_BOX:
-                return <ShapeColourPopup widgetType = {this.props.widgetType} />
-            default:
-                return null;
-        }
-    }
-
 }
 
 const mapStateToProps=(state)=>{
@@ -56,7 +37,6 @@ const mapStateToProps=(state)=>{
         showModel : state.widgetPopupReducer.showPopup,
         alertMessage : state.widgetPopupReducer.message,
         alertTitle : state.widgetPopupReducer.title,
-        widgetType :state.widgetPopupReducer.widgetType
     };
 }
 

@@ -15,22 +15,16 @@ let applyStyle = {
     border : '1px solid black',
     padding : '0 4px 0 4px'
 }
+let localStates = [
+    {key:'background',value:'blue'},{key:'textBackgroundColor',value:'rgba(244, 244, 244, 0)'},{key:'textColor',value:'rgba(219, 227, 222, 1)'},
+    {key:'textName',value:''},{key:'textFont',value:'Times New Roman'},{key:'textSize',value:'32'},
+    {key:'bold',value:false},{key:'italic',value:false},{key:'underline',value:false},
+    {key:'colorPickerX',value:0},{key:'colorPickerY',value:0}
+]
 class ActionPopup extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {
-            background: 'blue',
-            textBackgroundColor: 'rgba(244, 244, 244, 0)',
-            textColor: 'rgba(219, 227, 222, 1)',
-            textValue: '',
-            textFont: 'Times New Roman',
-            textSize: 36,
-            bold: false,
-            italic: false,
-            underline: false,
-            colorPickerX: 0,
-            colorPickerY: 0
-        }
+        this.state = {}
     }
 
     selectTextStyle = (state) =>{
@@ -57,13 +51,14 @@ class ActionPopup extends React.Component{
         })
     }
 
-    chooseColor = (e,type)=>{
+    chooseColor = (e,type,color)=>{
         e.stopPropagation();
         this.setState({
             colorPicker : true,
             colorPickerX : 0,
             colorPickerY : 0,
-            pickerTarget : type
+            pickerTarget : type,
+            background : color
         })
 
     }
@@ -73,6 +68,30 @@ class ActionPopup extends React.Component{
             ['text'+type] : event.target.value
         })
     }
+    setDefaultLocalStates = ()=>{
+        const{ alertpopupData } = this.props;
+        if(alertpopupData){
+           Object.keys(alertpopupData.otherData).forEach(key => {
+               this.setState({
+                   [key] : alertpopupData.otherData[key]
+               })
+           }) 
+        }else{
+            localStates.forEach(state => {
+                this.setState({
+                    [state.key] : state.value
+                })
+            })
+        }
+    }
+    resetLocalStates = () => {
+        localStates.forEach(state => {
+            this.setState({
+                [state.key] : state.value
+            })
+        })
+    }
+    
     render() {
         const { showModel, alertTitle, hideAlert} = this.props;
         const { textColor, bold, italic, underline, background, textBackgroundColor, colorPickerX, colorPickerY } = this.state;
@@ -84,6 +103,8 @@ class ActionPopup extends React.Component{
                 dialogClassName = "custom-modal-style"
                 onHide = {hideAlert}
                 show = {showModel}  
+                onEntered = {this.setDefaultLocalStates}
+                onExited = {this.resetLocalStates}
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
@@ -95,13 +116,13 @@ class ActionPopup extends React.Component{
 
                         <div className="text-container">
                             <label className="left-feild" >Text</label>
-                            <input type="text" onChange={(e) => this.changehandler(e, 'Value')} ></input>
+                            <input value = {this.state.textName} type="text" onChange={(e) => this.changehandler(e, 'Name')} ></input>
                         </div>
                         <div className="text-container">
                             <label className="left-feild">Font</label>
                             <select selected="selected" style={{ width: '182px' }} onChange={(e) => this.changehandler(e, 'Font')}>
                                 {getFontFamily().map((element, index) => (
-                                    <option key={index} style={{ fontFamily: element }}>{element}</option>
+                                    <option selected = {this.state.textFont == element ? true : false} key={index} style={{ fontFamily: element }}>{element}</option>
                                 ))}
                             </select>
                         </div>
@@ -129,11 +150,11 @@ class ActionPopup extends React.Component{
                         </div>
                         <div className="text-container">
                             <label className="left-feild" >text color</label>
-                            <div onClick={(event) => this.chooseColor(event, 'TextColor')} type="text" style={{ border: '1px solid', width: '100px', height: '25px', cursor: 'pointer', backgroundColor: textColor }}></div>
+                            <div onClick={(event) => this.chooseColor(event, 'TextColor','rgba(219, 227, 222, 1)')} type="text" style={{ border: '1px solid', width: '100px', height: '25px', cursor: 'pointer', backgroundColor: textColor }}></div>
                         </div>
                         <div className="text-container">
                             <label className="left-feild" >background color</label>
-                            <div onClick={(event) => this.chooseColor(event, 'TextBackColor')} type="text" style={{ border: '1px solid', width: '100px', height: '25px', cursor: 'pointer', backgroundColor: textBackgroundColor }}></div>
+                            <div onClick={(event) => this.chooseColor(event, 'TextBackColor','rgba(244, 244, 244, 0)')} type="text" style={{ border: '1px solid', width: '100px', height: '25px', cursor: 'pointer', backgroundColor: textBackgroundColor }}></div>
                         </div>
 
                         {this.state.colorPicker && <div onClick={(e) => e.stopPropagation()} style={{ position: 'absolute', top: colorPickerY, left: colorPickerX }}>
@@ -145,20 +166,20 @@ class ActionPopup extends React.Component{
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button disabled={!this.state.textValue} onClick={this.onSaveHandler}>Submit</Button>
+                    <Button disabled={!this.state.textName} onClick={this.onSaveHandler}>Submit</Button>
                 </Modal.Footer>
             </Modal>
         );
     }
 
     onSaveHandler =() => {
-        const { textValue, textColor,textFont, bold, italic, underline,textSize, textBackgroundColor } = this.state;
-
+        const { textName, textColor,textFont, bold, italic, underline,textSize, textBackgroundColor } = this.state;
+        const { alertpopupData,updatePlayerActionData,editPlayerActionData,hidePopup } = this.props;
         const data = {
             widgetType: WidgetType.WIDGET_TYPE_TEXT,
             name: getWidgetNameByType(WidgetType.WIDGET_TYPE_TEXT),
             otherData: {
-                textName : textValue,
+                textName : textName,
                 textFont : textFont,
                 textSize : textSize,
                 bold: bold,
@@ -168,8 +189,14 @@ class ActionPopup extends React.Component{
                 textColor : textColor,
             }
         }
-        this.props.updatePlayerActionData(data);
-        this.props.hidePopup();
+        if(alertpopupData){
+            console.log("edit popup at index : ",alertpopupData.widgetIndex)
+            editPlayerActionData(data,alertpopupData.widgetIndex)
+        }else{
+            updatePlayerActionData(data);
+        }
+        
+        hidePopup();
     }
 
 }
@@ -177,7 +204,7 @@ class ActionPopup extends React.Component{
 const mapStateToProps=(state)=>{
     return {
         showModel : state.actionPopupReducer.showActionPopup,
-        alertMessage : state.actionPopupReducer.message,
+        alertpopupData : state.actionPopupReducer.popupData,
         alertTitle : state.actionPopupReducer.title,
     };
 }

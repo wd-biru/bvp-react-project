@@ -1,10 +1,10 @@
 import{ alertActionConstants } from '../Alert/AlertActions';
 
-export function popupAction(title,message){
+export function popupAction(title,popupData){
     return {
         type: alertActionConstants.SHOW_POPUP,
         title: title,
-        message: message
+        popupData: popupData
     };
 }
 export function hidePopup(title,message){

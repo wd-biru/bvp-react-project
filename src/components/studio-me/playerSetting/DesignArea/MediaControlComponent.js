@@ -38,7 +38,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(MediaControlComponen
 
 function getDraggableElement() {
     return this.props.widgetsList.map((widget, index) => {
-        return <DraggableCustomComponent key={index} widget={widget} positionIndex={index} bound='draggableContainer'
+        return <DraggableCustomComponent key={index} widget={widget} positionIndex={index} bound='.draggable-container'
                                          onDragStop={onDragStopHandler} onResizeHandler={resizeHandler}>
             <Widget widget={widget} index={index}/>
         </DraggableCustomComponent>;
@@ -50,7 +50,7 @@ function onDragStopHandler(event, data, position) {
     this.props.updateDragPosition(data.x, data.y, position);
 }
 
-function resizeHandler(ref,position){
+function resizeHandler(ref, position) {
     this.props.updateReSizePosition(ref.offsetWidth, ref.offsetHeight, position);
 
 }

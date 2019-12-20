@@ -3,6 +3,10 @@ import * as WidgetTypes from './WidgetType';
 import MediaControlChild from './WidgetChildrens/MediaControlChild';
 import TextChild from './WidgetChildrens/TextChild';
 import IFrameChild from "../../ActionComponent/IFrame";
+import CircleChild from './WidgetChildrens/CircleChild';
+import SquareChild from './WidgetChildrens/SquareChild';
+
+import Video from "../../../assets/img/me/video-test.mp4";
 
 const GetInnerChidrenByType = (props) => {
     const {widget} = props;
@@ -11,7 +15,7 @@ const GetInnerChidrenByType = (props) => {
         widget.widgetType === WidgetTypes.WIDGET_TYPE_BACK_BUTTON  ||
         widget.widgetType === WidgetTypes.WIDGET_TYPE_SOUND_BUTTON  ||
         widget.widgetType === WidgetTypes.WIDGET_TYPE_FULL_SCREEN_BUTTON ){
-        return <MediaControlChild widget={widget}/>;
+        return <MediaControlChild isPlayer = {props.isPlayer} widget={widget}/>;
     }
 
     else if(widget.widgetType === WidgetTypes.WIDGET_TYPE_TEXT){
@@ -21,6 +25,12 @@ const GetInnerChidrenByType = (props) => {
         return <IFrameChild widget={widget}/>;
     }else if(widget.widgetType === WidgetTypes.WIDGET_TYPE_WEB_PROGRAM){
         return <IFrameChild widget={widget}/>;
+    }else if(widget.widgetType === WidgetTypes.WIDGET_TYPE_DEFAULT_VIDEO){
+        return <video id={props.isPlayer?'videoTagPreview':'videoTag'} width="100%" ><source src={Video} type="video/mp4" /></video>;
+    }else if(widget.widgetType === WidgetTypes.WIDGET_TYPE_CIRCLE){
+        return <CircleChild widget={widget}/>;
+    }else if(widget.widgetType === WidgetTypes.WIDGET_TYPE_SQUARE_BOX){
+        return <SquareChild widget={widget} />;
     }
 
 
@@ -50,6 +60,13 @@ export const getWidgetNameByType = (type) =>{
             return 'text layer';
         case WidgetTypes.WIDGET_TYPE_IMAGE:
             return 'image layer';
+        case WidgetTypes.WIDGET_TYPE_DEFAULT_VIDEO:
+            return 'default video layer';
+        case WidgetTypes.WIDGET_TYPE_MAP:
+            return 'map layer';
+        case WidgetTypes.WIDGET_TYPE_WEB_PROGRAM:
+            return 'IFrame layer';
+
 
         default:
             return 'layer';

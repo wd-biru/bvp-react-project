@@ -1,9 +1,13 @@
 import React from 'react';
 import MediaControlComponent from './PlayerSettingControlComponent/MediaControlComponent';
 import LayerControlComponent from './PlayerSettingControlComponent/LayerControlComponent';
+import { connect } from 'react-redux';
+import { bindActionCreators} from 'redux';
+import * as alertActions from '../../../apiAction/Alert/AlertActions';
 
 class PlayerSettingSection3 extends React.Component{
     render(){
+        const { showPlayerPreviewPopup } = this.props;
         return (
             <div className="col-sm-2 createoverlay-three playerSetting-three">
                 <form>
@@ -26,7 +30,7 @@ class PlayerSettingSection3 extends React.Component{
                     </div>
                     <a href="#">
                         <label htmlFor="sel1"></label>
-                        <input type="button" name="" value="PREVIEW" className="preview-btn" />
+                        <input type="button" name="" value="PREVIEW" onClick={showPlayerPreviewPopup} className="preview-btn" />
                     </a>
                 </form>
                 <MediaControlComponent/>
@@ -36,6 +40,10 @@ class PlayerSettingSection3 extends React.Component{
     }
 }
 
-export default PlayerSettingSection3;
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators(alertActions, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(PlayerSettingSection3);
 
        

@@ -8,7 +8,9 @@ class CustomInputFile extends Component {
         this.reset = this.reset.bind(this);
 
     }
-
+    refreshInputDialog = () => {
+        document.getElementById('input-file-id').value = null;
+    }
     render() {
 
         return (
@@ -17,7 +19,7 @@ class CustomInputFile extends Component {
                        className={'custom-input-file ' + (this.props.className ? this.props.className : '')}
                        title={this.props.title}>
                     {this.props.title}</label>
-                <input id='input-file-id' style={{display:'none'}} ref={this.inputRef}  type="file" accept="image/x-png" onChange={this.props.onChange}/>
+                <input id='input-file-id' style={{display:'none'}} ref={this.inputRef} onClick = {this.refreshInputDialog} type="file" accept="image/x-png" onChange={this.props.onChange}/>
             </div>
         );
     }

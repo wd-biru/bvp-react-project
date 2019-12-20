@@ -4,6 +4,8 @@
 
 .draggable-container{
     display: block;
+    position: relative;
+    height: calc(100% - 50px);
 }
 
 .layer-selected{
@@ -13,6 +15,11 @@
 
 .widget-selected{
     border: solid 2px #2F6C73 !important;
+}
+.widget-cursor{
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
 }
 
 .widget{
@@ -46,3 +53,19 @@
 .widget-selected:hover .delete-button{
     display: block;
 }
+
+.iframe-child{
+    width: 100%;
+    height: 100%;
+}
+
+.iframe-child > iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.preview-header{
+    width: 100%;
+    height: 40px;
+}
+

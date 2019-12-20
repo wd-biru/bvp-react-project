@@ -10,7 +10,7 @@ const style = {
 class DraggableCustomComponent extends React.Component {
 
     render() {
-        const {widget, onResizeHandler, onDragStop, positionIndex, children} =  this.props;
+        const {widget, onResizeHandler, onDragStop, positionIndex, children, disableDragging, bound} =  this.props;
         return (
             <Rnd style={style}
                  default={{
@@ -23,19 +23,20 @@ class DraggableCustomComponent extends React.Component {
                  minHeight={widget.minHeight || 10}
                  enableResizing={{
                      top: false,
-                     right: true,
-                     bottom: true,
+                     right: true && !disableDragging,
+                     bottom: true && !disableDragging,
                      left: false,
                      topRight: false,
-                     bottomRight: true,
+                     bottomRight: true && !disableDragging,
                      bottomLeft: false,
                      topLeft: false
                  }}
+                 disableDragging = {disableDragging}
                  size={{ width: widget.width,  height: widget.height }}
                  position={{ x: widget.xPosition, y: widget.yPosition }}
                  onResizeStop = {(e, direction, ref)=>onResizeHandler(ref,positionIndex)}
                  onDragStop={(mouseEvent, dragData)=>onDragStop(mouseEvent, dragData, positionIndex)}
-                 bounds={'.draggable-container'}
+                 bounds={bound}
             >
                 {children}
             </Rnd>
@@ -48,3 +49,7 @@ export default DraggableCustomComponent;
 
 
 
+
+DraggableCustomComponent.defaultProps = {
+    disableDragging: false,
+};

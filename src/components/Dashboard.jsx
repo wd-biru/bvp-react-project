@@ -433,6 +433,9 @@ class Dashboard extends Component {
   };
 
   handleEditor = editordata => {
+
+
+    sessionStorage.setItem('projectId',editordata.id)
     this.setState({
       showEditor: true,
       selectedMedia: editordata,

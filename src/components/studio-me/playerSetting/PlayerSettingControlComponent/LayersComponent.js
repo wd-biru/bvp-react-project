@@ -6,6 +6,7 @@ import Card from './Card';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as playerActions from '../../../../apiAction/Player/PlayerControlAction';
+import * as widgetTypes from '../WidgetType';
 import EditableInput from "../../../CommonComponents/EditableInput";
 import classNames from "classnames";
 
@@ -38,6 +39,29 @@ class LayersComponent extends React.PureComponent {
         this.props.editSelection(index);
     }
 
+    allowCopy(widgetType) {
+        if (widgetTypes.WIDGET_TYPE_BACK_BUTTON === widgetType
+            || widgetTypes.WIDGET_TYPE_FULL_SCREEN_BUTTON === widgetType
+            || widgetTypes.WIDGET_TYPE_PALY_BUTTON === widgetType
+            || widgetTypes.WIDGET_TYPE_FORWARD_BUTTON === widgetType
+            || widgetTypes.WIDGET_TYPE_SOUND_BUTTON === widgetType
+            || widgetTypes.WIDGET_TYPE_DEFAULT_VIDEO === widgetType
+        ) {
+
+            return false;
+        }
+
+        return true;
+    }
+
+
+    allowDelete(widgetType) {
+        if (widgetTypes.WIDGET_TYPE_DEFAULT_VIDEO === widgetType) {
+            return false;
+        }
+        return true;
+    }
+
     renderCard(card, index, callBackFunction) {
         if (!card)
             return;
@@ -55,7 +79,7 @@ class LayersComponent extends React.PureComponent {
 
                     <div className={layerStyle} onClick={() => {
                         this.onWidgetSelectHandler(index);
-                    }}>>
+                    }}>
                         <div style={{display: 'inline-block', padding: '5px'}}><span
                             style={{width: '10px'}}>{index + 1}</span></div>
                         <EditableInput cardName={card.name} index={index}
@@ -66,10 +90,12 @@ class LayersComponent extends React.PureComponent {
                                            width: 'calc(100% - 65px)'
                                        }}/>
                         <div style={{float: 'right', margin: '5px'}}>
+                            {this.allowCopy(card.widgetType) &&
                             <span><img onClick={() => this.props.handleCopy(index)} src={images1}
-                                       className="layer-img"/></span>
+                                       className="layer-img"/></span>}
+                            {this.allowDelete(card.widgetType) &&
                             <span><img onClick={() => this.props.handleDelete(index)} src={images2}
-                                       className="layer-img"/></span>
+                                       className="layer-img"/></span>}
                         </div>
                     </div>
                 }

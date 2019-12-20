@@ -3,8 +3,23 @@ export const alertActionConstants = {
     HIDE_ALERT: 'HIDE_ALERT',
     SHOW_SAVE_POPUP : 'SHOW_SAVE_POPUP',
     CHANGE_DATA : 'CHANGE_DATA',
-    SHOW_POPUP : 'SHOPOPUP'
+    SHOW_POPUP : 'SHOPOPUP',
+    SHOW_PLAYER_PREVIEW_POPUP : 'SHOW_PLAYER_PREVIEW_POPUP',
+    HIDE_PLAYER_PREVIEW_POPUP : 'HIDE_PLAYER_PREVIEW_POPUP'
 };
+
+export function showPlayerPreviewPopup (){
+    return {
+        type : alertActionConstants.SHOW_PLAYER_PREVIEW_POPUP
+    };
+}
+
+export function hidePlayerPreviewPopup(){
+    return {
+        type : alertActionConstants.HIDE_PLAYER_PREVIEW_POPUP
+    }
+}
+
 
 export function showAlert(title, message) {
     return {

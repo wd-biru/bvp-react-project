@@ -1646,7 +1646,6 @@ input.UPLOAD {
     right: 4%;
     height: 100%;
 }
-.createoverlay-two video{width: 70%;transform: translatey(calc((100% - 18vw) /2));}
 .createoverlay-two img{width: 100%;}
 .createoverlay-three {
     background: #252425;

@@ -1,3 +1,4 @@
+export const WIDGET_TYPE_DEFAULT_VIDEO = 'widgetTypeDefaultVideo'
 export const WIDGET_TYPE_PALY_BUTTON = 'widgetTypePlayButton';
 export const WIDGET_TYPE_FORWARD_BUTTON = 'widgetTypeForwardButton';
 export const WIDGET_TYPE_BACK_BUTTON = 'widgetTypeBackButton';

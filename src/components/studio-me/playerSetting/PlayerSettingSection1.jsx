@@ -124,8 +124,8 @@ const getWidgetChildrens = (widget) => {
 
         case WidgetTypes.WIDGET_TYPE_IMAGE:
              
-            return <span onDoubleClick={() => handleDoubleClickHandler(widget)} href="#" title={widget.name}><img src={widget.imageURL} />
-                <input type="file" id="file" style = {{display : 'none'}} accept="image/x-png,image/gif,image/jpeg" onChange = {(event) => handleInputFileChange(event,widget)}/>
+            return <span onClick={() => handleDoubleClickHandler(widget)} href="#" title={widget.name}><img src={widget.imageURL} />
+                <input type="file" id="file" onClick = {refreshInputDialog} style = {{display : 'none'}} accept="image/x-png,image/gif,image/jpeg" onChange = {(event) => handleInputFileChange(event,widget)}/>
             </span>
 
         default:
@@ -133,7 +133,9 @@ const getWidgetChildrens = (widget) => {
     }
 }
 
-
+function refreshInputDialog(){
+    document.getElementById('file').value = null;
+}   
 function handleDoubleClickHandler(data){
     if(data.widgetType === WidgetTypes.WIDGET_TYPE_TEXT){
         this.props.popupAction("Text Configuration");
@@ -146,6 +148,14 @@ function handleDoubleClickHandler(data){
     ){
         this.props.showWidgetPopupAlert();
     }
+    else if(data.widgetType === WidgetTypes.WIDGET_TYPE_SQUARE_BOX){
+        this.props.showWidgetPopupAlert('Colour configuration',null,WidgetTypes.WIDGET_TYPE_SQUARE_BOX);
+    }
+    else if(data.widgetType === WidgetTypes.WIDGET_TYPE_CIRCLE){
+        this.props.showWidgetPopupAlert('Colour configuration',null,WidgetTypes.WIDGET_TYPE_CIRCLE);
+
+    }
+
 }
 
 function handleInputFileChange(event,data){

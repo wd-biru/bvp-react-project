@@ -1,5 +1,6 @@
 export const playerActionConsts = {
     PLAYER_UPDATE: "PLAYER_UPDATE",
+    PLAYER_EDIT : "PLAYER_EDIT",
     PLAYER_DELETE: "PLAYER_DELETE",
     PLAYER_ADD: "PLAYER_ADD",
     PLAYER_COPY: "PLAYER_COPY",
@@ -8,7 +9,8 @@ export const playerActionConsts = {
     PLAYER_SELECTION_UPDATE:'PLAYER_SELECTION_UPDATE',
     PLAYER_NAME_EDIT : 'PLAYER_NAME_EDIT',
     PLAYER_RESIZE_POSITION : 'PLAYER_RESIZE_POSITION',
-SELECTION_EDIT : 'SELECTION_EDIT'
+    PLAYER_STORE_TEMPLATE : 'PLAYER_STORE_TEMPLATE',
+    SELECTION_EDIT : 'SELECTION_EDIT'
 };
 
 export function updatePlayerActionData(data) {
@@ -17,7 +19,13 @@ export function updatePlayerActionData(data) {
         data : data
     };
 }
-
+export function editPlayerActionData(data,widgetIndex){
+    return {
+        type: playerActionConsts.PLAYER_EDIT,
+        data : data,
+        widgetIndex : widgetIndex
+    };
+}
 export function addPlayerActionData(data) {
     return {
         type: playerActionConsts.PLAYER_ADD,
@@ -92,3 +100,12 @@ export function editSelection(index){
 export default {
     playerActionConsts
 };
+
+export function  playerStoreTemplate(data,templateId) {
+
+    return {
+        type: playerActionConsts.PLAYER_STORE_TEMPLATE,
+        data,
+        templateId
+    };
+}

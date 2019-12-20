@@ -7,6 +7,8 @@ import * as playerControlAction from "../../../apiAction/Player/PlayerControlAct
 import * as alertActions from "../../../apiAction/Alert/AlertActions";
 import '../../../assets/css/widget.css';
 import CommonAlert from '../../CommonComponents/CommonAlert';
+import PreviewPopup from "../../popup/PreviewPopup";
+
 
 class PlayerSettingSection2 extends React.Component{
     constructor(props) {
@@ -16,13 +18,16 @@ class PlayerSettingSection2 extends React.Component{
     render() {
         return (
             <div>
-                <div ref="dropContainer" style={{padding:'0px !important'}} onDrop={this.onDropHandler} onDragOver={this.onDragOverHandler} className="col-sm-9 createoverlay-two draggable-container">
-                    <video id="videoTag" width="100%" >
-                        <source src={Video} type="video/mp4" />
-                    </video>
+                <div ref="dropContainer" style={{padding:'0px !important'}} onDrop={this.onDropHandler} onDragOver={this.onDragOverHandler} className="col-sm-9 createoverlay-two ">
+                    <div className='draggable-container'>
+                     {/*   <video width="100%" >
+                            <source src={Video} type="video/mp4" />
+                        </video>*/}
+                    </div>
                     <MediaControlComponent/>
-                    <CommonAlert/>
                 </div>
+                <CommonAlert/>
+                <PreviewPopup/>
             </div>
         );
     }

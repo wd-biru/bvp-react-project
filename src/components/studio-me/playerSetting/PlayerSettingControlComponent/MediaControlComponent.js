@@ -8,6 +8,7 @@ import '../../../../assets/css/custom_input.css';
 import * as playerControlAction from "../../../../apiAction/Player/PlayerControlAction";
 import * as alertActions from "../../../../apiAction/Alert/AlertActions";
 import {getWidgetNameByType} from '../WidgetUtils';
+import * as stringConstants from '../../../Constants/Constant';
 
 class MediaControlComponent extends React.Component {
     constructor(props) {
@@ -108,7 +109,7 @@ class MediaControlComponent extends React.Component {
         }
         let isPresent = this.props.widgetList.find(element => element.widgetType == this.state.selectedOption)
         if (isPresent) {
-            this.props.showAlert("testing title", "testing message");
+            this.props.showAlert(stringConstants.SIMPLE_ERROR_TITLE, stringConstants.ERROR_DUPLICATE_WIDGET);
 
         } else {
             this.props.updatePlayerActionData(widgetDetail);
