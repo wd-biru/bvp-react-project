@@ -98,11 +98,11 @@ const getOverlaySides = () =>{
         //     imageURL : createoverlayside6,
         //     name : 'Video'
         // },
-        {
+      /*  {
             widgetType : WidgetTypes.WIDGET_TYPE_SLIDER,
             imageURL : createoverlayside10,
             name : 'Image / Video slider'
-        },
+        },*/
         {
             widgetType : WidgetTypes.WIDGET_TYPE_MAP,
             imageURL : createoverlayside7,

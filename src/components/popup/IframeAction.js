@@ -39,6 +39,8 @@ class IframeAction extends React.Component{
             name: getWidgetNameByType(WidgetType.WIDGET_TYPE_MAP),
             minWidth: 310,
             minHeight : 160,
+            width : 310,
+            height : 160,
             otherData: {
                 iFrameUrl : this.state.iFrameUrl
             }
