@@ -73,11 +73,11 @@ const getOverlaySides = () =>{
             imageURL : createoverlayside2,
             name : 'Circle'
         },
-        {
-            widgetType : WidgetTypes.WIDGET_TYPE_CUSTOM_SHAPE,
-            imageURL : createoverlayside9,
-            name : 'Custom Shape'
-        },
+        // {
+        //     widgetType : WidgetTypes.WIDGET_TYPE_CUSTOM_SHAPE,
+        //     imageURL : createoverlayside9,
+        //     name : 'Custom Shape'
+        // },
         {
             widgetType : WidgetTypes.WIDGET_TYPE_TEXT,
             imageURL : createoverlayside3,
@@ -88,16 +88,16 @@ const getOverlaySides = () =>{
             imageURL : createoverlayside4,
             name : 'Image'
         },
-        {
-            widgetType : WidgetTypes.WIDGET_TYPE_ARROW_LOOP,
-            imageURL : createoverlayside5,
-            name : 'Arrow Loop'
-        },
-        {
-            widgetType : WidgetTypes.WIDGET_TYPE_VIDEO,
-            imageURL : createoverlayside6,
-            name : 'Video'
-        },
+        // {
+        //     widgetType : WidgetTypes.WIDGET_TYPE_ARROW_LOOP,
+        //     imageURL : createoverlayside5,
+        //     name : 'Arrow Loop'
+        // },
+        // {
+        //     widgetType : WidgetTypes.WIDGET_TYPE_VIDEO,
+        //     imageURL : createoverlayside6,
+        //     name : 'Video'
+        // },
         {
             widgetType : WidgetTypes.WIDGET_TYPE_SLIDER,
             imageURL : createoverlayside10,
@@ -129,8 +129,20 @@ const getWidgetChildrens = (widget) => {
             </span>
 
         default:
-            return <span onDoubleClick={() => handleDoubleClickHandler(widget)} href="#" title={widget.name}><img src={widget.imageURL} /></span>;
+            return <span onClick={() => handleDoubleClickHandler(widget)}  href="#" title={widget.name}><img src={widget.imageURL} /></span>;
     }
+}
+
+function onDragHandler(event, type) {
+    const widgetDetail = {
+        widgetType: type,
+        imageData: event.target.src,
+        width : 50,
+        height: 50,
+        name: getWidgetNameByType(type)
+    }
+    event.dataTransfer.setData('widgetDetail', JSON.stringify(widgetDetail));
+
 }
 
 function refreshInputDialog(){
@@ -146,7 +158,7 @@ function handleDoubleClickHandler(data){
     else if(data.widgetType === WidgetTypes.WIDGET_TYPE_WEB_PROGRAM ||
         data.widgetType === WidgetTypes.WIDGET_TYPE_MAP
     ){
-        this.props.showWidgetPopupAlert();
+        this.props.showWidgetPopupAlert('I frame configuration',null,WidgetTypes.WIDGET_TYPE_MAP);
     }
     else if(data.widgetType === WidgetTypes.WIDGET_TYPE_SQUARE_BOX){
         this.props.showWidgetPopupAlert('Colour configuration',null,WidgetTypes.WIDGET_TYPE_SQUARE_BOX);
@@ -163,20 +175,25 @@ function handleInputFileChange(event,data){
 
         if (image.type.indexOf('image') >= 0) {
             if (event.target.files && event.target.files[0]) {
-            
-                    let reader = new FileReader();
-                    reader.onload = () => {
-                        const imageUrl = reader.result;
-                        const defaultWidgetDetail = {
+
+                let reader = new FileReader();
+                    reader.onload =() =>  {
+                        let defaultWidgetDetail = {
                             widgetType: data.widgetType,
                             xPosition: 50,
                             yPosition: 50,
                             name: getWidgetNameByType(data.widgetType),
                             width: 50,
                             height: 50,
-                            imageData: imageUrl
+                            imageData: reader.result
                         }
-                        this.props.updatePlayerActionData(defaultWidgetDetail);
+                        let img = new Image;
+                        img.onload = ()=>{
+                            defaultWidgetDetail.width = img.width;
+                            defaultWidgetDetail.height = img.height;
+                            this.props.updatePlayerActionData(defaultWidgetDetail);
+                        };
+                        img.src = reader.result;
                     };
                     reader.readAsDataURL(image);
             

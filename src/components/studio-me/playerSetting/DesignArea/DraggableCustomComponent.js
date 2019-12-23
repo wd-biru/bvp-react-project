@@ -10,9 +10,9 @@ const style = {
 class DraggableCustomComponent extends React.Component {
 
     render() {
-        const {widget, onResizeHandler, onDragStop, positionIndex, children, disableDragging, bound} =  this.props;
+        const {widget, onResizeHandler, onDragStop, positionIndex, children, disableDragging, bound, maintainAspectRatio,zIndex} =  this.props;
         return (
-            <Rnd style={style}
+            <Rnd style={{...style, ...{zIndex:zIndex}}}
                  default={{
                      x: 0,
                      y: 0,
@@ -31,6 +31,7 @@ class DraggableCustomComponent extends React.Component {
                      bottomLeft: false,
                      topLeft: false
                  }}
+                 lockAspectRatio = {maintainAspectRatio}
                  disableDragging = {disableDragging}
                  size={{ width: widget.width,  height: widget.height }}
                  position={{ x: widget.xPosition, y: widget.yPosition }}
@@ -52,4 +53,5 @@ export default DraggableCustomComponent;
 
 DraggableCustomComponent.defaultProps = {
     disableDragging: false,
+    maintainAspectRatio : false
 };

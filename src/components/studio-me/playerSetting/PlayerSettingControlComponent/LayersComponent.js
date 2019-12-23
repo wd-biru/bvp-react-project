@@ -2,6 +2,7 @@ import React from 'react';
 import '../../../../components/studio-me/playerSetting/PlayerSettingControlComponent/player-settings.css';
 import images1 from '../../../../assets/img/me/createoverlay-top6.png';
 import images2 from '../../../../assets/img/me/createoverlay-top7.png';
+import images3 from '../../../../assets/img/me/createoverlay-top8.jpg';
 import Card from './Card';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -54,6 +55,20 @@ class LayersComponent extends React.PureComponent {
         return true;
     }
 
+    allowEdit(widgetType) {
+        if (widgetTypes.WIDGET_TYPE_MAP === widgetType
+            || widgetTypes.WIDGET_TYPE_SQUARE_BOX === widgetType
+            || widgetTypes.WIDGET_TYPE_CIRCLE === widgetType
+            || widgetTypes.WIDGET_TYPE_TEXT === widgetType
+            || widgetTypes.WIDGET_TYPE_IMAGE === widgetType
+        ) {
+
+            return true;
+        }
+
+        return false;
+    }
+
 
     allowDelete(widgetType) {
         if (widgetTypes.WIDGET_TYPE_DEFAULT_VIDEO === widgetType) {
@@ -77,19 +92,22 @@ class LayersComponent extends React.PureComponent {
 
                 text={
 
-                    <div className={layerStyle} onClick={() => {
+                    <div className={layerStyle} style={{fontSize : '12px'}} onClick={() => {
                         this.onWidgetSelectHandler(index);
                     }}>
-                        <div style={{display: 'inline-block', padding: '5px'}}><span
-                            style={{width: '10px'}}>{index + 1}</span></div>
+                        {/*<div style={{display: 'inline-block', padding: '5px'}}><span*/}
+                        {/*    style={{width: '10px'}}>{index + 1}</span></div>*/}
                         <EditableInput cardName={card.name} index={index}
                                        getLatestValue={this.onGetLatestValue}
                                        contentStyle={{
                                            display: 'inline-block',
-                                           padding: '5px',
-                                           width: 'calc(100% - 65px)'
+                                           padding: '5px 0.4rem',
+                                           width: 'calc(100% - 80px)',
                                        }}/>
                         <div style={{float: 'right', margin: '5px'}}>
+                            {this.allowEdit(card.widgetType) &&
+                            <span><i onClick={() => this.props.handleEdit(index)} src={images3}
+                                     className="fa fa-pencil edit-button"/></span>}
                             {this.allowCopy(card.widgetType) &&
                             <span><img onClick={() => this.props.handleCopy(index)} src={images1}
                                        className="layer-img"/></span>}

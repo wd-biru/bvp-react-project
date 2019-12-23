@@ -10,7 +10,18 @@ class EditableInput extends React.Component {
         this.myRef = React.createRef();
 
     }
+    enterPressed(event) {
 
+        var code = event.keyCode || event.which;
+        if(code === 13) {
+            this.setState({editable: false});
+            this.props.getLatestValue(this.props.index, event.target.value);
+        }
+    }
+    onBlueHandler = (event) => {
+        this.setState({editable: false});
+        // this.props.getLatestValue(this.props.index, event.target.value);
+    }
     render() {
         if (this.state.editable)
             return (
@@ -18,6 +29,7 @@ class EditableInput extends React.Component {
                     autoFocus={true}
                     onBlur={this.onBlueHandler}
                     onFocus={this.onFocusHandler}
+                    onKeyPress={this.enterPressed.bind(this)}
                     type={"text"}
                     ref={this.myRef }
                 />
@@ -39,10 +51,7 @@ class EditableInput extends React.Component {
     }
 
 
-    onBlueHandler = (event) => {
-        this.setState({editable: false});
-        this.props.getLatestValue(this.props.index, event.target.value);
-    }
+
 
     onDoubleClickHandler = () => {
         this.setState({editable: true});

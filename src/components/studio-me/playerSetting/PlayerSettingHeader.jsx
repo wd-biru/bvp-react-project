@@ -32,6 +32,8 @@ class PlayerSettingHeader extends React.Component {
 
         
             this.props.playerStoreTemplate(templateDetail.template,result[0].template_id)
+        }else{
+            this.props.playerStoreTemplate([],0)
         }
 
     }
@@ -43,6 +45,8 @@ class PlayerSettingHeader extends React.Component {
                 template_id: result[0].template_id
             }
             getService(urlConstants.GET_ALL_TEMPLATE, params, this.getTemplate)
+        }else{
+            this.props.playerStoreTemplate([],0)
         }
 
 
@@ -58,10 +62,9 @@ class PlayerSettingHeader extends React.Component {
 
         let userId = localStorage.getItem('userId')
         if (templateName) {
-            let template_id = 1111;
+           
             let payload = {
                 user_id: userId,
-                template_id: template_id,
                 project_id : sessionStorage.getItem('projectId'),
                 template_data: {
                     templaeName: templateName,
@@ -80,28 +83,10 @@ class PlayerSettingHeader extends React.Component {
 
         let template_id = this.props.templateId
         
-    
-
-       if(!template_id){ 
-            template_id = functions.getNewTemplateId()
-            let data = {
-                template_id : 6090,
-                project_id : sessionStorage.getItem('projectId'),
-                user_id : localStorage.getItem('userId')
-            }
-
-            postService(urlConstants.ASSOCIATE_PROJECT_TEMPLATE, JSON.stringify(data), (result) => {
-                console.log(result)
-            })
-            // need to create templte id and save
-
-            // to save template id and preoject id in seperate api
-
-        }
-
         let payload = {
             user_id: userId,
             template_id: template_id,
+            action : template_id ? 'update' : 'save',
             template_data: {
                 templaeName: "testing",
                 template: this.props.widgetList
@@ -113,6 +98,23 @@ class PlayerSettingHeader extends React.Component {
 
     getSaveTemplateResult = (result) => {
         console.log("result", result)
+        if( result.data){
+            let data = {
+                template_id : result.data,
+                project_id : sessionStorage.getItem('projectId'),
+                user_id : localStorage.getItem('userId'),
+                template_data: {
+                    templaeName: "testing",
+                    template: this.props.widgetList
+                }
+            }
+    
+             postService(urlConstants.ASSOCIATE_PROJECT_TEMPLATE, JSON.stringify(data), (result) => {
+                console.log(result)
+            }) 
+    
+        }
+     
     }
 
     render() {
@@ -147,9 +149,9 @@ class PlayerSettingHeader extends React.Component {
                         </li>
                     </ul>
                     <ul className="navbar-nav ml-auto mr-auto my-2 my-lg-0">
-                        <li className="nav-item">
-                            <span href="" className="nav-link"><img src={createoverlay}/></span>
-                        </li>
+                        {/*<li className="nav-item">*/}
+                        {/*    <span href="" className="nav-link"><img src={createoverlay}/></span>*/}
+                        {/*</li>*/}
                         <li className="nav-item">
                             <span href="" className="nav-link"><img src={createoverlay1}/></span>
                         </li>

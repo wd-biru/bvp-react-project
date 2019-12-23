@@ -12,16 +12,16 @@ class Widget extends React.Component {
         super(props);
         this.onWidgetSelectHandler = this.onWidgetSelectHandler.bind(this);
     }
-    isAllowedToEdit = (widgetType) => {
-        if(widgetTypes.WIDGET_TYPE_TEXT === widgetType){
-            return true;
-        }
-        return false;
-    }
-    editWidget = (widgetData) =>{
-        widgetData["widgetIndex"] = this.props.selectedIndex;
-        this.props.popupAction("Text Configuration",widgetData);
-    }
+    // isAllowedToEdit = (widgetType) => {
+    //     if(widgetTypes.WIDGET_TYPE_TEXT === widgetType){
+    //         return true;
+    //     }
+    //     return false;
+    // }
+    // editWidget = (widgetData) =>{
+    //     widgetData["widgetIndex"] = this.props.selectedIndex;
+    //     this.props.popupAction("Text Configuration",widgetData);
+    // }
     render() {
         const layerStyle = classNames({
             'widget' : true && !this.props.isPlayer,
@@ -33,10 +33,8 @@ class Widget extends React.Component {
                 this.onWidgetSelectHandler(this.props.index);
             }}>
 
-                {this.isAllowedToEdit(this.props.widget.widgetType)  && !this.props.isPlayer&& <i onClick = {()=>this.editWidget(this.props.widget)} className="fa fa-pencil edit-button"/> }
-
-
-                {!this.props.isPlayerv && <i className="fa fa-trash-o delete-button"/>}
+                {/*{this.isAllowedToEdit(this.props.widget.widgetType)  && !this.props.isPlayer&& <i onClick = {()=>this.editWidget(this.props.widget)} className="fa fa-pencil edit-button"/> }*/}
+                {/*{!this.props.isPlayerv && <i className="fa fa-trash-o delete-button"/>}*/}
 
 
                 <WidgetUtils isPlayer={this.props.isPlayer} widget={this.props.widget} />

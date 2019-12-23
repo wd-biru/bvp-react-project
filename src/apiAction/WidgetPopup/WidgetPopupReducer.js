@@ -4,7 +4,8 @@ const initialState = {
     showPopup: false,
     message : 'test',
     title : 'IFrame',
-    widgetType : null
+    widgetType : null,
+    popupData : null
 };
 
 

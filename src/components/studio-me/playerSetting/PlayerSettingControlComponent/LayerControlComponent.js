@@ -7,6 +7,8 @@ import { bindActionCreators } from 'redux';
 import * as playerActions from '../../../../apiAction/Player/PlayerControlAction';
 import { DndProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend'
+import { popupAction} from '../../../../apiAction/actions/commonActions';
+
 class LayerControlComponent extends React.Component {
 
     constructor(props) {
@@ -22,6 +24,12 @@ class LayerControlComponent extends React.Component {
     handleCopy(index) {
         this.props.copyPlayerActionData(index);
     }
+    handleEdit = (index) => {
+        let selectedWidget = {...this.props.widgetList[index]};
+        selectedWidget["widgetIndex"] = index;
+        this.props.popupAction("Text Configuration",selectedWidget);
+
+    }
 
     render() {
         return (
@@ -31,7 +39,7 @@ class LayerControlComponent extends React.Component {
                 </div>
 
                 <DndProvider backend={HTML5Backend}>
-                    <LayersComponent handleCopy={this.handleCopy} handleDelete={this.handleDelete}  name={this.props.widgetList} />
+                    <LayersComponent handleEdit = {this.handleEdit} handleCopy={this.handleCopy} handleDelete={this.handleDelete}  name={this.props.widgetList} />
 				</DndProvider>
 
                 {/* {
@@ -56,7 +64,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(playerActions, dispatch);
+    return bindActionCreators({ ...playerActions, popupAction}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LayerControlComponent);

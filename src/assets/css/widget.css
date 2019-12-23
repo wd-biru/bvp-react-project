@@ -3,9 +3,9 @@
 }
 
 .draggable-container{
-    display: block;
-    position: relative;
-    height: calc(100% - 50px);
+    position: absolute;
+    height: 100%;
+    width : 100%
 }
 
 .layer-selected{
@@ -28,14 +28,13 @@
     border: solid 1px #ddd;
     padding : 1px;
 }
+.widget > *{
+    pointer-events: none;
+}
 
 .edit-button{
-    position: absolute;
-    width: calc(100% - 5px);
-    text-align: right;
     cursor: pointer;
-    top: 18px;
-    display: none;
+    padding: 2px;
 }
 
 .delete-button {

@@ -4,6 +4,7 @@ import DraggableCustomComponent from './DraggableCustomComponent';
 import Widget from '../Widget';
 import {bindActionCreators} from "redux";
 import * as PlayerControlAction from "../../../../apiAction/Player/PlayerControlAction";
+import * as widgetTypes from '../WidgetType'
 
 class MediaControlComponent extends React.Component {
     constructor(props) {
@@ -38,7 +39,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(MediaControlComponen
 
 function getDraggableElement() {
     return this.props.widgetsList.map((widget, index) => {
-        return <DraggableCustomComponent key={index} widget={widget} positionIndex={index} bound='.draggable-container'
+        return <DraggableCustomComponent maintainAspectRatio={isAspectRationNeeded(widget)}  key={index} widget={widget} zIndex={this.props.widgetsList.length - index} positionIndex={index} bound='.draggable-container'
                                          onDragStop={onDragStopHandler} onResizeHandler={resizeHandler}>
             <Widget widget={widget} index={index}/>
         </DraggableCustomComponent>;
@@ -55,3 +56,24 @@ function resizeHandler(ref, position) {
 
 }
 
+const isAspectRationNeeded = (widget) => {
+
+    switch(widget.widgetType){
+        case widgetTypes.WIDGET_TYPE_DEFAULT_VIDEO:
+            return true;
+        case widgetTypes.WIDGET_TYPE_IMAGE :
+            return true;
+        case widgetTypes.WIDGET_TYPE_PALY_BUTTON:
+            return true;
+        case widgetTypes.WIDGET_TYPE_FORWARD_BUTTON:
+            return true;
+        case widgetTypes.WIDGET_TYPE_BACK_BUTTON:
+            return true;
+        case widgetTypes.WIDGET_TYPE_SOUND_BUTTON:
+            return true;
+        case widgetTypes.WIDGET_TYPE_FULL_SCREEN_BUTTON:
+            return true;
+        default :
+            return false;
+    }
+}

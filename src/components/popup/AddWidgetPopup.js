@@ -38,7 +38,7 @@ class ActionPopup extends React.Component{
 
     getRespectiveChild = (widgetType) =>{
         switch(widgetType){
-            case WidgetTypes.WIDGET_TYPE_IFRAME :
+            case WidgetTypes.WIDGET_TYPE_MAP :
                 return <IframeAction widget={this.props.widget} />;
             case WidgetTypes.WIDGET_TYPE_CIRCLE:
                 return <ShapeColourPopup widgetType = {this.props.widgetType} />

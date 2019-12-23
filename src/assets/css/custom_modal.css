@@ -3,8 +3,7 @@
 }
 
 .custom-modal-full-width{
-    width: 1295px !important;
-    height: 739px;
+    width: fit-content !important;
 }
 .custom-modal-full-width>div{
     width: 100%;
@@ -16,15 +15,12 @@
 
 @media (min-width: 576px){
     .custom-modal-full-width {
-        max-width: 1295px !important;
-        height: 739px;
-
+        max-width: fit-content !important;
     }
 }
 @media (min-width: 992px){
     .custom-modal-full-width {
-        max-width: 1295px !important;
-        height: 739px;
+        max-width: fit-content !important;
     }
 }
 

@@ -14,7 +14,7 @@ class MediaControlComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedOption: null,
+            selectedOption: constants.WIDGET_TYPE_PALY_BUTTON,
             selectedImages: null
         };
         this.onDoubleClickHandler = this.onDoubleClickHandler.bind(this);
@@ -71,7 +71,7 @@ class MediaControlComponent extends React.Component {
             <form>
                 <div className="form-group">
                     <select className="form-control" onChange={this.onPlayControlSelectHandler}>
-                        <option>Controls</option>
+                        {/*<option>Controls</option>*/}
                         <option value={constants.WIDGET_TYPE_PALY_BUTTON}>Play</option>
                         <option value={constants.WIDGET_TYPE_FORWARD_BUTTON}>Forward</option>
                         <option value={constants.WIDGET_TYPE_BACK_BUTTON}>Back</option>
@@ -80,7 +80,6 @@ class MediaControlComponent extends React.Component {
                     </select>
                 </div>
                 <div className="form-group">
-                    <div>images</div>
                     <div>
                         <ImageComponent images={images} onDoubleClickHandler={this.onDoubleClickHandler}
                                         type={this.state.selectedOption}/>

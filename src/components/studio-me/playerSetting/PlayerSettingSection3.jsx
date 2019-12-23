@@ -4,6 +4,8 @@ import LayerControlComponent from './PlayerSettingControlComponent/LayerControlC
 import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
 import * as alertActions from '../../../apiAction/Alert/AlertActions';
+import * as AnimationType from '../../Constants/Constant';
+
 
 class PlayerSettingSection3 extends React.Component{
     render(){
@@ -13,19 +15,21 @@ class PlayerSettingSection3 extends React.Component{
                 <form>
                     <div className="form-group">
                         <label htmlFor="sel1">Global Animation</label>
-                        <select className="form-control" id="sel1">
-                            <option>Fade in Cascode</option>
-                            <option>go to link</option>
-                            <option>jump to point in video</option>
+                        {/* eslint-disable-next-line no-console */}
+                        <select className="form-control" id="sel1" onChange={(e) => console.log(e.target.value)}>
+                            <option id = "sel1"value = {AnimationType.GLOBAL_ANIMATION_NONE}>None</option>
+                            <option value = {AnimationType.GLOBAL_ANIMATION_FADE} >Fade</option>
+                            <option value = {AnimationType.GLOBAL_ANIMATION_SLIDE}>Slide</option>
                         </select>
                     </div>
                     <div className="form-group">
                         <label htmlFor="sel1">Direction</label>
-                        <select className="form-control" id="sel1">
-                            <option>None</option>
-                            <option>Demo1</option>
-                            <option>Demo2</option>
-                            <option>Demo3</option>
+                        <select className="form-control" id="sel2" onChange={(e) => console.log(e.target.value)}>
+                            <option value = {AnimationType.DIRECTION_NONE}>None</option>
+                            <option value = {AnimationType.DIRECTION_LEFT_TO_RIGHT}>Left to Right</option>
+                            <option value = {AnimationType.DIRECTION_RIGHT_TO_LEFT}>Right to Left</option>
+                            <option value = {AnimationType.DIRECTION_TOP_TO_BOTTOM}>Top to Bottom</option>
+                            <option value = {AnimationType.DIRECTION_BOTTOM_TO_TOP}>Bottom to Top</option>
                         </select>
                     </div>
                     <a href="#">

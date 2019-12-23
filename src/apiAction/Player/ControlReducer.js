@@ -6,7 +6,7 @@ const initialState = {
         {
             widgetType: WidgetTypes.WIDGET_TYPE_DEFAULT_VIDEO,
             xPosition: 340,
-            yPosition: -520,
+            yPosition: 220,
             name: 'video layer',
             width: 564,
             height: 320,
@@ -62,10 +62,10 @@ export default function controlReducer(state = initialState, action) {
         case playerActionConsts.PLAYER_UPDATE: {
             defaultWidgetDetail.widgetType = action.data.widgetType;
             defaultWidgetDetail.xPosition = 100;  //action.data.xPosition;
-            defaultWidgetDetail.yPosition = -500; //action.data.yPosition;
+            defaultWidgetDetail.yPosition = 300; //action.data.yPosition;
             defaultWidgetDetail.name = action.data.name;
-            defaultWidgetDetail.width = 50;
-            defaultWidgetDetail.height = 50;
+            defaultWidgetDetail.width = action.data.width;
+            defaultWidgetDetail.height = action.data.height;
             defaultWidgetDetail.minWidth = action.data.minWidth || 10
             defaultWidgetDetail.minHeight = action.data.minHeight || 10
 
