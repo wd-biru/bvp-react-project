@@ -87,9 +87,10 @@ class ActionPopup extends React.Component{
     resetLocalStates = () => {
         localStates.forEach(state => {
             this.setState({
-                [state.key] : state.value
+                [state.key] : state.value,
             })
         })
+        this.setState({colorPicker : false})
     }
     
     render() {
@@ -105,6 +106,7 @@ class ActionPopup extends React.Component{
                 show = {showModel}  
                 onEntered = {this.setDefaultLocalStates}
                 onExited = {this.resetLocalStates}
+                onClick={this.handleOutSideClick}
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
@@ -112,7 +114,7 @@ class ActionPopup extends React.Component{
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div onClick={this.handleOutSideClick}>
+                    <div>
 
                         <div className="text-container">
                             <label className="left-feild" >Text</label>

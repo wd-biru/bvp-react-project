@@ -26,26 +26,26 @@ class ShapeColourPopup extends React.Component {
     chooseColor = (e, color) => {
         e.stopPropagation();
         this.setState({
-            colorPicker: true,
             colorPickerX: 0,
             colorPickerY: 0,
             background: color
         })
+        this.props.openColorPicker()
 
     }
-    handleOutSideClick = (e) => {
-        this.setState({
-            colorPicker: false
-        })
-    }
+    // handleOutSideClick = (e) => {
+    //     this.setState({
+    //         colorPicker: false
+    //     })
+    // }
 
     render() {
         const {background, colorPickerX, colorPickerY} = this.state;
         return (
             <>
-                <div className="text-container" onClick={this.handleOutSideClick}>
+                <div className="text-container">
                     <label className="left-feild">Colour</label>
-                    <div onClick={(event) => this.chooseColor(event, 'rgba(219, 227, 222, 1)')}
+                    <div onClick={(event) => this.props.openColorPicker(event)}
                          type="text" style={{
                         border: '1px solid',
                         width: '100px',
@@ -54,7 +54,7 @@ class ShapeColourPopup extends React.Component {
                         backgroundColor: background
                     }}></div>
                 </div>
-                {this.state.colorPicker && <div onClick={(e) => e.stopPropagation()}
+                {this.props.isColorPickerOpen && <div onClick={(e) => e.stopPropagation()}
                                                 style={{position: 'absolute', top: colorPickerY, left: colorPickerX}}>
                     <ChromePicker
                         color={background}

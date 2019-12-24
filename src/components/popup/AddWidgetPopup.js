@@ -9,6 +9,22 @@ import IframeAction from "./IframeAction";
 import ShapeColourPopup from "./ShapeColourPopup";
 import * as WidgetTypes from '../studio-me/playerSetting/WidgetType';
 class ActionPopup extends React.Component{
+    state = {
+        colorPicker: false
+    }
+
+    handleColorPickerOpen = (e) => {
+        this.setState({
+            colorPicker: false
+        })
+    }
+
+    openColorPicker = (event)=>{
+        event.stopPropagation();
+        this.setState({
+            colorPicker: true
+        })
+    }
 
     render() {
         const { showModel, alertTitle, hideWidgetPopupAlert,widgetType } = this.props;
@@ -20,7 +36,9 @@ class ActionPopup extends React.Component{
                 dialogClassName = "custom-modal-style"
                 onHide = {hideWidgetPopupAlert}
                 show = {showModel}
-                onClick={this.handleOutSideClick}
+                onClick={this.handleColorPickerOpen}
+                onExited = {this.handleColorPickerOpen}
+
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
@@ -43,9 +61,9 @@ class ActionPopup extends React.Component{
             case WidgetTypes.WIDGET_TYPE_MAP :
                 return <IframeAction popupData = {this.props.popupData} widget={this.props.widget} />;
             case WidgetTypes.WIDGET_TYPE_CIRCLE:
-                return <ShapeColourPopup popupData = {this.props.popupData} widgetType = {this.props.widgetType} />
+                return <ShapeColourPopup openColorPicker={this.openColorPicker} popupData = {this.props.popupData} widgetType = {this.props.widgetType} isColorPickerOpen={this.state.colorPicker} openColorPicker={this.openColorPicker} />
             case WidgetTypes.WIDGET_TYPE_SQUARE_BOX:
-                return <ShapeColourPopup popupData = {this.props.popupData} widgetType = {this.props.widgetType} />
+                return <ShapeColourPopup openColorPicker={this.openColorPicker} popupData = {this.props.popupData} widgetType = {this.props.widgetType} isColorPickerOpen={this.state.colorPicker} openColorPicker={this.openColorPicker} />
             default:
                 return null;
         }
