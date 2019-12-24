@@ -14,3 +14,9 @@ export const DIRECTION_TOP_TO_BOTTOM = 'DIRECTION_TOP_TO_BOTTOM';
 export const DIRECTION_BOTTOM_TO_TOP = 'DIRECTION_BOTTOM_TO_TOP';
 
 
+export const CIRCLE_SHAPE_HEADING = 'Circle color configuration';
+export const SQUARE_SHAPE_HEADING = 'Square color configuration';
+
+export const I_FRAME_HEADING = 'I frame configuration';
+export const MAP_HEADING = 'Map configuration';
+

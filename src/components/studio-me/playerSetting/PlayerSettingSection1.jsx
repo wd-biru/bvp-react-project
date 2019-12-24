@@ -19,6 +19,7 @@ import ActionPopup from '../../popup/ActionPopup';
 import AddWidgetPopup from '../../popup/AddWidgetPopup';
 import * as widgetPopupActions from '../../../apiAction/WidgetPopup/WidgetPopupAction';
 import {getWidgetNameByType} from './WidgetUtils';
+import * as constants from '../../Constants/Constant';
 
 class PlayerSettingSection1 extends React.Component {
     constructor(props) {
@@ -33,7 +34,7 @@ class PlayerSettingSection1 extends React.Component {
             <div className="col-sm-1 createoverlay-one playerSetting-one">
                 <ul>
                     {getOverlaySides().map((data, index)=>{
-                        return <li key={index}>
+                        return <li draggable={() =>onDragAllowHandler(data.widgetType)} onDragStart={(event) =>onDragHandler(event, data.widgetType)} key={index}>
                            {getWidgetChildrens(data)}
                             </li>
                             })
@@ -47,7 +48,28 @@ class PlayerSettingSection1 extends React.Component {
 
    
 }
+const onDragAllowHandler = (type) =>{
+    switch (type){
+        case WidgetTypes.WIDGET_TYPE_IMAGE:
+            return 'false';
+        default :
+            return 'true';
+    }
 
+}
+
+const onDragHandler = (event, type) =>{
+    const widgetDetail = {
+        widgetType: type,
+        width : 50,
+        height: 50,
+        otherData : {
+            backgroundColor : 'white'
+        },
+        name: getWidgetNameByType(type)
+    }
+    event.dataTransfer.setData('widgetDetail', JSON.stringify(widgetDetail));
+}
 
 const mapStateToProps = (state) => {
     return {
@@ -132,39 +154,47 @@ const getWidgetChildrens = (widget) => {
             return <span onClick={() => handleDoubleClickHandler(widget)}  href="#" title={widget.name}><img src={widget.imageURL} /></span>;
     }
 }
-
-function onDragHandler(event, type) {
-    const widgetDetail = {
-        widgetType: type,
-        imageData: event.target.src,
-        width : 50,
-        height: 50,
-        name: getWidgetNameByType(type)
-    }
-    event.dataTransfer.setData('widgetDetail', JSON.stringify(widgetDetail));
-
-}
+// function onDropHandler(event){
+//
+//     const {updatePlayerActionData, widgetsList, showAlert} = this.props;
+//     let widgetDetail = event.dataTransfer.getData("widgetDetail");
+//     if(widgetDetail){
+//         widgetDetail = JSON.parse(widgetDetail);
+//         let isNotPresent = false;
+//         if(widgetsList){
+//             isNotPresent = widgetsList.find(element => element.widgetType == widgetDetail.widgetType);
+//         }
+//         if(!isNotPresent){
+//             widgetDetail['xPosition'] = event.pageX - event.currentTarget.offsetLeft;
+//             widgetDetail['yPosition'] = event.pageY - event.currentTarget.offsetTop;
+//             updatePlayerActionData(widgetDetail);
+//         }else{
+//             showAlert('error', 'adding duplicate action is not allowed');
+//         }
+//
+//     }
+// }
 
 function refreshInputDialog(){
     document.getElementById('file').value = null;
 }   
 function handleDoubleClickHandler(data){
     if(data.widgetType === WidgetTypes.WIDGET_TYPE_TEXT){
-        this.props.popupAction("Text Configuration");
+        this.props.popupAction('Text Configuration');
     }
     else if(data.widgetType === WidgetTypes.WIDGET_TYPE_IMAGE){
         document.getElementById('file').click();
+    }else if(data.widgetType === WidgetTypes.WIDGET_TYPE_WEB_PROGRAM){
+        this.props.showWidgetPopupAlert(constants.I_FRAME_HEADING,null,WidgetTypes.WIDGET_TYPE_MAP);
     }
-    else if(data.widgetType === WidgetTypes.WIDGET_TYPE_WEB_PROGRAM ||
-        data.widgetType === WidgetTypes.WIDGET_TYPE_MAP
-    ){
-        this.props.showWidgetPopupAlert('I frame configuration',null,WidgetTypes.WIDGET_TYPE_MAP);
+    else if(data.widgetType === WidgetTypes.WIDGET_TYPE_MAP){
+        this.props.showWidgetPopupAlert(constants.MAP_HEADING,null,WidgetTypes.WIDGET_TYPE_MAP);
     }
     else if(data.widgetType === WidgetTypes.WIDGET_TYPE_SQUARE_BOX){
-        this.props.showWidgetPopupAlert('Colour configuration',null,WidgetTypes.WIDGET_TYPE_SQUARE_BOX);
+        this.props.showWidgetPopupAlert(constants.SQUARE_SHAPE_HEADING,null,WidgetTypes.WIDGET_TYPE_SQUARE_BOX);
     }
     else if(data.widgetType === WidgetTypes.WIDGET_TYPE_CIRCLE){
-        this.props.showWidgetPopupAlert('Colour configuration',null,WidgetTypes.WIDGET_TYPE_CIRCLE);
+        this.props.showWidgetPopupAlert(constants.CIRCLE_SHAPE_HEADING,null,WidgetTypes.WIDGET_TYPE_CIRCLE);
 
     }
 

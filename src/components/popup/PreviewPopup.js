@@ -19,9 +19,20 @@ class PreviewPopup extends React.Component{
                 onHide = {hidePlayerPreviewPopup}
                 show = {showModel}
             >
-                <Modal.Body>
+                <div className="modal-header text-center preview">
+                <h4 className="modal-title">Preview</h4>
+                <button
+                    type="button"
+                    className="close"
+                    onClick={this.props.hidePlayerPreviewPopup}
+                    data-dismiss="modal"
+                >
+                    &times;
+                </button>
+            </div>
+
                     <VideoPreview widgetsList = {widgetList} />
-                </Modal.Body>
+
             </Modal>
         );
     }

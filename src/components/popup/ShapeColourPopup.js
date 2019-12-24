@@ -20,7 +20,6 @@ class ShapeColourPopup extends React.Component {
 
     handleChangeComplete = (color) => {
         this.setState({
-            textColor: `rgba(${color.rgb.r}, ${color.rgb.g},${color.rgb.b}, ${color.rgb.a})`,
             background: `rgba(${color.rgb.r}, ${color.rgb.g},${color.rgb.b}, ${color.rgb.a})`
         })
     }
@@ -67,6 +66,11 @@ class ShapeColourPopup extends React.Component {
         );
     }
 
+    componentDidMount(){
+        if(this.props.popupData){
+            this.setState({background : this.props.popupData.otherData.backgroundColor});
+        }
+    }
 
     onSaveHandler = () => {
 
@@ -77,7 +81,17 @@ class ShapeColourPopup extends React.Component {
             otherData: {backgroundColor: this.state.background},
             name: getWidgetNameByType(this.props.widgetType),
         }
-        this.props.updatePlayerActionData(widgetDetail);
+
+        if (this.props.popupData) {
+            widgetDetail['xPosition'] = this.props.popupData.xPosition;
+            widgetDetail['yPosition'] = this.props.popupData.yPosition;
+        }
+        if(this.props.popupData && this.props.popupData.widgetIndex){
+            this.props.editPlayerActionData(widgetDetail,this.props.popupData.widgetIndex)
+        }
+        else{
+            this.props.updatePlayerActionData(widgetDetail);
+        }
         this.props.hideWidgetPopupAlert();
 
     }

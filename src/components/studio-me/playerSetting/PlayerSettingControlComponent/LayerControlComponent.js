@@ -1,6 +1,4 @@
 import React from "react";
-import createoverlay6 from "../../../../assets/img/me/createoverlay-top6.png";
-import createoverlay7 from "../../../../assets/img/me/createoverlay-top7.png";
 import { connect } from 'react-redux';
 import LayersComponent from '../PlayerSettingControlComponent/LayersComponent';
 import { bindActionCreators } from 'redux';
@@ -8,6 +6,10 @@ import * as playerActions from '../../../../apiAction/Player/PlayerControlAction
 import { DndProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend'
 import { popupAction} from '../../../../apiAction/actions/commonActions';
+import * as WidgetTypes from '../WidgetType';
+import * as widgetPopupActions from '../../../../apiAction/WidgetPopup/WidgetPopupAction'
+import * as constants from '../../../Constants/Constant'
+
 
 class LayerControlComponent extends React.Component {
 
@@ -27,7 +29,14 @@ class LayerControlComponent extends React.Component {
     handleEdit = (index) => {
         let selectedWidget = {...this.props.widgetList[index]};
         selectedWidget["widgetIndex"] = index;
-        this.props.popupAction("Text Configuration",selectedWidget);
+        if(selectedWidget.widgetType === WidgetTypes.WIDGET_TYPE_TEXT){
+            this.props.popupAction("Text Configuration",selectedWidget);
+        }else if(selectedWidget.widgetType === WidgetTypes.WIDGET_TYPE_SQUARE_BOX){
+            this.props.showWidgetPopupAlert(constants.SQUARE_SHAPE_HEADING, '', selectedWidget.widgetType , selectedWidget)
+        }else if(selectedWidget.widgetType === WidgetTypes.WIDGET_TYPE_CIRCLE){
+            this.props.showWidgetPopupAlert(constants.CIRCLE_SHAPE_HEADING, '', selectedWidget.widgetType , selectedWidget)
+
+        }
 
     }
 
@@ -64,7 +73,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ ...playerActions, popupAction}, dispatch);
+    return bindActionCreators({ ...playerActions, ...widgetPopupActions, popupAction}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LayerControlComponent);

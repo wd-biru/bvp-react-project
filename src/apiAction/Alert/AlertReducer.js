@@ -11,7 +11,7 @@ const initialState = {
 export default function alertReducer(state = initialState, action) {
     switch (action.type) {
         case alertActionConstants.SHOW_ALERT:
-            return {...state, ...{showAlert:true,message:action.message,title:action.title,}};
+            return {...state, ...{showAlert:true,message:action.message,title:action.title,popupData:action.popupData}};
         case alertActionConstants.HIDE_ALERT:
             return {...state, ...{showAlert:false}};
         case alertActionConstants.SHOW_PLAYER_PREVIEW_POPUP:

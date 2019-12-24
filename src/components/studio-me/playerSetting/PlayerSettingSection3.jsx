@@ -5,31 +5,59 @@ import { connect } from 'react-redux';
 import { bindActionCreators} from 'redux';
 import * as alertActions from '../../../apiAction/Alert/AlertActions';
 import * as AnimationType from '../../Constants/Constant';
+import * as controlActions from '../../../apiAction/Player/PlayerControlAction'
 
 
 class PlayerSettingSection3 extends React.Component{
+    updateAnimation = (e,key) => {
+
+        let defaultKey = key === 'direction' ? 'animation' : 'direction'
+        const { widgetsList,selectedWidget,updateAnimation,updateAnimationData} = this.props;
+            console.log("update animation",e.target.value)
+            console.log(widgetsList[selectedWidget].animationData)
+        if(widgetsList[selectedWidget].animationData){
+            console.log("key is teher")
+            updateAnimationData(
+                {   
+                    key ,
+                    value : e.target.value
+                },
+                selectedWidget
+            )
+        }else{
+            console.log("key is not there")
+            updateAnimation({
+                [defaultKey] : 'None',
+                [key] : e.target.value
+            },selectedWidget)
+        }
+    }
+
     render(){
-        const { showPlayerPreviewPopup } = this.props;
+        const { showPlayerPreviewPopup ,widgetsList,selectedWidget} = this.props;
+        let  animationData  = widgetsList[selectedWidget] && widgetsList[selectedWidget].animationData ? widgetsList[selectedWidget].animationData : null;
+
         return (
             <div className="col-sm-2 createoverlay-three playerSetting-three">
                 <form>
                     <div className="form-group">
                         <label htmlFor="sel1">Global Animation</label>
                         {/* eslint-disable-next-line no-console */}
-                        <select className="form-control" id="sel1" onChange={(e) => console.log(e.target.value)}>
-                            <option id = "sel1"value = {AnimationType.GLOBAL_ANIMATION_NONE}>None</option>
-                            <option value = {AnimationType.GLOBAL_ANIMATION_FADE} >Fade</option>
-                            <option value = {AnimationType.GLOBAL_ANIMATION_SLIDE}>Slide</option>
+                        <select className="form-control" id="sel1" onChange={(e)=>this.updateAnimation(e,'animation')}>
+                            <option selected = {animationData ? animationData.animation === AnimationType.GLOBAL_ANIMATION_NONE : false}
+                            id = "sel1"value = {AnimationType.GLOBAL_ANIMATION_NONE}>None</option>
+                            <option  selected = {animationData ? animationData.animation === AnimationType.GLOBAL_ANIMATION_FADE : false} value = {AnimationType.GLOBAL_ANIMATION_FADE} >Fade</option>
+                            <option  selected = {animationData ? animationData.animation === AnimationType.GLOBAL_ANIMATION_SLIDE : false} value = {AnimationType.GLOBAL_ANIMATION_SLIDE}>Slide</option>
                         </select>
                     </div>
                     <div className="form-group">
                         <label htmlFor="sel1">Direction</label>
-                        <select className="form-control" id="sel2" onChange={(e) => console.log(e.target.value)}>
-                            <option value = {AnimationType.DIRECTION_NONE}>None</option>
-                            <option value = {AnimationType.DIRECTION_LEFT_TO_RIGHT}>Left to Right</option>
-                            <option value = {AnimationType.DIRECTION_RIGHT_TO_LEFT}>Right to Left</option>
-                            <option value = {AnimationType.DIRECTION_TOP_TO_BOTTOM}>Top to Bottom</option>
-                            <option value = {AnimationType.DIRECTION_BOTTOM_TO_TOP}>Bottom to Top</option>
+                        <select className="form-control" id="sel2" onChange={(e)=>this.updateAnimation(e,'direction')}>
+                            <option selected = {animationData ? animationData.direction === AnimationType.DIRECTION_NONE : false} value = {AnimationType.DIRECTION_NONE}>None</option>
+                            <option selected = {animationData ? animationData.direction === AnimationType.DIRECTION_LEFT_TO_RIGHT : false} value = {AnimationType.DIRECTION_LEFT_TO_RIGHT}>Left to Right</option>
+                            <option selected = {animationData ? animationData.direction === AnimationType.DIRECTION_RIGHT_TO_LEFT : false} value = {AnimationType.DIRECTION_RIGHT_TO_LEFT}>Right to Left</option>
+                            <option selected = {animationData ? animationData.direction === AnimationType.DIRECTION_TOP_TO_BOTTOM : false} value = {AnimationType.DIRECTION_TOP_TO_BOTTOM}>Top to Bottom</option>
+                            <option selected = {animationData ? animationData.direction === AnimationType.DIRECTION_BOTTOM_TO_TOP : false} value = {AnimationType.DIRECTION_BOTTOM_TO_TOP}>Bottom to Top</option>
                         </select>
                     </div>
                     <a href="#">
@@ -44,10 +72,14 @@ class PlayerSettingSection3 extends React.Component{
     }
 }
 
+const mapStateToProps = state => ({
+    widgetsList: state.controlReducer.widgetsList,
+    selectedWidget : state.controlReducer.selectedWidget
+  });
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators(alertActions, dispatch);
+    return bindActionCreators({...alertActions,...controlActions}, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(PlayerSettingSection3);
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerSettingSection3);
 
        

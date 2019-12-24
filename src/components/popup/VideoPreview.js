@@ -1,5 +1,6 @@
 import React from 'react';
 import Widget from "../studio-me/playerSetting/Widget";
+import '../../assets/css/video_preview.css';
 
 class VideoPreview extends React.Component {
 

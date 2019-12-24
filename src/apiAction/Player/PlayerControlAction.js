@@ -10,7 +10,9 @@ export const playerActionConsts = {
     PLAYER_NAME_EDIT : 'PLAYER_NAME_EDIT',
     PLAYER_RESIZE_POSITION : 'PLAYER_RESIZE_POSITION',
     PLAYER_STORE_TEMPLATE : 'PLAYER_STORE_TEMPLATE',
-    SELECTION_EDIT : 'SELECTION_EDIT'
+    SELECTION_EDIT : 'SELECTION_EDIT',
+    PLAYER_ANIMATION : 'PLAYER_ANIMATION',
+    PLAYER_ANIMATION_DATA : 'PLAYER_ANIMATION_DATA'
 };
 
 export function updatePlayerActionData(data) {
@@ -108,4 +110,18 @@ export function  playerStoreTemplate(data,templateId) {
         data,
         templateId
     };
+}
+export function updateAnimationData(data,selectedWidget){
+    return {
+        type : playerActionConsts.PLAYER_ANIMATION_DATA,
+        data,
+        selectedWidget
+    }
+}
+export function updateAnimation(data,selectedWidget){
+    return {
+        type : playerActionConsts.PLAYER_ANIMATION,
+        data,
+        selectedWidget
+    }
 }

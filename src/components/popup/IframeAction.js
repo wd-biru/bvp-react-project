@@ -22,12 +22,16 @@ class IframeAction extends React.Component{
             <>
                 <div className="text-container">
                     <label className="left-feild">IFrame</label>
+                    <textarea rows="4" cols="50" name="comment" form="usrform" value={this.state.iFrameUrl}  onChange={this.onUrlChangeHandler}/>
+{/*
                     <input type="text" value={this.state.iFrameUrl} onChange={this.onUrlChangeHandler}></input>
+*/}
                 </div>
                 <Button className='save-botton-button' onClick={this.onSaveHandler}>Submit</Button>
             </>
         );
     }
+
 
     onUrlChangeHandler =(event)=>{
         this.setState({iFrameUrl : event.target.value});
@@ -43,7 +47,12 @@ class IframeAction extends React.Component{
             height : 160,
             otherData: {
                 iFrameUrl : this.state.iFrameUrl
-            }
+            },
+
+        }
+        if (this.props.popupData) {
+            data['xPosition'] = this.props.popupData.xPosition;
+            data['yPosition'] = this.props.popupData.yPosition;
         }
         this.props.updatePlayerActionData(data);
         this.props.hideWidgetPopupAlert();

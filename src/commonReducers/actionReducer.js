@@ -11,7 +11,7 @@ const initialState = {
 export default function actionPopupReducer(state = initialState, action) {
     switch (action.type) {
         case alertActionConstants.SHOW_POPUP:
-            return {...state, ...{showActionPopup:true,popupData:action.popupData,title:action.title}};
+            return {...state, ...{showActionPopup:true,popupData:action.popupData,title:action.title,xPosition:action.xPosition,yPosition:action.yPosition}};
         case alertActionConstants.HIDE_ALERT:
             return {...state, ...{showActionPopup:false,popupData:''}};
         case alertActionConstants.CHANGE_DATA :

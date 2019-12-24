@@ -1,5 +1,5 @@
 import {playerActionConsts} from './PlayerControlAction';
-import * as WidgetTypes from '../../components/studio-me/playerSetting/WidgetType'
+import * as WidgetTypes from '../../components/studio-me/playerSetting/WidgetType';
 
 const initialState = {
     widgetsList: [
@@ -61,8 +61,8 @@ export default function controlReducer(state = initialState, action) {
 
         case playerActionConsts.PLAYER_UPDATE: {
             defaultWidgetDetail.widgetType = action.data.widgetType;
-            defaultWidgetDetail.xPosition = 100;  //action.data.xPosition;
-            defaultWidgetDetail.yPosition = 300; //action.data.yPosition;
+            defaultWidgetDetail.xPosition = action.data.xPosition || 100;
+            defaultWidgetDetail.yPosition = action.data.yPosition || 300;
             defaultWidgetDetail.name = action.data.name;
             defaultWidgetDetail.width = action.data.width;
             defaultWidgetDetail.height = action.data.height;
@@ -77,9 +77,10 @@ export default function controlReducer(state = initialState, action) {
         }
 
       case playerActionConsts.PLAYER_EDIT : {
-          let selectedWidget = state.widgetsList[action.widgetIndex]
-        
-          selectedWidget["otherData"] = action.data.otherData
+          let selectedWidget = state.widgetsList[action.widgetIndex];
+          if(action.data.otherData){
+              selectedWidget['otherData'] = action.data.otherData;
+          }
           let newArray = state.widgetsList.slice();
           newArray.splice(action.widgetIndex,1,{...selectedWidget});
           
@@ -137,7 +138,28 @@ export default function controlReducer(state = initialState, action) {
             newArry.splice(action.index, 0, newobj);
             return { ...state, ...{ widgetsList: newArry } };
         }
-   case playerActionConsts.SELECTION_EDIT : {
+        case playerActionConsts.PLAYER_ANIMATION : {
+            const { widgetsList } = state;
+           
+            let newArry = widgetsList.slice();
+            let newobj = newArry[action.selectedWidget];
+            newobj["animationData"] = action.data
+            newArry.splice(action.selectedWidget, 1, newobj);
+            return { ...state, ...{ widgetsList: newArry } }
+        };
+        case playerActionConsts.PLAYER_ANIMATION_DATA : {
+            console.log("update animation data",action)
+
+            const { widgetsList } = state;
+           
+            let newArry = widgetsList.slice();
+            let newobj = newArry[action.selectedWidget];
+            newobj.animationData[action.data.key] = action.data.value
+            
+            newArry.splice(action.selectedWidget, 1, newobj);
+            return { ...state, ...{ widgetsList: newArry } }
+        };
+    case playerActionConsts.SELECTION_EDIT : {
 
             return { ...state, ...{ selectedWidget: action.index } };
         }

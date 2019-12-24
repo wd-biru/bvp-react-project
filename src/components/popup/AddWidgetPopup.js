@@ -36,14 +36,16 @@ class ActionPopup extends React.Component{
         );
     }
 
+
+
     getRespectiveChild = (widgetType) =>{
         switch(widgetType){
             case WidgetTypes.WIDGET_TYPE_MAP :
-                return <IframeAction widget={this.props.widget} />;
+                return <IframeAction popupData = {this.props.popupData} widget={this.props.widget} />;
             case WidgetTypes.WIDGET_TYPE_CIRCLE:
-                return <ShapeColourPopup widgetType = {this.props.widgetType} />
+                return <ShapeColourPopup popupData = {this.props.popupData} widgetType = {this.props.widgetType} />
             case WidgetTypes.WIDGET_TYPE_SQUARE_BOX:
-                return <ShapeColourPopup widgetType = {this.props.widgetType} />
+                return <ShapeColourPopup popupData = {this.props.popupData} widgetType = {this.props.widgetType} />
             default:
                 return null;
         }
@@ -56,7 +58,8 @@ const mapStateToProps=(state)=>{
         showModel : state.widgetPopupReducer.showPopup,
         alertMessage : state.widgetPopupReducer.message,
         alertTitle : state.widgetPopupReducer.title,
-        widgetType :state.widgetPopupReducer.widgetType
+        widgetType :state.widgetPopupReducer.widgetType,
+        popupData:state.widgetPopupReducer.popupData
     };
 }
 

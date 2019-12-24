@@ -174,7 +174,7 @@ class ActionPopup extends React.Component{
 
     onSaveHandler =() => {
         const { textName, textColor,textFont, bold, italic, underline,textSize, textBackgroundColor } = this.state;
-        const { alertpopupData,updatePlayerActionData,editPlayerActionData,hidePopup } = this.props;
+        const { alertpopupData,updatePlayerActionData,editPlayerActionData,hidePopup,xPosition,yPosition } = this.props;
         const data = {
             widgetType: WidgetType.WIDGET_TYPE_TEXT,
             name: getWidgetNameByType(WidgetType.WIDGET_TYPE_TEXT),
@@ -187,10 +187,11 @@ class ActionPopup extends React.Component{
                 underline : underline,
                 textBackgroundColor : textBackgroundColor,
                 textColor : textColor,
-            }
+            },
+            xPosition:xPosition,
+            yPosition:yPosition
         }
         if(alertpopupData){
-            console.log("edit popup at index : ",alertpopupData.widgetIndex)
             editPlayerActionData(data,alertpopupData.widgetIndex)
         }else{
             updatePlayerActionData(data);
@@ -206,6 +207,8 @@ const mapStateToProps=(state)=>{
         showModel : state.actionPopupReducer.showActionPopup,
         alertpopupData : state.actionPopupReducer.popupData,
         alertTitle : state.actionPopupReducer.title,
+        xPosition:state.actionPopupReducer.xPosition,
+        yPosition:state.actionPopupReducer.yPosition
     };
 }
 

@@ -11,6 +11,8 @@ import * as PlayerControlAction from '../../../apiAction/Player/PlayerControlAct
 import SavePopup from '../../popup/SavePopup';
 import {postService, getService} from '../../../services/RequestService';
 import * as urlConstants from '../../../services/api-endpoints';
+import * as AnimationType from '../../Constants/Constant';
+import * as WidgetTypes from '../../../components/studio-me/playerSetting/WidgetType'
 
 class PlayerSettingHeader extends React.Component {
 
@@ -33,7 +35,20 @@ class PlayerSettingHeader extends React.Component {
         
             this.props.playerStoreTemplate(templateDetail.template,result[0].template_id)
         }else{
-            this.props.playerStoreTemplate([],0)
+            this.props.playerStoreTemplate([
+                {
+                    widgetType: WidgetTypes.WIDGET_TYPE_DEFAULT_VIDEO,
+                    xPosition: 340,
+                    yPosition: 220,
+                    name: 'video layer',
+                    width: 564,
+                    height: 320,
+                    minWidth : 100,
+                    minHeight : 100,
+                    imageData: null,
+                    otherData : null,
+                }
+            ],0)
         }
 
     }
@@ -46,7 +61,21 @@ class PlayerSettingHeader extends React.Component {
             }
             getService(urlConstants.GET_ALL_TEMPLATE, params, this.getTemplate)
         }else{
-            this.props.playerStoreTemplate([],0)
+            this.props.playerStoreTemplate(
+                [
+                    {
+                        widgetType: WidgetTypes.WIDGET_TYPE_DEFAULT_VIDEO,
+                        xPosition: 340,
+                        yPosition: 220,
+                        name: 'video layer',
+                        width: 564,
+                        height: 320,
+                        minWidth : 100,
+                        minHeight : 100,
+                        imageData: null,
+                        otherData : null,
+                    }
+                ],0)
         }
 
 

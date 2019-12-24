@@ -56,11 +56,9 @@ class LayersComponent extends React.PureComponent {
     }
 
     allowEdit(widgetType) {
-        if (widgetTypes.WIDGET_TYPE_MAP === widgetType
-            || widgetTypes.WIDGET_TYPE_SQUARE_BOX === widgetType
+        if (widgetTypes.WIDGET_TYPE_SQUARE_BOX === widgetType
             || widgetTypes.WIDGET_TYPE_CIRCLE === widgetType
             || widgetTypes.WIDGET_TYPE_TEXT === widgetType
-            || widgetTypes.WIDGET_TYPE_IMAGE === widgetType
         ) {
 
             return true;
