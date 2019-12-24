@@ -130,15 +130,10 @@ class ActionPopup extends React.Component{
                         </div>
                         <div className="text-container">
                             <label className="left-feild">Font Size</label>
-                            <select style={{ width: '182px' }} onChange={(e) => this.changehandler(e, 'Size')}>
+                            <select style={{ width: '182px' }} value={this.state.textSize} onChange={(e) => this.changehandler(e, 'Size')}>
                                 {[...Array(300).keys()].map((element, index) =>
                                     {
-                                        if(this.state.textSize === element+1 ){
-                                            return (<option key={index} style={{ fontFamily: element }} selected >{element+1}</option>)
-                                        }
-                                        else{
-                                            return (<option key={index} style={{ fontFamily: element }}>{element+1}</option>)
-                                        }
+                                        return (<option key={index} value={element+1} style={{ fontFamily: element }}>{element+1}</option>)
                                     }
                                 )}
                             </select>
