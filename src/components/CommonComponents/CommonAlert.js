@@ -23,7 +23,7 @@ class CommonAlert extends React.Component{
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>
+                    <p style = {{maxWidth:400}}>
                         {alertMessage}
                     </p>
                 </Modal.Body>

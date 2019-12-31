@@ -154,10 +154,11 @@ class ActionPopup extends React.Component{
                             <div onClick={(event) => this.chooseColor(event, 'TextBackColor','rgba(244, 244, 244, 0)')} type="text" style={{ border: '1px solid', width: '100px', height: '25px', cursor: 'pointer', backgroundColor: textBackgroundColor }}></div>
                         </div>
 
-                        {this.state.colorPicker && <div onClick={(e) => e.stopPropagation()} style={{ position: 'absolute', top: colorPickerY, left: colorPickerX }}>
+                        {this.state.colorPicker && <div onClick={(e) => e.stopPropagation()} style={{ position: 'absolute', top: 220, left: 192 }}>
                             <ChromePicker
                                 color={background}
                                 onChangeComplete={this.handleChangeComplete}
+                                width ='160px'
                             />
                         </div>}
                     </div>
@@ -186,7 +187,9 @@ class ActionPopup extends React.Component{
                 textColor : textColor,
             },
             xPosition:xPosition,
-            yPosition:yPosition
+            yPosition:yPosition,
+            width : 100,
+            height : 50
         }
         if(alertpopupData){
             editPlayerActionData(data,alertpopupData.widgetIndex)

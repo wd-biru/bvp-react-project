@@ -55,10 +55,11 @@ class ShapeColourPopup extends React.Component {
                     }}></div>
                 </div>
                 {this.props.isColorPickerOpen && <div onClick={(e) => e.stopPropagation()}
-                                                style={{position: 'absolute', top: colorPickerY, left: colorPickerX}}>
+                                                style={{position: 'absolute',left :'192px', top: colorPickerY}}>
                     <ChromePicker
                         color={background}
                         onChangeComplete={this.handleChangeComplete}
+                        width ='160px'
                     />
                 </div>}
                 <Button className='save-botton-button' onClick={this.onSaveHandler}>Submit</Button>

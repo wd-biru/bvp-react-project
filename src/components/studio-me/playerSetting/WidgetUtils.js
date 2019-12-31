@@ -26,7 +26,7 @@ const GetInnerChidrenByType = (props) => {
     }else if(widget.widgetType === WidgetTypes.WIDGET_TYPE_IFRAME){
         return <IFrameChild widget={widget}/>;
     }else if(widget.widgetType === WidgetTypes.WIDGET_TYPE_DEFAULT_VIDEO){
-        return <video id={props.isPlayer?'videoTagPreview':'videoTag'} width="100%" ><source src={Video} type="video/mp4" /></video>;
+        return <video id={props.isPlayer?'videoTagPreview':'videoTag'} width="100%" height='100%'><source src={Video} type="video/mp4" /></video>;
     }else if(widget.widgetType === WidgetTypes.WIDGET_TYPE_CIRCLE){
         return <CircleChild widget={widget}/>;
     }else if(widget.widgetType === WidgetTypes.WIDGET_TYPE_SQUARE_BOX){

@@ -9,7 +9,7 @@ const initialState = {
             yPosition: 220,
             name: 'video layer',
             width: 564,
-            height: 320,
+            height: 310,
             minWidth : 100,
             minHeight : 100,
             imageData: null,
@@ -64,8 +64,8 @@ export default function controlReducer(state = initialState, action) {
             defaultWidgetDetail.xPosition = action.data.xPosition || 100;
             defaultWidgetDetail.yPosition = action.data.yPosition || 300;
             defaultWidgetDetail.name = action.data.name;
-            defaultWidgetDetail.width = action.data.width;
-            defaultWidgetDetail.height = action.data.height;
+            defaultWidgetDetail.width = action.data.width || 100;
+            defaultWidgetDetail.height = action.data.height || 100;
             defaultWidgetDetail.minWidth = action.data.minWidth || 10
             defaultWidgetDetail.minHeight = action.data.minHeight || 10
 
