@@ -13,10 +13,7 @@ class PlayerSettingSection3 extends React.Component{
 
         let defaultKey = key === 'direction' ? 'animation' : 'direction'
         const { widgetsList,selectedWidget,updateAnimation,updateAnimationData} = this.props;
-            console.log("update animation",e.target.value)
-            console.log(widgetsList[selectedWidget].animationData)
         if(widgetsList[selectedWidget].animationData){
-            console.log("key is teher")
             updateAnimationData(
                 {   
                     key ,
@@ -25,7 +22,6 @@ class PlayerSettingSection3 extends React.Component{
                 selectedWidget
             )
         }else{
-            console.log("key is not there")
             updateAnimation({
                 [defaultKey] : 'None',
                 [key] : e.target.value

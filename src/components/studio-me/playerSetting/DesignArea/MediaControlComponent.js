@@ -4,12 +4,11 @@ import DraggableCustomComponent from './DraggableCustomComponent';
 import Widget from '../Widget';
 import {bindActionCreators} from "redux";
 import * as PlayerControlAction from "../../../../apiAction/Player/PlayerControlAction";
-import * as widgetTypes from '../WidgetType'
+import * as widgetTypes from '../WidgetType';
 
 class MediaControlComponent extends React.Component {
     constructor(props) {
         super(props);
-        getDraggableElement = getDraggableElement.bind(this);
         onDragStopHandler = onDragStopHandler.bind(this);
         resizeHandler = resizeHandler.bind(this);
     }
@@ -18,7 +17,7 @@ class MediaControlComponent extends React.Component {
     render() {
         return (
             <div>
-                {getDraggableElement()}
+                {getDraggableElement(this.props.widgetsList)}
             </div>
         );
     }
@@ -37,9 +36,9 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(MediaControlComponent);
 
 
-function getDraggableElement() {
-    return this.props.widgetsList.map((widget, index) => {
-        return <DraggableCustomComponent maintainAspectRatio={isAspectRationNeeded(widget)}  key={index} widget={widget} zIndex={this.props.widgetsList.length - index} positionIndex={index} bound='.draggable-container'
+function getDraggableElement(widgetsList) {
+    return widgetsList.map((widget, index) => {
+        return <DraggableCustomComponent maintainAspectRatio={isAspectRationNeeded(widget)}  key={index} widget={widget} zIndex={widgetsList.length - index} positionIndex={index} bound='.draggable-container'
                                          onDragStop={onDragStopHandler} onResizeHandler={resizeHandler}>
             <Widget widget={widget} index={index}/>
         </DraggableCustomComponent>;

@@ -131,9 +131,10 @@ const getOverlaySides = () =>{
             name : 'Map'
         },
         {
-            widgetType : WidgetTypes.WIDGET_TYPE_WEB_PROGRAM,
+            widgetType : WidgetTypes.WIDGET_TYPE_IFRAME,
             imageURL : createoverlayside8,
-            name : 'Web Programming'
+            // name : 'Web Programming',
+            name : 'I frame'
         }
 
     ];
@@ -184,8 +185,8 @@ function handleDoubleClickHandler(data){
     }
     else if(data.widgetType === WidgetTypes.WIDGET_TYPE_IMAGE){
         document.getElementById('file').click();
-    }else if(data.widgetType === WidgetTypes.WIDGET_TYPE_WEB_PROGRAM){
-        this.props.showWidgetPopupAlert(constants.I_FRAME_HEADING,null,WidgetTypes.WIDGET_TYPE_MAP);
+    }else if(data.widgetType === WidgetTypes.WIDGET_TYPE_IFRAME){
+        this.props.showWidgetPopupAlert(constants.I_FRAME_HEADING,null,WidgetTypes.WIDGET_TYPE_IFRAME);
     }
     else if(data.widgetType === WidgetTypes.WIDGET_TYPE_MAP){
         this.props.showWidgetPopupAlert(constants.MAP_HEADING,null,WidgetTypes.WIDGET_TYPE_MAP);

@@ -72,7 +72,7 @@ export default function controlReducer(state = initialState, action) {
             defaultWidgetDetail.imageData = action.data.imageData;
             defaultWidgetDetail.otherData = action.data.otherData
             let newArray = state.widgetsList.slice();
-            newArray.splice(state.widgetsList.length, 0, {...defaultWidgetDetail});
+            newArray.splice(0, 0, {...defaultWidgetDetail});
             return {...state, widgetsList: newArray};
         }
 
@@ -88,7 +88,7 @@ export default function controlReducer(state = initialState, action) {
       }
       case playerActionConsts.PLAYER_STORE_TEMPLATE : {
       
-        let newArray = action.data
+        const newArray = action.data.slice();
         
         return {...state , widgetsList: newArray ,templateId : action.templateId};
       }

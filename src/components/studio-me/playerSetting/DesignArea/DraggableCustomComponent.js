@@ -1,5 +1,6 @@
 import React from "react";
 import {Rnd} from "react-rnd";
+import {connect} from 'react-redux';
 
 const style = {
     alignItems: 'center',
@@ -46,7 +47,13 @@ class DraggableCustomComponent extends React.Component {
 
 }
 
-export default DraggableCustomComponent;
+const mapStateToProps = (state) => {
+    return {
+        widgetsList: state.controlReducer.widgetsList
+    };
+}
+
+export default connect(mapStateToProps,null)(DraggableCustomComponent);
 
 
 

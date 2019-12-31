@@ -11,7 +11,7 @@ import * as widgetTypes from '../WidgetType';
 import EditableInput from "../../../CommonComponents/EditableInput";
 import classNames from "classnames";
 
-class LayersComponent extends React.PureComponent {
+class LayersComponent extends React.Component {
     constructor(props) {
         super(props);
         this.callBackHandler = this.callBackHandler.bind(this);
@@ -59,6 +59,8 @@ class LayersComponent extends React.PureComponent {
         if (widgetTypes.WIDGET_TYPE_SQUARE_BOX === widgetType
             || widgetTypes.WIDGET_TYPE_CIRCLE === widgetType
             || widgetTypes.WIDGET_TYPE_TEXT === widgetType
+            || widgetTypes.WIDGET_TYPE_MAP === widgetType
+            || widgetTypes.WIDGET_TYPE_IFRAME === widgetType
         ) {
 
             return true;

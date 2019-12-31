@@ -70,6 +70,7 @@ class MediaControlComponent extends React.Component {
         return (
             <form>
                 <div className="form-group">
+                    <label>Controls</label>
                     <select className="form-control" onChange={this.onPlayControlSelectHandler}>
                         {/*<option>Controls</option>*/}
                         <option value={constants.WIDGET_TYPE_PALY_BUTTON}>Play</option>

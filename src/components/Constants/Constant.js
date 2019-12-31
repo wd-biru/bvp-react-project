@@ -1,5 +1,5 @@
-export const SIMPLE_ERROR_TITLE = 'Error';
-export const ERROR_DUPLICATE_WIDGET = 'action already added, please add different one';
+export const SIMPLE_ERROR_TITLE = 'Oops...';
+export const ERROR_DUPLICATE_WIDGET = 'Only one control type can be added per project. Please delete the existing one first.';
 
 // constants for Global Animation in PlayerSettingSection3
 export const GLOBAL_ANIMATION_NONE = 'GLOBAL_ANIMATION_NONE';
@@ -20,3 +20,12 @@ export const SQUARE_SHAPE_HEADING = 'Square color configuration';
 export const I_FRAME_HEADING = 'I frame configuration';
 export const MAP_HEADING = 'Map configuration';
 
+
+// Constants for StudioVideoSectionRight publish options.
+export const LOOP_CONTINOUSLY = 'loopContinously';
+export const DISABLE_AUTOPLAY = 'disableAutoplay';
+export const HIDE_SHARE_BUTTONS = 'hideShareButtons';
+export const HIDE_VIDEO_CONTROLS = 'hideVideoControls';
+export const FIXED_DIMENSIONS = 'fixedDimensions';
+export const YOUTUBE_HOSTED = 'youtubeHosted';
+export const SHOW_SUBTITLES = 'showSubtitles';

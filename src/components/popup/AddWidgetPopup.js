@@ -57,13 +57,20 @@ class ActionPopup extends React.Component{
 
 
     getRespectiveChild = (widgetType) =>{
+        let iFrameUrl = '';
+        if(this.props.popupData){
+                iFrameUrl = this.props.popupData.otherData.iFrameUrl
+            }
+        else{
+            iFrameUrl = '';
+        }
         switch(widgetType){
             case WidgetTypes.WIDGET_TYPE_MAP :
                 return <IframeAction popupData = {this.props.popupData} widget={this.props.widget} />;
             case WidgetTypes.WIDGET_TYPE_CIRCLE:
-                return <ShapeColourPopup openColorPicker={this.openColorPicker} popupData = {this.props.popupData} widgetType = {this.props.widgetType} isColorPickerOpen={this.state.colorPicker} openColorPicker={this.openColorPicker} />
+                return <ShapeColourPopup iFrameUrl = {iFrameUrl} openColorPicker={this.openColorPicker} popupData = {this.props.popupData} widgetType = {WidgetTypes.WIDGET_TYPE_MAP} isColorPickerOpen={this.state.colorPicker} openColorPicker={this.openColorPicker} />
             case WidgetTypes.WIDGET_TYPE_SQUARE_BOX:
-                return <ShapeColourPopup openColorPicker={this.openColorPicker} popupData = {this.props.popupData} widgetType = {this.props.widgetType} isColorPickerOpen={this.state.colorPicker} openColorPicker={this.openColorPicker} />
+                return <ShapeColourPopup iFrameUrl = {iFrameUrl} openColorPicker={this.openColorPicker} popupData = {this.props.popupData} widgetType = {WidgetTypes.WIDGET_TYPE_IFRAME} isColorPickerOpen={this.state.colorPicker} openColorPicker={this.openColorPicker} />
             default:
                 return null;
         }

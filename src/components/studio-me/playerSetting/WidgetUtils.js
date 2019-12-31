@@ -23,7 +23,7 @@ const GetInnerChidrenByType = (props) => {
     }
     else if(widget.widgetType === WidgetTypes.WIDGET_TYPE_MAP){
         return <IFrameChild widget={widget}/>;
-    }else if(widget.widgetType === WidgetTypes.WIDGET_TYPE_WEB_PROGRAM){
+    }else if(widget.widgetType === WidgetTypes.WIDGET_TYPE_IFRAME){
         return <IFrameChild widget={widget}/>;
     }else if(widget.widgetType === WidgetTypes.WIDGET_TYPE_DEFAULT_VIDEO){
         return <video id={props.isPlayer?'videoTagPreview':'videoTag'} width="100%" ><source src={Video} type="video/mp4" /></video>;
@@ -64,7 +64,7 @@ export const getWidgetNameByType = (type) =>{
             return 'default video layer';
         case WidgetTypes.WIDGET_TYPE_MAP:
             return 'map layer';
-        case WidgetTypes.WIDGET_TYPE_WEB_PROGRAM:
+        case WidgetTypes.WIDGET_TYPE_IFRAME:
             return 'IFrame layer';
 
 
