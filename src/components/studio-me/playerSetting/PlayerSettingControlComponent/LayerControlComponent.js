@@ -36,9 +36,9 @@ class LayerControlComponent extends React.Component {
         }else if(selectedWidget.widgetType === WidgetTypes.WIDGET_TYPE_CIRCLE){
             this.props.showWidgetPopupAlert(constants.CIRCLE_SHAPE_HEADING, '', selectedWidget.widgetType , selectedWidget)
         }else if(selectedWidget.widgetType === WidgetTypes.WIDGET_TYPE_IFRAME){
-            this.props.showWidgetPopupAlert(constants.I_FRAME_HEADING, '', selectedWidget.widgetType , selectedWidget)
+            this.props.showWidgetPopupAlert(constants.I_FRAME_HEADING, constants.I_FRAME_BODY_NAME, selectedWidget.widgetType , selectedWidget)
         }else if(selectedWidget.widgetType === WidgetTypes.WIDGET_TYPE_MAP){
-            this.props.showWidgetPopupAlert(constants.MAP_HEADING, '', selectedWidget.widgetType , selectedWidget)
+            this.props.showWidgetPopupAlert(constants.MAP_HEADING, constants.MAP_BODY_NAME, selectedWidget.widgetType , selectedWidget)
         }
 
     }

@@ -66,13 +66,13 @@ class ActionPopup extends React.Component{
         }
         switch(widgetType){
             case WidgetTypes.WIDGET_TYPE_MAP :
-                return <IframeAction popupData = {this.props.popupData} widget={this.props.widget} widgetType = {WidgetTypes.WIDGET_TYPE_MAP}/>;
+                return <IframeAction iFrameUrl = {iFrameUrl} message = {this.props.alertMessage} popupData = {this.props.popupData}  widget={this.props.widget} widgetType = {WidgetTypes.WIDGET_TYPE_MAP}/>;
             case WidgetTypes.WIDGET_TYPE_IFRAME :
-                return <IframeAction popupData = {this.props.popupData} widget={this.props.widget} widgetType = {WidgetTypes.WIDGET_TYPE_IFRAME}/>;
+                return <IframeAction iFrameUrl = {iFrameUrl} message = {this.props.alertMessage} popupData = {this.props.popupData} widget={this.props.widget} widgetType = {WidgetTypes.WIDGET_TYPE_IFRAME}/>;
             case WidgetTypes.WIDGET_TYPE_CIRCLE:
-                return <ShapeColourPopup iFrameUrl = {iFrameUrl} openColorPicker={this.openColorPicker} widgetType = {this.props.widgetType} popupData = {this.props.popupData}  isColorPickerOpen={this.state.colorPicker} openColorPicker={this.openColorPicker} />
+                return <ShapeColourPopup  openColorPicker={this.openColorPicker} widgetType = {this.props.widgetType} popupData = {this.props.popupData}  isColorPickerOpen={this.state.colorPicker} openColorPicker={this.openColorPicker} />
             case WidgetTypes.WIDGET_TYPE_SQUARE_BOX:
-                return <ShapeColourPopup iFrameUrl = {iFrameUrl} openColorPicker={this.openColorPicker} widgetType = {this.props.widgetType} popupData = {this.props.popupData}  isColorPickerOpen={this.state.colorPicker} openColorPicker={this.openColorPicker} />
+                return <ShapeColourPopup  openColorPicker={this.openColorPicker} widgetType = {this.props.widgetType} popupData = {this.props.popupData}  isColorPickerOpen={this.state.colorPicker} openColorPicker={this.openColorPicker} />
             default:
                 return null;
         }

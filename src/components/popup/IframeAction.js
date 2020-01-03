@@ -20,14 +20,15 @@ class IframeAction extends React.Component{
     render() {
         let show;
         if(WidgetType.WIDGET_TYPE_MAP === this.props.widgetType){
-            show =  <input  type="text"  value={this.state.iFrameUrl} onChange={this.onUrlChangeHandler}></input>
+            show =  <input  type="text" style = {{width:350}} value={this.state.iFrameUrl} onChange={this.onUrlChangeHandler}></input>
         }else if(WidgetType.WIDGET_TYPE_IFRAME === this.props.widgetType){
-            show = <textarea  rows="4" cols="50" name="comment" form="usrform" value={this.state.iFrameUrl}  onChange={this.onUrlChangeHandler}/>
+            show = <textarea  rows="4" cols="50" style = {{resize:'none'}} name="comment" form="usrform" value={this.state.iFrameUrl}  onChange={this.onUrlChangeHandler}/>
         }
+
         return(
             <>
                 <div className="text-container">
-                    <label className="left-feild">IFrame</label>
+                    <label className="left-feild">{this.props.message}</label>
                     {show}
                 </div>
                 <Button disabled={!this.state.iFrameUrl} className='save-botton-button' onClick={this.onSaveHandler}>Submit</Button>
@@ -38,46 +39,17 @@ class IframeAction extends React.Component{
     onUrlChangeHandler =(event)=>{
         this.setState({iFrameUrl : event.target.value});
     }
-    isUrl(s) {
-        let regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
-        return regexp.test(s);
-    }
     onSaveHandler =() => {
-        // if input is empty popup closes
-        if(!this.isUrl(this.state.iFrameUrl) || !this.state.iFrameUrl){
-            this.props.hideWidgetPopupAlert();
-            return;
-        }
-        let url ;
-        let doc = new DOMParser().parseFromString(this.state.iFrameUrl, "text/html");
-        if(doc.body.firstChild.tagName){
-            if (doc.body.firstChild.getAttribute("data-url")) {
-                url = doc.body.firstChild.getAttribute("data-url");
-            } else if (doc.body.firstChild.getAttribute("src")) {
-                url = doc.body.firstChild.getAttribute("src");
-            }
-        }else{
-            url = this.state.iFrameUrl;
-        }
-        let name,widgetType;
-        if(WidgetType.WIDGET_TYPE_MAP === this.props.widgetType){
-            name = getWidgetNameByType(WidgetType.WIDGET_TYPE_MAP)
-            widgetType = WidgetType.WIDGET_TYPE_MAP;
-        }else if(WidgetType.WIDGET_TYPE_IFRAME === this.props.widgetType){
-            name = getWidgetNameByType(WidgetType.WIDGET_TYPE_IFRAME)
-            widgetType = WidgetType.WIDGET_TYPE_IFRAME;
-        }
-
         const data = {
-            widgetType: widgetType,
-            name: name,
+            widgetType: this.props.widgetType,
+            name: getWidgetNameByType(this.props.widgetType),
             minWidth: 310,
             minHeight : 160,
             width : 310,
             height : 160,
             otherData: {
-                iFrameUrl : url
-            },
+                iFrameUrl : this.state.iFrameUrl
+            }
         }
         if (this.props.popupData) {
             data['xPosition'] = this.props.popupData.xPosition;
@@ -92,6 +64,8 @@ class IframeAction extends React.Component{
         this.props.hideWidgetPopupAlert();
     }
 }
+
+
 
 const mapDispatchToPropsChild = (dispatch)=>{
     return bindActionCreators({...playerControlAction,...widgetPopupActions},dispatch);

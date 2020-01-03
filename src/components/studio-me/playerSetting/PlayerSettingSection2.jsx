@@ -53,10 +53,10 @@ class PlayerSettingSection2 extends React.Component{
                     document.getElementById('file').click();
                 }
                 else if(widgetDetail.widgetType === WidgetTypes.WIDGET_TYPE_MAP){
-                    this.props.showWidgetPopupAlert(constants.MAP_HEADING,null,WidgetTypes.WIDGET_TYPE_MAP,widgetDetail);
+                    this.props.showWidgetPopupAlert(constants.MAP_HEADING,constants.MAP_BODY_NAME,WidgetTypes.WIDGET_TYPE_MAP,widgetDetail);
                 }
                 else if(widgetDetail.widgetType === WidgetTypes.WIDGET_TYPE_IFRAME){
-                    this.props.showWidgetPopupAlert(constants.I_FRAME_HEADING,null,WidgetTypes.WIDGET_TYPE_IFRAME,widgetDetail);
+                    this.props.showWidgetPopupAlert(constants.I_FRAME_HEADING,constants.I_FRAME_BODY_NAME,WidgetTypes.WIDGET_TYPE_IFRAME,widgetDetail);
                 }
                 else if(widgetDetail.widgetType === WidgetTypes.WIDGET_TYPE_SQUARE_BOX){
                     this.props.showWidgetPopupAlert(constants.SQUARE_SHAPE_HEADING,null,WidgetTypes.WIDGET_TYPE_SQUARE_BOX,widgetDetail);
