@@ -43,7 +43,13 @@ class MediaControlComponent extends React.Component {
                         height: 50,
                         imageData: imageUrl
                     }
-                    this.props.updatePlayerActionData(defaultWidgetDetail);
+                    let img = new Image;
+                    img.onload = ()=>{
+                        defaultWidgetDetail.width = img.width;
+                        defaultWidgetDetail.height = img.height;
+                        this.props.updatePlayerActionData(defaultWidgetDetail);
+                    };
+                    img.src = reader.result;
                 };
                 reader.readAsDataURL(image);
             } else {

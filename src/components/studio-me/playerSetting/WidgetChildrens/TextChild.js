@@ -11,7 +11,8 @@ const TextChild = (props) => {
         background: otherData.textBackgroundColor,
         fontSize: parseInt(otherData.textSize),
         height: '100%',
-        width: '100%'
+        width: '100%',
+        textAlign:'center'
     }
 
 
